@@ -3,6 +3,7 @@ package logic
 type Logic struct {
 	Text         map[byte]string
 	Instructions []byte
+	DASM         string
 }
 
 func Decode(d []byte, idx int) *Logic {
@@ -17,7 +18,8 @@ func Decode(d []byte, idx int) *Logic {
 	}
 	lo := &Logic{
 		Instructions: instructions,
-		Text: decodeStrings(d[startPos:], idx),
+		Text:         decodeStrings(d[startPos:], idx),
+		DASM:         Disassemble(instructions),
 	}
 	return lo
 }
