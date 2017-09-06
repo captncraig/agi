@@ -2,46 +2,59 @@ package main
 
 import (
 	"fmt"
-	"image/png"
 	"log"
 	"os"
 	"path/filepath"
 
-	"github.com/captncraig/agi/directory"
+	"github.com/captncraig/agi/logic"
 	"github.com/captncraig/agi/picture"
+
+	"github.com/captncraig/agi/directory"
 )
 
 func main() {
-	log.SetFlags(log.LstdFlags | log.Lshortfile)
-	dir, err := directory.Load("PICDIR")
+	name := "sq1"
+	d, err := directory.New(filepath.Join("games", name))
 	if err != nil {
 		log.Fatal(err)
 	}
-	for i, pic := range dir {
-		if pic == nil {
-			continue
+	log.Printf("Loaded %d VOL files", len(d.Vols))
+	log.Printf("%d Pictures", d.NumResources(d.Pictures))
+	log.Printf("%d Logic", d.NumResources(d.Logic))
+	log.Printf("%d Views", d.NumResources(d.Views))
+	log.Printf("%d Sounds", d.NumResources(d.Sounds))
+	imgOutDir := filepath.Join("docs", name, "pictures")
+	os.MkdirAll(imgOutDir, 0644)
+	for i, p := range d.Pictures {
+		if p != nil {
+			pic, err := picture.Decode(p.Data)
+			if err != nil {
+				log.Fatal(i, err)
+			}
+			if err = pic.RenderToFile(imgOutDir, i, false); err != nil {
+				log.Fatal(err)
+			}
+			if err = pic.RenderToFile(imgOutDir, i, true); err != nil {
+				log.Fatal(err)
+			}
+			pic.RenderGifs(imgOutDir, i)
 		}
-		outFile := filepath.Join("pics", fmt.Sprintf("%d.png", i))
-		logFile := filepath.Join("picdasm", fmt.Sprintf("%d.log", i))
-		out2File := filepath.Join("pics", fmt.Sprintf("%d.priority.png", i))
-		pic, pri := picture.DecodePicture(pic.Data, logFile)
-		f, err := os.Create(outFile)
-		if err != nil {
-			log.Fatal(err)
+	}
+	for i, l := range d.Logic {
+		if l != nil {
+			lo := logic.Decode(l.Data, i)
+			fmt.Println("LOGIC", i)
+			// for j := byte(0); j < 255; j++ {
+			// 	s, ok := lo.Text[j]
+			// 	if !ok {
+			// 		continue
+			// 	}
+			// 	d, _ := json.Marshal(s)
+			// 	fmt.Println("\t\t", j, string(d))
+			// }
+			for j := 0; j < 15 && j < len(lo.Instructions); j++ {
+				fmt.Printf("0x%x\n", lo.Instructions[j])
+			}
 		}
-		err = png.Encode(f, pic.Image())
-		if err != nil {
-			log.Fatal(err)
-		}
-		f.Close()
-		f, err = os.Create(out2File)
-		if err != nil {
-			log.Fatal(err)
-		}
-		err = png.Encode(f, pri.Image())
-		if err != nil {
-			log.Fatal(err)
-		}
-		f.Close()
 	}
 }

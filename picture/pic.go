@@ -4,11 +4,12 @@ import (
 	"fmt"
 	"image"
 	"image/color"
-	"io"
-	"io/ioutil"
+	"image/gif"
+	"image/png"
 	"log"
 	"math"
 	"os"
+	"path/filepath"
 	"strings"
 )
 
@@ -24,6 +25,7 @@ type pic struct {
 	pictureDraw, priorityDraw   bool
 	pictureColor, priorityColor byte
 	brush                       byte
+	setPic, setPri              bool
 }
 
 const (
@@ -51,10 +53,14 @@ type CommandDef struct {
 	nArg byte // 255 is var
 	f    func(*pic, []byte)
 }
+
 type Command struct {
-	def  *CommandDef
-	args []byte
+	Args   []byte
+	Op     byte
+	OpName string
 }
+
+type Picture []*Command
 
 var cmds = []*CommandDef{
 	{
@@ -257,15 +263,16 @@ var cmds = []*CommandDef{
 		},
 	},
 }
-var ops = reverseCmds()
 
 func (c *Command) String() string {
 	args := []string{}
-	for _, a := range c.args {
+	for _, a := range c.Args {
 		args = append(args, fmt.Sprintf("0x%x", a))
 	}
-	return fmt.Sprintf("%s(0x%x) [%s]", c.def.name, c.def.op, strings.Join(args, " "))
+	return fmt.Sprintf("%s(0x%x) [%s]", c.OpName, c.Op, strings.Join(args, " "))
 }
+
+var ops = reverseCmds()
 
 func reverseCmds() map[byte]*CommandDef {
 	o := make(map[byte]*CommandDef, len(cmds))
@@ -275,35 +282,123 @@ func reverseCmds() map[byte]*CommandDef {
 	return o
 }
 
-func DecodePicture(dat []byte, logF string) (picImg *ImageData, priImg *ImageData) {
-	w := ioutil.Discard
-	var f *os.File
-	var err error
-	if logF != "" {
-		f, err = os.Create(logF)
-		if err != nil {
-			log.Fatal(err)
-		}
-		w = f
+func (p Picture) Render() (*ImageData, *ImageData) {
+	return p.renderByStep(nil, nil)
+}
+
+func (p Picture) RenderToFile(dir string, idx int, prio bool) error {
+	a, b := p.Render()
+	i := a
+	dotPart := "."
+	if prio {
+		dotPart = ".priority."
+		i = b
 	}
-	p := &pic{
+	fName := filepath.Join(dir, fmt.Sprintf("%d%spng", idx, dotPart))
+	img := i.Image()
+	f, err := os.Create(fName)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+	return png.Encode(f, img)
+}
+
+func (p Picture) RenderGifs(dir string, idx int) {
+	aFile := filepath.Join(dir, fmt.Sprintf("%d.gif", idx))
+	bFile := filepath.Join(dir, fmt.Sprintf("%d.priority.gif", idx))
+	if _, err := os.Stat(aFile); !os.IsNotExist(err) {
+		if _, err := os.Stat(bFile); !os.IsNotExist(err) {
+			return
+		}
+	}
+	priImgs := []ImageData{}
+	picImgs := []ImageData{}
+	ca := make(chan *ImageData)
+	cb := make(chan *ImageData)
+	go func() {
+		for pi := range ca {
+			picImgs = append(picImgs, *pi)
+		}
+	}()
+	go func() {
+		for pi := range cb {
+			priImgs = append(priImgs, *pi)
+		}
+	}()
+	p.renderByStep(ca, cb)
+	close(ca)
+	close(cb)
+	renderGif(aFile, picImgs)
+	renderGif(bFile, priImgs)
+}
+
+func renderGif(fname string, imgs []ImageData) {
+	g := &gif.GIF{}
+	for _, img := range imgs {
+		i2 := img.Image()
+		g.Image = append(g.Image, i2)
+		g.Delay = append(g.Delay, 25)
+		g.Config = image.Config{
+			ColorModel: i2.ColorModel(),
+			Height:     i2.Bounds().Dy(),
+			Width:      i2.Bounds().Dx(),
+		}
+	}
+	f, err := os.Create(fname)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer f.Close()
+	if err = gif.EncodeAll(f, g); err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("Wrote", fname)
+}
+
+func (p Picture) renderByStep(pCh chan<- *ImageData, prCh chan<- *ImageData) (*ImageData, *ImageData) {
+	pic := &pic{
 		picture:       &ImageData{},
 		priority:      &ImageData{},
 		priorityColor: 4,
 	}
 	for x := 0; x < 160; x++ {
 		for y := 0; y < 200; y++ {
-			p.picture[x][y] = white
-			p.priority[x][y] = red
+			pic.picture[x][y] = white
+			pic.priority[x][y] = red
 		}
 	}
-	var cmds = []*Command{}
+	if pCh != nil {
+		pCh <- pic.picture
+	}
+	if prCh != nil {
+		prCh <- pic.priority
+	}
+	for _, cmd := range p {
+		op := ops[cmd.Op]
+		if op == nil {
+			panic(fmt.Sprintf("Non existant OP 0x%x", cmd.Op))
+		}
+		op.f(pic, cmd.Args)
+		if pCh != nil && pic.setPic {
+			pCh <- pic.picture
+		}
+		if prCh != nil && pic.setPri {
+			prCh <- pic.priority
+		}
+		pic.setPic = false
+		pic.setPri = false
+	}
+	return pic.picture, pic.priority
+}
+
+func Decode(dat []byte) (Picture, error) {
+	var cmds = Picture{}
 	for i := 0; i < len(dat); {
 		opCode := dat[i]
 		if opCode == 0xff {
-			io.WriteString(w, "EOF!\n")
-			for j := i + 1; j < len(dat); j++ {
-				fmt.Fprintf(w, "%x ", dat[j])
+			if i != len(dat)-1 {
+				return nil, fmt.Errorf("Extra data remaining after EOF command")
 			}
 			break
 		}
@@ -313,10 +408,11 @@ func DecodePicture(dat []byte, logF string) (picImg *ImageData, priImg *ImageDat
 			log.Fatalf("Opcode 0x%x not defined", opCode)
 		}
 		cmd := &Command{
-			def: cDef,
+			Op:     opCode,
+			OpName: cDef.name,
 		}
 		for i < len(dat) {
-			if cDef.nArg != 255 && len(cmd.args) == int(cDef.nArg) {
+			if cDef.nArg != 255 && len(cmd.Args) == int(cDef.nArg) {
 				//satisfied
 				break
 			}
@@ -325,23 +421,11 @@ func DecodePicture(dat []byte, logF string) (picImg *ImageData, priImg *ImageDat
 				break
 			}
 			i++
-			cmd.args = append(cmd.args, arg)
+			cmd.Args = append(cmd.Args, arg)
 		}
-		fmt.Fprintln(w, cmd)
 		cmds = append(cmds, cmd)
 	}
-	log.Println(logF)
-	if f != nil {
-		f.Close()
-	}
-	for _, cmd := range cmds {
-		if cmd.def.f == nil {
-			log.Printf("Command %s not implemented.", cmd.def.name)
-		} else {
-			cmd.def.f(p, cmd.args)
-		}
-	}
-	return p.picture, p.priority
+	return cmds, nil
 }
 
 func (p *pic) fill(x, y byte) {
@@ -400,9 +484,11 @@ func (p *pic) set(x, y byte) {
 	}
 	if p.pictureDraw {
 		p.picture[x][y] = p.pictureColor
+		p.setPic = true
 	}
 	if p.priorityDraw {
 		p.priority[x][y] = p.priorityColor
+		p.setPri = true
 	}
 }
 
@@ -496,7 +582,7 @@ func init() {
 	}
 }
 
-func (i *ImageData) Image() image.Image {
+func (i *ImageData) Image() *image.Paletted {
 	var img = image.NewPaletted(image.Rect(0, 0, 320, 200), pal)
 	for x := 0; x < 160; x++ {
 		for y := 0; y < 200; y++ {
