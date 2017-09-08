@@ -1,0 +1,373 @@
+if (isset(new_room)) {
+  set(f82);
+  set.horizon(92);
+  if (!isset(f38)) {
+    v152 = 5;
+  }
+  else {
+    v152 = 105;
+  }
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.logics(205);
+  load.sound(48);
+  if (has("Sharp Axe")) {
+    load.view(21);
+  }
+  load.view(17);
+  if (!isset(f194)) {
+    load.sound(64);
+    load.sound(65);
+    sound(64, f154);
+  }
+  animate.obj(o1);
+  animate.obj(o2);
+  animate.obj(o3);
+  animate.obj(o4);
+  animate.obj(o6);
+  animate.obj(o7);
+  set.view(o1, 17);
+  set.view(o2, 17);
+  set.view(o3, 17);
+  set.view(o4, 17);
+  set.view(o6, 17);
+  set.view(o7, 17);
+  set.loop(o1, 0);
+  set.loop(o2, 1);
+  set.loop(o3, 2);
+  set.loop(o4, 3);
+  set.loop(o6, 4);
+  set.loop(o7, 5);
+  set.cel(o1, 0);
+  set.cel(o2, 0);
+  set.cel(o3, 0);
+  set.cel(o4, 0);
+  set.cel(o6, 0);
+  set.cel(o7, 0);
+  stop.cycling(o1);
+  stop.cycling(o2);
+  stop.cycling(o3);
+  stop.cycling(o4);
+  stop.cycling(o6);
+  stop.cycling(o7);
+  position(o1, 117, 104);
+  position(o2, 117, 121);
+  position(o3, 143, 124);
+  position(o4, 144, 128);
+  position(o6, 58, 128);
+  position(o7, 95, 164);
+  ignore.objs(o1);
+  ignore.objs(o2);
+  ignore.objs(o3);
+  ignore.objs(o4);
+  ignore.objs(o6);
+  ignore.objs(o7);
+  ignore.blocks(o1);
+  ignore.blocks(o2);
+  ignore.blocks(o3);
+  ignore.blocks(o4);
+  ignore.blocks(o6);
+  ignore.blocks(o7);
+  set.priority(o1, 7);
+  set.priority(o3, 7);
+  set.priority(o2, 7);
+  set.priority(o4, 13);
+  set.priority(o5, 10);
+  set.priority(o6, 9);
+  set.priority(o7, 15);
+  draw(o1);
+  draw(o2);
+  draw(o3);
+  draw(o4);
+  draw(o6);
+  draw(o7);
+  stop.update(o1);
+  stop.update(o2);
+  stop.update(o3);
+  stop.update(o4);
+  stop.update(o6);
+  stop.update(o7);
+  animate.obj(o9);
+  animate.obj(o10);
+  animate.obj(o11);
+  animate.obj(o12);
+  set.view(o9, 17);
+  set.view(o10, 17);
+  set.view(o11, 17);
+  set.view(o12, 17);
+  set.loop(o9, 7);
+  set.loop(o10, 7);
+  set.loop(o11, 7);
+  set.loop(o12, 7);
+  ignore.horizon(o9);
+  ignore.horizon(o10);
+  ignore.horizon(o11);
+  ignore.horizon(o12);
+  position(o9, 99, 55);
+  position(o10, 104, 52);
+  position(o11, 115, 38);
+  position(o12, 118, 37);
+  v152 = 8;
+  cycle.time(o9, v152);
+  v152 = 6;
+  cycle.time(o12, v152);
+  v152 = 5;
+  cycle.time(o10, v152);
+  v152 = 7;
+  cycle.time(o11, v152);
+  set.priority(o9, 11);
+  set.priority(o10, 15);
+  draw(o9);
+  draw(o10);
+  draw(o11);
+  draw(o12);
+  if (prev_room_no == 11) {
+    if (v33 > 100) {
+      position(Ego, 76, 165);
+    }
+  }
+  if (prev_room_no == 29) {
+    if (v33 > 116) {
+      position(Ego, 116, 92);
+    }
+  }
+  draw(Ego);
+  show.pic();
+}
+if (isset(f112)) {
+  reset(f112);
+  v168++;
+}
+if ((isset(ego_touching_signal_line)) && 
+    (posn(Ego,114,89,126,100)) && 
+    (!isset(f193)) && 
+    (!isset(f194))) {
+  sound(65, f154);
+  start.update(o1);
+  set(f193);
+  stop.motion(Ego);
+  stop.cycling(Ego);
+  start.cycling(o1);
+  end.of.loop(o1, f221);
+}
+if ((isset(ego_touching_signal_line)) && 
+    (posn(Ego,138,93,152,119)) && 
+    (!isset(f193)) && 
+    (!isset(f194))) {
+  sound(65, f154);
+  start.update(o2);
+  set(f193);
+  stop.motion(Ego);
+  stop.cycling(Ego);
+  start.cycling(o3);
+  end.of.loop(o3, f221);
+}
+if ((isset(ego_touching_signal_line)) && 
+    (posn(Ego,124,94,133,117)) && 
+    (!isset(f193)) && 
+    (!isset(f194))) {
+  sound(65, f154);
+  start.update(o3);
+  set(f193);
+  stop.motion(Ego);
+  stop.cycling(Ego);
+  start.cycling(o2);
+  end.of.loop(o2, f221);
+}
+if ((isset(ego_touching_signal_line)) && 
+    (posn(Ego,145,118,155,143)) && 
+    (!isset(f193)) && 
+    (!isset(f194))) {
+  sound(65, f154);
+  start.update(o4);
+  set(f193);
+  stop.motion(Ego);
+  stop.cycling(Ego);
+  start.cycling(o4);
+  end.of.loop(o4, f221);
+}
+if ((isset(ego_touching_signal_line)) && 
+    (posn(Ego,55,106,78,129)) && 
+    (!isset(f193)) && 
+    (!isset(f194))) {
+  sound(65, f154);
+  start.update(o6);
+  set(f193);
+  stop.motion(Ego);
+  stop.cycling(Ego);
+  start.cycling(o6);
+  end.of.loop(o6, f221);
+}
+if ((isset(ego_touching_signal_line)) && 
+    (posn(Ego,92,151,117,167)) && 
+    (!isset(f193)) && 
+    (!isset(f194))) {
+  sound(65, f154);
+  start.update(o7);
+  set(f193);
+  stop.motion(Ego);
+  stop.cycling(Ego);
+  start.cycling(o7);
+  end.of.loop(o7, f221);
+}
+current.cel(o1, v221);
+current.cel(o2, v222);
+current.cel(o3, v223);
+current.cel(o4, v224);
+current.cel(o6, v226);
+current.cel(o7, v227);
+if (v221 == 2) {
+  erase(Ego);
+}
+if (v222 == 2) {
+  erase(Ego);
+}
+if (v223 == 2) {
+  erase(Ego);
+}
+if (v224 == 1) {
+  erase(Ego);
+}
+if (v226 == 2) {
+  erase(Ego);
+}
+if (v227 == 1) {
+  erase(Ego);
+}
+if (isset(f221)) {
+  reset(f221);
+  print("Well, looks like you're all wrapped up!");
+  set(f223);
+}
+if (isset(f223)) {
+  reset(f223);
+  set(f140);
+}
+if ((isset(f222)) && 
+    (v168 == 2)) {
+  set.view(Ego, 0);
+  reset(f36);
+  reset(f222);
+  reset(f157);
+  v152 = 1;
+  cycle.time(Ego, v152);
+  print("The trees tremble at your might, and are frightened by your axe.  They "
+        "will not bother you further.");
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room"))) {
+  print("This is a creepy place!  You have found a grove of very odd (and "
+        "scary-looking) trees.  A thick forest surrounds the grove.");
+}
+if (said("examine", "cottage")) {
+  print("This is a large, crudely built, thatched-roof house.  This place makes "
+        "you feel uneasy.");
+}
+if (said("examine", "door")) {
+  print("You don't see a door from here.");
+}
+if ((said("look in", "window") || 
+    said("examine", "window") || 
+    said("examine", "through", "window"))) {
+  if (posn(Ego,0,115,10,124)) {
+    print("You peek through the window, but can make out no details.");
+  }
+  else {
+    set(f113);
+  }
+}
+if (said("break", "window")) {
+  if (posn(Ego,0,115,10,124)) {
+    print("That's vandalism!");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("chop", "branch") || 
+    said("chop", "off", "branch") || 
+    said("chop", "forest") || 
+    said("chop", "arm") || 
+    said("chop", "branch") || 
+    said("wave", "ax") || 
+    said("chop", "down", "forest") || 
+    said("wave", "ax", "forest") || 
+    said("swing", "ax", "rol") || 
+    said("use", "ax") || 
+    said("chop", "forest", "with", "ax") || 
+    said("chop", "branch", "forest") || 
+    said("chop", "off", "branch", "forest") || 
+    said("chop", "branch", "with", "ax") || 
+    said("chop", "off", "branch", "with", "ax") || 
+    said("chop", "branch", "forest", "with", "ax") || 
+    said("chop", "off", "branch", "forest", "with", "ax") || 
+    said("break", "branch") || 
+    said("break", "off", "branch") || 
+    said("break", "branch", "with", "ax") || 
+    said("break", "off", "branch", "with", "ax") || 
+    said("break", "branch", "forest", "with", "ax") || 
+    said("break", "off", "branch", "forest", "with", "ax"))) {
+  if (!isset(f193)) {
+    if (!isset(f194)) {
+      if (has("Sharp Axe")) {
+        if (!isset(f194)) {
+          score  += 4;
+        }
+        set(f194);
+        set(f36);
+        stop.motion(Ego);
+        set.view(Ego, 21);
+        set(f157);
+        v152 = 3;
+        cycle.time(Ego, v152);
+        v168 = 0;
+        set(f222);
+        sound(48, f154);
+      }
+      else {
+        print("How would you go about doing that?");
+      }
+    }
+    else {
+      print("That's not necessary anymore.");
+    }
+  }
+  else {
+    print("Too late!");
+  }
+}
+if (!isset(input_parsed)) {
+  call(205);
+}
+Label1:
+if (ego_edge_code == bottom_edge) {
+  new.room(11); //##LE001##
+}
+if (ego_edge_code == horizon_edge) {
+  new.room(29); //##LE002##
+}
+if (ego_edge_code == right_edge) {
+  new.room(6); //##LE003##
+}
+if (ego_edge_code == left_edge) {
+  new.room(4); //##LE004##
+}
+return();
+
+//Messages
+#message 1 "This is a creepy place!  You have found a grove of very odd (and scary-looking) trees.  A thick forest surrounds the grove."
+#message 2 "This is a large, crudely built, thatched-roof house.  This place makes you feel uneasy."
+#message 3 "You peek through the window, but can make out no details."
+#message 5 "The trees tremble at your might, and are frightened by your axe.  They will not bother you further."
+#message 6 "That's vandalism!"
+#message 7 "Well, looks like you're all wrapped up!"
+#message 8 "Too late!"
+#message 9 "That's not necessary anymore."
+#message 10 "You don't see a door from here."
+#message 11 "How would you go about doing that?"

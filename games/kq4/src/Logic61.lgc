@@ -1,0 +1,123 @@
+if (isset(new_room)) {
+  set(f82);
+  v152 = 61;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.view(10);
+  load.sound(52);
+  animate.obj(o12);
+  if (prev_room_no == 66) {
+    position(Ego, 48, 166);
+  }
+  if (prev_room_no == 58) {
+    position(Ego, 87, 50);
+    if (v37 == 6) {
+      current.loop(Ego, v147);
+      set.loop.v(Ego, v147);
+      fix.loop(Ego);
+      position(Ego, 82, 16);
+      move.obj(Ego, 82, 167, 6, f238);
+      ignore.blocks(Ego);
+      set.priority(Ego, 5);
+      set(f237);
+      set(f36);
+      sound(52, f154);
+    }
+  }
+  draw(Ego);
+  show.pic();
+}
+if ((isset(f237)) && 
+    (isset(f238))) {
+  new.room(66); //##LE001##
+}
+if ((isset(ego_touching_signal_line)) && 
+    (!isset(f230)) && 
+    (!isset(f237))) {
+  set(f36);
+  sound(52, f154);
+  set(f230);
+  v37 = 6;
+  set.view(Ego, 10);
+  set.priority(Ego, 5);
+  if (ego_dir < downleft) {
+    set.loop(Ego, 0);
+  }
+  else {
+    set.loop(Ego, 1);
+  }
+  fix.loop(Ego);
+  set.cel(Ego, 0);
+  ignore.blocks(Ego);
+  move.obj(Ego, 72, 167, 8, f225);
+}
+if (isset(f225)) {
+  set(f190);
+  erase(Ego);
+  new.room(66); //##LE002##
+}
+if (v34 < 117) {
+  if (v37 != 6) {
+    if (ego_dir == up) {
+      set.loop(Ego, 2);
+      fix.loop(Ego);
+    }
+    if (ego_dir == down) {
+      set.loop(Ego, 3);
+      fix.loop(Ego);
+    }
+    if (ego_dir > down) {
+      set.loop(Ego, 1);
+      fix.loop(Ego);
+    }
+    if ((ego_dir < down) && 
+        (ego_dir > up)) {
+      set.loop(Ego, 0);
+      fix.loop(Ego);
+    }
+  }
+}
+else {
+  if (v37 != 6) {
+    release.loop(Ego);
+  }
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "tower") || 
+    said("examine", "around", "tower") || 
+    said("examine", "cottage") || 
+    said("examine", "around", "cottage"))) {
+  print("The steps spiral steeply up the stone tower of this old house.");
+}
+if ((said("examine", "staircase") || 
+    said("examine", "up", "staircase") || 
+    said("examine", "down", "staircase"))) {
+  print("The steps in this tower are steep and narrow.  Be careful!");
+}
+if (said("examine", "wall")) {
+  print("There is nothing of interest on the walls.");
+}
+if (said("examine", "dirt")) {
+  print("Don't look down!");
+}
+Label1:
+if (ego_edge_code == bottom_edge) {
+  new.room(66); //##LE003##
+}
+if (ego_edge_code == horizon_edge) {
+  new.room(58); //##LE004##
+}
+return();
+
+//Messages
+#message 1 "The steps spiral steeply up the stone tower of this old house."
+#message 2 "The steps in this tower are steep and narrow.  Be careful!"
+#message 3 "There is nothing of interest on the walls."
+#message 4 "Don't look down!"

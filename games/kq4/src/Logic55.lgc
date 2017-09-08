@@ -1,0 +1,413 @@
+if (isset(new_room)) {
+  discard.view(0);
+  set(f82);
+  set.horizon(1);
+  load.sound(30);
+  load.logics(151);
+  load.logics(215);
+  if (prev_room_no != 56) {
+    load.view(1);
+    set.view(Ego, 1);
+    position(Ego, 47, 71);
+    stop.motion(Ego);
+  }
+  load.view(10);
+  load.view(40);
+  v152 = 55;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  v223 = 0;
+  v224 = 0;
+  v225 = 0;
+  load.view(141);
+  v152 = 2;
+  if (isset(f39)) {
+    load.view(142);
+    release.priority(Ego);
+    animate.obj(o1);
+    set.view(o1, 141);
+    set.loop(o1, 0);
+    set.cel(o1, 0);
+    position(o1, 104, 138);
+    cycle.time(o1, v152);
+    draw(o1);
+    stop.cycling(o1);
+    v225 = 2;
+    animate.obj(o3);
+    set.view(o3, 142);
+    set.loop(o3, 1);
+    position(o3, 86, 121);
+    cycle.time(o3, v152);
+    draw(o3);
+    animate.obj(o4);
+    set.view(o4, 142);
+    set.loop(o4, 0);
+    position(o4, 92, 69);
+    cycle.time(o4, v152);
+    draw(o4);
+    ignore.blocks(Ego);
+  }
+  else {
+    load.view(144);
+    observe.blocks(Ego);
+    animate.obj(o1);
+    set.view(o1, 141);
+    stop.cycling(o1);
+    set.loop(o1, 1);
+    fix.loop(o1);
+    set.cel(o1, 3);
+    position(o1, 25, 100);
+    ignore.blocks(o1);
+    cycle.time(o1, v152);
+    draw(o1);
+    animate.obj(o5);
+    animate.obj(o6);
+    set.view(o5, 144);
+    set.view(o6, 144);
+    set.loop(o5, 5);
+    set.loop(o6, 7);
+    set.cel(o6, 0);
+    stop.update(o6);
+    set.priority(o5, 9);
+    position(o5, 110, 106);
+    position(o6, 110, 120);
+    cycle.time(o5, v152);
+    draw(o5);
+    draw(o6);
+    stop.cycling(o5);
+    v223 = 1;
+    animate.obj(o7);
+    animate.obj(o8);
+    set.view(o7, 144);
+    set.view(o8, 144);
+    set.loop(o8, 2);
+    set.loop(o7, 0);
+    set.cel(o8, 0);
+    stop.update(o8);
+    set.priority(o7, 9);
+    position(o7, 90, 105);
+    position(o8, 94, 120);
+    cycle.time(o7, v152);
+    draw(o7);
+    draw(o8);
+    stop.cycling(o7);
+    v224 = 3;
+  }
+  animate.obj(o9);
+  v152 = 4;
+  cycle.time(o9, v152);
+  set.view(o9, 141);
+  ignore.objs(o9);
+  set.loop(o9, 2);
+  set.priority(o9, 4);
+  set.cel(o9, 0);
+  v222 = 1;
+  animate.obj(o10);
+  v152 = 4;
+  cycle.time(o10, v152);
+  set.view(o10, 141);
+  ignore.objs(o10);
+  set.loop(o10, 2);
+  set.priority(o10, 4);
+  set.cel(o10, 0);
+  v226 = 2;
+  v221 = 0;
+  if (prev_room_no == 56) {
+    set(f224);
+    observe.blocks(Ego);
+    position(Ego, 132, 129);
+  }
+  draw(Ego);
+  if (prev_room_no != 56) {
+    sound(30, f154);
+  }
+  show.pic();
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "cave") || 
+    said("examine", "around", "cave"))) {
+  print("Diamonds glitter and sparkle from the earthen walls of the Seven "
+        "Dwarfs' diamond mine.  Within it, you see the little men busily at "
+        "work.");
+}
+if (said("examine", "door")) {
+  print("It is a ramshackle wooden door.");
+}
+if ((said("speak", "dwarf") || 
+    said("speak") || 
+    said("speak", "abominable", "dwarf") || 
+    said("speak", "seven", "dwarf") || 
+    said("speak", "with", "dwarf") || 
+    said("speak", "with", "abominable", "dwarf") || 
+    said("speak", "with", "seven", "dwarf"))) {
+  if (isset(f39)) {
+    if (posn(Ego,79,60,115,138)) {
+      print("You endeavor to engage in conversation with the small men, but "
+            "they are too busy to reply.");
+    }
+    else {
+      set(f113);
+    }
+  }
+  else {
+    set(f113);
+  }
+}
+if (!isset(input_parsed)) {
+  call(215);
+}
+if (!isset(input_parsed)) {
+  call(151);
+}
+if (isset(f106)) {
+  reset(f106);
+  print("The dwarfs are too busy to notice.");
+}
+Label1:
+if (!isset(f39) && 
+    !isset(f223)) {
+  if (isset(f112)) {
+    if (v221 == 2) {
+      print("You have encountered a group of small men working in this diamond "
+            "mine.  They're not too friendly, though, as one of them forcefully "
+            "tells you to leave the premises!");
+      set(f36);
+      prevent.input();
+      start.cycling(o1);
+      move.obj(o1, 41, 81, 0, f220);
+      set(f223);
+      ignore.blocks(Ego);
+      ignore.objs(Ego);
+      if (v33 < 48) {
+        move.obj(Ego, 49, 76, 0, f221);
+      }
+      else {
+        move.obj(Ego, 52, 69, 0, f221);
+      }
+    }
+    else {
+      v221++;
+    }
+  }
+}
+if (isset(f220)) {
+  stop.cycling(o1);
+  set.cel(o1, 1);
+  reset(f220);
+  observe.blocks(Ego);
+  observe.objs(Ego);
+  accept.input();
+  new.room(28); //##LE001##
+}
+if (isset(f221)) {
+  move.obj(Ego, 36, 72, 0, f222);
+  observe.blocks(Ego);
+  observe.objs(Ego);
+  reset(f221);
+}
+if (posn(Ego,48,137,52,150)) {
+  reset(f224);
+  ignore.blocks(Ego);
+}
+if (posn(Ego,13,111,51,147) && 
+    !isset(f224)) {
+  set.priority(Ego, 14);
+}
+if (posn(Ego,52,137,60,150) && 
+    !isset(f224) && 
+    !isset(f227)) {
+  set(f224);
+  release.priority(Ego);
+  observe.blocks(Ego);
+}
+if (posn(Ego,13,103,27,110) && 
+    !isset(f224) && 
+    !isset(f227)) {
+  release.priority(Ego);
+}
+if (isset(ego_touching_signal_line) && 
+    !isset(f224) && 
+    !isset(f227) && 
+    !isset(f223)) {
+  set(f224);
+  set(f36);
+  prevent.input();
+  set(f227);
+  set.view(Ego, 10);
+  set.loop(Ego, 0);
+  fix.loop(Ego);
+  v152 = 4;
+  step.size(Ego, v152);
+  v152 = 3;
+  cycle.time(Ego, v152);
+  if (v33 > 68) {
+    move.obj(Ego, 82, 115, 0, f226);
+  }
+  else {
+    if (v34 > 108) {
+      set.loop(Ego, 2);
+      set.priority(Ego, 10);
+      if (v33 > 39) {
+        move.obj(Ego, 45, 132, 0, f226);
+      }
+      else {
+        move.obj(Ego, 37, 131, 0, f226);
+      }
+    }
+    else {
+      set.priority(Ego, 8);
+      if (v34 > 93) {
+        move.obj(Ego, 49, 124, 0, f226);
+      }
+      else {
+        move.obj(Ego, 56, 121, 0, f226);
+      }
+    }
+  }
+}
+if (isset(f226)) {
+  v152 = 1;
+  step.size(Ego, v152);
+  cycle.time(Ego, v152);
+  set.view(Ego, 40);
+  set.loop(Ego, 0);
+  set.cel(Ego, 3);
+  reverse.loop(Ego, f228);
+  set(f157);
+  reset(f226);
+}
+if (isset(f228)) {
+  observe.blocks(Ego);
+  release.priority(Ego);
+  release.loop(Ego);
+  set.view(Ego, 1);
+  reset(f228);
+  reset(f157);
+  reset(f36);
+  accept.input();
+  reset(f227);
+  set(f224);
+}
+if (v222 > 0 && 
+    isset(f112)) {
+  v222--;
+  if (v222 <= 0) {
+    random(1, 4, v152);
+    if (v152 == 1) {
+      position(o9, 115, 42);
+    }
+    else {
+      if (v152 == 2) {
+        position(o9, 134, 44);
+      }
+      else {
+        if (v152 == 3) {
+          position(o9, 68, 96);
+        }
+        else {
+          position(o9, 119, 108);
+        }
+      }
+    }
+    draw(o9);
+    end.of.loop(o9, f230);
+  }
+}
+if (isset(f230)) {
+  erase(o9);
+  reset(f230);
+  set.cel(o9, 0);
+  v222 = 1;
+}
+if (v226 > 0 && 
+    isset(f112)) {
+  v226--;
+  if (v226 <= 0) {
+    random(1, 3, v152);
+    if (v152 == 1) {
+      position(o10, 38, 116);
+    }
+    else {
+      if (v152 == 2) {
+        position(o10, 116, 66);
+      }
+      else {
+        position(o10, 94, 38);
+      }
+    }
+    draw(o10);
+    end.of.loop(o10, f234);
+  }
+}
+if (isset(f234)) {
+  erase(o10);
+  reset(f234);
+  set.cel(o10, 0);
+  v226 = 1;
+}
+if (v223 > 0 && 
+    isset(f112)) {
+  v223--;
+  if (v223 <= 0) {
+    random(4, 8, v223);
+    if (isset(f231)) {
+      reset(f231);
+      stop.cycling(o5);
+      set.cel(o5, 0);
+    }
+    else {
+      set(f231);
+      start.cycling(o5);
+    }
+  }
+}
+if (v224 > 0 && 
+    isset(f112)) {
+  v224--;
+  if (v224 <= 0) {
+    random(4, 8, v224);
+    if (isset(f232)) {
+      reset(f232);
+      stop.cycling(o7);
+      set.cel(o7, 0);
+    }
+    else {
+      set(f232);
+      start.cycling(o7);
+    }
+  }
+}
+if (v225 > 0 && 
+    isset(f112)) {
+  v225--;
+  if (v225 <= 0) {
+    end.of.loop(o1, f233);
+  }
+}
+if (isset(f233)) {
+  reset(f233);
+  set.cel(o1, 0);
+  random(3, 7, v225);
+}
+if (posn(Ego,135,0,159,167)) {
+  new.room(56); //##LE002##
+}
+if (posn(Ego,24,69,38,73)) {
+  accept.input();
+  new.room(28); //##LE003##
+}
+return();
+
+//Messages
+#message 1 "Diamonds glitter and sparkle from the earthen walls of the Seven Dwarfs' diamond mine.  Within it, you see the little men busily at work."
+#message 2 "It is a ramshackle wooden door."
+#message 3 "You have encountered a group of small men working in this diamond mine.  They're not too friendly, though, as one of them forcefully tells you to leave the premises!"
+#message 4 "The dwarfs are too busy to notice."
+#message 5 "You endeavor to engage in conversation with the small men, but they are too busy to reply."

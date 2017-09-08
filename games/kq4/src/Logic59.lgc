@@ -1,0 +1,404 @@
+if (isset(new_room)) {
+  v152 = 59;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.logics(151);
+  if (isset(f38)) {
+    set(f82);
+    load.logics(232);
+  }
+  if (isset(f38)) {
+    load.view(188);
+    add.to.pic(188, 0, 0, 20, 91, 4, 4);
+    discard.view(188);
+    load.view(111);
+    animate.obj(o3);
+    set.view(o3, 111);
+    set.loop(o3, 1);
+    ignore.horizon(o3);
+    position(o3, 41, 81);
+    set.priority(o3, 9);
+    draw(o3);
+  }
+  animate.obj(o2);
+  load.view(109);
+  set.view(o2, 109);
+  set.cel(o2, 0);
+  v152 = 5;
+  cycle.time(o2, v152);
+  if (v144 != 1) {
+    stop.cycling(o2);
+  }
+  else {
+    set(f237);
+    load.sound(22);
+    sound(22, f154);
+  }
+  position(o2, 63, 105);
+  draw(o2);
+  if ((v144 == 5) && 
+      (!isset(f143))) {
+    load.logics(235);
+    animate.obj(o1);
+    load.view(108);
+    set.view(o1, 108);
+    position(o1, 93, 116);
+    ignore.blocks(o1);
+    ignore.objs(o1);
+    draw(o1);
+    set(f236);
+    set(f225);
+    v117 = 0;
+    load.sound(26);
+    sound(26, f154);
+  }
+  position(Ego, 132, 115);
+  draw(Ego);
+  show.pic();
+}
+if (isset(f237)) {
+  print("The crying baby seems to be in here!");
+  reset(f237);
+}
+if ((v144 == 1) && 
+    (isset(f154))) {
+  reset(f154);
+  sound(22, f154);
+}
+if (isset(f112)) {
+  reset(f112);
+  v168++;
+  if (v144 < 5) {
+    v117++;
+  }
+}
+if (isset(f238)) {
+  reset(f238);
+  start.cycling(o2);
+  v168 = 0;
+}
+if (v168 == 4) {
+  stop.cycling(o2);
+  if (v144 == 1) {
+    set(f238);
+  }
+}
+if ((v144 == 5) && 
+    (isset(f225)) && 
+    (isset(f236))) {
+  reset(f225);
+  v117 = 15;
+  call(235);
+  start.cycling(o1);
+  move.obj(o1, 138, 116, 0, f235);
+  draw(o1);
+}
+if ((v144 == 5) && 
+    (isset(f235))) {
+  reset(f235);
+  reset(f236);
+  v168 = 0;
+  erase(o1);
+  set(f154);
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "bedroom") || 
+    said("examine", "around", "bedroom") || 
+    said("examine", "nursery") || 
+    said("examine", "around", "nursery") || 
+    said("examine", "cottage") || 
+    said("examine", "around", "cottage"))) {
+  print("This old baby nursery must have once been a cheery place.  Now, "
+        "through neglect, cobwebs decorate the corners, wallpaper peels from "
+        "the walls, and dust covers the nursery furniture.");
+}
+if ((said("examine", "chair") || 
+    said("examine", "rocking", "chair") || 
+    said("examine", "rocker"))) {
+  print("You imagine the mother who must have rocked her baby in this rocking "
+        "chair.");
+}
+if ((said("sit") || 
+    said("sit", "chair") || 
+    said("sit", "down", "chair"))) {
+  print("That would waste your precious time.");
+}
+if ((said("examine", "chest") || 
+    said("examine", "dresser") || 
+    said("examine", "chest", "drawer"))) {
+  print("The chest of drawers looks old and neglected.");
+}
+if ((said("open", "chest") || 
+    said("open", "dresser") || 
+    said("open", "chest", "drawer") || 
+    said("open", "drawer") || 
+    said("look in", "chest") || 
+    said("look in", "dresser") || 
+    said("look in", "chest", "drawer") || 
+    said("look in", "drawer"))) {
+  if (posn(Ego,42,110,50,131)) {
+    print("The chest of drawers is empty.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("examine", "window") || 
+    said("look in", "window") || 
+    said("examine", "out", "window") || 
+    said("examine", "through", "window"))) {
+  if (posn(Ego,42,110,50,131)) {
+    print("You see the cemetery out the window.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("examine", "cradle") || 
+    said("examine", "baby", "cradle"))) {
+  if (v144 != 1) {
+    print("You see an empty baby cradle here.");
+  }
+  else {
+    print("The baby cradle rocks to and fro as a baby's voice wails from "
+          "within.");
+  }
+}
+if ((v144 != 1) && 
+    (said("look in", "baby", "cradle") || 
+    said("look in", "cradle"))) {
+  if (posn(Ego,61,102,95,110)) {
+    print("The baby cradle is empty.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("rock", "cradle") || 
+    said("rock", "baby", "cradle"))) {
+  if (posn(Ego,56,101,95,110)) {
+    if (v144 != 1) {
+      set(f116);
+      set(f238);
+    }
+    else {
+      print("The baby cradle is already rocking!");
+    }
+  }
+  else {
+    set(f113);
+  }
+}
+if (said("examine", "wall")) {
+  print("There is nothing of importance on the walls.");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down") || 
+    said("examine", "down", "dirt"))) {
+  print("There is nothing of interest on the floor.");
+}
+if (!has("Toy Horse")) {
+  if ((said("examine", "horse") || 
+      said("examine", "horse") || 
+      said("examine", "horse", "horse") || 
+      said("examine", "rocking", "horse"))) {
+    print("There is an old rocking horse here.");
+  }
+  if ((said("carry", "horse") || 
+      said("carry", "horse") || 
+      said("carry", "horse", "horse") || 
+      said("carry", "rocking", "horse"))) {
+    print("You don't need it.");
+  }
+  if ((said("mount", "horse") || 
+      said("mount", "horse") || 
+      said("play", "horse") || 
+      said("mount", "horse", "horse") || 
+      said("play", "horse", "horse") || 
+      said("play", "rocking", "horse") || 
+      said("mount", "rocking", "horse"))) {
+    print("You are too big.");
+  }
+}
+if (said("examine", "carpet")) {
+  print("A worn pink rug adorns the floor.");
+}
+if (v144 == 1) {
+  if ((said("deliver", "baby rattle") || 
+      said("deliver", "baby rattle", "ghost") || 
+      said("deliver", "baby rattle", "baby") || 
+      said("deliver", "baby rattle", "baby", "ghost") || 
+      said("place", "baby rattle", "cradle") || 
+      said("place", "baby rattle", "baby", "cradle") || 
+      said("drop", "baby rattle", "cradle") || 
+      said("drop", "baby rattle", "baby", "cradle") || 
+      said("fling", "baby rattle", "baby", "cradle") || 
+      said("fling", "baby rattle", "cradle"))) {
+    if (has("Silver Baby Rattle")) {
+      if (posn(Ego,61,102,95,110)) {
+        v117 = 0;
+        print("You drop the silver rattle into the baby cradle.  As you do so, "
+              "the crying of the baby ghost and the rocking of the cradle "
+              "cease.  You breathe a big sigh of relief.");
+        stop.cycling(o2);
+        score  += 2;
+        v144 = 2;
+        drop("Silver Baby Rattle");
+        reset(f148);
+        v117 = 0;
+      }
+      else {
+        set(f113);
+      }
+    }
+    else {
+      set(f115);
+    }
+  }
+  if ((said("examine", "ghost") || 
+      said("look in", "cradle") || 
+      said("look in", "baby", "cradle") || 
+      said("examine", "ghost", "cradle") || 
+      said("examine", "baby", "ghost") || 
+      said("examine", "baby") || 
+      said("examine", "baby", "ghost", "cradle"))) {
+    if (posn(Ego,61,102,95,110)) {
+      print("With trepidation, you peek into the rocking cradle; it's empty.   "
+            "You tentatively reach your hand into it.  There is nothing there!!");
+    }
+    else {
+      set(f113);
+    }
+  }
+  if ((said("speak", "ghost") || 
+      said("speak", "baby") || 
+      said("speak") || 
+      said("speak", "baby", "ghost") || 
+      said("calm", "baby", "ghost") || 
+      said("calm", "ghost") || 
+      said("calm", "baby") || 
+      said("calm", "baby", "ghost") || 
+      said("calm", "ghost") || 
+      said("calm", "baby") || 
+      said("calm", "ghost"))) {
+    print("You try to quiet the baby ghost, but do not succeed.");
+  }
+  if ((said("carry", "ghost") || 
+      said("carry", "baby", "ghost") || 
+      said("carry", "baby") || 
+      said("carry", "up", "ghost") || 
+      said("carry", "up", "baby", "ghost") || 
+      said("carry", "up", "baby") || 
+      said("hold", "baby", "ghost") || 
+      said("hold", "ghost") || 
+      said("capture", "ghost"))) {
+    print("Tentatively, you reach your hand into the rocking cradle and feel "
+          "around.  There is  nothing there but a strange coldness! A shiver "
+          "runs down your spine as the unseen baby continues its incessant "
+          "crying.");
+  }
+  if ((said("hum", "melody", "ghost") || 
+      said("hum", "lullaby", "ghost") || 
+      said("hum", "lullaby", "baby") || 
+      said("hum", "lullaby", "baby", "ghost") || 
+      said("hum", "lullaby") || 
+      said("hum", "baby") || 
+      said("hum", "baby", "ghost") || 
+      said("hum", "melody", "baby", "ghost") || 
+      said("hum") || 
+      said("hum", "ghost"))) {
+    print("While trembling, you attempt to sing a lullaby to the whimpering "
+          "baby ghost. It doesn't work.  The poor thing continues its pitiful "
+          "crying.");
+  }
+  if ((said("kill", "ghost") || 
+      said("kill", "baby") || 
+      said("kill", "baby", "ghost"))) {
+    print("How can you kill something that is already dead!");
+  }
+  if ((said("embrace", "ghost") || 
+      said("embrace", "baby") || 
+      said("embrace", "baby", "ghost") || 
+      said("embrace"))) {
+    print("You'd like to, but you can't see it, or touch it.");
+  }
+  if ((said("play", "with", "ghost") || 
+      said("play", "with", "baby") || 
+      said("play", "with", "baby", "ghost") || 
+      said("play"))) {
+    print("The baby doesn't want to play!");
+  }
+  if ((said("help", "ghost") || 
+      said("save", "ghost"))) {
+    print("You'd like to help the poor baby ghost, but how can you do that?");
+  }
+  if ((said("feed", "ghost") || 
+      said("feed", "food", "ghost"))) {
+    print("This baby doesn't eat.");
+  }
+}
+if ((v144 == 5) && 
+    (isset(f236))) {
+  call(235);
+}
+if (!has("Lit Oil Lantern") && 
+    !has("Unlit Oil Lantern")) {
+  if ((said("examine", "lamp") || 
+      said("examine", "ignite"))) {
+    print("The lamp is old and dusty.");
+  }
+}
+if (!isset(input_parsed)) {
+  call(151);
+}
+if (isset(f106)) {
+  reset(f106);
+  print("The baby doesn't want that.");
+}
+Label1:
+if (isset(f38)) {
+  call(232);
+}
+if (isset(ego_touching_signal_line)) {
+  v117 = 0;
+  new.room(62); //##LE001##
+}
+return();
+
+//Messages
+#message 1 "This old baby nursery must have once been a cheery place.  Now, through neglect, cobwebs decorate the corners, wallpaper peels from the walls, and dust covers the nursery furniture."
+#message 2 "You imagine the mother who must have rocked her baby in this rocking chair."
+#message 3 "That would waste your precious time."
+#message 4 "The chest of drawers looks old and neglected."
+#message 5 "The chest of drawers is empty."
+#message 6 "You see the cemetery out the window."
+#message 7 "You see an empty baby cradle here."
+#message 8 "The baby cradle is empty."
+#message 9 "There is nothing of importance on the walls."
+#message 10 "There is nothing of interest on the floor."
+#message 11 "You drop the silver rattle into the baby cradle.  As you do so, the crying of the baby ghost and the rocking of the cradle cease.  You breathe a big sigh of relief."
+#message 12 "With trepidation, you peek into the rocking cradle; it's empty.   You tentatively reach your hand into it.  There is nothing there!!"
+#message 13 "The baby cradle rocks to and fro as a baby's voice wails from within."
+#message 14 "You try to quiet the baby ghost, but do not succeed."
+#message 15 "Tentatively, you reach your hand into the rocking cradle and feel around.  There is  nothing there but a strange coldness! A shiver runs down your spine as the unseen baby continues its incessant crying."
+#message 16 "While trembling, you attempt to sing a lullaby to the whimpering baby ghost. It doesn't work.  The poor thing continues its pitiful crying."
+#message 17 "How can you kill something that is already dead!"
+#message 18 "You'd like to, but you can't see it, or touch it."
+#message 19 "You'd like to help the poor baby ghost, but how can you do that?"
+#message 20 "The baby cradle is already rocking!"
+#message 21 "This baby doesn't eat."
+#message 22 "There is an old rocking horse here."
+#message 23 "You don't need it."
+#message 24 "You are too big."
+#message 25 "A worn pink rug adorns the floor."
+#message 26 "The crying baby seems to be in here!"
+#message 27 "The baby doesn't want that."
+#message 32 "The lamp is old and dusty."
+#message 33 "The baby doesn't want to play!"

@@ -1,0 +1,225 @@
+if (isset(new_room)) {
+  v152 = 65;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  set(f82);
+  load.logics(151);
+  if (isset(f38)) {
+    load.view(188);
+    add.to.pic(188, 0, 4, 137, 91, 4, 4);
+    discard.view(188);
+  }
+  if (isset(f38)) {
+    load.logics(232);
+    load.view(72);
+    animate.obj(o2);
+    set.view(o2, 72);
+    set.loop(o2, 1);
+    ignore.horizon(o2);
+    position(o2, 123, 69);
+    set.priority(o2, 4);
+    start.cycling(o2);
+    draw(o2);
+  }
+  if ((v144 == 4) && 
+      (v143 == 65)) {
+    load.logics(234);
+    animate.obj(o1);
+    load.view(107);
+    set.view(o1, 107);
+    position(o1, 52, 148);
+    ignore.objs(o1);
+    set(f237);
+    draw(o1);
+    wander(o1);
+    load.sound(25);
+    sound(25, f154);
+  }
+  if ((v144 == 5) && 
+      (!isset(f143))) {
+    load.logics(235);
+    animate.obj(o1);
+    load.view(108);
+    set.view(o1, 108);
+    position(o1, 52, 148);
+    ignore.blocks(o1);
+    ignore.objs(o1);
+    draw(o1);
+    set(f237);
+    set(f225);
+    load.sound(26);
+    v117 = 0;
+    sound(26, f154);
+  }
+  position(Ego, 117, 155);
+  draw(Ego);
+  show.pic();
+}
+get.posn(o1, v134, v135);
+distance(Ego, o1, v161);
+if (isset(f112)) {
+  reset(f112);
+  v168++;
+  v117++;
+}
+if ((v144 == 4) && 
+    (v168 == 10)) {
+  ignore.blocks(o1);
+  set(f238);
+  v135 = 165;
+  v152 = 0;
+  move.obj.v(o1, v134, v135, v152, f230);
+  v143 = 64;
+}
+if (isset(f230)) {
+  v168 = 0;
+  reset(f230);
+  erase(o1);
+  set(f237);
+  set(f154);
+}
+if ((v144 == 5) && 
+    (isset(f225)) && 
+    (isset(f237))) {
+  reset(f225);
+  v117 = 15;
+  call(235);
+  start.cycling(o1);
+  move.obj(o1, 119, 167, 0, f235);
+  draw(o1);
+}
+if ((v144 == 5) && 
+    (isset(f235))) {
+  reset(f235);
+  reset(f237);
+  v168 = 0;
+  erase(o1);
+  set(f154);
+}
+if (isset(f233)) {
+  reset(f233);
+  reset(f230);
+  erase(o1);
+  set(f237);
+  reset(f148);
+  if (v144 == 5) {
+    reset(f148);
+    load.view(108);
+    load.sound(26);
+    sound(26, f154);
+    set.view(o1, 108);
+    set.loop(o1, 4);
+    position(o1, 119, 128);
+    ignore.blocks(o1);
+    ignore.objs(o1);
+    draw(o1);
+    v152 = 3;
+    cycle.time(o1, v152);
+    end.of.loop(o1, f225);
+    set(f237);
+  }
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "cottage") || 
+    said("examine", "around", "cottage") || 
+    said("examine", "kitchen") || 
+    said("examine", "around", "kitchen"))) {
+  print("The old kitchen is quite bare.  The fireplace has been cold for years, "
+        "and the dusty pantry is devoid of anything but old crumbs.");
+}
+if (said("examine", "pantry")) {
+  print("The pantry is bare.");
+}
+if ((said("examine", "fireplace") || 
+    said("look in", "fireplace"))) {
+  print("The fireplace is stone cold.  An empty cooking pot sits in it.");
+}
+if ((said("examine", "cauldron") || 
+    said("look in", "cauldron") || 
+    said("examine", "cooking", "cauldron") || 
+    said("carry", "cooking", "cauldron") || 
+    said("carry", "cauldron"))) {
+  print("The cooking pot is empty and useless.  You don't need it.");
+}
+if ((said("examine", "butterchurn") || 
+    said("look in", "butterchurn") || 
+    said("carry", "butterchurn"))) {
+  print("The old butterchurn is empty and useless.");
+}
+if ((said("examine", "window") || 
+    said("look in", "window") || 
+    said("examine", "out", "window") || 
+    said("examine", "through", "window"))) {
+  if (posn(Ego,119,113,129,127)) {
+    print("You see the cemetery out the window.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("examine", "barrel") || 
+    said("look in", "barrel") || 
+    said("carry", "barrel"))) {
+  print("The barrel is empty.  You can't use it.");
+}
+if (said("examine", "wall")) {
+  print("There is nothing of importance on the walls.");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down") || 
+    said("examine", "down", "dirt"))) {
+  print("There is nothing of interest on the floor.");
+}
+if ((said("examine", "bookshelf") || 
+    said("look in", "bookshelf") || 
+    said("examine", "book"))) {
+  print("There is nothing that interests you on the kitchen shelf.");
+}
+if (said("examine", "ladder")) {
+  print("An old ladder sits in the middle of the floor.");
+}
+if ((said("examine", "crumb") || 
+    said("carry", "crumb"))) {
+  print("You're not interested in crumbs.");
+}
+if ((v144 == 4) && 
+    (isset(f237)) && 
+    (v143 == 65)) {
+  call(234);
+}
+if ((v144 == 5) && 
+    (isset(f237))) {
+  call(235);
+}
+Label1:
+if (isset(f38)) {
+  call(232);
+}
+if (ego_edge_code == bottom_edge) {
+  new.room(64); //##LE001##
+}
+if (isset(ego_touching_signal_line)) {
+  new.room(64); //##LE002##
+}
+return();
+
+//Messages
+#message 1 "The old kitchen is quite bare.  The fireplace has been cold for years, and the dusty pantry is devoid of anything but old crumbs."
+#message 2 "The pantry is bare."
+#message 3 "The fireplace is stone cold.  An empty cooking pot sits in it."
+#message 4 "The cooking pot is empty and useless.  You don't need it."
+#message 5 "The old butterchurn is empty and useless."
+#message 6 "You see the cemetery out the window."
+#message 7 "The barrel is empty.  You can't use it."
+#message 8 "There is nothing of importance on the walls."
+#message 9 "There is nothing of interest on the floor."
+#message 10 "There is nothing that interests you on the kitchen shelf."
+#message 11 "An old ladder sits in the middle of the floor."
+#message 12 "You're not interested in crumbs."

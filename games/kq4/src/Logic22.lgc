@@ -1,0 +1,340 @@
+if (isset(new_room)) {
+  set.horizon(80);
+  if (!isset(f38)) {
+    v152 = 22;
+  }
+  else {
+    v152 = 122;
+  }
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.sound(70);
+  load.logics(203);
+  load.logics(206);
+  load.view(3);
+  load.view(99);
+  if (!isset(f38)) {
+    animate.obj(o1);
+    load.view(91);
+    set.view(o1, 91);
+    set.loop(o1, 1);
+    set.priority(o1, 4);
+    ignore.blocks(o1);
+    position(o1, 89, 103);
+    stop.cycling(o1);
+    set.cel(o1, 0);
+    draw(o1);
+  }
+  animate.obj(o2);
+  set.view(o2, 99);
+  set.loop(o2, 1);
+  ignore.horizon(o2);
+  position(o2, 72, 24);
+  v154 = 2;
+  cycle.time(o2, v154);
+  draw(o2);
+  if (prev_room_no == 54) {
+    stop.motion(Ego);
+    set.view(Ego, 0);
+    set.loop(Ego, 2);
+    position(Ego, 92, 104);
+    if (v37 == 22) {
+      v37 = 0;
+      set(f230);
+      set(f232);
+      accept.input();
+    }
+  }
+  random(1, 4, v152);
+  if (v152 == 3) {
+    load.logics(244);
+    load.view(112);
+    animate.obj(o3);
+    set.view(o3, 112);
+    ignore.horizon(o3);
+    v152 = 3;
+    step.size(o3, v152);
+    set.priority(o3, 14);
+    random(1, 2, v152);
+    if (v152 == 1) {
+      set.loop(o3, 1);
+      position(o3, 146, 29);
+      draw(o3);
+      move.obj(o3, 0, 29, 0, f233);
+    }
+    else {
+      set.loop(o3, 0);
+      position(o3, 0, 29);
+      draw(o3);
+      move.obj(o3, 146, 29, 0, f233);
+    }
+    set(f234);
+  }
+  get.posn(Ego, v33, v34);
+  if (prev_room_no == 16) {
+    if (v33 > 75) {
+      position(Ego, 145, 85);
+    }
+    else {
+      position(Ego, 14, 85);
+    }
+  }
+  if (prev_room_no == 23) {
+    if (v37 != 0) {
+      v37 = 10;
+      set.view(Ego, 3);
+      position(Ego, 148, 144);
+    }
+    else {
+      if (v34 > 152 && 
+          v34 < 159) {
+        position(Ego, 149, 164);
+      }
+      else {
+        if (v34 < 138 && 
+            v34 > 128) {
+          position(Ego, 149, 125);
+        }
+      }
+    }
+  }
+  if (prev_room_no == 21 && 
+      v37 != 0) {
+    position(Ego, 1, 106);
+  }
+  load.view(55);
+  animate.obj(o4);
+  animate.obj(o5);
+  animate.obj(o6);
+  set.view(o4, 55);
+  set.view(o5, 55);
+  set.view(o6, 55);
+  set.loop(o4, 0);
+  set.loop(o5, 1);
+  set.loop(o6, 2);
+  position(o4, 113, 146);
+  position(o5, 51, 116);
+  position(o6, 65, 128);
+  ignore.objs(o4);
+  ignore.objs(o5);
+  ignore.objs(o6);
+  set.priority(o4, 5);
+  set.priority(o5, 5);
+  set.priority(o6, 5);
+  v152 = 3;
+  cycle.time(o4, v152);
+  cycle.time(o5, v152);
+  cycle.time(o6, v152);
+  draw(o4);
+  draw(o5);
+  draw(o6);
+  draw(Ego);
+  show.pic();
+}
+if ((isset(ego_on_water) || 
+    posn(Ego,0,99,64,113) || 
+    posn(Ego,43,114,70,131) || 
+    posn(Ego,66,132,82,139) || 
+    posn(Ego,97,142,159,153))) {
+  v37 = 10;
+  set.view(Ego, 3);
+}
+else {
+  if (!isset(f76)) {
+    v37 = 0;
+    set.view(Ego, 0);
+  }
+}
+current.loop(Ego, v147);
+if ((isset(f221)) && 
+    (v153 == 1)) {
+  reset(f221);
+  stop.cycling(o10);
+  set.loop(o1, 1);
+  set.cel(o1, 0);
+  v154 = 3;
+  cycle.time(o1, v154);
+  start.cycling(o1);
+  end.of.loop(o1, f221);
+  v153--;
+  sound(70, f154);
+}
+if (isset(f221)) {
+  set(f222);
+  accept.input();
+  reset(f36);
+  reset(f221);
+  ignore.objs(o1);
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room"))) {
+  print("You have come upon a cute little house, built right into a huge tree!  "
+        "An old water wheel, attached to the house, goes unused beside the "
+        "little river that rushes gently before the house.");
+}
+if ((said("examine", "cottage") || 
+    said("examine", "forest", "cottage") || 
+    said("examine", "cute", "cottage"))) {
+  print("The roots of this great tree envelop a little snug house.  Smoke "
+        "lazily curls from its chimney, and an old rustic water wheel rests "
+        "beside the river.");
+}
+if ((said("examine", "window") || 
+    said("look in", "window"))) {
+  if (center.posn(Ego,73,100,80,104)) {
+    print("You peek through the window, but can make out no details.");
+  }
+  else {
+    set(f113);
+  }
+}
+if (said("examine", "door")) {
+  print("It's a small wooden door.");
+}
+if (said("break", "window")) {
+  if (center.posn(Ego,73,100,80,104)) {
+    print("That's vandalism!");
+  }
+  else {
+    set(f113);
+  }
+}
+if (said("open", "window")) {
+  if (center.posn(Ego,73,100,80,104)) {
+    print("The windows do not open.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("break", "door") || 
+    said("break", "down", "door"))) {
+  if (center.posn(Ego,89,99,99,104)) {
+    print("You could never do that.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("open", "door") || 
+    said("open", "wood", "door"))) {
+  if (center.posn(Ego,89,99,99,106)) {
+    if (!isset(f38) && 
+        !isset(f230)) {
+      if (isset(f222)) {
+        print("The door is already open.");
+      }
+      else {
+        prevent.input();
+        set(f36);
+        set(f221);
+        v153 = 1;
+      }
+    }
+    else {
+      print("You can't.  It's locked and you don't have the key.");
+    }
+  }
+  else {
+    set(f113);
+  }
+}
+if (said("unlatch", "door")) {
+  if (center.posn(Ego,89,99,99,104)) {
+    if (!isset(f38) && 
+        !isset(f230)) {
+      print("The door is already unlocked.");
+    }
+    else {
+      print("You can't.  It's locked and you don't have the key.");
+    }
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("bang", "abominable", "door") || 
+    said("bang", "abominable", "door") || 
+    said("bang", "door"))) {
+  if (center.posn(Ego,89,99,99,104)) {
+    if (isset(f230)) {
+      print("\"Go away!\"");
+    }
+    else {
+      if (!isset(f38)) {
+        print("You knock loudly on the small door.  No answer.");
+      }
+      else {
+        print("You knock loudly on the small door and hear a shuffling from "
+              "inside.  A sleepy voice calls out, \"We're all asleep here!  "
+              "Come back tomorrow!\"");
+      }
+    }
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("examine", "wheel") || 
+    said("examine", "lake", "wheel"))) {
+  print("The water wheel appears run-down and is currently not in use.");
+}
+if (!isset(input_parsed)) {
+  call(203);
+}
+if (!isset(input_parsed)) {
+  call(206);
+}
+if (isset(f234) && 
+    !isset(input_parsed)) {
+  call(244);
+}
+Label1:
+if (isset(f232)) {
+  reset(f232);
+  print("\"...and STAY OUT!\"");
+}
+if (isset(f233)) {
+  reset(f234);
+  reset(f233);
+  erase(o3);
+}
+if (ego_edge_code == bottom_edge) {
+  new.room(28); //##LE001##
+}
+if (ego_edge_code == right_edge) {
+  new.room(23); //##LE002##
+}
+if (ego_edge_code == horizon_edge) {
+  new.room(16); //##LE003##
+}
+if (ego_edge_code == left_edge) {
+  new.room(21); //##LE004##
+}
+if (isset(ego_touching_signal_line)) {
+  new.room(54); //##LE005##
+}
+return();
+
+//Messages
+#message 1 "You have come upon a cute little house, built right into a huge tree!  An old water wheel, attached to the house, goes unused beside the little river that rushes gently before the house."
+#message 2 "The roots of this great tree envelop a little snug house.  Smoke lazily curls from its chimney, and an old rustic water wheel rests beside the river."
+#message 3 "You peek through the window, but can make out no details."
+#message 4 "It's a small wooden door."
+#message 5 "That's vandalism!"
+#message 6 "The windows do not open."
+#message 7 "You could never do that."
+#message 8 "The door is already unlocked."
+#message 9 "You knock loudly on the small door.  No answer."
+#message 10 "You can't.  It's locked and you don't have the key."
+#message 11 "You knock loudly on the small door and hear a shuffling from inside.  A sleepy voice calls out, \"We're all asleep here!  Come back tomorrow!\""
+#message 12 "The water wheel appears run-down and is currently not in use."
+#message 13 "\"...and STAY OUT!\""
+#message 15 "\"Go away!\""
+#message 16 "The door is already open."

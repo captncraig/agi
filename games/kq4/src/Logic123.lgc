@@ -1,0 +1,220 @@
+set(f36);
+status.line.off();
+cycle_delay = 2;
+if (isset(new_room)) {
+  prevent.input();
+  v152 = 204;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.view(178);
+  add.to.pic(178, 2, 0, 18, 123, 7, 1);
+  add.to.pic(178, 1, 0, 58, 75, 6, 1);
+  animate.obj(o5);
+  set.view(o5, 178);
+  position(o5, 60, 50);
+  set.loop(o5, 3);
+  fix.loop(o5);
+  set.cel(o5, 1);
+  v157 = 2;
+  cycle.time(o5, v157);
+  set.priority(o5, 7);
+  draw(o5);
+  add.to.pic(178, 1, 0, 98, 75, 6, 1);
+  animate.obj(o6);
+  set.view(o6, 178);
+  position(o6, 100, 50);
+  set.loop(o6, 3);
+  fix.loop(o6);
+  cycle.time(o6, v157);
+  reverse.cycle(o6);
+  set.priority(o6, 7);
+  draw(o6);
+  set.view(o1, 178);
+  position(o1, 65, 133);
+  set.loop(o1, 0);
+  fix.loop(o1);
+  v153 = 12;
+  cycle.time(o1, v153);
+  animate.obj(o1);
+  set.priority(o1, 14);
+  draw(o1);
+  stop.update(o1);
+  load.view(179);
+  add.to.pic(179, 0, 1, 34, 149, 10, 1);
+  set.view(o7, 179);
+  animate.obj(o7);
+  position(o7, 37, 126);
+  set.loop(o7, 2);
+  fix.loop(o7);
+  set.cel(o7, 0);
+  set.priority(o7, 11);
+  draw(o7);
+  stop.update(o7);
+  add.to.pic(179, 0, 0, 106, 127, 10, 1);
+  set.view(o8, 179);
+  animate.obj(o8);
+  position(o8, 106, 82);
+  set.loop(o8, 1);
+  fix.loop(o8);
+  set.cel(o8, 0);
+  set.priority(o8, 11);
+  draw(o8);
+  stop.update(o8);
+  set.view(o9, 179);
+  animate.obj(o9);
+  position(o9, 113, 126);
+  set.loop(o9, 3);
+  fix.loop(o9);
+  set.cel(o9, 0);
+  set.priority(o9, 13);
+  draw(o9);
+  stop.cycling(o9);
+  set.view(o12, 179);
+  animate.obj(o12);
+  position(o12, 113, 151);
+  set.loop(o12, 0);
+  fix.loop(o12);
+  set.cel(o12, 2);
+  set.priority(o12, 12);
+  draw(o12);
+  stop.cycling(o12);
+  if (isset(f65)) {
+    v223 = 110;
+    v221 = 2;
+    v222 = 1;
+    set(f223);
+  }
+  else {
+    v221 = 4;
+  }
+  show.pic();
+  return();
+}
+if (v221 > 0 && 
+    isset(f112)) {
+  v221--;
+  reset(f221);
+  if ((v221 <= 0) && 
+      (!isset(f65))) {
+    set(f221);
+  }
+}
+if (isset(f221)) {
+  reset(f221);
+  set(f65);
+  new.room(124); //##LE001##
+}
+if (isset(f65)) {
+  if (isset(f229)) {
+    reset(f229);
+    set.loop(o12, 4);
+    erase(o9);
+    force.update(o9);
+    set(f226);
+  }
+  if ((isset(f224)) && 
+      (isset(f225)) && 
+      (isset(f226))) {
+    reset(f224);
+    reset(f226);
+    stop.update(o8);
+    stop.update(o7);
+    set(f223);
+  }
+  if (isset(f227)) {
+    if (v134 < 131) {
+      if ((v134 > v158) && 
+          (isset(f225))) {
+        reset(f225);
+        v158 = v223;
+        v158  += 3;
+        reset(f228);
+        v224++;
+        v223 = v134;
+        v160 = 2;
+        v134++;
+        move.obj.v(o12, v134, v224, v160, f224);
+      }
+      else {
+        if ((!isset(f228)) && 
+            (isset(f224))) {
+          reset(f224);
+          set(f228);
+          v162 = 4;
+          v134++;
+          move.obj.v(o12, v134, v224, v162, f225);
+        }
+      }
+    }
+    else {
+      set(f223);
+      reset(f227);
+    }
+  }
+  if (isset(f223)) {
+    reset(f223);
+    v222++;
+    if (v222 == 2) {
+      set(windows_remain);
+      v157 = 2;
+      v152 = 6;
+      start.update(o9);
+      cycle.time(o9, v152);
+      start.cycling(o9);
+      end.of.loop(o9, f229);
+      start.update(o7);
+      cycle.time(o7, v152);
+      start.cycling(o7);
+      end.of.loop(o7, f224);
+      start.update(o8);
+      cycle.time(o8, v152);
+      start.cycling(o8);
+      end.of.loop(o8, f225);
+      print.at("Grief suddenly overwhelming her, Rosella runs from the room.", 2, 4, 39);
+    }
+    if (v222 == 3) {
+      v158 = 110;
+      get.posn(o12, v134, v135);
+      v224 = v135;
+      set(f227);
+    }
+    if (v222 == 4) {
+      new.room(125); //##LE002##
+    }
+  }
+}
+return();
+
+//Messages
+#message 1 "With the return of his long-lost son, Alexander, and the rescue of his daughter, Rosella, from the terrible dragon, old King Graham decides it's time to pass on his adventurer's hat to younger blood."
+#message 2 "He flings the battered hat towards his children while his wife, Queen Valanice, proudly looks on."
+#message 3 "The hat arches through the air."
+#message 4 "King Graham experiences a terrible squeezing pain in his chest."
+#message 5 "\"Help me,\" he rasps."
+#message 6 "The adventurer's hat lies, unclaimed, upon the floor...forgotten."
+#message 7 "King Graham lies weakly in bed, Father Death hovering near."
+#message 8 "Grief suddenly overwhelming her, Rosella runs from the room."
+#message 9 "\"Oh, Father!\" she sobs. \"You're still young; you should have many years ahead of you! Oh, I wish I could help you, Father!\""
+#message 10 "Rosella looks up but sees no one. \"Who's speaking to me?\""
+#message 11 "Rosella sees an image in the mirror. \"Wh-who are you?\" she queries."
+#message 12 "\"I am the fairy, Genesta. In my land of Tamir there is a remarkable tree. This tiny tree needs one hundred years to bear a single fruit.\""
+#message 13 "Rosella is much heartened by this news! \"Where is the land of Tamir?\""
+#message 14 "Genesta smiles. \"Tamir is very far away. But with my magic, I can bring you here.\""
+#message 15 "Rosella senses that there is more to the story. \"But, I suppose there are some problems?\""
+#message 16 "Again, Genesta smiles. \"Yes, you are correct, Rosella. If you are willing to come to Tamir I will explain the situation.\""
+#message 17 "Confused, Rosella says, \"I don't know! What if I can't help you or find the tree?\""
+#message 18 "Genesta pleads, \"You must decide NOW, Rosella. My powers are growing weaker by the minute.\""
+#message 19 "Now, the fairy is but a faint glimmer, and her voice barely audible. \"If you care for your father, say `yes' now!...\" And suddenly she's gone."
+#message 20 "\"YES!!\""
+#message 92 "\"Do you really mean that?\" a soft voice asks."
+#message 102 "\"I am,\" the voice says. \"Look in the magic mirror.\""
+#message 120 "\"But, this is no ordinary fruit; for if a person were to eat it, one would find that good health and well-being would be theirs for many years.\""
+#message 160 "\"However, once I bring you here, I can't send you back; you will have to help me first.\""
+#message 200 "Debug0"
+#message 201 "Debug1"
+#message 202 "Debug2"
+#message 203 "Suddenly...!"
+#message 204 "Debug4"
+#message 205 "Debug5"
+#message 206 "Debug6"

@@ -1,0 +1,889 @@
+if (isset(new_room)) {
+  set(f82);
+  set(f108);
+  discard.view(0);
+  v152 = 82;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.sound(70);
+  load.sound(48);
+  if (!isset(f38)) {
+    load.view(61);
+    add.to.pic(61, 4, 2, 41, 83, 4, 4);
+    add.to.pic(61, 5, 2, 106, 84, 4, 4);
+    discard.view(61);
+  }
+  if (!isset(f86)) {
+    load.sound(43);
+    load.sound(45);
+    load.sound(46);
+    load.sound(146);
+    load.sound(68);
+  }
+  load.view(1);
+  set.view(Ego, 1);
+  load.view(143);
+  animate.obj(o8);
+  set.view(o8, 143);
+  set.priority(o8, 4);
+  ignore.horizon(o8);
+  ignore.objs(o8);
+  set.loop(o8, 0);
+  position(o8, 19, 64);
+  v152 = 1;
+  cycle.time(o8, v152);
+  draw(o8);
+  animate.obj(o9);
+  set.view(o9, 143);
+  set.priority(o9, 4);
+  ignore.horizon(o9);
+  ignore.objs(o9);
+  set.loop(o9, 1);
+  position(o9, 30, 62);
+  v152 = 1;
+  cycle.time(o9, v152);
+  draw(o9);
+  v221 = 0;
+  v222 = 0;
+  if (!has("Magic Talisman")) {
+    animate.obj(o10);
+    set.view(o10, 143);
+    set.loop(o10, 6);
+    set.cel(o10, 0);
+    position(o10, 86, 91);
+    set.priority(o10, 7);
+  }
+  load.view(64);
+  if (isset(f86)) {
+    add.to.pic(64, 2, 9, 69, 101, 0, 0);
+    if (!has("Magic Talisman")) {
+      draw(o10);
+    }
+  }
+  else {
+    load.logics(151);
+    load.view(39);
+    animate.obj(o1);
+    animate.obj(o2);
+    v152 = 3;
+    cycle.time(o1, v152);
+    cycle.time(o2, v152);
+    set.view(o1, 64);
+    set.view(o2, 64);
+    set.loop(o1, 0);
+    set.loop(o2, 3);
+    set.cel(o1, 0);
+    set.cel(o2, 0);
+    position(o1, 69, 101);
+    position(o2, 75, 65);
+    draw(o1);
+    stop.cycling(o1);
+    animate.obj(o4);
+    set.view(o4, 39);
+    ignore.objs(o4);
+    set.cel(o4, 0);
+    set.loop(o4, 1);
+    fix.loop(o4);
+    animate.obj(o6);
+    set.priority(o6, 4);
+    ignore.horizon(o6);
+    animate.obj(o7);
+    set.priority(o7, 4);
+    ignore.horizon(o7);
+    v152 = 3;
+    cycle.time(o3, v152);
+    cycle.time(o4, v152);
+  }
+  position(Ego, 102, 159);
+  animate.obj(o5);
+  set.view(o5, 64);
+  set.loop(o5, 1);
+  set.cel(o5, 0);
+  position(o5, 117, 139);
+  draw(o5);
+  stop.cycling(o5);
+  draw(Ego);
+  show.pic();
+}
+if (posn(Ego,79,138,159,167)) {
+  set(f225);
+}
+else {
+  reset(f225);
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "tower") || 
+    said("examine", "around", "tower") || 
+    said("examine", "bedroom") || 
+    said("examine", "around", "bedroom") || 
+    said("examine", "bed chamber") || 
+    said("examine", "around", "bed chamber") || 
+    said("examine", "bed", "bed chamber") || 
+    said("examine", "around", "bed", "bed chamber") || 
+    said("examine", "castle") || 
+    said("examine", "dark", "castle") || 
+    said("examine", "bad", "castle") || 
+    said("examine", "around", "castle") || 
+    said("examine", "around", "bad", "castle") || 
+    said("examine", "around", "dark", "castle"))) {
+  if (!isset(f225)) {
+    if (isset(f86)) {
+      print("%m1  However, since Lolotte is now dead, it doesn't really matter "
+            "anymore.");
+    }
+    else {
+      print("%m1  And speaking of Lolotte, the old bat is sound asleep on her "
+            "massive bed.");
+    }
+  }
+  else {
+    print("You have discovered a door at the top of this tower.");
+  }
+}
+if (!isset(f225)) {
+  if (said("examine", "bed")) {
+    print("The bed is huge and takes up most of the room.");
+  }
+  if (said("examine", "beneath", "bed")) {
+    print("There is nothing under the bed.");
+  }
+  if ((said("lay", "bed") || 
+      said("lay", "bed") || 
+      said("lay") || 
+      said("lay", "down") || 
+      said("lay", "down", "bed") || 
+      said("carry", "bed"))) {
+    print("Not with Lolotte in it!");
+  }
+  if (said("examine", "wall")) {
+    print("%m8importance on the walls.");
+  }
+  if ((said("examine", "dirt") || 
+      said("examine", "down") || 
+      said("examine", "down", "dirt"))) {
+    print("%m8interest on the floor.");
+  }
+  if ((said("examine", "mirror") || 
+      said("look in", "mirror"))) {
+    if (posn(Ego,0,100,50,131)) {
+      print("You look in the mirror and see the relection of a poor, but "
+            "beautiful, peasant girl.");
+    }
+    else {
+      set(f113);
+    }
+  }
+}
+if ((said("examine", "window") || 
+    said("examine", "out", "window") || 
+    said("look in", "window"))) {
+  if ((posn(Ego,103,100,115,117) || 
+      posn(Ego,37,100,50,113))) {
+    print("You see the mountain out the window.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("examine", "staircase") || 
+    said("examine", "down", "staircase"))) {
+  if (isset(f225)) {
+    print("The stairs spiral downward.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("examine", "door") || 
+    said("examine", "wood", "door"))) {
+  print("It's just a wooden door.");
+}
+if ((said("open", "door") || 
+    said("open", "wood", "door"))) {
+  if (posn(Ego,107,134,127,145)) {
+    if (isset(f89)) {
+      if (isset(f227)) {
+        print("%m47already open.");
+      }
+      else {
+        if (!isset(f88)) {
+          set(f88);
+          score  += 2;
+        }
+        set(f36);
+        end.of.loop(o5, f226);
+        sound(70, f154);
+      }
+    }
+    else {
+      print("%m47locked.");
+    }
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("unlatch", "door") || 
+    said("unlatch", "wood", "door"))) {
+  if (!isset(f89)) {
+    if (posn(Ego,107,134,127,145)) {
+      if (has("Gold Key") && 
+          has("Skeleton Key")) {
+        print("Which key do you want to use; the gold key, or the skeleton key?");
+      }
+      else {
+        if (has("Skeleton Key")) {
+          print("The skeleton key does not fit the lock.");
+        }
+        else {
+          if (has("Gold Key")) {
+            set(f89);
+            print("Using the little gold key, you unlock the tower door.");
+          }
+          else {
+            print("You don't have a key.");
+          }
+        }
+      }
+    }
+    else {
+      set(f113);
+    }
+  }
+  else {
+    print("%m47already unlocked.");
+  }
+}
+if ((said("unlatch", "door", "with", "gold", "key") || 
+    said("use", "gold", "key") || 
+    said("unlatch", "wood", "door", "with", "gold", "key"))) {
+  if (has("Gold Key")) {
+    if (!isset(f89)) {
+      if (posn(Ego,107,134,127,145)) {
+        set(f89);
+        print("Using the little gold key, you unlock the tower door.");
+      }
+      else {
+        set(f113);
+      }
+    }
+    else {
+      print("%m47already unlocked.");
+    }
+  }
+  else {
+    set(f115);
+  }
+}
+if ((said("unlatch", "door", "with", "james", "key") || 
+    said("use", "james", "key") || 
+    said("unlatch", "wood", "door", "with", "james", "key"))) {
+  if (has("Skeleton Key")) {
+    if (!isset(f89)) {
+      if (posn(Ego,107,134,127,145)) {
+        print("The skeleton key does not fit the lock.");
+      }
+      else {
+        set(f113);
+      }
+    }
+    else {
+      print("%m47already unlocked.");
+    }
+  }
+  else {
+    set(f115);
+  }
+}
+if ((said("james") || 
+    said("james", "key") || 
+    said("abominable", "james", "key"))) {
+  if (has("Skeleton Key")) {
+    if (!isset(f89)) {
+      if (posn(Ego,107,134,127,145)) {
+        print("The skeleton key does not fit the lock.");
+      }
+      else {
+        set(f113);
+      }
+    }
+    else {
+      print("%m47already unlocked.");
+    }
+  }
+  else {
+    set(f115);
+  }
+}
+if ((said("gold") || 
+    said("gold", "key") || 
+    said("abominable", "gold", "key"))) {
+  if (has("Gold Key")) {
+    if (!isset(f89)) {
+      if (posn(Ego,107,134,127,145)) {
+        set(f89);
+        print("Using the little gold key, you unlock the tower door.");
+      }
+      else {
+        set(f113);
+      }
+    }
+    else {
+      print("%m47already unlocked.");
+    }
+  }
+  else {
+    set(f115);
+  }
+}
+if (!isset(f225)) {
+  if ((said("examine", "crone") || 
+      said("examine", "hideous", "crone") || 
+      said("examine", "bad", "crone") || 
+      said("examine", "fairies") || 
+      said("examine", "hideous", "fairies") || 
+      said("examine", "bad", "fairies") || 
+      said("examine", "people") || 
+      said("examine", "hideous", "people") || 
+      said("examine", "bad", "people"))) {
+    if (isset(f86)) {
+      if (isset(f43)) {
+        print("Lolotte is now quite dead.");
+      }
+      else {
+        print("%m24  Genesta's magic talisman hangs from around her neck.");
+      }
+    }
+    else {
+      print("The evil fairy sleeps soundly in her bed.  She wears Genesta's "
+            "magic talisman around her neck, and you see it gleaming upon her "
+            "chest.  As she sleeps, she makes strange clicking sounds.");
+    }
+  }
+  if ((said("speak", "crone") || 
+      said("speak") || 
+      said("speak", "hideous", "crone") || 
+      said("speak", "bad", "crone") || 
+      said("speak", "fairies") || 
+      said("speak", "hideous", "fairies") || 
+      said("speak", "bad", "fairies") || 
+      said("speak", "people") || 
+      said("speak", "hideous", "people") || 
+      said("speak", "bad", "people"))) {
+    if (isset(f86)) {
+      print("Lolotte is unable to talk, as she is now dead.");
+    }
+    else {
+      print("You stupidly speak to Lolotte as she sleeps, waking her!%m22");
+      set(f223);
+    }
+  }
+  if ((said("carry", "amulet") || 
+      said("carry", "amulet", "from", "crone") || 
+      said("carry", "amulet", "from", "bad", "crone") || 
+      said("carry", "amulet", "from", "hideous", "crone") || 
+      said("carry", "amulet", "from", "fairies") || 
+      said("carry", "amulet", "from", "bad", "fairies") || 
+      said("carry", "amulet", "from", "hideous", "fairies") || 
+      said("rob", "amulet", "from", "fairies") || 
+      said("rob", "amulet", "from", "bad", "fairies") || 
+      said("rob", "amulet", "from", "hideous", "fairies") || 
+      said("rob", "amulet", "from", "crone") || 
+      said("rob", "amulet", "from", "bad", "crone") || 
+      said("rob", "amulet", "from", "hideous", "crone") || 
+      said("carry", "amulet", "from", "people") || 
+      said("carry", "amulet", "from", "bad", "people") || 
+      said("carry", "amulet", "from", "hideous", "people") || 
+      said("rob", "amulet", "from", "people") || 
+      said("rob", "amulet", "from", "bad", "people") || 
+      said("rob", "amulet", "from", "hideous", "people"))) {
+    if (posn(Ego,45,100,108,113)) {
+      if (isset(f86)) {
+        if (isset(f43)) {
+          print("You already have it!  Don't be greedy!");
+        }
+        else {
+          erase(o10);
+          set(f43);
+          set(f116);
+          sound(48, f154);
+          get("Magic Talisman");
+          score  += 5;
+        }
+      }
+      else {
+        print("You foolishly reach for the talisman around Lolotte's neck.  You "
+              "begin to gently tug on it, which wakes her up!%m22");
+        set(f223);
+      }
+    }
+    else {
+      set(f113);
+    }
+  }
+  if ((said("kill", "crone") || 
+      said("kill", "hideous", "crone") || 
+      said("kill", "bad", "crone") || 
+      said("kill", "fairies") || 
+      said("kill", "hideous", "fairies") || 
+      said("kill", "bad", "fairies") || 
+      said("kill", "people") || 
+      said("kill", "hideous", "people") || 
+      said("kill", "bad", "people"))) {
+    if (isset(f86)) {
+      print("Lolotte's already dead.  You begin to wonder about your state of "
+            "mind.");
+    }
+    else {
+      if (has("Bow and Arrow")) {
+        print("How can you do that?");
+      }
+      else {
+        print("You have no way of doing that.");
+      }
+    }
+  }
+  if ((said("carry", "crone") || 
+      said("carry", "bad", "crone") || 
+      said("carry", "hideous", "crone") || 
+      said("carry", "fairies") || 
+      said("carry", "bad", "fairies") || 
+      said("carry", "hideous", "fairies") || 
+      said("carry", "people") || 
+      said("carry", "bad", "people") || 
+      said("carry", "hideous", "people"))) {
+    print("You wouldn't want her.");
+  }
+  if ((said("capture", "crone") || 
+      said("capture", "bad", "crone") || 
+      said("capture", "hideous", "crone") || 
+      said("capture", "fairies") || 
+      said("capture", "bad", "fairies") || 
+      said("capture", "hideous", "fairies") || 
+      said("capture", "people") || 
+      said("capture", "bad", "people") || 
+      said("capture", "hideous", "people"))) {
+    print("You wouldn't want her.");
+  }
+  if ((said("embrace", "crone") || 
+      said("embrace") || 
+      said("embrace", "bad", "crone") || 
+      said("embrace", "hideous", "crone") || 
+      said("embrace", "fairies") || 
+      said("embrace", "bad", "fairies") || 
+      said("embrace", "hideous", "fairies") || 
+      said("embrace", "people") || 
+      said("embrace", "bad", "people") || 
+      said("embrace", "hideous", "people"))) {
+    print("That would be a BAD idea!");
+  }
+  if ((said("awaken", "crone") || 
+      said("awaken", "bad", "crone") || 
+      said("awaken", "hideous", "crone") || 
+      said("awaken", "up", "crone") || 
+      said("awaken", "up", "bad", "crone") || 
+      said("awaken", "up", "hideous", "crone") || 
+      said("awaken", "fairies") || 
+      said("awaken", "bad", "fairies") || 
+      said("awaken", "hideous", "fairies") || 
+      said("awaken", "up", "fairies") || 
+      said("awaken", "up", "bad", "fairies") || 
+      said("awaken", "up", "hideous", "fairies") || 
+      said("awaken", "people") || 
+      said("awaken", "bad", "people") || 
+      said("awaken", "hideous", "people") || 
+      said("awaken", "up", "people") || 
+      said("awaken", "up", "bad", "people") || 
+      said("awaken", "up", "hideous", "people"))) {
+    if (isset(f86)) {
+      print("You can't wake up the dead.");
+    }
+    else {
+      print("That's a foolish move!  You awaken Lolotte.%m22");
+      set(f223);
+    }
+  }
+  if ((said("blow", "silver whistle") || 
+      said("silver whistle") || 
+      said("silver whistle", "silver whistle") || 
+      said("play", "silver whistle"))) {
+    if (has("Silver Whistle")) {
+      print("TWEEEEEET!");
+      if (!isset(f86)) {
+        print("That's a foolish move!  You awaken Lolotte.%m22");
+        set(f223);
+      }
+    }
+    else {
+      set(f115);
+    }
+  }
+  if ((said("tickle", "crone") || 
+      said("tickle", "hideous", "crone") || 
+      said("tickle", "bad", "crone") || 
+      said("tickle", "fairies") || 
+      said("tickle", "hideous", "fairies") || 
+      said("tickle", "bad", "fairies") || 
+      said("tickle", "people") || 
+      said("tickle", "hideous", "people") || 
+      said("tickle", "bad", "people"))) {
+    if (posn(Ego,45,100,108,112)) {
+      if (isset(f86)) {
+        print("You can't wake up the dead.");
+      }
+      else {
+        print("That's a foolish move!  You awaken Lolotte.%m22");
+        set(f223);
+      }
+    }
+    else {
+      set(f113);
+    }
+  }
+  if ((said("help", "crone") || 
+      said("help", "hideous", "crone") || 
+      said("help", "bad", "crone") || 
+      said("help", "fairies") || 
+      said("help", "hideous", "fairies") || 
+      said("help", "bad", "fairies") || 
+      said("help", "people") || 
+      said("help", "hideous", "people") || 
+      said("help", "bad", "people"))) {
+    print("Why would you want to?");
+  }
+  if (!isset(input_parsed) && 
+      !isset(f86)) {
+    call(151);
+  }
+  if (isset(f106)) {
+    reset(f106);
+    print("Do you honestly think Lolotte needs anything from you?");
+  }
+}
+if ((said("launch", "crone", "with", "arrow") || 
+    said("launch", "crone", "with", "arrow", "arrow") || 
+    said("launch", "bad", "crone", "with", "arrow") || 
+    said("launch", "bad", "crone", "with", "arrow", "arrow") || 
+    said("launch", "hideous", "crone", "with", "arrow") || 
+    said("launch", "hideous", "crone", "with", "arrow", "arrow") || 
+    said("launch", "arrow", "rol") || 
+    said("launch", "crone") || 
+    said("launch", "bad", "crone") || 
+    said("launch", "hideous", "crone") || 
+    said("launch", "fairies", "with", "arrow") || 
+    said("launch", "fairies", "with", "arrow", "arrow") || 
+    said("launch", "bad", "fairies", "with", "arrow") || 
+    said("launch", "bad", "fairies", "with", "arrow", "arrow") || 
+    said("launch", "hideous", "fairies", "with", "arrow") || 
+    said("launch", "hideous", "fairies", "with", "arrow", "arrow") || 
+    said("launch", "fairies") || 
+    said("launch", "bad", "fairies") || 
+    said("launch", "hideous", "fairies") || 
+    said("launch", "people", "with", "arrow") || 
+    said("launch", "people", "with", "arrow", "arrow") || 
+    said("launch", "bad", "people", "with", "arrow") || 
+    said("launch", "bad", "people", "with", "arrow", "arrow") || 
+    said("launch", "hideous", "people", "with", "arrow") || 
+    said("launch", "hideous", "people", "with", "arrow", "arrow") || 
+    said("launch", "people") || 
+    said("launch", "bad", "people") || 
+    said("launch", "hideous", "people"))) {
+  if (!isset(f225)) {
+    if (has("Bow and Arrow")) {
+      discard.view(39);
+      load.view(15);
+      animate.obj(o3);
+      set.view(o3, 15);
+      set.cel(o3, 0);
+      set(f229);
+      drop("Bow and Arrow");
+      get("Bow");
+      set(f36);
+      prevent.input();
+      ego_dir = 0;
+      if (posn(Ego,0,0,55,148)) {
+        set.loop(Ego, 0);
+        set.loop(o3, 0);
+      }
+      else {
+        if (posn(Ego,98,0,159,137)) {
+          set.loop(o3, 1);
+          set.loop(Ego, 1);
+        }
+        else {
+          set.loop(o3, 2);
+          set.loop(Ego, 3);
+        }
+      }
+      get.posn(Ego, v152, v153);
+      position.v(o3, v152, v153);
+      ignore.objs(o3);
+      draw(o3);
+      erase(Ego);
+      end.of.loop(o3, f222);
+    }
+    else {
+      if (has("Bow")) {
+        print("You're out of arrows.  Sorry.");
+      }
+      else {
+        print("You don't have the bow.");
+      }
+    }
+  }
+  else {
+    if (has("Bow and Arrow")) {
+      print("Since you're not in the room, you miss.");
+      drop("Bow and Arrow");
+      get("Bow");
+    }
+    else {
+      if (has("Bow")) {
+        print("You're out of arrows.  Sorry.");
+      }
+      else {
+        print("You don't have the bow.");
+      }
+    }
+  }
+}
+Label1:
+if (!isset(f225) && 
+    !isset(f86) && 
+    !isset(f229) && 
+    !isset(f51) && 
+    !has("Bow and Arrow")) {
+  set(f229);
+  print("You have awaken Lolotte!%m22");
+  set(f223);
+}
+if (isset(f222)) {
+  v221++;
+  if (v221 == 1) {
+    sound(46, f154);
+    print.at("You aim the second, golden arrow toward Lolotte.  You let go of "
+             "the bow string.  ZING!  A direct hit!", 2, 2, 0);
+    draw(o2);
+    end.of.loop(o2, f222);
+    draw(Ego);
+    erase(o3);
+  }
+  if (v221 == 2) {
+    erase(o2);
+    end.of.loop(o1, f222);
+  }
+  if (v221 == 3) {
+    reset(f222);
+    print.at("Lolotte sits straight up in bed, a look of agony upon her face.  "
+             "\"What did you DO to me?!\" she shrieks. \"I'm melting...melting, "
+             "no wait!  That's another story.  Ahem!  Let's try again.\"", 2, 2, 0);
+    print.at("\"It hurts!  It hurts!  Stop the pain!  Stop it!\"", 2, 2, 0);
+    set.loop(o1, 2);
+    set.cel(o1, 0);
+    v152 = 4;
+    cycle.time(o1, v152);
+    end.of.loop(o1, f228);
+    set(f230);
+    sound(146, f154);
+  }
+  if (v221 == 4) {
+    print("You cringe as you watch the evil fairy die a painful death.  What "
+          "happened?, you wonder.  How could Cupid's arrow have done that?  You "
+          "thought that those arrows were harmless, and contained only LOVE.");
+    print("Wait!  That must be it!  LOVE!  Lolotte was so evil that when all "
+          "that pure love entered her body, it acted as a poison to her system! "
+          " In spite of yourself, you feel a sense of sweet revenge.");
+    print("As she breathes her last, Lolotte manages to gasp, \"I don't know "
+          "how...but I'll get you for this....\"");
+    set(f86);
+    score  += 8;
+    add.to.pic(64, 2, 9, 69, 101, 0, 0);
+    erase(o1);
+    draw(o10);
+    ignore.blocks(o1);
+  }
+  if (v221 == 5) {
+    discard.view(64);
+    load.view(61);
+    load.view(62);
+    set.view(o6, 61);
+    set.view(o7, 61);
+    set.loop(o6, 4);
+    set.loop(o7, 5);
+    set.cel(o6, 0);
+    set.cel(o7, 0);
+    v152 = 3;
+    cycle.time(o6, v152);
+    cycle.time(o7, v152);
+    position(o6, 41, 83);
+    position(o7, 106, 84);
+    set.view(o1, 61);
+    release.loop(o1);
+    position(o1, 102, 159);
+    v152 = 1;
+    cycle.time(o1, v152);
+    draw(o6);
+    draw(o7);
+    reset(f222);
+    end.of.loop(o6, f228);
+    end.of.loop(o7, f228);
+    set(f230);
+    print("A bright, new day is dawning.");
+    sound(68, f154);
+  }
+  if (v221 == 6) {
+    draw(o1);
+    start.cycling(o1);
+    sound(43, f154);
+    move.obj(o1, 118, 143, 0, f222);
+    if ((v65 != 1 || 
+        v64 < 6)) {
+      v64 = 6;
+      v63 = 0;
+    }
+    v65 = 1;
+    reset(f38);
+  }
+  if (v221 == 7) {
+    set.view(o1, 62);
+    set.loop(o1, 1);
+    set.cel(o1, 0);
+  }
+  if (v221 == 8) {
+    v152 = 5;
+    cycle.time(o1, v152);
+    end.of.loop(o1, f222);
+  }
+  if (v221 == 9) {
+    reverse.loop(o1, f222);
+  }
+  if (v221 == 10) {
+    set.loop(o1, 2);
+    set.cel(o1, 0);
+    print("Edgar bows to you, acknowledging his evil mother's death.  He begins "
+          "to say, \"You may now walk freely about the castle.  I ...\" and "
+          "suddenly begins to blush.");
+    end.of.loop(o1, f222);
+  }
+  if (v221 == 11) {
+    reverse.loop(o1, f222);
+  }
+  if (v221 == 12) {
+    v152 = 1;
+    cycle.time(o1, v152);
+    set.view(o1, 61);
+    start.cycling(o1);
+    move.obj(o1, 102, 159, 0, f222);
+  }
+  if (v221 == 13) {
+    erase(o1);
+    reset(f36);
+    accept.input();
+    reset(f222);
+  }
+}
+if (isset(f223)) {
+  v222++;
+  if (v222 == 1) {
+    ego_dir = 0;
+    sound(45, f154);
+    set(f36);
+    prevent.input();
+    end.of.loop(o1, f223);
+  }
+  if (v222 == 2) {
+    set.view(o1, 39);
+    set.loop(o1, 0);
+    set.cel(o1, 0);
+    end.of.loop(o1, f223);
+  }
+  if (v222 == 3) {
+    set.cel(o1, 0);
+    get.posn(Ego, v152, v153);
+    position.v(o4, v152, v153);
+    draw(o4);
+    erase(Ego);
+    end.of.loop(o4, f223);
+  }
+  if (v222 == 4) {
+    set(f140);
+    reset(f223);
+  }
+}
+if (isset(f226)) {
+  reset(f226);
+  reset(f36);
+  set(f227);
+  erase(o5);
+}
+if (isset(f230) && 
+    isset(f154) && 
+    isset(f228)) {
+  reset(f230);
+  set(f222);
+}
+if (ego_edge_code == bottom_edge) {
+  new.room(88); //##LE001##
+}
+return();
+
+//Messages
+#message 1 "So, this is Lolotte's bed chamber.  You question her taste in decorating as her furniture is a bit on the gaudy side."
+#message 2 "%m1  And speaking of Lolotte, the old bat is sound asleep on her massive bed."
+#message 3 "%m1  However, since Lolotte is now dead, it doesn't really matter anymore."
+#message 4 "The bed is huge and takes up most of the room."
+#message 5 "There is nothing under the bed."
+#message 6 "Not with Lolotte in it!"
+#message 7 "You see the mountain out the window."
+#message 8 "There is nothing of "
+#message 9 "%m8importance on the walls."
+#message 10 "%m8interest on the floor."
+#message 11 "You look in the mirror and see the relection of a poor, but beautiful, peasant girl."
+#message 12 "The stairs spiral downward."
+#message 13 "It's just a wooden door."
+#message 14 "%m47locked."
+#message 15 "Which key do you want to use; the gold key, or the skeleton key?"
+#message 16 "The skeleton key does not fit the lock."
+#message 17 "Using the little gold key, you unlock the tower door."
+#message 18 "%m47already unlocked."
+#message 19 "You don't have a key."
+#message 20 "The evil fairy sleeps soundly in her bed.  She wears Genesta's magic talisman around her neck, and you see it gleaming upon her chest.  As she sleeps, she makes strange clicking sounds."
+#message 21 "You foolishly reach for the talisman around Lolotte's neck.  You begin to gently tug on it, which wakes her up!%m22"
+#message 22 "  \"VIPER!\" she screams, as she quickly sits up, points a gnarled finger at you, and zaps you into oblivion!"
+#message 23 "You stupidly speak to Lolotte as she sleeps, waking her!%m22"
+#message 24 "Lolotte is now quite dead."
+#message 25 "%m24  Genesta's magic talisman hangs from around her neck."
+#message 26 "Lolotte is unable to talk, as she is now dead."
+#message 27 "How can you do that?"
+#message 28 "You have no way of doing that."
+#message 29 "Lolotte's already dead.  You begin to wonder about your state of mind."
+#message 30 "You wouldn't want her."
+#message 31 "That would be a BAD idea!"
+#message 32 "That's a foolish move!  You awaken Lolotte.%m22"
+#message 33 "You can't wake up the dead."
+#message 34 "Why would you want to?"
+#message 35 "You already have it!  Don't be greedy!"
+#message 36 "You aim the second, golden arrow toward Lolotte.  You let go of the bow string.  ZING!  A direct hit!"
+#message 37 "Lolotte sits straight up in bed, a look of agony upon her face.  \"What did you DO to me?!\" she shrieks. \"I'm melting...melting, no wait!  That's another story.  Ahem!  Let's try again.\""
+#message 38 "\"It hurts!  It hurts!  Stop the pain!  Stop it!\""
+#message 39 "You cringe as you watch the evil fairy die a painful death.  What happened?, you wonder.  How could Cupid's arrow have done that?  You thought that those arrows were harmless, and contained only LOVE."
+#message 40 "Wait!  That must be it!  LOVE!  Lolotte was so evil that when all that pure love entered her body, it acted as a poison to her system!  In spite of yourself, you feel a sense of sweet revenge."
+#message 41 "As she breathes her last, Lolotte manages to gasp, \"I don't know how...but I'll get you for this....\""
+#message 42 "You're out of arrows.  Sorry."
+#message 43 "Since you're not in the room, you miss."
+#message 44 "You have discovered a door at the top of this tower."
+#message 45 "You don't have the bow."
+#message 46 "Do you honestly think Lolotte needs anything from you?"
+#message 47 "The door is "
+#message 48 "%m47already open."
+#message 49 "Edgar bows to you, acknowledging his evil mother's death.  He begins to say, \"You may now walk freely about the castle.  I ...\" and suddenly begins to blush."
+#message 50 "You have awaken Lolotte!%m22"
+#message 60 "TWEEEEEET!"
+#message 61 "A bright, new day is dawning."

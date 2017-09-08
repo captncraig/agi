@@ -1,0 +1,725 @@
+if (isset(new_room)) {
+  v152 = 69;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  discard.view(0);
+  set.horizon(98);
+  set(f82);
+  load.view(1);
+  load.view(10);
+  load.view(16);
+  load.view(20);
+  load.view(102);
+  load.view(103);
+  load.view(104);
+  load.sound(48);
+  load.sound(27);
+  load.sound(52);
+  animate.obj(o7);
+  set.view(o7, 104);
+  set.loop(o7, 4);
+  ignore.horizon(o7);
+  position(o7, 41, 38);
+  draw(o7);
+  animate.obj(o1);
+  set.view(o1, 104);
+  set.loop(o1, 3);
+  position(o1, 123, 148);
+  stop.cycling(o1);
+  if (!isset(f198)) {
+    draw(o1);
+  }
+  animate.obj(o12);
+  animate.obj(o2);
+  animate.obj(o4);
+  animate.obj(o5);
+  animate.obj(o6);
+  set.view(Ego, 1);
+  set.view(o2, 104);
+  set.view(o4, 104);
+  set.view(o5, 104);
+  set.view(o6, 102);
+  set.loop(o4, 1);
+  set.loop(o5, 0);
+  set.cel(o4, 0);
+  set.cel(o1, 0);
+  if (!isset(f161)) {
+    set.cel(o5, 0);
+  }
+  else {
+    set.cel(o5, 4);
+  }
+  position(o4, 75, 101);
+  position(o5, 42, 138);
+  position(o6, 74, 99);
+  ignore.horizon(Ego);
+  ignore.horizon(o12);
+  observe.blocks(Ego);
+  set.loop(Ego, 0);
+  ego_dir = 0;
+  position(Ego, 23, 73);
+  stop.cycling(o4);
+  stop.cycling(o5);
+  stop.cycling(o6);
+  set.priority(Ego, 11);
+  draw(Ego);
+  add.to.pic(104, 2, 0, 75, 98, 4, 1);
+  set.priority(o4, 6);
+  draw(o4);
+  set.priority(o5, 11);
+  set.priority(o6, 5);
+  observe.blocks(o6);
+  observe.horizon(o6);
+  draw(o6);
+  draw(o5);
+  show.pic();
+  reset(f191);
+}
+distance(Ego, o1, v221);
+get.posn(o12, v134, v135);
+if (!isset(f235)) {
+  if (v33 > 100) {
+    ignore.blocks(Ego);
+  }
+  if (v33 < 100) {
+    observe.blocks(Ego);
+  }
+}
+if (!isset(f236)) {
+  distance(Ego, o6, v222);
+}
+if ((isset(ego_touching_signal_line)) && 
+    (!isset(f36))) {
+  sound(52, f154);
+  prevent.input();
+  reset(ego_touching_signal_line);
+  position.v(o12, v33, v34);
+  ignore.blocks(o12);
+  ignore.objs(o12);
+  set(f36);
+  set.view(o12, 10);
+  set.loop(o12, 0);
+  fix.loop(o12);
+  start.cycling(o12);
+  erase(Ego);
+  draw(o12);
+  if (v34 > 80) {
+    set.priority(o12, 12);
+    move.obj(o12, 30, 141, 6, f226);
+    v226 = 1;
+  }
+  else {
+    if (v34 < 74) {
+      set.priority(o12, 9);
+      move.obj(o12, 48, 119, 6, f226);
+      v226 = 3;
+    }
+    else {
+      set.priority(o12, 12);
+      move.obj(o12, 55, 133, 6, f226);
+      v226 = 2;
+    }
+  }
+}
+if (isset(f226)) {
+  stop.sound();
+  observe.blocks(Ego);
+  set.view(Ego, 20);
+  set.loop(Ego, 0);
+  set.cel(Ego, 0);
+  get.posn(o12, v134, v135);
+  position.v(Ego, v134, v135);
+  erase(o12);
+  if (v226 == 1) {
+    set.priority(Ego, 12);
+  }
+  if (v226 == 2) {
+    set.priority(Ego, 12);
+  }
+  if (v226 == 3) {
+    set.priority(Ego, 9);
+  }
+  draw(Ego);
+  shake.screen(1);
+  ego_dir = 0;
+  reset(f226);
+  set(f140);
+}
+if (isset(f221)) {
+  reset(f221);
+  ignore.objs(o4);
+  set.cel(o4, 0);
+  v154 = 3;
+  cycle.time(o4, v154);
+  start.cycling(o4);
+  end.of.loop(o4, f237);
+  set(f191);
+}
+if (isset(f237)) {
+  reset(f237);
+  sound(27, f154);
+  cycle.time(o6, v154);
+  start.cycling(o6);
+  end.of.loop(o6, f223);
+}
+if (isset(f223)) {
+  reset(f223);
+  release.priority(o6);
+  set.view(o6, 103);
+  set.loop(o6, 0);
+  fix.loop(o6);
+  v152 = 3;
+  cycle.time(o6, v152);
+  v152 = 2;
+  step.time(o6, v152);
+  start.cycling(o6);
+  move.obj(o6, 74, 130, 3, f225);
+}
+if (isset(f225)) {
+  reset(f225);
+  set(f224);
+  v156 = 1;
+}
+if ((isset(f224)) && 
+    (v156 == 1)) {
+  print("The mummy runs from your powerful scarab.");
+  reset(f224);
+  set.loop(o6, 1);
+  fix.loop(o6);
+  v152 = 1;
+  cycle.time(o6, v152);
+  step.time(o6, v152);
+  move.obj(o6, 73, 99, 2, f224);
+  v156++;
+}
+if ((isset(f224)) && 
+    (v156 == 2)) {
+  reset(f224);
+  set.priority(o6, 5);
+  set.view(o6, 102);
+  set.loop(o6, 1);
+  set.cel(o6, 0);
+  end.of.loop(o6, f224);
+  v156++;
+}
+if ((isset(f224)) && 
+    (v156 == 3)) {
+  reset(f224);
+  observe.objs(o4);
+  v154 = 3;
+  cycle.time(o4, v154);
+  reverse.loop(o4, f224);
+  v153--;
+  v156++;
+}
+if ((isset(f224)) && 
+    (v156 == 4)) {
+  reset(f224);
+  reset(f191);
+  erase(o6);
+  add.to.pic(104, 1, 0, 75, 99, 4, 1);
+  erase(o4);
+  v156++;
+}
+if ((isset(f222)) && 
+    (v153 == 0)) {
+  erase(o6);
+}
+if (!isset(f238)) {
+  if ((said("climb", "rope") || 
+      said("climb", "down") || 
+      said("climb", "ladder") || 
+      said("climb", "down", "ladder") || 
+      said("climb", "down", "rope"))) {
+    if (isset(f161)) {
+      if (v33 > 30) {
+        prevent.input();
+        set(f36);
+        move.obj(Ego, 32, 79, 0, f231);
+        v223 = 1;
+        set(f235);
+      }
+      else {
+        set(f113);
+      }
+    }
+    else {
+      print("You can't do that!");
+    }
+  }
+  if ((v223 == 1) && 
+      (isset(f231))) {
+    set.view(o12, 16);
+    set.loop(o12, 1);
+    v154 = 2;
+    step.time(o12, v154);
+    position.v(o12, v33, v34);
+    set.priority(o12, 11);
+    erase(Ego);
+    draw(o12);
+    ignore.blocks(o12);
+    ignore.objs(o12);
+    end.of.loop(o12, f231);
+    v223++;
+  }
+  if ((v223 == 2) && 
+      (isset(f231))) {
+    reset(f231);
+    set.loop(o12, 3);
+    fix.loop(o12);
+    erase(o12);
+    set.cel(o12, 0);
+    position(o12, 32, 93);
+    draw(o12);
+    v152 = 3;
+    cycle.time(o12, v152);
+    ignore.blocks(o12);
+    ignore.objs(o12);
+    end.of.loop(o12, f231);
+    v223++;
+  }
+  if ((v223 == 3) && 
+      (isset(f231))) {
+    reset(f231);
+    get.posn(o12, v134, v135);
+    set.view(Ego, 16);
+    set.loop(Ego, 4);
+    fix.loop(Ego);
+    set.cel(Ego, 0);
+    position(Ego, 42, 106);
+    draw(Ego);
+    erase(o12);
+    v152 = 1;
+    cycle.time(Ego, v152);
+    start.cycling(Ego);
+    ignore.blocks(Ego);
+    ignore.objs(Ego);
+    set.priority(Ego, 12);
+    move.obj(Ego, 42, 139, 2, f231);
+    v223++;
+  }
+  if ((v223 == 4) && 
+      (isset(f231))) {
+    reset(f231);
+    set.view(Ego, 1);
+    set.priority(Ego, 12);
+    reset(f36);
+    v161++;
+    set(f238);
+    observe.objs(Ego);
+    reset(f235);
+    accept.input();
+    release.loop(Ego);
+    v152 = 1;
+    cycle.time(Ego, v152);
+    set(f221);
+  }
+  if ((said("move", "rope") || 
+      said("drop", "rope") || 
+      said("carry", "rope") || 
+      said("carry", "rope", "ladder") || 
+      said("carry", "ladder") || 
+      said("drop", "ladder") || 
+      said("move", "ladder"))) {
+    if (!isset(f161)) {
+      if (v33 > 30) {
+        prevent.input();
+        set(f36);
+        move.obj(Ego, 32, 79, 0, f229);
+        v161 = 1;
+        set(f235);
+      }
+      else {
+        set(f113);
+      }
+    }
+    else {
+      print("The rope ladder is fine where it is.");
+    }
+  }
+  if ((v161 == 1) && 
+      (isset(f229))) {
+    set.view(o12, 16);
+    set.loop(o12, 1);
+    v154 = 2;
+    step.time(o12, v154);
+    position.v(o12, v33, v34);
+    set.priority(o12, 11);
+    erase(Ego);
+    draw(o12);
+    ignore.blocks(o12);
+    ignore.objs(o12);
+    end.of.loop(o12, f229);
+    v161++;
+  }
+  if ((v161 == 2) && 
+      (isset(f229))) {
+    reset(f229);
+    set.loop(o12, 0);
+    end.of.loop(o12, f229);
+    v161++;
+  }
+  if ((v161 == 3) && 
+      (isset(f229))) {
+    reset(f229);
+    set.priority(o5, 11);
+    observe.objs(o5);
+    start.cycling(o5);
+    end.of.loop(o5, f229);
+    v161++;
+    set(f161);
+    score  += 2;
+  }
+  if ((v161 == 4) && 
+      (isset(f229))) {
+    reset(f229);
+    set.view(o12, 16);
+    erase(o12);
+    set.loop(o12, 1);
+    set.cel(o12, 3);
+    position(o12, 33, 79);
+    draw(o12);
+    v152 = 4;
+    cycle.time(o12, v152);
+    start.cycling(o12);
+    reverse.loop(o12, f229);
+    v161++;
+  }
+  if ((v161 == 5) && 
+      (isset(f229))) {
+    reset(f229);
+    set.view(Ego, 1);
+    erase(o12);
+    position.v(Ego, v134, v135);
+    set.priority(Ego, 12);
+    draw(Ego);
+    ego_dir = 0;
+    reset(f36);
+    reset(f238);
+    set.priority(Ego, 11);
+    reset(f235);
+    v161++;
+    accept.input();
+    release.loop(Ego);
+  }
+}
+if (isset(f238)) {
+  if ((v33 < 56) && 
+      (v34 > 138)) {
+    set.priority(Ego, 13);
+  }
+  else {
+    if (posn(Ego,11,125,28,136)) {
+      set.priority(Ego, 12);
+    }
+    else {
+      release.priority(Ego);
+    }
+  }
+}
+if (isset(f238)) {
+  if ((said("climb", "rope") || 
+      said("climb", "ladder") || 
+      said("climb", "up", "ladder") || 
+      said("climb", "up"))) {
+    if (posn(Ego,40,137,65,148)) {
+      prevent.input();
+      set.priority(Ego, 11);
+      set.view(o12, 1);
+      position.v(o12, v33, v34);
+      erase(Ego);
+      draw(o12);
+      release.loop(o12);
+      ignore.blocks(o12);
+      ignore.objs(o12);
+      set(f36);
+      set.priority(o12, 11);
+      v152 = 1;
+      cycle.time(o12, v152);
+      move.obj(o12, 48, 139, 0, f230);
+      start.cycling(o12);
+      set(f235);
+      v162 = 1;
+    }
+    else {
+      set(f113);
+    }
+  }
+}
+if ((v162 == 1) && 
+    (isset(f230))) {
+  reset(f230);
+  erase(o12);
+  set.view(o12, 16);
+  set.loop(o12, 5);
+  fix.loop(o12);
+  set.cel(o12, 2);
+  position(o12, 42, 143);
+  draw(o12);
+  v152 = 1;
+  cycle.time(o12, v152);
+  v152 = 2;
+  step.size(o12, v152);
+  start.cycling(o12);
+  move.obj(o12, 42, 110, 4, f230);
+  v162++;
+}
+if ((v162 == 2) && 
+    (isset(f230))) {
+  reset(f230);
+  set.loop(o12, 3);
+  fix.loop(o12);
+  erase(o12);
+  set.cel(o12, 4);
+  position(o12, 33, 94);
+  draw(o12);
+  v152 = 3;
+  cycle.time(o12, v152);
+  start.cycling(o12);
+  reverse.loop(o12, f230);
+  v162++;
+}
+if ((v162 == 3) && 
+    (isset(f230))) {
+  reset(f230);
+  set.view(o12, 16);
+  erase(o12);
+  set.loop(o12, 1);
+  set.cel(o12, 3);
+  position(o12, 33, 79);
+  draw(o12);
+  v152 = 4;
+  cycle.time(o12, v152);
+  start.cycling(o12);
+  reverse.loop(o12, f230);
+  v162++;
+}
+if ((v162 == 4) && 
+    (isset(f230))) {
+  reset(f230);
+  set.view(Ego, 1);
+  erase(o12);
+  position.v(Ego, v134, v135);
+  draw(Ego);
+  ego_dir = 0;
+  reset(f36);
+  reset(f238);
+  set.priority(Ego, 11);
+  reset(f235);
+  v162++;
+  accept.input();
+  release.loop(Ego);
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "crypt") || 
+    said("examine", "around", "crypt"))) {
+  print("Wow!  What an incredible place!  This looks like an ancient burial "
+        "tomb, with hieroglyphics written on the walls, and an old coffin in "
+        "the far corner.");
+  print("A pile of rope is at the edge of the upper platform.");
+  if (!isset(f198)) {
+    print("You see an odd-looking little chest here.  It must be Pandora's Box.");
+  }
+}
+if ((said("examine", "epitaph") || 
+    said("read", "epitaph") || 
+    said("examine", "epitaph", "abominable", "wall") || 
+    said("read", "epitaph", "abominable", "wall"))) {
+  print("You cannot read the ancient hieroglyphics.");
+}
+if (said("examine", "casket")) {
+  print("The lid of the coffin is decorated with hieroglyphics.");
+}
+if ((said("look in", "casket") || 
+    said("open", "casket"))) {
+  print("You don't want to do that!");
+}
+if ((said("examine", "ladder") || 
+    said("examine", "rope"))) {
+  if (!isset(f161)) {
+    print("You see a pile of rope on the end of the tall platform.");
+  }
+  else {
+    print("A rope ladder extends, from the tall platform, down to the bottom of "
+          "the crypt.");
+  }
+}
+if (said("examine", "platform")) {
+  if (!isset(f161)) {
+    print("You see a pile of rope on the end of the platform.");
+  }
+  else {
+    print("A rope ladder extends, from the tall platform, down to the bottom of "
+          "the crypt.");
+  }
+}
+if (said("examine", "wall")) {
+  print("There are ancient hieroglyphics on the walls.");
+}
+if (!isset(f198)) {
+  if ((said("examine", "dirt") || 
+      said("examine", "box") || 
+      said("examine", "pandora", "box") || 
+      said("examine", "down", "dirt"))) {
+    print("Pandora's Box is on the floor of the crypt.");
+  }
+}
+if ((said("carry", "box") || 
+    said("carry", "pandora", "box"))) {
+  if (!has("Pandora's Box")) {
+    if (!isset(f198)) {
+      if (v221 < 12) {
+        sound(48, f154);
+        get("Pandora's Box");
+        set(f116);
+        set(f198);
+        erase(o1);
+        if (isset(f86)) {
+          score -= 2;
+        }
+        if (!isset(f147)) {
+          score  += 4;
+          set(f147);
+        }
+      }
+      else {
+        set(f113);
+      }
+    }
+    else {
+      print("It's not here.");
+    }
+  }
+  else {
+    set(f114);
+  }
+}
+if ((said("drop", "box") || 
+    said("drop", "pandora", "box") || 
+    said("place", "box") || 
+    said("place", "box", "down") || 
+    said("place", "box", "crypt") || 
+    said("place", "pandora", "box") || 
+    said("place", "down", "pandora", "box") || 
+    said("place", "down", "box"))) {
+  if (isset(f238)) {
+    if (has("Pandora's Box")) {
+      if (posn(Ego,80,138,155,167)) {
+        drop("Pandora's Box");
+        v34  += 5;
+        position.v(o1, v33, v34);
+        draw(o1);
+        reset(f198);
+        if (isset(f86)) {
+          score  += 2;
+        }
+      }
+      else {
+        print("You better put it back where you found it.");
+      }
+    }
+    else {
+      set(f115);
+    }
+  }
+  else {
+    print("Why don't you put it on the floor?");
+  }
+}
+if (said("carry", "casket")) {
+  print("You can't do that!");
+}
+if (said("bang", "casket")) {
+  if (posn(Ego,72,99,85,94)) {
+    print("This mummy appears to be at least a thousand years old!  Its "
+          "wrappings are loose and decayed, and it stinks!");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("carry", "rope") || 
+    said("lift", "rope"))) {
+  print("The rope ladder is fine where it is.");
+}
+if (isset(f191)) {
+  if (said("examine", "mummy")) {
+    print("This mummy appears to be at least a thousand years old!  Its "
+          "wrappings are loose and decayed, and it stinks!");
+  }
+  if ((said("speak", "mummy") || 
+      said("speak") || 
+      said("speak", "with", "mummy"))) {
+    print("You attempt a conversation with the old mummy, and receive nothing "
+          "but a low moan in reply.");
+  }
+  if (said("kill", "mummy")) {
+    print("How can you kill something that is already dead?");
+  }
+  if ((said("carry", "mummy") || 
+      said("capture", "mummy"))) {
+    print("Why would you want it?");
+  }
+  if ((said("embrace", "mummy") || 
+      said("embrace"))) {
+    print("What a horrible thought!!");
+  }
+  if ((said("help", "mummy") || 
+      said("save", "mummy"))) {
+    print("It's beyond help.");
+  }
+}
+if (!isset(f191)) {
+  if ((said("find", "mummy") || 
+      said("examine", "mummy"))) {
+    print("You can't see the mummy.");
+  }
+}
+Label1:
+if (ego_edge_code == left_edge) {
+  release.priority(Ego);
+  new.room(18); //##LE001##
+}
+return();
+
+//Messages
+#message 1 "It is extremely dark in here.  You can't see a thing!"
+#message 2 "Wow!  What an incredible place!  This looks like an ancient burial tomb, with hieroglyphics written on the walls, and an old coffin in the far corner."
+#message 3 "A pile of rope is at the edge of the upper platform."
+#message 4 "You see an odd-looking little chest here.  It must be Pandora's Box."
+#message 5 "You cannot read the ancient hieroglyphics."
+#message 6 "The lid of the coffin is decorated with hieroglyphics."
+#message 7 "You don't want to do that!"
+#message 8 "You see a pile of rope on the end of the tall platform."
+#message 9 "A rope ladder extends, from the tall platform, down to the bottom of the crypt."
+#message 10 "You reach down and get the pile of rope.  To your happy surprise, you find that the rope is actually a rope ladder attached to the end of the  platform!  Gladly, you throw the rope ladder over the edge of the platform, where it falls to the floor below."
+#message 11 "The rope ladder is fine where it is."
+#message 12 "You see a pile of rope on the end of the platform."
+#message 13 "The platform towers over the floor of the crypt."
+#message 14 "There are ancient hieroglyphics on the walls."
+#message 15 "Pandora's Box is on the floor of the crypt."
+#message 16 "There is nothing of interest on the floor."
+#message 17 "You can't do that!"
+#message 18 "This mummy appears to be at least a thousand years old!  Its wrappings are loose and decayed, and it stinks!"
+#message 19 "You attempt a conversation with the old mummy, and receive nothing but a low moan in reply."
+#message 20 "How can you kill something that is already dead?"
+#message 21 "Why would you want it?"
+#message 22 "What a horrible thought!!"
+#message 23 "It's beyond help."
+#message 24 "The mummy doesn't need anything."
+#message 25 "It's not here."
+#message 26 "Why don't you put it on the floor?"
+#message 27 "The mummy runs from your powerful scarab."
+#message 28 "You can't see the mummy."
+#message 29 "You better put it back where you found it."
+#message 30 "There is no answer."
+#message 31 "Debug1."
+#message 32 "Debug2."
+#message 33 "Debug3."

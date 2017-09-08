@@ -1,0 +1,81 @@
+if (isset(new_room)) {
+  set(f82);
+  v152 = 74;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.logics(216);
+  load.view(1);
+  load.view(43);
+  call(216);
+  animate.obj(o1);
+  set.view(o1, 43);
+  set.loop(o1, 4);
+  v152 = 3;
+  cycle.time(o1, v152);
+  ignore.objs(o1);
+  ignore.blocks(o1);
+  if (prev_room_no == 71) {
+    position(Ego, 61, 85);
+    if (isset(f49) && 
+        v221 == 0) {
+      position(o2, 154, 156);
+    }
+  }
+  else {
+    position(Ego, 137, 165);
+    if (isset(f49) && 
+        v221 == 0) {
+      position(o2, 95, 93);
+    }
+  }
+  if (has("Lit Oil Lantern")) {
+    set.view(Ego, 43);
+    set(f48);
+  }
+  else {
+    set.view(Ego, 1);
+  }
+  if (isset(f49) && 
+      v221 == 0) {
+    draw(o2);
+    follow.ego(o2, 10, f221);
+  }
+  if (v37 != 20) {
+    draw(Ego);
+  }
+  show.pic();
+}
+if (!isset(new_room)) {
+  call(216);
+}
+if (v221 > 0) {
+  v221--;
+  if (v221 <= 0) {
+    if (prev_room_no == 71) {
+      position(o2, 95, 93);
+    }
+    else {
+      position(o2, 154, 156);
+    }
+    draw(o2);
+    follow.ego(o2, 10, f221);
+  }
+}
+if (posn(Ego,109,130,154,167)) {
+  set.priority(Ego, 14);
+}
+else {
+  release.priority(Ego);
+}
+if ((isset(ego_touching_signal_line)) && 
+    (v37 != 20)) {
+  new.room(71); //##LE001##
+}
+if ((posn(Ego,140,130,159,167)) && 
+    (v37 != 20)) {
+  new.room(75); //##LE002##
+}
+return();
+
+//Messages

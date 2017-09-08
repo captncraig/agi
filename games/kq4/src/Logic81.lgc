@@ -1,0 +1,599 @@
+if (isset(new_room)) {
+  set(f82);
+  discard.view(0);
+  v152 = 81;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  if (isset(f38)) {
+    load.view(188);
+    add.to.pic(188, 1, 0, 41, 81, 4, 4);
+    add.to.pic(188, 1, 2, 107, 84, 4, 4);
+    discard.view(188);
+  }
+  load.sound(70);
+  load.view(1);
+  set.view(Ego, 1);
+  load.view(95);
+  load.view(143);
+  animate.obj(o5);
+  set.view(o5, 143);
+  set.priority(o5, 4);
+  ignore.horizon(o5);
+  ignore.objs(o5);
+  set.loop(o5, 0);
+  position(o5, 60, 50);
+  v152 = 1;
+  cycle.time(o5, v152);
+  draw(o5);
+  animate.obj(o6);
+  set.view(o6, 143);
+  set.priority(o6, 4);
+  ignore.horizon(o6);
+  ignore.objs(o6);
+  set.loop(o6, 1);
+  position(o6, 98, 50);
+  v152 = 1;
+  cycle.time(o6, v152);
+  draw(o6);
+  animate.obj(o1);
+  set.view(o1, 95);
+  set.loop(o1, 0);
+  if (v37 == 2) {
+    last.cel(o1, v152);
+    set.cel.v(o1, v152);
+  }
+  else {
+    set.cel(o1, 0);
+  }
+  position(o1, 28, 139);
+  draw(o1);
+  stop.cycling(o1);
+  v222 = 0;
+  v223 = 0;
+  load.sound(48);
+  if (v37 == 2) {
+    load.sound(43);
+    load.view(60);
+    load.view(61);
+    load.view(66);
+    animate.obj(o2);
+    animate.obj(o3);
+    animate.obj(o4);
+    set.view(o2, 1);
+    set.view(o3, 66);
+    set.view(o4, 66);
+    ignore.blocks(o3);
+    ignore.blocks(o4);
+    ignore.objs(o3);
+    ignore.objs(o4);
+    position(o2, 53, 164);
+    position(o3, 50, 165);
+    position(o4, 53, 165);
+    draw(o2);
+    v221 = 0;
+    ignore.objs(o1);
+    prevent.input();
+    v37 = 0;
+    move.obj(o2, 31, 148, 0, f223);
+  }
+  else {
+    position(Ego, 53, 164);
+    draw(Ego);
+  }
+  show.pic();
+  if (isset(f41)) {
+    set(f51);
+    v153 = 42;
+    v153++;
+    v152 = 89;
+    v224 = 1;
+Label1:
+    get.room.v(v224, v225);
+    if (v225 == 255) {
+      put.v(v224, v152);
+    }
+    v224++;
+    if (v224 < v153) {
+      goto(Label1);
+    }
+    reset(f60);
+  }
+}
+if (posn(Ego,0,140,84,167)) {
+  set(f231);
+}
+else {
+  reset(f231);
+}
+if (!isset(input_received)) {
+  goto(Label2);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "tower") || 
+    said("examine", "around", "tower") || 
+    said("examine", "bedroom") || 
+    said("examine", "around", "bedroom") || 
+    said("examine", "bed chamber") || 
+    said("examine", "around", "bed chamber") || 
+    said("examine", "bed", "bed chamber") || 
+    said("examine", "around", "bed", "bed chamber") || 
+    said("examine", "castle") || 
+    said("examine", "dark", "castle") || 
+    said("examine", "bad", "castle") || 
+    said("examine", "around", "castle") || 
+    said("examine", "around", "bad", "castle") || 
+    said("examine", "around", "dark", "castle"))) {
+  if (isset(f231)) {
+    print("You have discovered a door at the top of this tower.");
+  }
+  else {
+    print("Normally, this is Edgar's tower bedroom.  Actually, for being in "
+          "such an awful castle, it looks quite comfortable; but you're in no "
+          "mood to care.");
+  }
+}
+if (!isset(f231)) {
+  if (said("examine", "bed")) {
+    print("This is a most unusual four-poster bed.");
+  }
+  if (said("examine", "beneath", "bed")) {
+    print("There is nothing under the bed.");
+  }
+  if ((said("lay", "bed") || 
+      said("lay", "bed") || 
+      said("lay") || 
+      said("lay", "down") || 
+      said("lay", "down", "bed") || 
+      said("carry", "bed"))) {
+    print("You don't have time for that!");
+  }
+  if ((said("examine", "window") || 
+      said("examine", "out", "window") || 
+      said("look in", "window"))) {
+    if ((posn(Ego,97,100,113,111) || 
+        posn(Ego,37,100,57,112))) {
+      print("You see the mountain out the window.");
+    }
+    else {
+      set(f113);
+    }
+  }
+  if ((said("examine", "chest") || 
+      said("examine", "dresser") || 
+      said("examine", "chest", "abominable", "drawer"))) {
+    print("You see a chest of drawers, with a mirror on top.");
+  }
+  if ((said("open", "chest") || 
+      said("open", "dresser") || 
+      said("open", "chest", "abominable", "drawer") || 
+      said("open", "drawer") || 
+      said("look in", "chest") || 
+      said("look in", "dresser") || 
+      said("look in", "chest", "abominable", "drawer") || 
+      said("look in", "drawer"))) {
+    print("It's private.");
+  }
+  if (said("examine", "wall")) {
+    print("%m8importance on the walls.");
+  }
+  if ((said("examine", "dirt") || 
+      said("examine", "down") || 
+      said("examine", "down", "dirt"))) {
+    if (isset(f224)) {
+      print("There's a beautiful red rose on the floor near the door.");
+    }
+    else {
+      print("%m8interest on the floor.");
+    }
+  }
+  if ((said("examine", "mirror") || 
+      said("look in", "mirror"))) {
+    if (posn(Ego,98,116,140,155)) {
+      print("You look in the mirror and see the relection of a poor, but "
+            "beautiful, peasant girl.");
+    }
+    else {
+      set(f113);
+    }
+  }
+}
+if ((said("examine", "staircase") || 
+    said("examine", "down", "staircase"))) {
+  if (isset(f231)) {
+    print("The stairs spiral downward.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("examine", "door") || 
+    said("examine", "wood", "door"))) {
+  print("It's just a wooden door.");
+}
+if ((said("open", "door") || 
+    said("open", "wood", "door"))) {
+  if (posn(Ego,27,131,40,147)) {
+    if (isset(f60)) {
+      if (isset(f221)) {
+        print("The door is already open.");
+      }
+      else {
+        if (!isset(f87)) {
+          set(f87);
+          score  += 2;
+        }
+        set(f36);
+        end.of.loop(o1, f222);
+        sound(70, f154);
+      }
+    }
+    else {
+      print("The door is locked.");
+    }
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("unlatch", "door") || 
+    said("unlatch", "wood", "door"))) {
+  if (!isset(f60)) {
+    if (posn(Ego,27,131,40,147)) {
+      if (has("Gold Key") && 
+          has("Skeleton Key")) {
+        print("Which key do you want to use; the gold key, or the skeleton key?");
+      }
+      else {
+        if (has("Skeleton Key")) {
+          print("The skeleton key does not fit the lock.");
+        }
+        else {
+          if (has("Gold Key")) {
+            set(f60);
+            print("Using the little gold key, you unlock the tower door.");
+          }
+          else {
+            print("You don't have a key.");
+          }
+        }
+      }
+    }
+    else {
+      set(f113);
+    }
+  }
+  else {
+    print("The door is already unlocked.");
+  }
+}
+if ((said("unlatch", "door", "with", "gold", "key") || 
+    said("use", "gold", "key") || 
+    said("unlatch", "wood", "door", "with", "gold", "key"))) {
+  if (has("Gold Key")) {
+    if (!isset(f60)) {
+      if (posn(Ego,27,131,40,147)) {
+        set(f60);
+        print("Using the little gold key, you unlock the tower door.");
+      }
+      else {
+        set(f113);
+      }
+    }
+    else {
+      print("The door is already unlocked.");
+    }
+  }
+  else {
+    set(f115);
+  }
+}
+if ((said("unlatch", "door", "with", "james", "key") || 
+    said("use", "james", "key") || 
+    said("unlatch", "wood", "door", "with", "james", "key"))) {
+  if (has("Skeleton Key")) {
+    if (!isset(f60)) {
+      if (posn(Ego,27,131,40,147)) {
+        print("The skeleton key does not fit the lock.");
+      }
+      else {
+        set(f113);
+      }
+    }
+    else {
+      print("The door is already unlocked.");
+    }
+  }
+  else {
+    set(f115);
+  }
+}
+if ((said("james") || 
+    said("james", "key") || 
+    said("abominable", "james", "key"))) {
+  if (has("Skeleton Key")) {
+    if (!isset(f60)) {
+      if (posn(Ego,27,131,40,147)) {
+        print("The skeleton key does not fit the lock.");
+      }
+      else {
+        set(f113);
+      }
+    }
+    else {
+      print("The door is already unlocked.");
+    }
+  }
+  else {
+    set(f115);
+  }
+}
+if ((said("gold") || 
+    said("gold", "key") || 
+    said("abominable", "gold", "key"))) {
+  if (has("Gold Key")) {
+    if (!isset(f60)) {
+      if (posn(Ego,27,131,40,147)) {
+        set(f60);
+        print("Using the little gold key, you unlock the tower door.");
+      }
+      else {
+        set(f113);
+      }
+    }
+    else {
+      print("The door is already unlocked.");
+    }
+  }
+  else {
+    set(f115);
+  }
+}
+if (!isset(f231)) {
+  if (said("carry", "red rose")) {
+    if (isset(f224)) {
+      if (posn(Ego,27,131,40,147)) {
+        set(f116);
+        reset(f224);
+        sound(48, f154);
+        get(i44);
+//WARNING: non-unique object: Red Rose
+      }
+      else {
+        set(f113);
+      }
+    }
+    else {
+      print("You don't see a rose on the floor.");
+    }
+  }
+  if ((said("carry", "key") || 
+      said("carry", "gold", "key") || 
+      said("carry", "key", "from", "red rose") || 
+      said("carry", "key", "from", "cute", "red rose") || 
+      said("carry", "gold", "key", "from", "red rose") || 
+      said("carry", "gold", "key", "from", "cute", "red rose") || 
+      said("detach", "key") || 
+      said("detach", "gold", "key") || 
+      said("detach", "key", "from", "red rose") || 
+      said("detach", "key", "from", "cute", "red rose") || 
+      said("detach", "gold", "key", "from", "red rose") || 
+      said("detach", "gold", "key", "from", "cute", "red rose") || 
+      said("carry", "key", "off", "red rose") || 
+      said("carry", "key", "off", "cute", "red rose") || 
+      said("carry", "gold", "key", "off", "red rose") || 
+      said("carry", "gold", "key", "off", "cute", "red rose") || 
+      said("untie", "key") || 
+      said("untie", "gold", "key") || 
+      said("untie", "key", "from", "red rose") || 
+      said("untie", "key", "from", "cute", "red rose") || 
+      said("untie", "gold", "key", "from", "red rose") || 
+      said("untie", "gold", "key", "from", "cute", "red rose"))) {
+    if ((has(i44) || 
+        has("Rose with Gold Key"))) {
+//WARNING: non-unique object: Red Rose
+      print("You remove the little gold key from the red rose.");
+      drop(i44);
+//WARNING: non-unique object: Red Rose
+      drop("Rose with Gold Key");
+      sound(48, f154);
+      get(i10);
+//WARNING: non-unique object: Red Rose
+      get("Gold Key");
+      score  += 2;
+    }
+    else {
+      if (has("Gold Key")) {
+        set(f114);
+      }
+      else {
+        set(f115);
+      }
+    }
+  }
+  if ((said("hide", "beneath", "bed") || 
+      said("hop", "from", "window"))) {
+    print("Be brave!  It is not yet dawn.");
+  }
+}
+Label2:
+if (isset(f222)) {
+  reset(f222);
+  reset(f36);
+  set(f221);
+  erase(o1);
+}
+if (isset(f223)) {
+  v221++;
+  if (v221 == 1) {
+    draw(o3);
+    move.obj(o2, 31, 132, 0, f223);
+    move.obj(o3, 28, 145, 0, f229);
+  }
+  if (v221 == 2) {
+    draw(o4);
+    move.obj(o4, 40, 150, 0, f230);
+    reverse.loop(o1, f223);
+    observe.objs(o1);
+  }
+  if (v221 == 3) {
+    reset(f223);
+    v223 = 2;
+  }
+  if (v221 == 4) {
+    reset(f223);
+    start.cycling(o4);
+    start.cycling(o3);
+    set.loop(o4, 0);
+    fix.loop(o4);
+    move.obj(o4, 48, 160, 0, f228);
+    move.obj(o3, 50, 165, 0, f227);
+  }
+  if (v221 == 5) {
+    set.loop(o3, 0);
+    set.cel(o3, 0);
+    v154 = 2;
+    cycle.time(o3, v154);
+    end.of.loop(o3, f223);
+  }
+  if (v221 == 6) {
+    print("You hear something at the door!");
+    v154 = 1;
+    cycle.time(o3, v154);
+    start.cycling(o3);
+    set(f224);
+    set.view(o3, 61);
+    release.loop(o3);
+    move.obj(o3, 41, 160, 0, f223);
+  }
+  if (v221 == 7) {
+    accept.input();
+    reset(f223);
+    erase(o3);
+  }
+  if (v221 == 8) {
+    if (isset(f51)) {
+      print("The henchmen have taken your rose and you no longer have the gold "
+            "key!%m30");
+    }
+    else {
+      print("The henchmen have taken all of your possessions, and you no longer "
+            "have the gold key!%m30");
+    }
+    move.obj(o2, 84, 132, 0, f223);
+  }
+  if (v221 == 9) {
+    set.loop(o2, 0);
+    fix.loop(o2);
+    move.obj(o2, 102, 112, 0, f223);
+  }
+  if (v221 == 10) {
+    new.room(131); //##LE001##
+  }
+}
+if (isset(f228)) {
+  reset(f228);
+  erase(o4);
+  if (isset(f41)) {
+    v221 = 7;
+    set(f223);
+  }
+}
+if (isset(f227)) {
+  reset(f227);
+  erase(o3);
+  if (!isset(f41)) {
+    v222 = 30;
+    get.posn(o2, v152, v153);
+    position.v(Ego, v152, v153);
+    set.loop(Ego, 2);
+    current.cel(o2, v152);
+    set.cel.v(Ego, v152);
+    ignore.objs(o2);
+    draw(Ego);
+    ego_dir = 0;
+    erase(o2);
+    reset(f36);
+    accept.input();
+  }
+  discard.view(66);
+}
+if (isset(f229)) {
+  reset(f229);
+  stop.cycling(o3);
+}
+if (isset(f230)) {
+  reset(f230);
+  stop.cycling(o4);
+}
+if (v222 > 0 && 
+    isset(f112)) {
+  v222--;
+  if (v222 <= 0) {
+    set.view(o3, 60);
+    set.loop(o3, 1);
+    fix.loop(o3);
+    prevent.input();
+    draw(o3);
+    move.obj(o3, 24, 148, 0, f223);
+    sound(43, f154);
+  }
+}
+if (isset(f224) && 
+    posn(Ego,27,131,40,147) && 
+    !isset(f225)) {
+  set(f225);
+  print("What's this?!  A beautiful red rose has been pushed under your door!");
+  reset(f224);
+  sound(48, f154);
+  get(i44);
+//WARNING: non-unique object: Red Rose
+  print("You pick up the rose.");
+}
+if (v223 > 0 && 
+    isset(f112)) {
+  v223--;
+  if (v223 <= 0) {
+    set(f223);
+  }
+}
+if (ego_edge_code == bottom_edge) {
+  new.room(85); //##LE002##
+}
+return();
+
+//Messages
+#message 1 "Normally, this is Edgar's tower bedroom.  Actually, for being in such an awful castle, it looks quite comfortable; but you're in no mood to care."
+#message 2 "This is a most unusual four-poster bed."
+#message 3 "There is nothing under the bed."
+#message 4 "You don't have time for that!"
+#message 5 "You see the mountain out the window."
+#message 6 "You see a chest of drawers, with a mirror on top."
+#message 7 "It's private."
+#message 8 "There is nothing of "
+#message 9 "%m8importance on the walls."
+#message 10 "%m8interest on the floor."
+#message 11 "You look in the mirror and see the relection of a poor, but beautiful, peasant girl."
+#message 12 "The stairs spiral downward."
+#message 13 "It's just a wooden door."
+#message 14 "The door is locked."
+#message 15 "Which key do you want to use; the gold key, or the skeleton key?"
+#message 16 "The skeleton key does not fit the lock."
+#message 17 "Using the little gold key, you unlock the tower door."
+#message 18 "The door is already unlocked."
+#message 19 "You don't have a key."
+#message 20 "The door is already open."
+#message 21 "You hear something at the door!"
+#message 22 "What's this?!  A beautiful red rose has been pushed under your door!"
+#message 23 "You don't see a rose on the floor."
+#message 24 "You remove the little gold key from the red rose."
+#message 25 "The henchmen have taken all of your possessions, and you no longer have the gold key!%m30"
+#message 26 "You pick up the rose."
+#message 27 "Be brave!  It is not yet dawn."
+#message 28 "There's a beautiful red rose on the floor near the door."
+#message 29 "You have discovered a door at the top of this tower."
+#message 30 "  It looks like you're destined to be...Mrs. Edgar!"
+#message 31 "The henchmen have taken your rose and you no longer have the gold key!%m30"

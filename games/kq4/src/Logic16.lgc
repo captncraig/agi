@@ -1,0 +1,461 @@
+if (isset(new_room)) {
+  set.horizon(70);
+  load.logics(237);
+  load.logics(236);
+  load.logics(207);
+  load.logics(246);
+  if (!isset(f38)) {
+    v152 = 16;
+  }
+  else {
+    set(f82);
+    load.sound(20);
+    load.sound(21);
+    load.sound(48);
+    load.logics(229);
+    load.view(24);
+    load.view(130);
+    load.view(131);
+    load.view(132);
+    animate.obj(o2);
+    animate.obj(o3);
+    animate.obj(o5);
+    animate.obj(o12);
+    animate.obj(o4);
+    v152 = 116;
+    v159 = 0;
+    v160 = 0;
+    v224 = 0;
+  }
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.view(137);
+  if (has("Shovel")) {
+    load.view(32);
+  }
+  if (prev_room_no == 15) {
+    if (v34 < 111) {
+      position(Ego, 1, 99);
+    }
+  }
+  call(246);
+  draw(Ego);
+  show.pic();
+}
+if (isset(f112)) {
+  reset(f112);
+  v168++;
+}
+if (said("dig", "rol")) {
+  if (has("Shovel")) {
+    if (v144 > 0) {
+      if (isset(ego_touching_signal_line)) {
+        set(f36);
+        set.view(o12, 32);
+        current.loop(Ego, v147);
+        get.posn(Ego, v33, v34);
+        if (v147 == 0) {
+          position.v(o12, v33, v34);
+          set.loop(o12, 0);
+        }
+        else {
+          v33 -= 12;
+          position.v(o12, v33, v34);
+          set.loop(o12, 1);
+        }
+        erase(Ego);
+        v154 = 2;
+        cycle.time(o12, v154);
+        draw(o12);
+        animate.obj(o1);
+        set.view(o1, 137);
+        set.loop(o1, 4);
+        fix.loop(o1);
+        v134 = v33;
+        v135 = v34;
+        if (v147 == 0) {
+          v135  += 5;
+          v134  += 7;
+        }
+        else {
+          v135  += 5;
+        }
+        position.v(o1, v134, v135);
+        v153 = 0;
+        set.cel.v(o1, v153);
+        stop.cycling(o1);
+        draw(o1);
+        v153++;
+        set(f221);
+      }
+      else {
+        print("The ground is too hard here.");
+      }
+    }
+    else {
+      print("You don't know what to dig for...yet.");
+    }
+  }
+  else {
+    print("You have nothing to dig with.");
+  }
+}
+if (isset(f221)) {
+  reset(f221);
+  end.of.loop(o12, f222);
+}
+if (isset(f222)) {
+  reset(f222);
+  set.cel.v(o1, v153);
+  set.cel(o12, 0);
+  v153++;
+  set(f221);
+}
+if ((v153 == 6) && 
+    (isset(f221))) {
+  reset(f221);
+  reset(f222);
+  v146 = 137;
+  v149 = 4;
+  v147 = 4;
+  v151 = 4;
+  v148 = 6;
+  get.posn(o1, v134, v135);
+  add.to.pic.v(v146, v147, v148, v134, v135, v151, v149);
+  erase(o1);
+  v173++;
+  call(246);
+  get.posn(o12, v33, v34);
+  current.loop(o12, v147);
+  if (v147 == 1) {
+    v33  += 12;
+  }
+  set.view(Ego, 0);
+  position.v(Ego, v33, v34);
+  erase(o12);
+  draw(Ego);
+  reset(f36);
+  call(236);
+}
+if (v173 == 5) {
+  v173++;
+  print("Oops!  Your shovel has broken and is no longer of any use.");
+  drop("Shovel");
+  get("Broken Shovel");
+}
+if ((isset(f38)) && 
+    (isset(f154)) && 
+    (v224 < 3) && 
+    (!isset(f36))) {
+  sound(20, f154);
+}
+if ((isset(f38)) && 
+    (v168 == 5)) {
+  sound(20, f154);
+  v155 = 0;
+  set(f223);
+  set.view(o2, 130);
+  set.loop(o2, 0);
+  set.cel(o2, 0);
+  position(o2, 132, 107);
+  draw(o2);
+  set(f191);
+}
+if ((isset(f38)) && 
+    (v168 == 10)) {
+  v162 = 0;
+  set(f230);
+  set.view(o5, 130);
+  set.loop(o5, 2);
+  set.cel(o5, 0);
+  position(o5, 120, 157);
+  draw(o5);
+}
+if ((isset(f38)) && 
+    (v168 == 15)) {
+  v156 = 0;
+  set(f224);
+  set.view(o3, 130);
+  set.loop(o3, 1);
+  set.cel(o3, 0);
+  position(o3, 34, 132);
+  draw(o3);
+}
+if ((isset(f223)) && 
+    (v155 == 0)) {
+  reset(f223);
+  start.cycling(o2);
+  end.of.loop(o2, f223);
+  v155++;
+}
+if ((isset(f230)) && 
+    (v162 == 0)) {
+  reset(f230);
+  start.cycling(o5);
+  end.of.loop(o5, f230);
+  v162++;
+}
+if ((isset(f223)) && 
+    (v155 == 1)) {
+  v224++;
+  set(f236);
+  reset(f223);
+  v155++;
+  add.to.pic(137, 5, 0, 132, 107, 4, 2);
+  set.view(o2, 131);
+  v154 = 2;
+  step.time(o2, v154);
+  v154 = 2;
+  cycle.time(o2, v154);
+  start.cycling(o2);
+  follow.ego(o2, 5, f223);
+}
+if ((isset(f230)) && 
+    (v162 == 1)) {
+  reset(f230);
+  v162++;
+  add.to.pic(137, 5, 0, 120, 157, 4, 2);
+  set.view(o5, 137);
+  v154 = 2;
+  step.time(o5, v154);
+  v154 = 2;
+  cycle.time(o5, v154);
+  start.cycling(o5);
+  follow.ego(o5, 5, f230);
+}
+if ((isset(f224)) && 
+    (v156 == 0)) {
+  reset(f224);
+  start.cycling(o3);
+  end.of.loop(o3, f224);
+  v156++;
+}
+if ((isset(f224)) && 
+    (v156 == 1)) {
+  reset(f224);
+  v156++;
+  add.to.pic(137, 5, 0, 34, 132, 4, 2);
+  set.view(o3, 132);
+  v154 = 2;
+  step.time(o3, v154);
+  v154 = 2;
+  cycle.time(o3, v154);
+  start.cycling(o3);
+  follow.ego(o3, 5, f224);
+}
+distance(Ego, o2, v221);
+distance(Ego, o3, v222);
+distance(Ego, o5, v223);
+if ((v221 < 10 || 
+    v222 < 10 || 
+    v223 < 10) && 
+    (!has("Obsidian Scarab"))) {
+  set(f36);
+  set.loop(Ego, 2);
+  sound(21, f154);
+  stop.motion(o2);
+  stop.motion(o3);
+  stop.motion(o5);
+  stop.cycling(o2);
+  stop.cycling(o3);
+  stop.cycling(o5);
+  get.posn(Ego, v33, v34);
+  set.view(o12, 24);
+  position.v(o12, v33, v34);
+  set.loop(o12, 5);
+  erase(Ego);
+  draw(o12);
+  v154 = 3;
+  cycle.time(o12, v154);
+  end.of.loop(o12, f225);
+  v157 = 0;
+}
+if ((isset(f225)) && 
+    (v157 == 0)) {
+  reset(f225);
+  set.view(o12, 24);
+  set.cel(o12, 0);
+  set.loop(o12, 4);
+  v154 = 3;
+  cycle.time(o12, v154);
+  end.of.loop(o12, f225);
+  v157++;
+}
+if (!isset(sound_on)) {
+  set(f239);
+}
+if ((isset(f225)) && 
+    (v157 == 1)) {
+  if (isset(f239)) {
+    set(f237);
+  }
+  set.loop(o12, 0);
+  v157++;
+}
+if ((isset(f225)) && 
+    (v157 == 2)) {
+  if (isset(f154)) {
+    set(f237);
+  }
+}
+if (isset(f237)) {
+  print("To wander forever is now your fate.");
+  reset(f237);
+  set(f140);
+}
+if ((v159 != 1) && 
+    (v221 < 15) && 
+    (has("Obsidian Scarab"))) {
+  print("The power of the scarab makes the zombie bid a hasty retreat.");
+  set.view(o2, 130);
+  set.loop(o2, 0);
+  fix.loop(o2);
+  set.cel(o2, 6);
+  v154 = 3;
+  cycle.time(o2, v154);
+  reverse.loop(o2, f227);
+  v159 = 1;
+}
+if (isset(f227)) {
+  reset(f227);
+  v146 = 137;
+  v147 = 5;
+  v148 = 0;
+  v149 = 4;
+  v151 = 4;
+  get.posn(o2, v134, v135);
+  erase(o2);
+  add.to.pic.v(v146, v147, v148, v134, v135, v151, v149);
+  v224++;
+}
+if ((v160 != 1) && 
+    (v222 < 15) && 
+    (has("Obsidian Scarab"))) {
+  print("The power of the scarab makes the zombie bid a hasty retreat.");
+  set.view(o3, 130);
+  set.loop(o3, 1);
+  fix.loop(o3);
+  set.cel(o3, 6);
+  v154 = 3;
+  cycle.time(o3, v154);
+  reverse.loop(o3, f228);
+  v160 = 1;
+}
+if (isset(f228)) {
+  reset(f228);
+  v146 = 137;
+  v147 = 5;
+  v148 = 0;
+  v149 = 4;
+  v151 = 4;
+  get.posn(o3, v134, v135);
+  erase(o3);
+  add.to.pic.v(v146, v147, v148, v134, v135, v151, v149);
+  reset(f191);
+  v224++;
+  v159 = 0;
+}
+if ((v161 != 1) && 
+    (v223 < 15) && 
+    (has("Obsidian Scarab"))) {
+  print("The power of the scarab makes the zombie bid a hasty retreat.");
+  set.view(o5, 130);
+  set.loop(o5, 2);
+  fix.loop(o5);
+  set.cel(o5, 5);
+  v154 = 3;
+  cycle.time(o5, v154);
+  reverse.loop(o5, f229);
+  v161 = 1;
+}
+if (isset(f229)) {
+  reset(f229);
+  v146 = 137;
+  v147 = 5;
+  v148 = 0;
+  v149 = 4;
+  v151 = 4;
+  get.posn(o5, v134, v135);
+  erase(o5);
+  add.to.pic.v(v146, v147, v148, v134, v135, v151, v149);
+  v224++;
+  reset(f191);
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room"))) {
+  print("This run-down gloomy cemetery gives you the creeps!  Many of the old "
+        "tombstones have fallen over, and the entire place is overgrown with "
+        "grass and weeds.");
+}
+if ((said("read", "gravestone") || 
+    said("read", "epitaph") || 
+    said("examine", "epitaph") || 
+    said("read", "grave") || 
+    said("read", "epitaph", "abominable", "gravestone"))) {
+  call(237);
+  if (!isset(f238)) {
+    set(f113);
+  }
+  else {
+    reset(f238);
+  }
+}
+if (said("examine", "forest")) {
+  print("An old rotting tree adds appropriate charm to the decrepit cemetery.");
+}
+if ((said("look in", "hole") || 
+    said("examine", "hole") || 
+    said("look in", "forest") || 
+    said("examine", "hole", "forest"))) {
+  if (posn(Ego,65,115,78,153)) {
+    print("There is nothing of importance in the old tree.");
+  }
+  else {
+    if (v173 > 0) {
+      print("There is nothing in the hole.");
+    }
+    else {
+      set(f113);
+    }
+  }
+}
+if (!isset(input_parsed)) {
+  call(207);
+  if ((!isset(input_parsed)) && 
+      (v224 != 4) && 
+      (v224 > 0)) {
+    call(229);
+  }
+}
+Label1:
+if (ego_edge_code == bottom_edge) {
+  new.room(22); //##LE001##
+}
+if (ego_edge_code == right_edge) {
+  new.room(17); //##LE002##
+}
+if (ego_edge_code == horizon_edge) {
+  new.room(10); //##LE003##
+}
+if (ego_edge_code == left_edge) {
+  new.room(15); //##LE004##
+}
+return();
+
+//Messages
+#message 1 "This run-down gloomy cemetery gives you the creeps!  Many of the old tombstones have fallen over, and the entire place is overgrown with grass and weeds."
+#message 2 "The ground is too hard here."
+#message 3 "You have nothing to dig with."
+#message 4 "You don't know what to dig for...yet."
+#message 5 "Oops!  Your shovel has broken and is no longer of any use."
+#message 6 "An old rotting tree adds appropriate charm to the decrepit cemetery."
+#message 7 "There is nothing of importance in the old tree."
+#message 8 "The power of the scarab makes the zombie bid a hasty retreat."
+#message 9 "To wander forever is now your fate."
+#message 10 "There is nothing in the hole."

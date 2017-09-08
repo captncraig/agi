@@ -1,0 +1,233 @@
+if (isset(new_room)) {
+  set.horizon(72);
+  v152 = 36;
+  load.logics(151);
+  load.logics(211);
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.view(47);
+  load.view(164);
+  animate.obj(o1);
+  set.view(o1, 47);
+  position(o1, 93, 109);
+  v152 = 4;
+  cycle.time(o1, v152);
+  step.time(o1, v152);
+  wander(o1);
+  draw(o1);
+  animate.obj(o2);
+  set.view(o2, 164);
+  ignore.horizon(o2);
+  position(o2, 38, 29);
+  v152 = 4;
+  cycle.time(o2, v152);
+  set.loop(o2, 4);
+  draw(o2);
+  v222 = 3;
+  if (prev_room_no == 33) {
+    position(Ego, 42, 74);
+  }
+  else {
+    if (prev_room_no == 37) {
+      if (v34 < 103) {
+        position(Ego, 149, 90);
+      }
+    }
+    else {
+      position(Ego, 79, 166);
+    }
+  }
+  v221 = 0;
+  draw(Ego);
+  show.pic();
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "island") || 
+    said("examine", "around", "island") || 
+    said("examine", "around", "room"))) {
+  print("You are standing in the lovely garden of this enchanted island.  "
+        "Beside you, rises a grand ivory palace.  Within this garden, a bridge, "
+        "emblazoned with the figures of swans, arches over a mirror-like pond.  "
+        "A beautiful white swan floats serenely on it.");
+}
+if ((said("examine", "lake") || 
+    said("examine", "pool") || 
+    said("examine", "lake"))) {
+  print("A lovely bridge is reflected in the little pond.  Floating upon it, is "
+        "a majestic white swan.");
+}
+if (said("look in", "lake")) {
+  print("You peer down into the pond, but do not see anything of interest.");
+}
+if ((said("float") || 
+    said("float", "lake") || 
+    said("enter", "swimming") || 
+    said("hop", "pool") || 
+    said("enter", "swimming", "lake") || 
+    said("dive") || 
+    said("dive", "lake") || 
+    said("wade") || 
+    said("wade", "lake"))) {
+  print("You don't want to disturb the serenity of the pond.");
+}
+if ((said("carry", "lake") || 
+    said("carry", "lake", "lake"))) {
+  print("You have no reason to carry water.");
+}
+if ((said("drink", "lake") || 
+    said("carry", "drink") || 
+    said("carry") || 
+    said("drink") || 
+    said("carry", "drink", "lake") || 
+    said("carry", "drink", "lake", "lake"))) {
+  if (posn(Ego,54,100,126,127)) {
+    print("You bend over and take a drink of the pond water.  Yuck!  It may "
+          "look pretty, but it doesn't taste very good!");
+  }
+  else {
+    set(f113);
+  }
+}
+if (said("examine", "bridge")) {
+  print("The swan-carved bridge arches elegantly over the little pond.");
+}
+if (said("examine", "beneath", "bridge")) {
+  print("There is nothing of interest under the bridge.");
+}
+if (said("examine", "path")) {
+  print("A nice flagstone path circles the pond.");
+}
+if (said("examine", "bench")) {
+  print("A garden bench rests near the small pond.");
+}
+if ((said("sit") || 
+    said("sit", "bench") || 
+    said("sit", "rock", "bench"))) {
+  print("Not now!  You have too many things to do.");
+}
+if ((said("examine", "swan") || 
+    said("examine", "cute", "swan") || 
+    said("examine", "ivory", "swan"))) {
+  print("A beautiful white swan floats gracefully upon the little pond.");
+}
+if ((said("speak", "swan") || 
+    said("speak", "cute", "swan") || 
+    said("speak", "ivory", "swan") || 
+    said("speak", "with", "swan") || 
+    said("speak", "with", "cute", "swan") || 
+    said("speak", "with", "ivory", "swan"))) {
+  print("You can't talk to the swan!");
+}
+if ((said("carry", "swan") || 
+    said("carry", "ivory", "swan") || 
+    said("carry", "cute", "swan") || 
+    said("capture", "swan") || 
+    said("capture", "ivory", "swan") || 
+    said("capture", "cute", "swan"))) {
+  print("You don't need the swan.");
+}
+if ((said("embrace", "swan") || 
+    said("embrace", "ivory", "swan") || 
+    said("embrace", "cute", "swan"))) {
+  print("There's no need for that.");
+}
+if ((said("examine", "bird") || 
+    said("examine", "cockatoo"))) {
+  print("There are many exotic birds on this island.");
+}
+if (said("examine", "ocean")) {
+  print("You can see the ocean in the distance.");
+}
+if (said("examine", "beach")) {
+  print("You can see the beach in the distance.");
+}
+if ((said("speak", "bird") || 
+    said("speak", "bird") || 
+    said("speak", "cockatoo") || 
+    said("speak"))) {
+  print("\"Polly want a cracker!\"");
+}
+if ((said("embrace", "bird") || 
+    said("embrace", "cockatoo"))) {
+  print("You better not.  You might get bird feathers in your mouth.");
+}
+if ((said("capture", "bird") || 
+    said("capture", "cockatoo") || 
+    said("carry", "cockatoo") || 
+    said("carry", "bird"))) {
+  print("Not in this game.  Maybe next one.");
+}
+if (!isset(input_parsed)) {
+  call(151);
+}
+if (isset(f106)) {
+  reset(f106);
+  print("The exotic birds don't want it.");
+}
+if (!isset(input_parsed)) {
+  call(211);
+}
+Label1:
+get.posn(o1, v152, v153);
+if (v153 > 120) {
+  set.priority(o1, 9);
+}
+else {
+  release.priority(o1);
+}
+if (v222 > 0 && 
+    isset(f112)) {
+  v222--;
+  if (v222 <= 0) {
+    random(3, 7, v222);
+    if (isset(f221)) {
+      reset(f221);
+      stop.cycling(o2);
+      set.cel(o2, 0);
+    }
+    else {
+      set(f221);
+      start.cycling(o2);
+    }
+  }
+}
+if (ego_edge_code == bottom_edge) {
+  new.room(39); //##LE001##
+}
+if (ego_edge_code == horizon_edge) {
+  new.room(33); //##LE002##
+}
+if (ego_edge_code == right_edge) {
+  new.room(37); //##LE003##
+}
+return();
+
+//Messages
+#message 1 "You are standing in the lovely garden of this enchanted island.  Beside you, rises a grand ivory palace.  Within this garden, a bridge, emblazoned with the figures of swans, arches over a mirror-like pond.  A beautiful white swan floats serenely on it."
+#message 14 "A lovely bridge is reflected in the little pond.  Floating upon it, is a majestic white swan."
+#message 15 "You peer down into the pond, but do not see anything of interest."
+#message 16 "You don't want to disturb the serenity of the pond."
+#message 17 "You have no reason to carry water."
+#message 18 "You bend over and take a drink of the pond water.  Yuck!  It may look pretty, but it doesn't taste very good!"
+#message 19 "The swan-carved bridge arches elegantly over the little pond."
+#message 20 "There is nothing of interest under the bridge."
+#message 21 "A nice flagstone path circles the pond."
+#message 22 "A garden bench rests near the small pond."
+#message 23 "Not now!  You have too many things to do."
+#message 24 "A beautiful white swan floats gracefully upon the little pond."
+#message 25 "You can't talk to the swan!"
+#message 26 "You don't need the swan."
+#message 27 "There's no need for that."
+#message 28 "You can see the ocean in the distance."
+#message 29 "You can see the beach in the distance."
+#message 30 "The exotic birds don't want it."
+#message 31 "There are many exotic birds on this island."
+#message 32 "\"Polly want a cracker!\""
+#message 33 "You better not.  You might get bird feathers in your mouth."
+#message 34 "Not in this game.  Maybe next one."

@@ -1,0 +1,437 @@
+if (isset(new_room)) {
+  cycle_delay = 0;
+  reset(menu_enabled);
+  prevent.input();
+  program.control();
+  status.line.off();
+  reset(f151);
+  v152 = 206;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.view(173);
+  load.sound(3);
+  v220 = 221;
+  key_pressed = 0;
+  v238 = 0;
+  v153 = 4;
+  v154 = 18;
+  v155 = 123;
+  show.pic();
+  return();
+}
+if (isset(f155)) {
+  reset(input_parsed);
+  set(f225);
+}
+else {
+  set(input_parsed);
+}
+if (isset(f90)) {
+  reset(f90);
+  set(f224);
+  set(windows_remain);
+  print.at.v(v115, 5, 5, 30);
+}
+if ((key_pressed != 0) && 
+    (!isset(f155)) && 
+    (isset(f224)) && 
+    (v220 < 236) && 
+    (!isset(f221))) {
+  if ((key_pressed == 8) && 
+      (v220 > 220)) {
+    key_pressed = 0;
+    v220--;
+    v153--;
+    display.v(v154, v153, v155);
+  }
+  else {
+    if (key_pressed == 13) {
+      v220--;
+      set(f221);
+      reset(f224);
+    }
+    else {
+      if ((key_pressed > 96) && 
+          (key_pressed < 123)) {
+        v237 = key_pressed;
+        key_pressed = 0;
+        display.v(v154, v153, v237);
+        v153++;
+        v237 -= 32;
+        *v220 = v237;
+        v220++;
+      }
+      else {
+        if ((key_pressed > 64) && 
+            (key_pressed < 91)) {
+          v237 = key_pressed;
+          v237  += 32;
+          display.v(v154, v153, v237);
+          v153++;
+          *v220 = key_pressed;
+          key_pressed = 0;
+          v220++;
+        }
+      }
+    }
+  }
+}
+else {
+  if ((v220 > 234) && 
+      (!isset(f155)) && 
+      (isset(f224)) && 
+      (!isset(f221))) {
+    set(f223);
+  }
+}
+if ((isset(f221)) && 
+    (v220 > 220)) {
+  v237 = *v220;
+  v238  += v237;
+  v220--;
+}
+else {
+  if ((isset(f221)) && 
+      (v220 < 221)) {
+    reset(f224);
+    reset(f221);
+    set(f222);
+  }
+}
+if (isset(f222)) {
+  reset(f222);
+  if ((v115 == 30) && 
+      (v238 == 236)) {
+    key_pressed = 0;
+    new.room(96); //##LE001##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 31) && 
+      (v238 == 222)) {
+    key_pressed = 0;
+    new.room(96); //##LE002##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 32) && 
+      (v238 == 199)) {
+    key_pressed = 0;
+    new.room(96); //##LE003##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 33) && 
+      (v238 == 199)) {
+    key_pressed = 0;
+    new.room(96); //##LE004##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 34) && 
+      (v238 == 87)) {
+    key_pressed = 0;
+    new.room(96); //##LE005##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 35) && 
+      (v238 == 175)) {
+    key_pressed = 0;
+    new.room(96); //##LE006##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 36) && 
+      (v238 == 53)) {
+    key_pressed = 0;
+    new.room(96); //##LE007##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 37) && 
+      (v238 == 199)) {
+    key_pressed = 0;
+    new.room(96); //##LE008##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 38) && 
+      (v238 == 211)) {
+    key_pressed = 0;
+    new.room(96); //##LE009##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 39) && 
+      (v238 == 179)) {
+    key_pressed = 0;
+    new.room(96); //##LE010##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 40) && 
+      (v238 == 23)) {
+    key_pressed = 0;
+    new.room(96); //##LE011##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 41) && 
+      (v238 == 176)) {
+    key_pressed = 0;
+    new.room(96); //##LE012##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 42) && 
+      (v238 == 109)) {
+    key_pressed = 0;
+    new.room(96); //##LE013##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 43) && 
+      (v238 == 116)) {
+    key_pressed = 0;
+    new.room(96); //##LE014##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 44) && 
+      (v238 == 24)) {
+    key_pressed = 0;
+    new.room(96); //##LE015##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 45) && 
+      (v238 == 139)) {
+    key_pressed = 0;
+    new.room(96); //##LE016##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 46) && 
+      (v238 == 240)) {
+    key_pressed = 0;
+    new.room(96); //##LE017##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 47) && 
+      (v238 == 116)) {
+    key_pressed = 0;
+    new.room(96); //##LE018##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 48) && 
+      (v238 == 133)) {
+    key_pressed = 0;
+    new.room(96); //##LE019##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 49) && 
+      (v238 == 118)) {
+    key_pressed = 0;
+    new.room(96); //##LE020##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 50) && 
+      (v238 == 11)) {
+    key_pressed = 0;
+    new.room(96); //##LE021##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 51) && 
+      (v238 == 30)) {
+    key_pressed = 0;
+    new.room(96); //##LE022##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 52) && 
+      (v238 == 198)) {
+    key_pressed = 0;
+    new.room(96); //##LE023##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 53) && 
+      (v238 == 17)) {
+    key_pressed = 0;
+    new.room(96); //##LE024##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 54) && 
+      (v238 == 67)) {
+    key_pressed = 0;
+    new.room(96); //##LE025##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 55) && 
+      (v238 == 26)) {
+    key_pressed = 0;
+    new.room(96); //##LE026##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 56) && 
+      (v238 == 98)) {
+    key_pressed = 0;
+    new.room(96); //##LE027##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 57) && 
+      (v238 == 90)) {
+    key_pressed = 0;
+    new.room(96); //##LE028##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 58) && 
+      (v238 == 207)) {
+    key_pressed = 0;
+    new.room(96); //##LE029##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 59) && 
+      (v238 == 141)) {
+    key_pressed = 0;
+    new.room(96); //##LE030##
+  }
+  else {
+    set(f223);
+  }
+}
+if (isset(f225)) {
+  if (said("marble")) {
+    key_pressed = 0;
+    new.room(96); //##LE031##
+  }
+  if (said("pirate")) {
+    sound(3, f226);
+    random(0, 1, v157);
+    if (v157 > 0) {
+      add.to.pic(173, 0, 0, 57, 156, 14, 1);
+    }
+    else {
+      add.to.pic(173, 1, 0, 57, 156, 14, 1);
+    }
+    set(windows_remain);
+    print.at("Your privileges to the game have been suspended because you are a "
+             "pirate!\n\n        \"Yo ho ho!\"", 4, 7, 30);
+  }
+}
+if (isset(f226)) {
+  quit(1);
+}
+if (isset(f223)) {
+  reset(f223);
+  print("Sorry, what you just typed does not match the King's Quest IV manual. "
+        "You must have the manual in order to play this game. If you have lost "
+        "your manual, contact Sierra's Customer Support Dept. The phone number "
+        "is printed on your original disk label. Thank you.");
+  quit(1);
+}
+return();
+
+//Messages
+#message 30 "%m160 On page 8, what is the last word of the first sentence in the first paragraph?"
+#message 31 "%m160 On page 6, what is the last word in the second paragraph?"
+#message 32 "%m160 On page 8, what is the second word in the third paragraph?"
+#message 33 "%m160 On page 8, what is the sixth word in the third paragraph?"
+#message 34 "%m160 On page 8, what is the ninth word in the third paragraph?"
+#message 35 "%m160 On page 9, what is the third word in the first paragraph?"
+#message 36 "%m160 On page 9, what is the fourth word in the first paragraph?"
+#message 37 "%m160 On page 9, what is the seventh word in the first paragraph?"
+#message 38 "%m160 On page 6, what is the fourth word in the second paragraph?"
+#message 39 "%m160 On page 6, what is the eighth word in the second paragraph?"
+#message 40 "%m160 On page 9, what is the seventh word in the second paragraph?"
+#message 41 "%m160 On page 5, what is the seventh word in the fifth paragraph?"
+#message 42 "%m160 On page 2, what is the sixth word in the second paragraph?"
+#message 43 "%m160 On page 2, what is the eighth word in the second paragraph?"
+#message 44 "%m160 On page 3, what is the tenth word in the first paragraph?"
+#message 45 "%m160 On page 4, what is the second word in the second paragraph?"
+#message 46 "%m160 On page 4, what is the fourth word in the third paragraph?"
+#message 47 "%m160 On page 5, what is the third word in the second paragraph?"
+#message 48 "%m160 On page 5, what is the eighth word in the third paragraph?"
+#message 49 "%m160 On page 5, what is the eighth word in the fourth paragraph?"
+#message 50 "%m160 On page 6, what is the ninth word in the first paragraph?"
+#message 51 "%m160 On page 7, what is the ninth word of the third paragraph?"
+#message 52 "%m160 What is the second word of the first paragraph in the OVERVIEW?"
+#message 53 "%m160 What is the first word of the second paragraph in the OVERVIEW?"
+#message 54 "%m160 What is the third word of the second paragraph in the OVERVIEW?"
+#message 55 "%m160 What is the sixth word of the first paragraph in the OVERVIEW?"
+#message 56 "%m160 In the section TIPS FOR NEW ADVENTURE PLAYERS, what is the first word of tip #1 (HOW TO MOVE AROUND)?"
+#message 57 "%m160 In the section TIPS FOR NEW ADVENTURE PLAYERS, what is the sixth word of tip #1 (HOW TO MOVE AROUND)?"
+#message 58 "%m160 In the section TIPS FOR NEW ADVENTURE PLAYERS, what is the fifth word in the first paragraph of tip #2 (STAY OUT OF DANGER)?"
+#message 59 "%m160 In the section TIPS FOR NEW ADVENTURE PLAYERS, what is the eighth word in the second paragraph of tip #2 (STAY OUT OF DANGER)?"
+#message 97 "A"
+#message 98 "B"
+#message 99 "C"
+#message 100 "D"
+#message 101 "E"
+#message 102 "F"
+#message 103 "G"
+#message 104 "H"
+#message 105 "I"
+#message 106 "J"
+#message 107 "K"
+#message 108 "L"
+#message 109 "M"
+#message 110 "N"
+#message 111 "O"
+#message 112 "P"
+#message 113 "Q"
+#message 114 "R"
+#message 115 "S"
+#message 116 "T"
+#message 117 "U"
+#message 118 "V"
+#message 119 "W"
+#message 120 "X"
+#message 121 "Y"
+#message 122 "Z"
+#message 123 " "
+#message 160 "In order to verify your legal ownership, please use your King's Quest IV manual to answer the following question:\n\n"
+#message 171 "Your privileges to the game have been suspended because you are a pirate!\n\n        \"Yo ho ho!\""
+#message 172 "Sorry, what you just typed does not match the King's Quest IV manual. You must have the manual in order to play this game. If you have lost your manual, contact Sierra's Customer Support Dept. The phone number is printed on your original disk label. Thank you."

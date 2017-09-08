@@ -1,0 +1,200 @@
+set(f36);
+status.line.off();
+cycle_delay = 2;
+if (isset(new_room)) {
+  v153 = 209;
+  load.pic(v153);
+  draw.pic(v153);
+  discard.pic(v153);
+  load.view(185);
+  set.view(o1, 185);
+  animate.obj(o1);
+  position(o1, 48, 70);
+  set.loop(o1, 0);
+  fix.loop(o1);
+  set.cel(o1, 0);
+  set.priority(o1, 15);
+  draw(o1);
+  stop.update(o1);
+  set.view(o2, 185);
+  animate.obj(o2);
+  position(o2, 91, 68);
+  set.loop(o2, 1);
+  fix.loop(o2);
+  set.cel(o2, 0);
+  set.priority(o2, 15);
+  draw(o2);
+  stop.update(o2);
+  set.view(o3, 185);
+  animate.obj(o3);
+  position(o3, 75, 153);
+  set.loop(o3, 2);
+  set.priority(o3, 15);
+  draw(o3);
+  stop.update(o3);
+  set.view(o4, 185);
+  animate.obj(o4);
+  position(o4, 69, 90);
+  set.loop(o4, 3);
+  fix.loop(o4);
+  set.priority(o4, 15);
+  draw(o4);
+  v155 = 3;
+  cycle.time(o4, v155);
+  start.cycling(o4);
+  v220 = 0;
+  set(f220);
+  v221 = 0;
+  show.pic();
+  return();
+}
+if ((v221 > 0) && 
+    (isset(f112))) {
+  v221--;
+  if (v221 <= 0) {
+    close.window();
+    set(f220);
+  }
+}
+if ((isset(f220)) && 
+    (!isset(f68))) {
+  reset(f220);
+  v220++;
+  if (v220 == 1) {
+    load.sound(109);
+    sound(109, f154);
+    set(windows_remain);
+    v221 = 8;
+    if (isset(f56)) {
+      print.at("Rosella looks awestruck at the fairy. She is stunningly "
+               "beautiful! But still there is a certain sadness to her.", 18, 2, 36);
+    }
+    else {
+      print.at("Rosella looks awestruck at the fairy. She is stunningly "
+               "beautiful! But still there is a certain sadness to her.", 16, 2, 36);
+    }
+  }
+  if (v220 == 2) {
+    set(windows_remain);
+    v221 = 8;
+    if (isset(f56)) {
+      print.at("Finally, Rosella speaks. \"I know you would like me to help you "
+               "in some way, but I don't know how I could help a fairy.\"", 18, 4, 35);
+    }
+    else {
+      print.at("Finally, Rosella speaks. \"I know you would like me to help you "
+               "in some way, but I don't know how I could help a fairy.\"", 16, 4, 35);
+    }
+    start.update(o1);
+    v156 = 3;
+    cycle.time(o1, v156);
+    start.cycling(o1);
+  }
+  if (v220 == 3) {
+    close.window();
+    new.room(130); //##LE001##
+  }
+}
+if ((isset(f220)) && 
+    (isset(f68))) {
+  reset(f220);
+  v220++;
+  if (v220 == 1) {
+    load.sound(111);
+    sound(111, f154);
+    set(windows_remain);
+    v221 = 13;
+    if (isset(f56)) {
+      print.at("Intently, Genesta looks at Rosella. \"Lolotte is very evil and "
+               "will use the talisman to bring more evil to Tamir. Now I fear "
+               "it will contaminate my whole country!\"", 17, 2, 37);
+    }
+    else {
+      print.at("Intently, Genesta looks at Rosella. \"Lolotte is very evil and "
+               "will use the talisman to bring more evil to Tamir. Now I fear "
+               "it will contaminate my whole country!\"", 15, 2, 37);
+    }
+    start.update(o2);
+    v156 = 3;
+    cycle.time(o2, v156);
+    start.cycling(o2);
+  }
+  if (v220 == 2) {
+    set(windows_remain);
+    v221 = 6;
+    if (isset(f56)) {
+      print.at("\"Further, I cannot send you home without my talisman.\"", 19, 6, 30);
+    }
+    else {
+      print.at("\"Further, I cannot send you home without my talisman.\"", 17, 6, 30);
+    }
+  }
+  if (v220 == 3) {
+    stop.update(o2);
+    set.cel(o2, 0);
+    force.update(o2);
+    set(windows_remain);
+    v221 = 8;
+    if (isset(f56)) {
+      print.at("Rosella is unsure as to what SHE can do. Meekly, she asks, \"I "
+               "want to help you, but how?\"", 19, 4, 35);
+    }
+    else {
+      print.at("Rosella is unsure as to what SHE can do. Meekly, she asks, \"I "
+               "want to help you, but how?\"", 17, 4, 35);
+    }
+    start.update(o1);
+    cycle.time(o1, v156);
+    start.cycling(o1);
+  }
+  if (v220 == 4) {
+    stop.update(o1);
+    set.cel(o1, 0);
+    force.update(o1);
+    set(windows_remain);
+    v221 = 10;
+    if (isset(f56)) {
+      print.at("\"You can do more than you think, Rosella,\" Genesta assures "
+               "her. \"I believe you will be able to penetrate Lolotte's "
+               "domain.\"", 18, 3, 37);
+    }
+    else {
+      print.at("\"You can do more than you think, Rosella,\" Genesta assures "
+               "her. \"I believe you will be able to penetrate Lolotte's "
+               "domain.\"", 16, 3, 37);
+    }
+    start.update(o2);
+    start.cycling(o2);
+  }
+  if (v220 == 5) {
+    new.room(130); //##LE002##
+  }
+}
+return();
+
+//Messages
+#message 21 "The lovely fairy speaks. \"I am the fairy, Genesta. Welcome to Tamir!\""
+#message 22 "Rosella looks awestruck at the fairy. She is stunningly beautiful! But still there is a certain sadness to her."
+#message 23 "Genesta looks sadder than ever. \"You're wrong, Rosella. You see, I'm losing my magical powers. Yesterday as I was strolling through the woods, Lolotte, the evil fairy, caught me unawares and stole my magic talisman.\""
+#message 24 "The fairy sighs, \"She yanked it from my neck and raced away screeching with laughter. Immediately I felt my powers diminishing and my body weakening. I will die in 24 hours if my talisman is not returned.\""
+#message 25 "Intently, Genesta looks at Rosella. \"Lolotte is very evil and will use the talisman to bring more evil to Tamir. Now I fear it will contaminate my whole country!\""
+#message 26 "Rosella is unsure as to what SHE can do. Meekly, she asks, \"I want to help you, but how?\""
+#message 27 "\"You can do more than you think, Rosella,\" Genesta assures her. \"I believe you will be able to penetrate Lolotte's domain.\""
+#message 28 "Suddenly, Rosella remembers the tiny tree. \"Can you tell me where to find the magic fruit?\""
+#message 29 "Remorsefully, Genesta looks at Rosella. \"It will not be easy to reach the tree. It grows on a tiny island within a vast swamp on the other side of the great mountains.\""
+#message 30 "Bravely fighting back tears, Rosella says, \"I will help you in any way I can, Genesta. How can I find Lolotte?\""
+#message 31 "The beautiful fairy points eastward. \"Lolotte's castle overlooks Tamir from the great mountains.\""
+#message 32 "Genesta looks weaker as she says, \"There is not much more I can do, Rosella. As it is, it will be difficult for me to fly home again.\""
+#message 33 "\"One thing I must do for you, though. I shall disguise you as a peasant girl so as not to attract attention.\""
+#message 34 "\"Th-thank you, Genesta...I think,\" Rosella stammers."
+#message 35 "\"It will be better for you,\" the fairy says. \"Well, I must be off while I can still fly. I KNOW you can do it!\""
+#message 36 "\"Good bye, good luck.\""
+#message 37 "Well, you're on your own, Rosella."
+#message 200 "Debug0"
+#message 201 "Debug1"
+#message 202 "Debug2"
+#message 204 "Debug4"
+#message 205 "Debug5"
+#message 206 "Debug6"
+#message 220 "Finally, Rosella speaks. \"I know you would like me to help you in some way, but I don't know how I could help a fairy.\""
+#message 250 "\"Further, I cannot send you home without my talisman.\""

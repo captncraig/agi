@@ -1,0 +1,93 @@
+set(f36);
+status.line.off();
+cycle_delay = 2;
+if (isset(new_room)) {
+  prevent.input();
+  v152 = 81;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.view(206);
+  animate.obj(o1);
+  set.view(o1, 206);
+  position(o1, 108, 86);
+  set.loop(o1, 1);
+  fix.loop(o1);
+  set.cel(o1, 0);
+  v158 = 6;
+  cycle.time(o1, v158);
+  draw(o1);
+  animate.obj(o2);
+  set.view(o2, 206);
+  position(o2, 41, 82);
+  set.loop(o2, 0);
+  fix.loop(o2);
+  set.cel(o2, 0);
+  v158 = 6;
+  cycle.time(o2, v158);
+  draw(o2);
+  animate.obj(o12);
+  set.view(o12, 206);
+  position(o12, 102, 112);
+  set.loop(o12, 2);
+  fix.loop(o12);
+  set.cel(o12, 0);
+  set.priority(o12, 15);
+  v156 = 4;
+  cycle.time(o12, v156);
+  draw(o12);
+  stop.cycling(o12);
+  add.to.pic(206, 3, 0, 28, 139, 15, 1);
+  set(f220);
+  show.pic();
+  return();
+}
+if ((v221 > 0) && 
+    (isset(f112))) {
+  v221--;
+  if (v221 <= 0) {
+    close.window();
+    set(f220);
+  }
+}
+if (isset(f221)) {
+  stop.update(o1);
+}
+if (isset(f222)) {
+  stop.update(o2);
+}
+if (isset(f221) && 
+    isset(f222)) {
+  set(f220);
+  reset(f221);
+  reset(f222);
+}
+if (isset(f220)) {
+  reset(f220);
+  v220++;
+  if (v220 == 1) {
+    end.of.loop(o1, f221);
+    end.of.loop(o2, f222);
+  }
+  if (v220 == 2) {
+    set(windows_remain);
+    v221 = 6;
+    if (isset(f56)) {
+      print.at("Oh, oh, Rosella! Morning has come! It appears as if you're "
+               "stuck marrying ol' Edgar.", 19, 3, 35);
+    }
+    else {
+      print.at("Oh, oh, Rosella! Morning has come! It appears as if you're "
+               "stuck marrying ol' Edgar.", 17, 3, 35);
+    }
+    end.of.loop(o12, f224);
+  }
+  if (v220 == 3) {
+    stop.update(o12);
+    new.room(132); //##LE001##
+  }
+}
+return();
+
+//Messages
+#message 1 "Oh, oh, Rosella! Morning has come! It appears as if you're stuck marrying ol' Edgar."

@@ -1,0 +1,144 @@
+if (isset(new_room)) {
+  set.horizon(65);
+  v152 = 38;
+  load.logics(211);
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.view(164);
+  animate.obj(o1);
+  set.view(o1, 164);
+  ignore.horizon(o1);
+  position(o1, 104, 24);
+  v152 = 4;
+  cycle.time(o1, v152);
+  set.loop(o1, 3);
+  draw(o1);
+  v222 = 3;
+  animate.obj(o2);
+  set.view(o2, 164);
+  ignore.horizon(o2);
+  position(o2, 120, 31);
+  v152 = 4;
+  cycle.time(o2, v152);
+  set.loop(o2, 2);
+  draw(o2);
+  v223 = 2;
+  if (prev_room_no == 37) {
+    if (v34 < 103) {
+      position(Ego, 2, 95);
+    }
+  }
+  else {
+    if (prev_room_no == 35) {
+      position(Ego, 95, 67);
+    }
+    else {
+      position(Ego, 75, 164);
+    }
+  }
+  draw(Ego);
+  show.pic();
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "island") || 
+    said("examine", "around", "island") || 
+    said("examine", "around", "room"))) {
+  print("You are roaming through the wonderful island garden.  Towering beside "
+        "you, is an enchanting ivory palace.  You see an interesting statue "
+        "within this part of the garden.");
+}
+if ((said("examine", "lion") || 
+    said("examine", "dolphin") || 
+    said("examine", "rock", "dolphin") || 
+    said("examine", "rock", "lion"))) {
+  print("Depicted in the statue; a pair of dolphins leap gracefully from a "
+        "wave.");
+}
+if ((said("examine", "path") || 
+    said("examine", "rock", "path"))) {
+  print("A nice flagstone path circles the statue.");
+}
+if (said("examine", "beach")) {
+  print("You can see the beach in the distance.");
+}
+if ((said("examine", "bird") || 
+    said("examine", "cockatoo"))) {
+  print("There are many exotic birds on this island.");
+}
+if ((said("speak", "bird") || 
+    said("speak", "cockatoo") || 
+    said("speak"))) {
+  print("\"Polly want a cracker!\"");
+}
+if ((said("embrace", "bird") || 
+    said("embrace", "cockatoo"))) {
+  print("You better not.  You might get bird feathers in your mouth.");
+}
+if ((said("capture", "bird") || 
+    said("capture", "cockatoo") || 
+    said("carry", "cockatoo") || 
+    said("carry", "bird"))) {
+  print("Not in this game.  Maybe next one.");
+}
+if (!isset(input_parsed)) {
+  call(211);
+}
+Label1:
+if (v222 > 0 && 
+    isset(f112)) {
+  v222--;
+  if (v222 <= 0) {
+    random(3, 7, v222);
+    if (isset(f221)) {
+      reset(f221);
+      stop.cycling(o1);
+      set.cel(o1, 1);
+    }
+    else {
+      set(f221);
+      start.cycling(o1);
+    }
+  }
+}
+if (v223 > 0 && 
+    isset(f112)) {
+  v223--;
+  if (v223 <= 0) {
+    random(3, 7, v223);
+    if (isset(f222)) {
+      reset(f222);
+      stop.cycling(o2);
+      set.cel(o2, 1);
+    }
+    else {
+      set(f222);
+      start.cycling(o2);
+    }
+  }
+}
+if (ego_edge_code == bottom_edge) {
+  new.room(41); //##LE001##
+}
+if (ego_edge_code == horizon_edge) {
+  new.room(35); //##LE002##
+}
+if (ego_edge_code == left_edge) {
+  new.room(37); //##LE003##
+}
+return();
+
+//Messages
+#message 1 "You are roaming through the wonderful island garden.  Towering beside you, is an enchanting ivory palace.  You see an interesting statue within this part of the garden."
+#message 2 "Depicted in the statue; a pair of dolphins leap gracefully from a wave."
+#message 3 "A nice flagstone path circles the statue."
+#message 4 "You can see the beach in the distance."
+#message 31 "There are many exotic birds on this island."
+#message 32 "\"Polly want a cracker!\""
+#message 33 "You better not.  You might get bird feathers in your mouth."
+#message 34 "Not in this game.  Maybe next one."

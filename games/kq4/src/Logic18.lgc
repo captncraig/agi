@@ -1,0 +1,681 @@
+if (isset(new_room)) {
+  set.horizon(80);
+  if (!isset(f38)) {
+    v152 = 18;
+  }
+  else {
+    v152 = 118;
+  }
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  if (prev_room_no == 69) {
+    discard.view(1);
+    load.view(0);
+    set.view(Ego, 0);
+    position(Ego, 122, 137);
+  }
+  load.sound(70);
+  load.logics(204);
+  load.logics(207);
+  load.logics(239);
+  load.logics(238);
+  load.logics(246);
+  load.sound(48);
+  load.sound(20);
+  load.sound(21);
+  if (isset(f38)) {
+    set(f82);
+    load.logics(229);
+    load.view(24);
+    load.view(133);
+    load.view(134);
+    animate.obj(o2);
+    animate.obj(o3);
+    animate.obj(o4);
+    animate.obj(o12);
+    v152 = 118;
+    v159 = 0;
+    v160 = 0;
+    v224 = 0;
+  }
+  load.view(137);
+  call(246);
+  load.view(138);
+  animate.obj(o5);
+  set.view(o5, 138);
+  set.loop(o5, 2);
+  if (!isset(f146)) {
+    set.cel(o5, 0);
+  }
+  else {
+    set.cel(o5, 4);
+  }
+  set.priority(o5, 4);
+  ignore.blocks(o5);
+  ignore.objs(o5);
+  position(o5, 135, 135);
+  stop.cycling(o5);
+  draw(o5);
+  if (has("Shovel")) {
+    load.view(32);
+  }
+  if (prev_room_no == 12) {
+    if (v33 > 26) {
+      position(Ego, 13, 82);
+    }
+  }
+  if (prev_room_no == 24) {
+    position(Ego, 79, 163);
+  }
+  draw(Ego);
+  show.pic();
+}
+if (isset(f146)) {
+  ignore.blocks(Ego);
+}
+else {
+  observe.blocks(Ego);
+}
+if (isset(f112)) {
+  reset(f112);
+  v168++;
+}
+if (said("dig", "rol")) {
+  if (has("Shovel")) {
+    if (v144 > 0) {
+      if (isset(ego_touching_signal_line)) {
+        v37 = 1;
+        set(f36);
+        set.view(o12, 32);
+        current.loop(Ego, v147);
+        get.posn(Ego, v33, v34);
+        if (v147 == 0) {
+          position.v(o12, v33, v34);
+          set.loop(o12, 0);
+        }
+        else {
+          v33 -= 12;
+          position.v(o12, v33, v34);
+          set.loop(o12, 1);
+        }
+        erase(Ego);
+        v154 = 2;
+        cycle.time(o12, v154);
+        draw(o12);
+        animate.obj(o1);
+        set.view(o1, 137);
+        set.loop(o1, 4);
+        fix.loop(o1);
+        v134 = v33;
+        v135 = v34;
+        if (v147 == 0) {
+          v135  += 5;
+          v134  += 7;
+        }
+        else {
+          v135  += 5;
+        }
+        position.v(o1, v134, v135);
+        v153 = 0;
+        set.cel.v(o1, v153);
+        stop.cycling(o1);
+        draw(o1);
+        v153++;
+        set(f221);
+      }
+      else {
+        print("The ground is too hard here.");
+      }
+    }
+    else {
+      print("You don't know what to dig for...yet.");
+    }
+  }
+  else {
+    print("You have nothing to dig with.");
+  }
+}
+if (isset(f221)) {
+  reset(f221);
+  end.of.loop(o12, f222);
+}
+if (isset(f222)) {
+  reset(f222);
+  set.cel.v(o1, v153);
+  set.cel(o12, 0);
+  v153++;
+  set(f221);
+}
+if ((v153 == 6) && 
+    (isset(f221))) {
+  reset(f221);
+  reset(f222);
+  v146 = 137;
+  v149 = 4;
+  v147 = 4;
+  v151 = 4;
+  v148 = 6;
+  get.posn(o1, v134, v135);
+  add.to.pic.v(v146, v147, v148, v134, v135, v151, v149);
+  erase(o1);
+  v173++;
+  call(246);
+  get.posn(o12, v33, v34);
+  current.loop(o12, v147);
+  if (v147 == 1) {
+    v33  += 12;
+  }
+  set.view(Ego, 0);
+  position.v(Ego, v33, v34);
+  erase(o12);
+  draw(Ego);
+  v37 = 0;
+  call(238);
+  reset(f36);
+}
+if (v173 == 5) {
+  v173++;
+  print("Oops!  Your shovel has broken and is no longer of any use.");
+  drop("Shovel");
+  get("Broken Shovel");
+}
+if ((isset(f154)) && 
+    (v224 < 3) && 
+    (isset(f38)) && 
+    (!isset(f36))) {
+  sound(20, f154);
+}
+if ((isset(f38)) && 
+    (v168 == 5)) {
+  sound(20, f154);
+  v155 = 0;
+  set(f223);
+  set.view(o2, 138);
+  set.loop(o2, 0);
+  set.cel(o2, 0);
+  position(o2, 46, 107);
+  draw(o2);
+  set(f191);
+}
+if ((isset(f38)) && 
+    (v168 == 10)) {
+  v158 = 0;
+  set(f226);
+  set.view(o4, 138);
+  set.loop(o4, 3);
+  set.cel(o4, 0);
+  position(o4, 46, 137);
+  draw(o4);
+}
+if ((isset(f38)) && 
+    (v168 == 15)) {
+  v156 = 0;
+  set(f224);
+  set.view(o3, 138);
+  set.loop(o3, 1);
+  set.cel(o3, 0);
+  position(o3, 94, 159);
+  draw(o3);
+}
+if ((isset(f223)) && 
+    (v155 == 0)) {
+  reset(f223);
+  start.cycling(o2);
+  end.of.loop(o2, f223);
+  v155++;
+}
+if ((isset(f223)) && 
+    (v155 == 1)) {
+  v224++;
+  set(f234);
+  reset(f223);
+  v155++;
+  add.to.pic(137, 5, 0, 46, 107, 4, 4);
+  set.view(o2, 133);
+  v154 = 2;
+  step.time(o2, v154);
+  v154 = 2;
+  cycle.time(o2, v154);
+  start.cycling(o2);
+  follow.ego(o2, 5, f223);
+}
+if ((isset(f226)) && 
+    (v158 == 0)) {
+  reset(f226);
+  start.cycling(o4);
+  end.of.loop(o4, f226);
+  v158++;
+}
+if ((isset(f226)) && 
+    (v158 == 1)) {
+  reset(f226);
+  v158++;
+  add.to.pic(137, 5, 0, 46, 137, 4, 4);
+  set.view(o4, 137);
+  v154 = 2;
+  step.time(o4, v154);
+  v154 = 2;
+  cycle.time(o4, v154);
+  start.cycling(o4);
+  follow.ego(o4, 5, f226);
+}
+if ((isset(f224)) && 
+    (v156 == 0)) {
+  reset(f224);
+  start.cycling(o3);
+  end.of.loop(o3, f224);
+  v156++;
+}
+if ((isset(f224)) && 
+    (v156 == 1)) {
+  reset(f224);
+  v156++;
+  add.to.pic(137, 5, 0, 94, 159, 4, 4);
+  set.view(o3, 134);
+  v154 = 2;
+  step.time(o3, v154);
+  v154 = 2;
+  cycle.time(o3, v154);
+  start.cycling(o3);
+  follow.ego(o3, 5, f224);
+}
+distance(Ego, o2, v221);
+distance(Ego, o3, v222);
+distance(Ego, o4, v223);
+if ((v221 < 10 || 
+    v222 < 10 || 
+    v223 < 10) && 
+    (!has("Obsidian Scarab")) && 
+    (!isset(f36))) {
+  set(f36);
+  set.loop(Ego, 2);
+  sound(21, f154);
+  stop.motion(o2);
+  stop.motion(o3);
+  stop.motion(o4);
+  stop.cycling(o2);
+  stop.cycling(o3);
+  stop.cycling(o4);
+  get.posn(Ego, v33, v34);
+  set.view(o12, 24);
+  position.v(o12, v33, v34);
+  set.loop(o12, 5);
+  erase(Ego);
+  draw(o12);
+  v154 = 5;
+  cycle.time(o12, v154);
+  end.of.loop(o12, f225);
+  v157 = 0;
+}
+if ((isset(f225)) && 
+    (v157 == 0)) {
+  reset(f225);
+  set.view(o12, 24);
+  set.cel(o12, 0);
+  set.loop(o12, 4);
+  v154 = 4;
+  cycle.time(o12, v154);
+  end.of.loop(o12, f225);
+  v157++;
+}
+if (!isset(sound_on)) {
+  set(f239);
+}
+if ((isset(f225)) && 
+    (v157 == 1)) {
+  if (isset(f239)) {
+    set(f235);
+  }
+  set.loop(o12, 0);
+  v157++;
+}
+if ((isset(f225)) && 
+    (v157 == 2)) {
+  if (isset(f154)) {
+    set(f235);
+  }
+}
+if (isset(f235)) {
+  print("To wander forever is now your fate.");
+  reset(f235);
+  set(f140);
+}
+if ((v159 != 1) && 
+    (v221 < 15) && 
+    (has("Obsidian Scarab"))) {
+  print("The power of the scarab makes the zombie bid a hasty retreat.");
+  set.view(o2, 138);
+  set.loop(o2, 0);
+  fix.loop(o2);
+  set.cel(o2, 5);
+  v154 = 3;
+  cycle.time(o2, v154);
+  reverse.loop(o2, f227);
+  v159 = 1;
+}
+if (isset(f227)) {
+  reset(f227);
+  v146 = 137;
+  v147 = 5;
+  v148 = 0;
+  v149 = 4;
+  v151 = 0;
+  get.posn(o2, v134, v135);
+  erase(o2);
+  add.to.pic.v(v146, v147, v148, v134, v135, v151, v149);
+  v224++;
+}
+if ((v160 != 1) && 
+    (v222 < 15) && 
+    (has("Obsidian Scarab"))) {
+  print("The power of the scarab makes the zombie bid a hasty retreat.");
+  set.view(o3, 138);
+  set.loop(o3, 1);
+  fix.loop(o2);
+  set.cel(o3, 5);
+  v154 = 3;
+  cycle.time(o3, v154);
+  reverse.loop(o3, f228);
+  v160 = 1;
+}
+if (isset(f228)) {
+  reset(f228);
+  v146 = 137;
+  v147 = 5;
+  v148 = 0;
+  v149 = 4;
+  v151 = 0;
+  get.posn(o3, v134, v135);
+  erase(o3);
+  add.to.pic.v(v146, v147, v148, v134, v135, v151, v149);
+  reset(f191);
+  v224++;
+  v159 = 0;
+}
+if ((v161 != 1) && 
+    (v223 < 15) && 
+    (has("Obsidian Scarab"))) {
+  print("The power of the scarab makes the zombie bid a hasty retreat.");
+  set.view(o4, 138);
+  set.loop(o4, 3);
+  fix.loop(o4);
+  set.cel(o4, 5);
+  v154 = 3;
+  cycle.time(o4, v154);
+  reverse.loop(o4, f229);
+  v161 = 1;
+}
+if (isset(f229)) {
+  reset(f229);
+  v146 = 137;
+  v147 = 5;
+  v148 = 0;
+  v149 = 4;
+  v151 = 0;
+  get.posn(o4, v134, v135);
+  erase(o4);
+  add.to.pic.v(v146, v147, v148, v134, v135, v151, v149);
+  v224++;
+  v161 = 0;
+}
+if ((isset(f230)) && 
+    (v162 == 1)) {
+  reset(f230);
+  ignore.objs(o5);
+  v154 = 3;
+  cycle.time(o5, v154);
+  start.cycling(o5);
+  end.of.loop(o5, f232);
+  v162--;
+  set(f146);
+  sound(70, f154);
+}
+if ((isset(f231)) && 
+    (v162 == 1)) {
+  reset(f231);
+  observe.objs(o5);
+  v154 = 3;
+  cycle.time(o5, v154);
+  reverse.loop(o5, f232);
+  v162--;
+  reset(f146);
+}
+if (isset(f146)) {
+  ignore.blocks(Ego);
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room"))) {
+  print("This is a scary old cemetery! Many of the tombstones are crumbling or "
+        "falling over, and the entire place is overgrown with weeds.  A "
+        "mountain range looms over the cemetery to the east, and a forest "
+        "encroaches all around.");
+}
+if (said("examine", "crypt")) {
+  print("The stone crypt is built into the mountainside!");
+}
+if (said("examine", "cliff")) {
+  print("A stone crypt is built right into the mountainside!");
+}
+if (said("examine", "lion")) {
+  print("An interesting statue of a lion is mounted above the crypt door.");
+}
+if ((said("examine", "door") || 
+    said("examine", "crypt") || 
+    said("examine", "crypt", "door"))) {
+  if (!isset(f146)) {
+    print("The crypt door is closed.");
+  }
+  else {
+    print("The door is open.");
+  }
+}
+if ((said("open", "door") || 
+    said("open", "crypt") || 
+    said("enter", "crypt") || 
+    said("open", "crypt", "door") || 
+    said("open", "door"))) {
+  if (posn(Ego,122,131,133,138)) {
+    if (isset(f145)) {
+      if (!isset(f146)) {
+        set(f116);
+        ignore.blocks(Ego);
+        set(f230);
+        v162 = 1;
+      }
+      else {
+        print("The door is already open.");
+      }
+    }
+    else {
+      print("The crypt door is locked.");
+    }
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("close", "door") || 
+    said("close", "crypt", "door") || 
+    said("close", "crypt") || 
+    said("close", "crypt"))) {
+  if (posn(Ego,122,131,133,138)) {
+    if (isset(f146)) {
+      set(f116);
+      ignore.blocks(Ego);
+      set(f231);
+      v162 = 1;
+    }
+    else {
+      print("The crypt door is closed.");
+    }
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("break", "door") || 
+    said("break", "down", "crypt", "door") || 
+    said("break", "crypt", "door") || 
+    said("break", "down", "door"))) {
+  if (posn(Ego,122,131,133,138)) {
+    print("You could never do that.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("bang", "door") || 
+    said("bang", "crypt", "door") || 
+    said("bang", "abominable", "door"))) {
+  if (posn(Ego,122,131,133,138)) {
+    print("You pound on the crypt door and hear your knocks echo from within.  "
+          "There is no answer.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("unlatch", "door") || 
+    said("unlatch", "door", "crypt") || 
+    said("unlatch", "crypt", "door") || 
+    said("unlatch", "crypt") || 
+    said("unlatch", "door", "with", "key") || 
+    said("unlatch", "crypt", "with", "key") || 
+    said("unlatch", "crypt", "door", "with", "key") || 
+    said("unlatch", "crypt", "with", "james", "key") || 
+    said("unlatch", "door", "with", "james", "key") || 
+    said("unlatch", "crypt", "door", "with", "james", "key") || 
+    said("unlatch", "door", "crypt", "key"))) {
+  if (posn(Ego,122,131,133,138)) {
+    if (has("Skeleton Key")) {
+      if (!isset(f145)) {
+        set(f145);
+        print("You place the skeleton key in the lock of the crypt door.  "
+              "Slowly, you turn it.  Click.  It unlocked!");
+        score  += 3;
+      }
+      else {
+        print("The door is already unlocked.");
+      }
+    }
+    else {
+      print("You can't.  It's locked and you don't have the key.");
+    }
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("latch", "door") || 
+    said("latch", "door", "crypt") || 
+    said("latch", "crypt", "door") || 
+    said("latch", "crypt") || 
+    said("latch", "door", "key") || 
+    said("latch", "door", "crypt", "key"))) {
+  if (posn(Ego,122,131,133,138)) {
+    if (has("Skeleton Key")) {
+      if ((v112 == 4) && 
+          (!isset(f198))) {
+        if (isset(f145)) {
+          reset(f145);
+          print("You lock the crypt and kick the key under the door.");
+          drop("Skeleton Key");
+          score  += 2;
+        }
+        else {
+          print("The crypt door is locked.");
+        }
+      }
+      else {
+        print("You don't need to yet.");
+      }
+    }
+    else {
+      print("You don't have the key.");
+    }
+  }
+  else {
+    set(f113);
+  }
+}
+if (said("examine", "hole")) {
+  if (v173 > 0) {
+    print("There is nothing in the hole.");
+  }
+  else {
+    print("There has to be a hole to see first.");
+  }
+}
+if ((said("read", "gravestone") || 
+    said("read", "epitaph") || 
+    said("examine", "epitaph") || 
+    said("read", "grave") || 
+    said("read", "epitaph", "abominable", "gravestone"))) {
+  call(239);
+  if (!isset(f238)) {
+    set(f113);
+  }
+  else {
+    reset(f238);
+  }
+}
+if (!isset(input_parsed)) {
+  call(204);
+}
+if (!isset(input_parsed)) {
+  call(207);
+  if ((!isset(input_parsed)) && 
+      (v224 != 4) && 
+      (v224 > 0)) {
+    call(229);
+  }
+}
+Label1:
+if (ego_edge_code == bottom_edge) {
+  new.room(24); //##LE001##
+}
+if ((v33 > 125) && 
+    (isset(ego_touching_signal_line)) && 
+    (v37 == 0)) {
+  new.room(69); //##LE002##
+}
+if (ego_edge_code == horizon_edge) {
+  new.room(12); //##LE003##
+}
+if (ego_edge_code == left_edge) {
+  new.room(17); //##LE004##
+}
+return();
+
+//Messages
+#message 1 "This is a scary old cemetery! Many of the tombstones are crumbling or falling over, and the entire place is overgrown with weeds.  A mountain range looms over the cemetery to the east, and a forest encroaches all around."
+#message 2 "The stone crypt is built into the mountainside!"
+#message 3 "An interesting statue of a lion is mounted above the crypt door."
+#message 4 "The crypt door is closed."
+#message 5 "The crypt door is locked."
+#message 6 "You can't.  It's locked and you don't have the key."
+#message 7 "You could never do that."
+#message 8 "The door is already unlocked."
+#message 9 "You pound on the crypt door and hear your knocks echo from within.  There is no answer."
+#message 10 "The ground is too hard here."
+#message 11 "You have nothing to dig with."
+#message 12 "You don't know what to dig for...yet."
+#message 13 "Oops!  Your shovel has broken and is no longer of any use."
+#message 14 "The door is open."
+#message 15 "The door is already open."
+#message 16 "You place the skeleton key in the lock of the crypt door.  Slowly, you turn it.  Click.  It unlocked!"
+#message 17 "How odd!  You see a crypt door built right into the mountainside!"
+#message 18 "A stone crypt is built right into the mountainside!"
+#message 19 "The power of the scarab makes the zombie bid a hasty retreat."
+#message 20 "To wander forever is now your fate."
+#message 21 "You don't have the key."
+#message 22 "You don't need to yet."
+#message 23 "You lock the crypt and kick the key under the door."
+#message 24 "There is nothing in the hole."
+#message 25 "There has to be a hole to see first."

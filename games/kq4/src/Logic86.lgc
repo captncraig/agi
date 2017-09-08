@@ -1,0 +1,295 @@
+if (isset(new_room)) {
+  set(f82);
+  discard.view(0);
+  set.horizon(101);
+  v152 = 86;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.sound(70);
+  load.view(1);
+  set.view(Ego, 1);
+  load.view(94);
+  load.view(143);
+  animate.obj(o5);
+  set.view(o5, 143);
+  set.priority(o5, 4);
+  ignore.horizon(o5);
+  ignore.objs(o5);
+  set.loop(o5, 4);
+  position(o5, 140, 61);
+  v152 = 1;
+  cycle.time(o5, v152);
+  draw(o5);
+  animate.obj(o1);
+  set.view(o1, 94);
+  set.loop(o1, 1);
+  set.cel(o1, 0);
+  position(o1, 86, 104);
+  draw(o1);
+  stop.update(o1);
+  if (isset(f86)) {
+    load.view(168);
+    animate.obj(o2);
+    set.view(o2, 168);
+    set.loop(o2, 0);
+    ignore.objs(o2);
+    if (prev_room_no == 152) {
+      last.cel(o2, v156);
+      set.cel.v(o2, v156);
+    }
+    else {
+      set.cel(o2, 0);
+    }
+  }
+  if (prev_room_no == 83) {
+    position(Ego, 89, 108);
+  }
+  if ((prev_room_no == 92 || 
+      v37 == 2)) {
+    load.view(69);
+    load.view(66);
+    animate.obj(o2);
+    animate.obj(o3);
+    animate.obj(o4);
+    ignore.objs(o4);
+    if (prev_room_no == 92) {
+      set.view(o2, 1);
+      set.view(o3, 66);
+      set.view(o4, 66);
+      set.loop(o2, 1);
+      set.loop(o3, 1);
+      set.loop(o4, 1);
+      position(o3, 145, 118);
+      position(o2, 145, 117);
+      position(o4, 145, 118);
+      draw(o3);
+      v221 = 0;
+      set(f225);
+      set(f226);
+      move.obj(o3, 130, 118, 0, f224);
+    }
+    else {
+      set.view(o2, 69);
+      set.loop(o2, 0);
+      fix.loop(o2);
+      position(o2, 89, 108);
+      draw(o2);
+      move.obj(o2, 150, 117, 2, f227);
+    }
+  }
+  else {
+    if (prev_room_no == 152) {
+      set(f36);
+      prevent.input();
+      position(Ego, 61, 125);
+      set.loop(Ego, 2);
+      ego_dir = 0;
+      position(o2, 61, 125);
+      draw(o2);
+      reverse.loop(o2, f230);
+    }
+    else {
+      v222 = 0;
+      draw(Ego);
+    }
+  }
+  show.pic();
+  if (prev_room_no == 152) {
+    set(windows_remain);
+    v222 = 4;
+    print.at("Beaming in...", 2, 13, 0);
+  }
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "entry") || 
+    said("examine", "around", "entry") || 
+    said("examine", "castle") || 
+    said("examine", "dark", "castle") || 
+    said("examine", "bad", "castle") || 
+    said("examine", "around", "castle") || 
+    said("examine", "around", "bad", "castle") || 
+    said("examine", "around", "dark", "castle"))) {
+  if (isset(f221)) {
+    print("This is the west end of a dim hallway.");
+  }
+  else {
+    print("%m1  There is a closed door here.");
+  }
+}
+if ((said("examine", "door") || 
+    said("examine", "cell", "door") || 
+    said("examine", "wood", "door"))) {
+  print("It appears to be a cell door.");
+}
+if ((said("open", "door") || 
+    said("open", "cell", "door") || 
+    said("open", "wood", "door"))) {
+  if (posn(Ego,86,104,100,111)) {
+    if (isset(f221)) {
+      print("The door is already open.");
+    }
+    else {
+      prevent.input();
+      set(f36);
+      start.update(o1);
+      end.of.loop(o1, f222);
+      sound(70, f154);
+    }
+  }
+  else {
+    set(f113);
+  }
+}
+if (said("examine", "chair")) {
+  print("This is quite a fancy chair.");
+}
+if ((said("sit") || 
+    said("sit", "chair") || 
+    said("sit", "down") || 
+    said("sit", "down", "chair"))) {
+  print("You don't have time for that!");
+}
+if (said("examine", "table")) {
+  print("There is a candelabra on the table, from which dim candle light sheds.");
+}
+if (said("examine", "candelabra")) {
+  print("Candle light flickers on the candelabra.");
+}
+if (said("carry", "candelabra")) {
+  print("It's not for you.");
+}
+if (said("examine", "wall")) {
+  print("%m8 walls.");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down") || 
+    said("examine", "down", "dirt"))) {
+  print("%m8 floor.");
+}
+if (said("bang", "rol")) {
+  if (posn(Ego,88,100,98,110)) {
+    reset(input_parsed);
+  }
+  else {
+    set(f113);
+  }
+}
+if (said("beam", "me", "rol")) {
+  set(f36);
+  prevent.input();
+  ego_dir = 0;
+  get.posn(Ego, v152, v153);
+  position.v(o2, v152, v153);
+  set.cel(o2, 0);
+  draw(o2);
+  erase(Ego);
+  end.of.loop(o2, f231);
+  set(windows_remain);
+  print.at("Beaming out...", 2, 13, 0);
+}
+Label1:
+if (isset(f222)) {
+  reset(f222);
+  accept.input();
+  reset(f36);
+  set(f221);
+  erase(o1);
+}
+if (isset(f224)) {
+  stop.cycling(o3);
+}
+if (isset(f226)) {
+  stop.cycling(o4);
+}
+if (isset(f225)) {
+  stop.cycling(o2);
+}
+if (isset(f224) && 
+    isset(f225) && 
+    isset(f226)) {
+  v221++;
+  start.cycling(o2);
+  start.cycling(o3);
+  start.cycling(o4);
+  if (v221 == 1) {
+    reset(f226);
+    draw(o2);
+    move.obj(o3, 74, 118, 0, f224);
+    move.obj(o2, 86, 117, 0, f225);
+  }
+  if (v221 == 2) {
+    move.obj(o2, 86, 107, 0, f225);
+    move.obj(o3, 74, 108, 0, f224);
+    move.obj(o4, 90, 108, 0, f226);
+  }
+  if (v221 == 3) {
+    stop.cycling(o2);
+    stop.cycling(o3);
+    stop.cycling(o4);
+    start.update(o1);
+    end.of.loop(o1, f225);
+  }
+  if (v221 == 4) {
+    new.room(83); //##LE001##
+  }
+}
+if (isset(f227)) {
+  new.room(92); //##LE002##
+}
+if (prev_room_no == 92) {
+  if (!isset(f228)) {
+    get.posn(o2, v152, v153);
+    if (v152 < 133) {
+      set(f228);
+      draw(o4);
+      move.obj(o4, 90, 118, 0, f226);
+    }
+  }
+}
+if (isset(f230)) {
+  reset(f230);
+  draw(Ego);
+  erase(o2);
+  reset(f36);
+  accept.input();
+}
+if (isset(f231)) {
+  new.room(152); //##LE003##
+}
+if (v222 > 0 && 
+    isset(f112)) {
+  v222--;
+  if (v222 <= 0) {
+    close.window();
+  }
+}
+if (ego_edge_code == horizon_edge) {
+  new.room(83); //##LE004##
+}
+if (ego_edge_code == right_edge) {
+  new.room(87); //##LE005##
+}
+return();
+
+//Messages
+#message 1 "This is the west end of a dim hallway."
+#message 2 "It appears to be a cell door."
+#message 3 "This is quite a fancy chair."
+#message 4 "You don't have time for that!"
+#message 5 "There is a candelabra on the table, from which dim candle light sheds."
+#message 6 "Candle light flickers on the candelabra."
+#message 7 "It's not for you."
+#message 8 "There is nothing of importance on the"
+#message 9 "%m8 walls."
+#message 10 "%m8 floor."
+#message 11 "%m1  There is a closed door here."
+#message 12 "The door is already open."
+#message 14 "Beaming out..."
+#message 15 "Beaming in..."

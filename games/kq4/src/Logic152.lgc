@@ -1,0 +1,224 @@
+if (isset(new_room)) {
+  discard.view(0);
+  v152 = 140;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.view(1);
+  load.view(168);
+  add.to.pic(168, 1, 0, 136, 128, 0, 0);
+  add.to.pic(168, 1, 1, 77, 140, 0, 0);
+  add.to.pic(168, 1, 2, 103, 165, 0, 0);
+  add.to.pic(168, 1, 3, 112, 127, 0, 0);
+  add.to.pic(168, 1, 4, 25, 124, 0, 0);
+  add.to.pic(168, 1, 5, 15, 144, 0, 0);
+  add.to.pic(168, 1, 6, 38, 143, 0, 0);
+  add.to.pic(168, 1, 7, 1, 159, 0, 0);
+  add.to.pic(168, 1, 8, 28, 166, 0, 0);
+  animate.obj(o1);
+  set.view(o1, 168);
+  v221 = 5;
+  set(f36);
+  prevent.input();
+  animate.obj(o2);
+  ignore.objs(o2);
+  set.view(o2, 168);
+  set.loop(o2, 0);
+  last.cel(o2, v152);
+  set.cel.v(o2, v152);
+  position(o2, 145, 143);
+  draw(o2);
+  reverse.loop(o2, f222);
+  position(Ego, 145, 143);
+  set.view(Ego, 1);
+  set.loop(Ego, 2);
+  ego_dir = 0;
+  show.pic();
+  set(windows_remain);
+  v223 = 4;
+  print.at("Beaming in...", 2, 13, 0);
+}
+if (isset(f222)) {
+  reset(f222);
+  draw(Ego);
+  erase(o2);
+  reset(f36);
+  accept.input();
+  set(f225);
+  set(ego_on_water);
+}
+if (!isset(f226)) {
+  if (isset(ego_on_water) && 
+      !isset(f225)) {
+    set(f223);
+  }
+  if (said("beam", "me", "rol")) {
+    set(f223);
+  }
+}
+if (isset(f223)) {
+  set(f226);
+  reset(f223);
+  set(f36);
+  prevent.input();
+  ego_dir = 0;
+  get.posn(Ego, v152, v153);
+  position.v(o2, v152, v153);
+  set.cel(o2, 0);
+  draw(o2);
+  erase(Ego);
+  end.of.loop(o2, f224);
+  set(windows_remain);
+  print.at("Beaming out...", 2, 13, 0);
+}
+if (isset(f225) && 
+    !isset(ego_on_water)) {
+  reset(f225);
+}
+if (isset(f224)) {
+  reset(f36);
+  accept.input();
+  new.room(86); //##LE001##
+}
+if (isset(f112) && 
+    v223 > 0) {
+  v223--;
+  if (v223 <= 0) {
+    close.window();
+  }
+}
+if (isset(f112) && 
+    v221 > 0) {
+  v221--;
+  if (v221 <= 0) {
+    random(1, 4, v152);
+    random(1, 2, v153);
+    if (v152 == 1) {
+      if (v153 == 1) {
+        set.loop(o1, 2);
+      }
+      else {
+        set.loop(o1, 3);
+      }
+      random(58, 88, v222);
+    }
+    if (v152 == 2) {
+      if (v153 == 1) {
+        set.loop(o1, 4);
+      }
+      else {
+        set.loop(o1, 5);
+      }
+      random(60, 88, v222);
+    }
+    if (v152 == 3) {
+      set.loop(o1, 6);
+      random(67, 88, v222);
+    }
+    if (v152 == 4) {
+      set.loop(o1, 7);
+      random(78, 88, v222);
+    }
+    if (v153 == 1) {
+      v152 = 0;
+      v153 = 137;
+    }
+    else {
+      v152 = 137;
+      v153 = 0;
+    }
+    fix.loop(o1);
+    position.v(o1, v152, v222);
+    draw(o1);
+    v154 = 0;
+    move.obj.v(o1, v153, v222, v154, f221);
+  }
+}
+if (isset(f221)) {
+  reset(f221);
+  erase(o1);
+  random(2, 5, v221);
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room"))) {
+  print.at("Holy Cow!  You have discovered the whole King's Quest IV "
+           "programming staff, and then some.", 1, 2, 37);
+  print.at("Vu Nguyen is the dark haired guy in the upper right hand corner.  "
+           "He worked on much of the artwork for King's Quest IV.", 1, 2, 37);
+  print.at("Chris Hoyt is the brown haired guy with the moustache next to Vu.  "
+           "He programmed half of this version King's Quest IV.  This version "
+           "is known as AGI and is low resolution, as compared to the high "
+           "resolution SCI.", 1, 2, 37);
+  print.at("John Hamilton is the brown haired guy at the right front of the "
+           "room.  He programmed the other half of the AGI version of King's "
+           "Quest IV.", 1, 2, 37);
+  print.at("Teresa Baker is the blond with the pony tail.  She programmed the "
+           "beginning and ending cartoons plus a few other miscellanous rooms.", 1, 2, 37);
+  print.at("Sol Ackerman is the balding man standing in front of the console.  "
+           "He organized how the game was to be put on floppy disks for "
+           "shipping.", 1, 2, 37);
+  print.at("Doug Oldfield is the guy with brown hair and a moustache stading "
+           "below Sol.  He helped find some the trickier bugs in King's Quest "
+           "IV.", 1, 2, 37);
+  print.at("Ken Koch is the man with the graying hair in the lower left corner. "
+           " He programmed half of the SCI version of King's Quest IV.  His "
+           "name is often abbeviated to Kinky.", 1, 2, 37);
+  print.at("Jim Heintz is the guy with the beard just above Ken. He just wanted "
+           "to be  in this room.", 1, 2, 37);
+  print.at("Chane Fullmer is the blond man with glasses in the upper left "
+           "corner.  He programmed half of the SCI version of King's Quest IV.", 1, 2, 37);
+}
+if (said("speak", "rol")) {
+  print("Vu says, \"My girlfriend's name is not Dorothy!\"");
+  print("Chris says, \"My computer keeps locking up!\"");
+  print("John says, \"It's not a bug.  It's an added feature.\"");
+  print("Teresa says, \"So did they just install a bowling alley upstairs or "
+        "what?!\"");
+  print("Sol says, \"See ya later.  I'm going swimming in my lake.\"");
+  print("Doug says, \"The Ogre walked up the walls.  Honest!\"");
+  print("Ken says, \"Quit calling me Kinky!\"");
+  print("Jim says, \"Hey guys, be sure and put me in this picture.\"");
+  print("Chane says, \"Has anybody seen my B.B. King tape?\"");
+}
+if (said("examine", "console")) {
+  print("The console has nothing on it.  Somebody must have forgot to finish "
+        "the picture.");
+}
+if ((said("examine", "window") || 
+    said("examine", "space") || 
+    said("examine", "out", "window"))) {
+  print("You see ships and hamburgers and computers...WAIT!  You must be seeing "
+        "things.  How about this, You just see space ships flying by.");
+}
+Label1:
+return();
+
+//Messages
+#message 1 "Beaming out..."
+#message 2 "Beaming in..."
+#message 3 "Holy Cow!  You have discovered the whole King's Quest IV programming staff, and then some."
+#message 4 "Vu Nguyen is the dark haired guy in the upper right hand corner.  He worked on much of the artwork for King's Quest IV."
+#message 5 "Chris Hoyt is the brown haired guy with the moustache next to Vu.  He programmed half of this version King's Quest IV.  This version is known as AGI and is low resolution, as compared to the high resolution SCI."
+#message 6 "John Hamilton is the brown haired guy at the right front of the room.  He programmed the other half of the AGI version of King's Quest IV."
+#message 7 "Teresa Baker is the blond with the pony tail.  She programmed the beginning and ending cartoons plus a few other miscellanous rooms."
+#message 8 "Sol Ackerman is the balding man standing in front of the console.  He organized how the game was to be put on floppy disks for shipping."
+#message 9 "Doug Oldfield is the guy with brown hair and a moustache stading below Sol.  He helped find some the trickier bugs in King's Quest IV."
+#message 10 "Ken Koch is the man with the graying hair in the lower left corner.  He programmed half of the SCI version of King's Quest IV.  His name is often abbeviated to Kinky."
+#message 11 "Jim Heintz is the guy with the beard just above Ken. He just wanted to be  in this room."
+#message 12 "Chane Fullmer is the blond man with glasses in the upper left corner.  He programmed half of the SCI version of King's Quest IV."
+#message 13 "Vu says, \"My girlfriend's name is not Dorothy!\""
+#message 14 "Chris says, \"My computer keeps locking up!\""
+#message 15 "John says, \"It's not a bug.  It's an added feature.\""
+#message 16 "Teresa says, \"So did they just install a bowling alley upstairs or what?!\""
+#message 17 "Sol says, \"See ya later.  I'm going swimming in my lake.\""
+#message 18 "Doug says, \"The Ogre walked up the walls.  Honest!\""
+#message 19 "Ken says, \"Quit calling me Kinky!\""
+#message 20 "Jim says, \"Hey guys, be sure and put me in this picture.\""
+#message 21 "Chane says, \"Has anybody seen my B.B. King tape?\""
+#message 22 "The console has nothing on it.  Somebody must have forgot to finish the picture."
+#message 23 "You see ships and hamburgers and computers...WAIT!  You must be seeing things.  How about this, You just see space ships flying by."

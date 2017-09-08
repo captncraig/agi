@@ -1,0 +1,782 @@
+if (isset(new_room)) {
+  set(f82);
+  if (!isset(f38)) {
+    v152 = 78;
+  }
+  else {
+    v152 = 178;
+  }
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.logics(217);
+  load.logics(151);
+  v222 = 0;
+  v221 = 1;
+  load.view(22);
+  load.view(26);
+  load.view(122);
+  load.view(4);
+  load.sound(48);
+  load.sound(59);
+  load.sound(39);
+  load.sound(40);
+  load.sound(55);
+  load.sound(47);
+  sound(39, f154);
+  if (has("Silver Flute")) {
+    load.view(14);
+  }
+  if (has("Gold Crown")) {
+    load.view(97);
+  }
+  if (has("Small Board")) {
+    load.view(72);
+    animate.obj(o1);
+    set.view(o1, 72);
+    stop.cycling(o1);
+    set.cel(o1, 2);
+  }
+  animate.obj(o2);
+  set.view(o2, 122);
+  set.loop(o2, 1);
+  set.cel(o2, 0);
+  ignore.blocks(o2);
+  ignore.objs(o2);
+  position(o2, 85, 148);
+  v152 = 4;
+  cycle.time(o2, v152);
+  draw(o2);
+  ignore.objs(o2);
+  if (!isset(f167)) {
+    animate.obj(o3);
+    set.view(o3, 122);
+    set.loop(o3, 7);
+    set.cel(o3, 0);
+    stop.cycling(o3);
+    ignore.blocks(o3);
+    position(o3, 101, 139);
+    draw(o3);
+  }
+  animate.obj(o12);
+  set.view(o12, 22);
+  set.loop(o12, 1);
+  position(Ego, 11, 149);
+  draw(Ego);
+  v154 = 2;
+  get.posn(Ego, v33, v34);
+  accept.input();
+  v224 = 0;
+  v225 = 0;
+  v237 = 0;
+  v228 = 0;
+  show.pic();
+}
+if (v169 == 3) {
+  random(1, 2, v152);
+  if (v152 == 1) {
+    v152 = 3;
+    cycle.time(o3, v152);
+    end.of.loop(o3, f239);
+  }
+  v169 = 0;
+}
+if (isset(f239)) {
+  set.cel(o3, 0);
+  stop.cycling(o3);
+}
+if (v221 == 1) {
+  v107 = 0;
+  v108 = 149;
+  v226 = 21;
+  v227 = 147;
+}
+if (v221 == 2) {
+  v107 = 10;
+  v108 = 149;
+  v226 = 34;
+  v227 = 151;
+}
+if (v221 == 3) {
+  v107 = 21;
+  v108 = 147;
+  v226 = 45;
+  v227 = 148;
+}
+if (v221 == 4) {
+  v107 = 34;
+  v108 = 151;
+  v226 = 54;
+  v227 = 151;
+}
+if ((said("hop") || 
+    said("hop", "tuft") || 
+    said("hop", "grass", "tuft"))) {
+  if (v37 == 0) {
+    if ((v221 == 1) && 
+        (v222 == 1)) {
+      new.room(77); //##LE001##
+    }
+    if ((v221 == 4) && 
+        (isset(f237))) {
+      print("You had better pick up your board.");
+    }
+    else {
+      if (v221 != 5) {
+        set(f36);
+        prevent.input();
+        set.view(o12, 22);
+        if (v222 == 0) {
+          set.loop(o12, 1);
+        }
+        else {
+          set.loop(o12, 2);
+        }
+        fix.loop(o12);
+        v152 = 3;
+        position.v(o12, v33, v34);
+        set.cel(o12, 0);
+        erase(Ego);
+        draw(o12);
+        v228 = 1;
+        if (v222 == 0) {
+          move.obj.v(o12, v226, v227, v152, f222);
+        }
+        else {
+          move.obj.v(o12, v107, v108, v152, f222);
+        }
+        start.cycling(o12);
+      }
+      else {
+        print("Not from here.");
+      }
+    }
+  }
+  else {
+    print("You're a frog, you can do that on your own.");
+  }
+}
+if (v228 == 1) {
+  current.cel(o12, v148);
+  if (v148 == 6) {
+    stop.cycling(o12);
+  }
+}
+get.posn(o12, v134, v135);
+if (isset(f222)) {
+  v148 = 0;
+  v228 = 0;
+  reset(f222);
+  if (v222 == 0) {
+    position.v(Ego, v226, v227);
+    set.loop(Ego, 0);
+    v221++;
+  }
+  else {
+    position.v(Ego, v107, v108);
+    set.loop(Ego, 1);
+    v221--;
+  }
+  erase(o12);
+  draw(Ego);
+  reset(f36);
+  accept.input();
+  reset(ego_on_water);
+}
+if ((ego_dir == right || 
+    v222 == 0)) {
+  v222 = 0;
+}
+if ((ego_dir == left || 
+    v222 == 1)) {
+  v222 = 1;
+}
+if (isset(f238)) {
+  reset(ego_on_water);
+}
+if (isset(ego_touching_signal_line)) {
+  set(ego_on_water);
+}
+if (!posn(Ego,44,146,65,148) && 
+    (isset(f238))) {
+  reset(f238);
+}
+if ((posn(Ego,46,146,65,148)) && 
+    (isset(f237))) {
+  set(f238);
+}
+if (posn(Ego,84,118,110,136)) {
+  set(ego_on_water);
+}
+if (isset(f112)) {
+  reset(f112);
+  v168++;
+  v169++;
+  if (isset(f233)) {
+    v223++;
+  }
+  if (isset(ego_on_water)) {
+    v224++;
+  }
+  if (isset(f235)) {
+    v225++;
+  }
+}
+if ((isset(ego_on_water) || 
+    isset(ego_touching_signal_line))) {
+  current.loop(Ego, v160);
+  if (v160 == 0) {
+    ego_dir = 3;
+  }
+  else {
+    if (v160 == 1) {
+      ego_dir = 7;
+    }
+    else {
+      if (v160 == 2) {
+        ego_dir = 5;
+      }
+      else {
+        ego_dir = 1;
+      }
+    }
+  }
+}
+if ((isset(ego_on_water) || 
+    isset(ego_touching_signal_line))) {
+  if ((v224 < 5) && 
+      (!isset(f238))) {
+    set.view(Ego, 4);
+    v37 = 11;
+    set(f36);
+    prevent.input();
+    if (posn(Ego,64,100,130,139)) {
+      ego_dir = 1;
+    }
+    else {
+      if ((ego_dir == upright || 
+          ego_dir == up || 
+          ego_dir == 8)) {
+        ego_dir = 1;
+      }
+      else {
+        if (ego_dir == left) {
+          ego_dir = 7;
+        }
+        else {
+          if (ego_dir != stopped) {
+            ego_dir = 5;
+          }
+        }
+      }
+    }
+    cycle_delay = 3;
+    v224 = 5;
+    ignore.objs(Ego);
+    ignore.blocks(Ego);
+  }
+}
+if ((v224 == 6) && 
+    (v37 == 11) && 
+    (!isset(f230))) {
+  set(f230);
+  v168 = 7;
+  set(f36);
+  prevent.input();
+  stop.motion(Ego);
+  print("Uh, oh!  What did you do, Rosella?!  Don't you know that some swamps "
+        "are quagmires that will suck you under?!  As you take your last "
+        "breath, you contemplate this final information.");
+  v152 = 3;
+  set.view(o12, 22);
+  set.loop(o12, 0);
+  fix.loop(o12);
+  set.cel(o12, 0);
+  cycle.time(o12, v152);
+  position.v(o12, v33, v34);
+  erase(Ego);
+  draw(o12);
+  start.cycling(o12);
+  end.of.loop(o12, f140);
+}
+if ((v225 == 5) && 
+    (isset(f235))) {
+  reset(f232);
+  set(f36);
+  prevent.input();
+  sound(47, f154);
+  animate.obj(o4);
+  set.view(o4, 22);
+  v238 = v33;
+  v239 = v34;
+  v238 -= 5;
+  v239 -= 1;
+  position.v(o4, v238, v239);
+  set.loop(o4, 3);
+  fix.loop(o4);
+  set.cel(o4, 0);
+  v152 = 2;
+  cycle.time(o4, v152);
+  start.cycling(o4);
+  draw(o4);
+  end.of.loop(o4, f231);
+}
+current.cel(o4, v237);
+if (v37 == 23) {
+  if (v237 == 2) {
+    stop.motion(Ego);
+    erase(Ego);
+  }
+}
+if (isset(f231)) {
+  erase(o4);
+  set(f140);
+}
+if ((v221 == 4) && 
+    (said("place", "board", "down") || 
+    said("place", "board", "across", "island") || 
+    said("lay", "board", "across", "island") || 
+    said("place", "board") || 
+    said("place", "down", "board") || 
+    said("place", "board", "down") || 
+    said("lay", "board") || 
+    said("lay", "board", "down") || 
+    said("place", "board", "across", "lake") || 
+    said("lay", "board", "across", "lake"))) {
+  set(f36);
+  prevent.input();
+  drop("Small Board");
+  set(f238);
+  set.view(o12, 22);
+  set.loop(o12, 4);
+  position.v(o12, v33, v34);
+  erase(Ego);
+  draw(o12);
+  set.cel(o12, 0);
+  end.of.loop(o12, f223);
+  v155 = 1;
+  if (!has("Magic Fruit")) {
+    score  += 2;
+  }
+}
+if ((said("carry", "board") || 
+    said("carry", "up", "board"))) {
+  if (v221 == 4) {
+    set(f36);
+    prevent.input();
+    set.view(o12, 22);
+    set.loop(o12, 4);
+    position.v(o12, v33, v34);
+    erase(Ego);
+    draw(o12);
+    get("Small Board");
+    set.cel(o12, 0);
+    end.of.loop(o12, f223);
+    v155 = 1;
+  }
+  else {
+    print("Right now, it's better where it is.");
+  }
+}
+if ((isset(f223)) && 
+    (v155 == 1)) {
+  reset(f223);
+  position(o1, 49, 148);
+  ignore.objs(o1);
+  set.priority(o1, 4);
+  if (!isset(f237)) {
+    draw(o1);
+    set(f237);
+    print("You carefully place the board from the small grass tuft you are "
+          "standing on to the small island.");
+  }
+  else {
+    erase(o1);
+    reset(f237);
+    reset(f238);
+  }
+  reverse.loop(o12, f223);
+  v155++;
+}
+if ((isset(f223)) && 
+    (v155 == 2)) {
+  reset(f223);
+  position.v(Ego, v134, v135);
+  erase(o12);
+  draw(Ego);
+  reset(f36);
+  accept.input();
+  v155++;
+}
+if (v33 > 48) {
+  v221 = 5;
+}
+if (posn(Ego,44,145,47,149)) {
+  v221 = 4;
+}
+if ((!isset(f236)) && 
+    (posn(Ego,76,136,101,154)) && 
+    (!isset(ego_on_water)) && 
+    (v161 < 5)) {
+  set(f36);
+  prevent.input();
+  sound(40, f154);
+  stop.motion(Ego);
+  stop.cycling(Ego);
+  v152 = 0;
+  v152 -= 7;
+  v225 = 0;
+  if (v33 < 85) {
+    reposition(o2, v152, v225);
+    set.loop(o2, 3);
+  }
+  else {
+    set.loop(o2, 4);
+  }
+  set.cel(o2, 0);
+  reset(f229);
+  end.of.loop(o2, f229);
+  v161 = 5;
+}
+if ((v161 == 5) && 
+    (isset(f229))) {
+  reset(f229);
+  v152 = 7;
+  v225 = 0;
+  if (v33 < 85) {
+    set.loop(o2, 1);
+    reposition(o2, v152, v225);
+  }
+  else {
+    set.loop(o2, 2);
+  }
+  start.cycling(o2);
+  v161 = 6;
+}
+if ((v161 == 6) && 
+    (!isset(f236))) {
+  position.v(o12, v33, v34);
+  erase(Ego);
+  draw(o12);
+  set.view(o12, 26);
+  set.cel(o12, 0);
+  v154 = 3;
+  cycle.time(o12, v154);
+  end.of.loop(o12, f229);
+  v161++;
+}
+if ((v161 == 7) && 
+    (isset(f229))) {
+  print("OH!! He gotcha!  Poor Rosella.  You die a painful death of snake "
+        "poisoning.");
+  set(f140);
+}
+if (said("play", "flute")) {
+  if (has("Silver Flute")) {
+    if (!isset(f236)) {
+      print("Nervously, you raise the flute to your mouth and begin to play a "
+            "melodic tune to the big cobra, who begins to sway with the music.  "
+            "Soon, the snake is mesmerized by it, and falls into an hypnotic "
+            "trance.");
+      sound(55, f154);
+      set.loop(o2, 5);
+      set.view(Ego, 14);
+      set.loop(Ego, 0);
+      fix.loop(Ego);
+      v152 = 4;
+      cycle.time(Ego, v152);
+      set(f36);
+      prevent.input();
+      stop.motion(Ego);
+      set(f157);
+      if (isset(sound_on)) {
+        set(f234);
+      }
+      else {
+        set(f233);
+      }
+      start.cycling(o2);
+      observe.objs(o2);
+      v223 = 0;
+      v168 = 0;
+      set(f236);
+      set(f240);
+      if (!isset(f171)) {
+        score  += 4;
+      }
+      set(f171);
+    }
+    else {
+      print("The cobra is already in a trance.");
+    }
+  }
+  else {
+    set(f115);
+  }
+}
+if (v223 == 10) {
+  set(f234);
+  v223 = 0;
+}
+if (isset(f240)) {
+  if ((isset(f154)) && 
+      (isset(f234))) {
+    reset(f240);
+    reset(f154);
+    reset(f233);
+    reset(f234);
+    set.view(Ego, 0);
+    release.loop(Ego);
+    v152 = 1;
+    cycle.time(Ego, v152);
+    reset(f36);
+    accept.input();
+    reset(f157);
+  }
+}
+if (v168 == 35) {
+  reset(f236);
+  if (v33 < 85) {
+    set.loop(o2, 1);
+  }
+  else {
+    set.loop(o2, 2);
+  }
+  start.cycling(o2);
+  ignore.objs(o2);
+}
+if ((said("place", "abominable", "crown") || 
+    said("place", "crown") || 
+    said("don", "crown"))) {
+  if (has("Gold Crown")) {
+    if (v221 == 5) {
+      set(f36);
+      prevent.input();
+      ignore.objs(Ego);
+      ignore.blocks(Ego);
+      move.obj(Ego, 61, 146, 0, f223);
+      v162 = 1;
+    }
+    else {
+      v37 = 23;
+      animate.obj(o5);
+      stop.sound();
+      reset(f154);
+      sound(59, f154);
+      set.view(o5, 97);
+      set.loop(o5, 0);
+      fix.loop(o5);
+      v33 -= 6;
+      position.v(o5, v33, v34);
+      set.cel(o5, 0);
+      v152 = 2;
+      cycle.time(o5, v152);
+      end.of.loop(o5, f221);
+      draw(o5);
+      set(f223);
+    }
+  }
+  else {
+    set(f115);
+  }
+}
+if ((v162 == 1) && 
+    (isset(f223))) {
+  reset(f223);
+  stop.sound();
+  reset(f154);
+  sound(59, f154);
+  v162++;
+  v37 = 23;
+  animate.obj(o5);
+  set.view(o5, 97);
+  set.loop(o5, 0);
+  fix.loop(o5);
+  v33 -= 6;
+  position.v(o5, v33, v34);
+  set.cel(o5, 0);
+  v152 = 2;
+  cycle.time(o5, v152);
+  end.of.loop(o5, f221);
+  draw(o5);
+  set(f223);
+}
+current.cel(o5, v153);
+if ((v153 == 3) && 
+    (isset(f223))) {
+  reset(f223);
+  set(f36);
+  prevent.input();
+  set.view(Ego, 97);
+  set.loop(Ego, 1);
+  position.v(Ego, v33, v34);
+  v154 = 1;
+  v152 = 3;
+  cycle.time(Ego, v152);
+  set(f157);
+}
+if (isset(f221)) {
+  set(f235);
+  erase(o5);
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room"))) {
+  if (isset(f167)) {
+    print("You see a small island in the middle of the huge swamp.  Upon this "
+          "island grows a scrawny little tree.  This must be the elusive \"Tree "
+          "of Life!\"  Unfortunately, a huge cobra protects it.");
+  }
+  else {
+    print("%m1  A large, glistening, gourd-shaped fruit grows upon the small "
+          "tree.");
+  }
+}
+if (!isset(f167)) {
+  if ((said("carry", "fruit") || 
+      said("carry", "fruit") || 
+      said("rob", "fruit") || 
+      said("carry", "fruit", "forest") || 
+      said("carry", "fruit", "from", "forest") || 
+      said("carry", "fruit", "forest") || 
+      said("carry", "fruit", "from", "forest") || 
+      said("rob", "fruit", "forest"))) {
+    if (posn(Ego,99,140,103,144)) {
+      set(f167);
+      set(f116);
+      erase(o3);
+      sound(48, f154);
+      get("Magic Fruit");
+      set(f73);
+      score  += 10;
+    }
+    else {
+      set(f113);
+    }
+  }
+}
+if ((said("examine", "forest") || 
+    said("examine", "forest", "life"))) {
+  if (!isset(f167)) {
+    print("The tree is small and scrawny.  It looks like it's taken almost "
+          "every ounce  of its strength to produce this one wondrous fruit.");
+  }
+  else {
+    print("The small tree looks bare and lonely without its marvelous fruit. Oh "
+          "well, in a mere hundred years it'll have another one.");
+  }
+}
+if (said("examine", "island")) {
+  if (!isset(f167)) {
+    print("A tiny tree grows on this little swamp island.  Hanging from a small "
+          "branch is a large, glistening fruit.");
+  }
+  else {
+    print("A tiny tree grows on this little swamp island.");
+  }
+}
+if (said("examine", "cobra")) {
+  if (!isset(f236)) {
+    print("A HUGE cobra protects the small tree that bears the wondrous fruit; "
+          "the fruit that your father's life depends upon.");
+  }
+  else {
+    print("The large cobra seems completely under your spell...but not for "
+          "long!");
+  }
+}
+if ((said("speak", "cobra") || 
+    said("speak") || 
+    said("speak", "with", "cobra"))) {
+  print("Cobras don't usually talk.");
+}
+if (said("kill", "cobra")) {
+  print("You have NO way of killing a big cobra.");
+}
+if (said("carry", "cobra")) {
+  print("You wouldn't want the cobra!");
+}
+if (said("capture", "cobra")) {
+  print("You wouldn't want the cobra!");
+}
+if ((said("embrace", "cobra") || 
+    said("pat") || 
+    said("pat", "cobra") || 
+    said("embrace"))) {
+  print("That's NOT a good idea!");
+}
+if (said("fling", "rol")) {
+  print("The snake would not be affected by that.");
+}
+if (said("hit", "cobra")) {
+  print("You couldn't get close enough.  Besides, the cobra's too big!");
+}
+if (!has("Magic Fruit")) {
+  if (said("examine", "fruit")) {
+    if (!isset(f167)) {
+      print("You see a single glistening fruit.");
+    }
+    else {
+      print("You ate it!");
+    }
+  }
+}
+if ((said("examine", "tuft") || 
+    said("examine", "grass", "tuft"))) {
+  print("The grass tufts lead toward a little swamp island.");
+}
+if (!isset(input_parsed)) {
+  call(151);
+}
+if (isset(f106)) {
+  reset(f106);
+  print("The snake would not be interested.");
+}
+if (!isset(input_parsed)) {
+  call(217);
+}
+Label1:
+return();
+
+//Messages
+#message 1 "You see a small island in the middle of the huge swamp.  Upon this island grows a scrawny little tree.  This must be the elusive \"Tree of Life!\"  Unfortunately, a huge cobra protects it."
+#message 2 "%m1  A large, glistening, gourd-shaped fruit grows upon the small tree."
+#message 3 "The tree is small and scrawny.  It looks like it's taken almost every ounce  of its strength to produce this one wondrous fruit."
+#message 4 "The small tree looks bare and lonely without its marvelous fruit. Oh well, in a mere hundred years it'll have another one."
+#message 5 "A tiny tree grows on this little swamp island.  Hanging from a small branch is a large, glistening fruit."
+#message 6 "A tiny tree grows on this little swamp island."
+#message 7 "You carefully place the board from the small grass tuft you are standing on to the small island."
+#message 8 "A HUGE cobra protects the small tree that bears the wondrous fruit; the fruit that your father's life depends upon."
+#message 9 "Cobras don't usually talk."
+#message 10 "You have NO way of killing a big cobra."
+#message 11 "You wouldn't want the cobra!"
+#message 12 "You wouldn't want the cobra!"
+#message 13 "That's NOT a good idea!"
+#message 14 "The snake would not be affected by that."
+#message 15 "You couldn't get close enough.  Besides, the cobra's too big!"
+#message 16 "OH!! He gotcha!  Poor Rosella.  You die a painful death of snake poisoning."
+#message 17 "Nervously, you raise the flute to your mouth and begin to play a melodic tune to the big cobra, who begins to sway with the music.  Soon, the snake is mesmerized by it, and falls into an hypnotic trance."
+#message 18 "You had better pick up your board."
+#message 19 "You see a single glistening fruit."
+#message 20 "Not from here."
+#message 21 "Uh, oh!  What did you do, Rosella?!  Don't you know that some swamps are quagmires that will suck you under?!  As you take your last breath, you contemplate this final information."
+#message 22 "Right now, it's better where it is."
+#message 23 "The snake doesn't what anything but you."
+#message 24 "You ate it!"
+#message 25 "The large cobra seems completely under your spell...but not for long!"
+#message 26 "The snake would not be interested."
+#message 27 "You're a frog, you can do that on your own."
+#message 28 "The grass tufts lead toward a little swamp island."
+#message 29 "The cobra is already in a trance."
+#message 30 "Debug 1"
+#message 31 "Debug 2"
+#message 32 "Debug 3"
+#message 33 "Debug 4"
+#message 34 "Debug 5"
+#message 35 "Debug 6"
+#message 36 "Debug 7"
+#message 37 "Debug 8"

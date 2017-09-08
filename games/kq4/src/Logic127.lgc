@@ -1,0 +1,218 @@
+set(f36);
+status.line.off();
+cycle_delay = 2;
+if (isset(new_room)) {
+  v152 = 206;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.view(182);
+  set.view(o1, 182);
+  animate.obj(o1);
+  position(o1, 57, 107);
+  set.loop(o1, 0);
+  fix.loop(o1);
+  set.priority(o1, 6);
+  draw(o1);
+  stop.update(o1);
+  set.view(o5, 182);
+  animate.obj(o5);
+  cycle.time(o5, v162);
+  ignore.horizon(o5);
+  position(o5, 71, 10);
+  set.loop(o5, 4);
+  fix.loop(o5);
+  set.priority(o5, 15);
+  draw(o5);
+  if (!isset(f66)) {
+    animate.obj(o2);
+    set.view(o2, 182);
+    position(o2, 67, 91);
+    set.loop(o2, 1);
+    fix.loop(o2);
+    v153 = 3;
+    cycle.time(o2, v153);
+    set.priority(o2, 15);
+    draw(o2);
+  }
+  else {
+    set.view(o3, 182);
+    animate.obj(o3);
+    position(o3, 64, 101);
+    set.loop(o3, 2);
+    fix.loop(o3);
+    set.priority(o3, 7);
+    draw(o3);
+    stop.update(o3);
+    set.view(o4, 182);
+    animate.obj(o4);
+    v162 = 4;
+    cycle.time(o4, v162);
+    position(o4, 75, 64);
+    set.loop(o4, 3);
+    fix.loop(o4);
+    stop.cycling(o4);
+    set.priority(o4, 8);
+    draw(o4);
+  }
+  v220 = 0;
+  set(f220);
+  v221 = 0;
+  reset(f221);
+  reset(f222);
+  set(f223);
+  show.pic();
+  return();
+}
+if ((isset(f221)) && 
+    (isset(f112))) {
+  v221--;
+  random(0, 3, v156);
+  if ((v156 <= 0) && 
+      (!isset(f223))) {
+    draw(o5);
+    set(f223);
+    start.cycling(o5);
+  }
+  else {
+    if (isset(f223)) {
+      erase(o5);
+      reset(f223);
+    }
+  }
+  if (isset(f66)) {
+    start.update(o4);
+    set.loop(o4, 3);
+    random(3, 5, v222);
+    cycle.time(o4, v222);
+    start.cycling(o4);
+    if (v221 <= 0) {
+      set.cel(o4, 1);
+      stop.update(o4);
+      force.update(o4);
+      reset(f221);
+      set(f220);
+    }
+  }
+  else {
+    if (v221 <= 0) {
+      reset(f221);
+      set(f220);
+    }
+  }
+}
+if ((isset(f220)) && 
+    (!isset(f66))) {
+  reset(f220);
+  v220++;
+  if (v220 == 1) {
+    load.sound(103);
+    sound(103, f154);
+    set(windows_remain);
+    v221 = 11;
+    if (isset(f56)) {
+      print.at("\"I am the fairy, Genesta. In my land of Tamir there is a "
+               "remarkable tree. This tiny tree needs one hundred years to bear "
+               "a single fruit.\"", 17, 3, 35);
+    }
+    else {
+      print.at("\"I am the fairy, Genesta. In my land of Tamir there is a "
+               "remarkable tree. This tiny tree needs one hundred years to bear "
+               "a single fruit.\"", 15, 3, 35);
+    }
+    set(f221);
+  }
+  if (v220 == 2) {
+    set(windows_remain);
+    v153 = 3;
+    cycle.time(o2, v153);
+    v221 = 10;
+    if (isset(f56)) {
+      print.at("\"But, this is no ordinary fruit; for if a person were to eat "
+               "it, one would find that good health and well-being would be "
+               "theirs for many years.\"", 17, 3, 36);
+    }
+    else {
+      print.at("\"But, this is no ordinary fruit; for if a person were to eat "
+               "it, one would find that good health and well-being would be "
+               "theirs for many years.\"", 15, 3, 36);
+    }
+    set(f221);
+  }
+  if (v220 == 3) {
+    set(f66);
+    new.room(126); //##LE001##
+  }
+}
+if (isset(f220) && 
+    isset(f66)) {
+  reset(f220);
+  v220++;
+  if (v220 == 1) {
+    load.sound(105);
+    sound(105, f154);
+    set(windows_remain);
+    v221 = 9;
+    if (isset(f56)) {
+      print.at("Again, Genesta smiles. \"Yes, you are correct, Rosella. If you "
+               "are willing to come to Tamir I will explain the situation.\"", 16, 3, 35);
+    }
+    else {
+      print.at("Again, Genesta smiles. \"Yes, you are correct, Rosella. If you "
+               "are willing to come to Tamir I will explain the situation.\"", 15, 3, 35);
+    }
+    set(f221);
+  }
+  if (v220 == 2) {
+    set(windows_remain);
+    start.update(o4);
+    v221 = 7;
+    if (isset(f56)) {
+      print.at("\"However, once I bring you here, I can't send you back; you "
+               "will have to help me first.\"", 16, 3, 36);
+    }
+    else {
+      print.at("\"However, once I bring you here, I can't send you back; you "
+               "will have to help me first.\"", 15, 3, 36);
+    }
+    set(f221);
+  }
+  if (v220 == 3) {
+    close.window();
+    new.room(126); //##LE002##
+  }
+}
+return();
+
+//Messages
+#message 1 "With the return of his long-lost son, Alexander, and the rescue of his daughter, Rosella, from the terrible dragon, old King Graham decides it's time to pass on his adventurer's hat to younger blood."
+#message 2 "He flings the battered hat towards his children while his wife, Queen Valanice, proudly looks on."
+#message 3 "The hat arches through the air."
+#message 4 "King Graham experiences a terrible squeezing pain in his chest."
+#message 5 "\"Help me,\" he rasps."
+#message 6 "The adventurer's hat lies, unclaimed, upon the floor...forgotten."
+#message 7 "King Graham lies weakly in bed, Father Death hovering near."
+#message 8 "Grief suddenly overwhelming her, Rosella runs from the room."
+#message 9 "\"Oh, Father!\" she sobs. \"You're still young; you should have many years ahead of you! Oh, I wish I could help you, Father!\""
+#message 10 "Rosella looks up but sees no one. \"Who's speaking to me?\""
+#message 11 "Rosella sees an image in the mirror. \"Wh-who are you?\" she queries."
+#message 12 "\"I am the fairy, Genesta. In my land of Tamir there is a remarkable tree. This tiny tree needs one hundred years to bear a single fruit.\""
+#message 13 "Rosella is much heartened by this news! \"Where is the land of Tamir?\""
+#message 14 "Genesta smiles. \"Tamir is very far away. But with my magic, I can bring you here.\""
+#message 15 "Rosella senses that there is more to the story. \"But, I suppose there are some problems?\""
+#message 16 "Again, Genesta smiles. \"Yes, you are correct, Rosella. If you are willing to come to Tamir I will explain the situation.\""
+#message 17 "Confused, Rosella says, \"I don't know! What if I can't help you or find the tree?\""
+#message 18 "Genesta pleads, \"You must decide NOW, Rosella. My powers are growing weaker by the minute.\""
+#message 19 "Now, the fairy is but a faint glimmer, and her voice barely audible. \"If you care for your father, say `yes' now!...\" And suddenly she's gone."
+#message 20 "\"YES!!\""
+#message 92 "\"Do you really mean that?\" a soft voice asks."
+#message 102 "\"I am,\" the voice says. \"Look in the magic mirror.\""
+#message 120 "\"But, this is no ordinary fruit; for if a person were to eat it, one would find that good health and well-being would be theirs for many years.\""
+#message 160 "\"However, once I bring you here, I can't send you back; you will have to help me first.\""
+#message 200 "Debug0"
+#message 201 "Debug1"
+#message 202 "Debug2"
+#message 203 "Suddenly...!"
+#message 204 "Debug4"
+#message 205 "Debug5"
+#message 206 "Debug6"

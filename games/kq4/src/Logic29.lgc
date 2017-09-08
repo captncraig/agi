@@ -1,0 +1,268 @@
+if (isset(new_room)) {
+  set(f82);
+  set.horizon(100);
+  if (!isset(f38)) {
+    v152 = 29;
+  }
+  else {
+    v152 = 129;
+  }
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.logics(203);
+  load.view(11);
+  load.view(40);
+  load.sound(52);
+  animate.obj(o12);
+  if (isset(f176)) {
+    set(f36);
+    load.view(211);
+    set.view(Ego, 211);
+    prevent.input();
+  }
+  if (!isset(f179)) {
+    random(1, 3, v152);
+    if (v152 == 1) {
+      load.sound(48);
+      load.logics(228);
+      load.view(165);
+      set(f238);
+      set(f236);
+      animate.obj(o10);
+      animate.obj(o13);
+      set.view(o10, 165);
+      set.loop(o10, 2);
+      position(o10, 63, 128);
+      v152 = 2;
+      cycle.time(o10, v152);
+      start.cycling(o10);
+      v153 = 0;
+      draw(o10);
+    }
+  }
+  if (!isset(f238)) {
+    random(1, 3, v152);
+    if (v152 == 3) {
+      load.logics(244);
+      load.view(112);
+      animate.obj(o3);
+      set.view(o3, 112);
+      ignore.horizon(o3);
+      v152 = 3;
+      step.size(o3, v152);
+      set.priority(o3, 14);
+      random(1, 2, v152);
+      if (v152 == 1) {
+        set.loop(o3, 1);
+        position(o3, 146, 29);
+        draw(o3);
+        move.obj(o3, 0, 29, 0, f233);
+      }
+      else {
+        set.loop(o3, 0);
+        position(o3, 0, 29);
+        draw(o3);
+        move.obj(o3, 146, 29, 0, f233);
+      }
+      set(f234);
+    }
+  }
+  if (prev_room_no == 23) {
+    position(Ego, 126, 84);
+  }
+  if (prev_room_no == 28) {
+    if (v34 < 155) {
+      position(Ego, 2, 132);
+    }
+    else {
+      position(Ego, 2, 164);
+    }
+  }
+  draw(Ego);
+  show.pic();
+}
+distance(Ego, o10, v161);
+distance(Ego, o13, v160);
+if (isset(f112)) {
+  reset(f112);
+  v168++;
+}
+if (isset(ego_touching_signal_line)) {
+  prevent.input();
+  sound(52, f154);
+  reset(ego_touching_signal_line);
+  get.posn(Ego, v134, v135);
+  position.v(o12, v134, v135);
+  ignore.blocks(o12);
+  set(f36);
+  set.view(o12, 11);
+  if ((ego_dir == right || 
+      ego_dir == downright)) {
+    set.loop(o12, 2);
+  }
+  else {
+    set.loop(o12, 3);
+  }
+  fix.loop(o12);
+  v152 = 3;
+  step.size(o12, v152);
+  v152 = 3;
+  cycle.time(o12, v152);
+  start.cycling(o12);
+  erase(Ego);
+  draw(o12);
+  if (v134 < 28) {
+    v159 = 165;
+    v158 = 0;
+    move.obj.v(o12, v134, v159, v158, f226);
+  }
+  else {
+    v159 = 158;
+    v158 = 0;
+    move.obj.v(o12, v134, v159, v158, f226);
+  }
+}
+if (isset(f226)) {
+  stop.sound();
+  release.loop(Ego);
+  v152 = 1;
+  step.size(o12, v152);
+  cycle.time(o12, v152);
+  set.view(o12, 40);
+  if ((ego_dir == right || 
+      ego_dir == downright)) {
+    set.loop(o12, 2);
+  }
+  else {
+    set.loop(o12, 3);
+  }
+  set.cel(o12, 2);
+  reverse.loop(o12, f228);
+  reset(f226);
+}
+if (isset(f228)) {
+  set(f154);
+  observe.blocks(Ego);
+  set.view(Ego, 0);
+  get.posn(o12, v134, v135);
+  position.v(Ego, v134, v135);
+  erase(o12);
+  draw(Ego);
+  ego_dir = 0;
+  reset(f228);
+  reset(f36);
+  accept.input();
+}
+if (isset(f236)) {
+  if (v168 == 15) {
+    v161 = 1;
+    v153 = 0;
+  }
+  if ((v161 < 30) && 
+      (v153 == 0)) {
+    set.loop(o10, 3);
+    end.of.loop(o10, f221);
+    v153 = 1;
+  }
+  if ((isset(f221)) && 
+      (v153 == 1)) {
+    reset(f238);
+    set(f237);
+    v154 = 2;
+    reset(f221);
+    v153++;
+    set.view(o13, 165);
+    set.loop(o13, 0);
+    get.posn(o10, v134, v135);
+    position.v(o13, v134, v135);
+    set.loop(o10, 1);
+    cycle.time(o10, v154);
+    v154 = 3;
+    cycle.time(o13, v154);
+    start.cycling(o13);
+    draw(o13);
+    start.cycling(o10);
+    ignore.blocks(o10);
+    ignore.horizon(o10);
+    ignore.objs(o10);
+    set.priority(o10, 15);
+    move.obj(o10, 0, 55, 3, f221);
+  }
+  if ((isset(f221)) && 
+      (v153 == 2)) {
+    reset(f221);
+    erase(o10);
+    v153++;
+  }
+  if (v168 == 25) {
+    erase(o13);
+    reset(f237);
+    reset(f236);
+  }
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room"))) {
+  print("You are roaming through a dense forest.");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down", "dirt") || 
+    said("examine", "down"))) {
+  if (!isset(f238)) {
+    if (isset(f237)) {
+      print("You see a worm.");
+    }
+    else {
+      print("You see nothing on the ground.");
+    }
+  }
+  else {
+    print("You see a bird pulling at a worm.");
+  }
+}
+if (isset(f237)) {
+  if (said("examine", "earthworm")) {
+    print("You see a worm.");
+  }
+}
+if (!isset(input_parsed)) {
+  call(203);
+}
+if (!isset(input_parsed)) {
+  call(228);
+}
+if (isset(f234) && 
+    !isset(input_parsed)) {
+  call(244);
+}
+Label1:
+if (isset(f233)) {
+  reset(f234);
+  reset(f233);
+  erase(o3);
+}
+if (ego_edge_code == bottom_edge) {
+  new.room(5); //##LE001##
+}
+if (ego_edge_code == right_edge) {
+  new.room(30); //##LE002##
+}
+if (ego_edge_code == horizon_edge) {
+  new.room(23); //##LE003##
+}
+if (ego_edge_code == left_edge) {
+  new.room(28); //##LE004##
+}
+return();
+
+//Messages
+#message 1 "You are roaming through a dense forest."
+#message 2 "You see a bird pulling at a worm."
+#message 3 "You see a worm."
+#message 4 "You see nothing on the ground."
+#message 5 "It is too far in the distance to see it clearly."

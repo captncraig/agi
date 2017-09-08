@@ -1,0 +1,245 @@
+if (isset(new_room)) {
+  discard.view(0);
+  load.sound(52);
+  load.logics(218);
+  v152 = 90;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  set.horizon(50);
+  load.view(143);
+  animate.obj(o2);
+  set.view(o2, 143);
+  set.priority(o2, 4);
+  ignore.horizon(o2);
+  ignore.objs(o2);
+  set.loop(o2, 0);
+  position(o2, 108, 67);
+  v152 = 1;
+  cycle.time(o2, v152);
+  draw(o2);
+  v229 = 0;
+  if (!isset(f86)) {
+    load.sound(42);
+    load.logics(240);
+    load.view(70);
+    animate.obj(o1);
+    set.view(o1, 70);
+    set.loop(o1, 0);
+    set.cel(o1, 0);
+    ignore.blocks(o1);
+    position(o1, 83, 107);
+    ignore.objs(o1);
+    set.priority(o1, 4);
+    draw(o1);
+    stop.cycling(o1);
+  }
+  load.view(1);
+  set.view(Ego, 1);
+  load.view(20);
+  load.view(10);
+  load.view(40);
+  if (prev_room_no == 85) {
+    set(f221);
+    ignore.blocks(Ego);
+    set.priority(Ego, 13);
+    position(Ego, 36, 52);
+    if (v37 == 6) {
+      sound(52, f154);
+      reset(f221);
+      set(f36);
+      prevent.input();
+      position(Ego, 78, 10);
+      set.view(Ego, 10);
+      if (v147 == 0) {
+        set.loop(Ego, 0);
+      }
+      else {
+        set.loop(Ego, 1);
+      }
+      fix.loop(Ego);
+      ignore.blocks(Ego);
+      move.obj(Ego, 78, 110, 4, f225);
+      release.priority(Ego);
+    }
+  }
+  else {
+    observe.blocks(Ego);
+    position(Ego, 126, 117);
+  }
+  draw(Ego);
+  show.pic();
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "tower") || 
+    said("examine", "around", "tower") || 
+    said("examine", "castle") || 
+    said("examine", "dark", "castle") || 
+    said("examine", "bad", "castle") || 
+    said("examine", "around", "castle") || 
+    said("examine", "around", "bad", "castle") || 
+    said("examine", "around", "dark", "castle"))) {
+  print("You are at the bottom of the west tower.  A spiral of stone steps "
+        "winds upward to the top.");
+}
+if ((said("examine", "staircase") || 
+    said("examine", "rock", "staircase") || 
+    said("examine", "up", "staircase") || 
+    said("examine", "up", "rock", "staircase"))) {
+  print("The stone steps spiral dangerously upward.");
+}
+if ((said("examine", "door") || 
+    said("look in", "door"))) {
+  print("There is an open doorway before you.");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down") || 
+    said("examine", "down", "dirt"))) {
+  print("There is nothing of interest on the floor.");
+}
+if (!isset(input_parsed)) {
+  call(218);
+}
+if (!isset(f86) && 
+    !isset(input_parsed)) {
+  if ((said("speak", "goon") || 
+      said("speak", "dwarf") || 
+      said("speak") || 
+      said("awaken", "goon") || 
+      said("awaken", "dwarf") || 
+      said("hit", "goon") || 
+      said("hit", "dwarf") || 
+      said("speak", "with", "goon") || 
+      said("embrace", "goon") || 
+      said("embrace") || 
+      said("embrace", "dwarf"))) {
+    if (posn(Ego,82,100,95,115)) {
+      set(f36);
+      prevent.input();
+      ego_dir = 0;
+      end.of.loop(o1, f227);
+    }
+    else {
+      set(f113);
+    }
+  }
+  call(240);
+}
+Label1:
+if (isset(f227)) {
+  sound(42, f154);
+  reset(f227);
+  v37 = 2;
+  set(f41);
+  print("This isn't good, Rosella!  You've done it this time!");
+  new.room(81); //##LE001##
+}
+if (posn(Ego,85,130,86,159)) {
+  release.priority(Ego);
+  observe.blocks(Ego);
+  reset(f221);
+}
+if (posn(Ego,83,130,84,159)) {
+  ignore.blocks(Ego);
+  set.priority(Ego, 13);
+  set(f221);
+}
+if (isset(ego_touching_signal_line) && 
+    (v33 < 95) && 
+    isset(f221) && 
+    !isset(f222)) {
+  reset(f221);
+  sound(52, f154);
+  release.priority(Ego);
+  set(f36);
+  prevent.input();
+  ignore.blocks(Ego);
+  set(f222);
+  set.view(Ego, 10);
+  set.loop(Ego, 0);
+  fix.loop(Ego);
+  v152 = 4;
+  step.size(Ego, v152);
+  v152 = 3;
+  cycle.time(Ego, v152);
+  if (v33 < 52) {
+    move.obj(Ego, 56, 123, 0, f225);
+  }
+  else {
+    if (v33 < 69) {
+      set(f228);
+      move.obj(Ego, 72, 125, 0, f223);
+    }
+    else {
+      move.obj(Ego, 76, 128, 0, f223);
+    }
+  }
+}
+if (isset(f223)) {
+  stop.sound();
+  v152 = 1;
+  step.size(Ego, v152);
+  cycle.time(Ego, v152);
+  set.view(Ego, 40);
+  set.loop(Ego, 0);
+  set.cel(Ego, 3);
+  if (isset(f228)) {
+    reset(f228);
+    reposition.to(Ego, 69, 125);
+  }
+  else {
+    reposition.to(Ego, 79, 128);
+  }
+  reverse.loop(Ego, f224);
+  set(f157);
+  reset(f223);
+}
+if (isset(f224)) {
+  observe.blocks(Ego);
+  release.priority(Ego);
+  set.view(Ego, 1);
+  reset(f224);
+  reset(f157);
+  reset(f36);
+  accept.input();
+  release.loop(Ego);
+  reset(f222);
+}
+if (isset(f225)) {
+  reset(f225);
+  stop.sound();
+  set.view(Ego, 20);
+  set.loop(Ego, 2);
+  fix.loop(Ego);
+  reposition.to(Ego, 72, 124);
+  v229 = 2;
+}
+if (v229 > 0) {
+  v229--;
+  if (v229 <= 0) {
+    shake.screen(1);
+    v37 = 20;
+    set(f140);
+  }
+}
+if (isset(ego_touching_signal_line) && 
+    v33 > 120) {
+  new.room(91); //##LE002##
+}
+if (ego_edge_code == horizon_edge) {
+  new.room(85); //##LE003##
+}
+return();
+
+//Messages
+#message 1 "You are at the bottom of the west tower.  A spiral of stone steps winds upward to the top."
+#message 2 "The stone steps spiral dangerously upward."
+#message 3 "There is an open doorway before you."
+#message 4 "There is nothing of interest on the floor."
+#message 57 "This isn't good, Rosella!  You've done it this time!"

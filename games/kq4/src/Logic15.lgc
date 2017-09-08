@@ -1,0 +1,620 @@
+if (isset(new_room)) {
+  set.horizon(85);
+  if (!isset(f38)) {
+    v152 = 15;
+  }
+  else {
+    v152 = 115;
+  }
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  if (prev_room_no == 16) {
+    if ((v34 < 116) && 
+        (v34 > 102)) {
+      position(Ego, 151, 116);
+    }
+  }
+  draw(Ego);
+  load.logics(226);
+  load.logics(202);
+  load.view(3);
+  load.view(25);
+  load.sound(48);
+  if (!has("Gold Crown")) {
+    load.logics(225);
+    load.logics(224);
+    load.view(48);
+    load.view(49);
+    load.view(110);
+    animate.obj(o3);
+    animate.obj(o4);
+    set.view(o4, 25);
+    set.loop(o4, 9);
+    position(o4, 70, 167);
+    set.view(o3, 25);
+    set.loop(o3, 7);
+    set.cel(o3, 0);
+    animate.obj(o12);
+    ignore.blocks(o12);
+    ignore.objs(o12);
+    animate.obj(o2);
+    set.view(o2, 25);
+    set.loop(o2, 6);
+    position(o2, 130, 129);
+    draw(o2);
+    v152 = 2;
+    cycle.time(o2, v152);
+    start.cycling(o2);
+    set(f237);
+    set(f232);
+    load.sound(28);
+    load.sound(59);
+    sound(28, f154);
+  }
+  if (isset(f184)) {
+    animate.obj(o1);
+    set.view(o1, 25);
+    set.loop(o1, 8);
+    position(o1, 142, 121);
+    draw(o1);
+    set(f233);
+  }
+  show.pic();
+}
+distance(Ego, o2, v156);
+if (isset(f112)) {
+  reset(f112);
+  v168++;
+  v162++;
+  v221++;
+}
+if ((posn(Ego,10,121,69,141) || 
+    posn(Ego,100,136,126,145) || 
+    posn(Ego,30,117,41,124) || 
+    posn(Ego,18,112,38,122) || 
+    posn(Ego,124,133,149,138))) {
+  set(ego_on_water);
+}
+if ((isset(ego_on_water)) && 
+    (v37 != 11)) {
+  set.view(Ego, 3);
+  set(f238);
+  v37 = 11;
+}
+if ((isset(f238)) && 
+    (isset(f237))) {
+  reset(f237);
+  set(f221);
+  v153 = 1;
+  print("Oops!  You scared away the frog!");
+}
+if ((!isset(ego_on_water)) && 
+    (v37 == 11)) {
+  set.view(Ego, 0);
+  v37 = 0;
+  reset(f238);
+}
+if (!isset(f234)) {
+  if ((isset(f221)) && 
+      (v153 == 1)) {
+    set.loop(o2, 3);
+    fix.loop(o2);
+    start.cycling(o2);
+    end.of.loop(o2, f221);
+    v153++;
+    if (isset(f230)) {
+      print("Oops!  You scared away the frog!");
+    }
+  }
+  if ((isset(f221)) && 
+      (v153 == 2)) {
+    erase(o2);
+    reset(f237);
+    set(f236);
+    v168 = 0;
+    v153++;
+    if (has("Gold Crown")) {
+      v153 = 0;
+    }
+  }
+  if ((v168 == 5) && 
+      (v153 == 3)) {
+    if (!isset(f238)) {
+      reset(f230);
+      if (isset(f231)) {
+        reset(f221);
+        set.loop(o2, 5);
+        fix.loop(o2);
+        position(o2, 128, 121);
+        draw(o2);
+        end.of.loop(o2, f221);
+        v153++;
+      }
+      else {
+        set.loop(o2, 5);
+        fix.loop(o2);
+        position(o2, 121, 129);
+        draw(o2);
+        end.of.loop(o2, f225);
+        v153 = 0;
+        reset(f221);
+        set(f237);
+      }
+    }
+    else {
+      v168 = 0;
+    }
+  }
+  if (isset(f225)) {
+    reset(f225);
+    reset(f236);
+    set(f237);
+    set.loop(o2, 6);
+    position(o2, 130, 129);
+    start.cycling(o2);
+    if (isset(f231)) {
+      set(f221);
+      v153 = 1;
+    }
+  }
+  if ((isset(f221)) && 
+      (v153 == 4)) {
+    set(f233);
+    reset(f221);
+    set.loop(o2, 6);
+    position(o2, 136, 121);
+    start.cycling(o2);
+    print("You \"accidentally\" drop the golden ball into the pond.  From atop "
+          "a lily pad, a large green frog leaps into the water, and disappears "
+          "from view.  A moment later, the frog emerges with...YES!...your lost "
+          "ball in its mouth!  It seems as if the frog is kindly returning your "
+          "gold ball to you.");
+    v153++;
+    animate.obj(o1);
+    set.view(o1, 25);
+    set.loop(o1, 8);
+    position(o1, 142, 121);
+    draw(o1);
+    ignore.objs(o1);
+    set(f184);
+    reset(f231);
+    reset(f236);
+    set(f235);
+  }
+  if ((isset(f221)) && 
+      (v153 == 5)) {
+    position(o2, 128, 121);
+    set.loop(o2, 4);
+    v152 = 2;
+    step.size(o2, v152);
+    start.cycling(o2);
+    end.of.loop(o2, f221);
+    v168 = 0;
+    v153 = 2;
+    reset(f235);
+    set(f236);
+  }
+  if ((isset(f222)) && 
+      (v154 == 1)) {
+    reset(f222);
+    move.obj(o12, 140, 121, 0, f222);
+    start.cycling(o12);
+    ignore.objs(o12);
+    v154++;
+  }
+  if ((isset(f222)) && 
+      (v154 == 2)) {
+    reset(f222);
+    set.view(o12, 48);
+    set.loop(o12, 0);
+    set.cel(o12, 0);
+    v152 = 2;
+    cycle.time(o12, v152);
+    end.of.loop(o12, f222);
+    v154++;
+  }
+  current.cel(o12, v161);
+  if ((v161 == 3) && 
+      (v154 == 3)) {
+    erase(o2);
+    reset(f235);
+  }
+  if ((isset(f222)) && 
+      (v154 == 3)) {
+    reset(f222);
+    get.posn(o12, v33, v34);
+    set.view(Ego, 48);
+    position.v(Ego, v33, v34);
+    set.loop(Ego, 0);
+    set.cel(Ego, 5);
+    erase(o12);
+    draw(Ego);
+    reset(f36);
+    accept.input();
+    v154++;
+    ego_dir = 0;
+  }
+  if ((v154 == 4) && 
+      (ego_dir != stopped) && 
+      (!isset(f234))) {
+    reset(f222);
+    set.view(o2, 25);
+    set.loop(o2, 1);
+    fix.loop(o2);
+    position(o2, 140, 109);
+    reset(f229);
+    draw(o2);
+    set.view(Ego, 0);
+    ignore.blocks(o2);
+    ignore.objs(o2);
+    move.obj(o2, 128, 121, 0, f222);
+    v154++;
+  }
+  if ((v154 == 5) && 
+      (isset(f222))) {
+    reset(f222);
+    set.loop(o2, 6);
+    fix.loop(o2);
+    v222 = 8;
+    v223 = 0;
+    reposition(o2, v222, v223);
+    start.cycling(o2);
+    observe.objs(o2);
+    v154++;
+    set(f235);
+  }
+}
+if ((isset(f234)) && 
+    (v155 == 1)) {
+  v157 = 6;
+  set(f36);
+  prevent.input();
+  get.posn(Ego, v33, v34);
+  set.view(o12, 49);
+  erase(Ego);
+  position.v(o12, v33, v34);
+  draw(o12);
+  end.of.loop(o12, f223);
+  v155++;
+  score  += 3;
+  reset(f235);
+}
+if ((isset(f223)) && 
+    (v155 == 2)) {
+  v155++;
+  position(o3, 134, 118);
+  set.priority(o3, 15);
+  draw(o3);
+  v152 = 2;
+  cycle.time(o3, v152);
+  end.of.loop(o3, f223);
+  sound(59, f154);
+}
+current.cel(o3, v160);
+if ((isset(f223)) && 
+    (v155 == 3)) {
+  print("Suddenly, the little green frog changes into a handsome prince!");
+  erase(o3);
+  reset(f223);
+  get.posn(o12, v33, v34);
+  set.view(Ego, 0);
+  position.v(Ego, v33, v34);
+  erase(o12);
+  set.loop(Ego, 1);
+  draw(Ego);
+  v155++;
+  v162 = 0;
+}
+if ((v160 == 4) && 
+    (isset(f234))) {
+  set.view(o2, 110);
+  v155 = 3;
+  set.loop(o2, 1);
+  position(o2, 132, 115);
+  reset(f229);
+  draw(o2);
+  stop.cycling(o2);
+}
+if ((v155 == 4) && 
+    (v162 == 5)) {
+  print("\"Who are you?\" the prince demands.  \"I thought you were supposed to "
+        "be a princess?!  Why, you're nothing more than a PEASANT girl!\"  You "
+        "blanch a bit at that remark, but say nothing.");
+  print("\"Well, ta ta,\" he says.  \"I'm off.  Here, you may keep THIS!\"  To "
+        "your surprise, he tosses the little golden crown to you as he takes "
+        "his leave. Good riddance, you think.");
+  v162 = 6;
+  end.of.loop(o2, f223);
+  sound(48, f154);
+  get("Gold Crown");
+  score  += 2;
+  v155++;
+}
+if ((v155 == 5) && 
+    (isset(f223))) {
+  reset(f223);
+  set.loop(o2, 0);
+  v152 = 1;
+  step.time(o2, v152);
+  cycle.time(o2, v152);
+  start.cycling(o2);
+  move.obj(o2, 155, 90, 0, f223);
+  v155++;
+}
+if ((v155 == 6) && 
+    (isset(f223)) && 
+    (isset(f232))) {
+  erase(o2);
+  reset(f232);
+  reset(f36);
+  accept.input();
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room"))) {
+  print("Numerous water lilies float serenely upon the lovely little pond "
+        "nestled in these woods.");
+  if (isset(f237)) {
+    print("Atop one of the bigger lily pads, you notice a rather large "
+          "frog...wearing a little gold crown!");
+  }
+}
+if (said("examine", "lake")) {
+  print("This is a very pretty little pond.  Floating upon it are many "
+        "beautiful water lilies.");
+  if (isset(f237)) {
+    print("You spy a large frog sitting on top of a big lily pad, and "
+          "YES!...it's  wearing a little gold crown!");
+  }
+}
+if (said("examine", "blossom")) {
+  print("Aren't they pretty?");
+}
+if ((said("wade") || 
+    said("wade", "lake"))) {
+  print("Just enter it.");
+}
+if ((said("float") || 
+    said("enter", "float", "lake") || 
+    said("enter", "float") || 
+    said("float", "lake") || 
+    said("float", "lake") || 
+    said("dive", "lake"))) {
+  print("The water is too shallow.");
+}
+if (said("carry", "lake")) {
+  print("You have no reason to carry water.");
+}
+if ((said("carry", "drink") || 
+    said("drink", "lake") || 
+    said("drink") || 
+    said("carry", "drink"))) {
+  if (v37 != 0) {
+    print("You bend down and drink a bit of the pond water.  Well, it's not "
+          "wonderful, but it satisfies your thirst.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((isset(f237)) && 
+    (!isset(f238))) {
+  if (said("examine", "frog")) {
+    print("The large frog stares back at you with big bulging eyes.");
+  }
+  if ((said("carry", "frog") || 
+      said("capture", "frog"))) {
+    print("You're too far away from it.");
+  }
+  if ((said("speak", "frog") || 
+      said("speak"))) {
+    window_close_time = 6;
+    print("Ribbit! Ribbit!");
+    print("Well, what else did you expect from a frog?");
+  }
+  if ((said("examine", "crown") || 
+      said("examine", "gold", "crown") || 
+      said("examine", "abominable", "crown"))) {
+    print("It's a nice little gold crown.");
+  }
+}
+if (isset(f235)) {
+  if (said("examine", "frog")) {
+    print("The large frog stares back at you with big bulging eyes.");
+  }
+  if (said("speak", "frog")) {
+    print("Ribbit! Ribbit!");
+  }
+}
+if ((isset(f238)) && 
+    (isset(f236))) {
+  if ((said("examine", "frog") || 
+      said("examine", "abominable", "frog") || 
+      said("find", "frog"))) {
+    print("The water is too murky to see anything!");
+  }
+  if ((said("carry", "frog") || 
+      said("capture", "frog"))) {
+    print("You can't see the frog.");
+  }
+  if ((said("speak", "frog") || 
+      said("speak"))) {
+    print("You can't see the frog.");
+  }
+}
+if ((isset(f235)) && 
+    (said("carry", "frog") || 
+    said("carry", "up", "frog") || 
+    said("capture", "frog"))) {
+  if (!isset(ego_on_water)) {
+    if (v156 < 15) {
+      set(f36);
+      prevent.input();
+      set(f229);
+      print("Squinching up your nose in disgust, you catch the large frog and "
+            "hold it in your hand.  It stares at you with its big bulgy eyes, "
+            "and wobbles its throat.");
+      get.posn(Ego, v33, v34);
+      set.view(o12, 0);
+      erase(Ego);
+      position.v(o12, v33, v34);
+      draw(o12);
+      set(f222);
+      v154 = 1;
+      reset(f235);
+    }
+    else {
+      set(f113);
+    }
+  }
+  else {
+    print("Wait until you're on land.");
+  }
+}
+if ((said("examine", "lilies") || 
+    said("examine", "lake", "lilies") || 
+    said("examine", "lilies", "pad") || 
+    said("examine", "pad"))) {
+  print("Many water lilies float upon this little pond.");
+  if (isset(f237)) {
+    print("Atop one large lily pad, sits a big frog.");
+  }
+}
+if ((said("carry", "lilies") || 
+    said("carry", "pad"))) {
+  print("You have no need for a lily pad.");
+}
+if (!isset(f229)) {
+  if ((said("carry", "crown") || 
+      said("carry", "gold", "crown"))) {
+    print("You don't have the frog.");
+  }
+}
+if ((said("examine", "lake") || 
+    said("look in", "lake") || 
+    said("examine", "beneath", "lake"))) {
+  print("The water is too murky to see the bottom.");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down"))) {
+  print("Flowers lie here and there along the pond.");
+  if (isset(f235)) {
+    print("You see the frog.");
+  }
+  if (isset(f233)) {
+    print("You see the gold ball.");
+  }
+}
+if ((said("dead fish") || 
+    said("enter", "fishing") || 
+    said("capture", "dead fish") || 
+    said("carry", "dead fish"))) {
+  if ((!has("Baited Fishing Pole")) && 
+      (!has("Fishing Pole"))) {
+    print("You have no way of catching any fish.");
+  }
+  else {
+    print("This is not a good place to fish.");
+  }
+}
+if (!isset(input_parsed)) {
+  call(202);
+}
+if ((!isset(input_parsed)) && 
+    (isset(f229))) {
+  call(224);
+}
+if (!isset(input_parsed)) {
+  call(226);
+}
+if ((!isset(input_parsed)) && 
+    (isset(f234)) && 
+    (isset(f232))) {
+  call(225);
+}
+Label1:
+if (ego_edge_code == bottom_edge) {
+  new.room(21); //##LE001##
+}
+if (ego_edge_code == right_edge) {
+  new.room(16); //##LE002##
+}
+if (ego_edge_code == horizon_edge) {
+  new.room(9); //##LE003##
+}
+if (ego_edge_code == left_edge) {
+  new.room(14); //##LE004##
+}
+return();
+
+//Messages
+#message 1 "Numerous water lilies float serenely upon the lovely little pond nestled in these woods."
+#message 2 "Atop one of the bigger lily pads, you notice a rather large frog...wearing a little gold crown!"
+#message 3 "This is a very pretty little pond.  Floating upon it are many beautiful water lilies."
+#message 4 "You spy a large frog sitting on top of a big lily pad, and YES!...it's  wearing a little gold crown!"
+#message 5 "Just enter it."
+#message 6 "You have no reason to carry water."
+#message 7 "You bend down and drink a bit of the pond water.  Well, it's not wonderful, but it satisfies your thirst."
+#message 8 "The large frog stares back at you with big bulging eyes."
+#message 9 "You're too far away from it."
+#message 10 "Ribbit! Ribbit!"
+#message 11 "It's a nice little gold crown."
+#message 12 "Oops!  You scared away the frog!"
+#message 13 "The water is too murky to see anything!"
+#message 14 "You can't see the frog."
+#message 15 "Squinching up your nose in disgust, you catch the large frog and hold it in your hand.  It stares at you with its big bulgy eyes, and wobbles its throat."
+#message 16 "Many water lilies float upon this little pond."
+#message 17 "Atop one large lily pad, sits a big frog."
+#message 18 "You have no need for a lily pad."
+#message 19 "You \"accidentally\" drop the golden ball into the pond.  From atop a lily pad, a large green frog leaps into the water, and disappears from view.  A moment later, the frog emerges with...YES!...your lost ball in its mouth!  It seems as if the frog is kindly returning your gold ball to you."
+#message 20 "Suddenly, the little green frog changes into a handsome prince!"
+#message 21 "\"Who are you?\" the prince demands.  \"I thought you were supposed to be a princess?!  Why, you're nothing more than a PEASANT girl!\"  You blanch a bit at that remark, but say nothing."
+#message 22 "\"Well, ta ta,\" he says.  \"I'm off.  Here, you may keep THIS!\"  To your surprise, he tosses the little golden crown to you as he takes his leave. Good riddance, you think."
+#message 23 "The water is too murky to see the bottom."
+#message 24 "The water is too shallow."
+#message 25 "Well, what else did you expect from a frog?"
+#message 26 "Wait until you're on land."
+#message 27 "Well, wasn't that fun!"
+#message 28 "Your hands are full right now."
+#message 29 "Aren't they pretty?"
+#message 30 "You don't have the frog."
+#message 31 "You see the frog."
+#message 32 "You see the gold ball."
+#message 33 "You have no way of catching any fish."
+#message 34 "This is not a good place to fish."
+#message 35 "Flowers lie here and there along the pond."
+#message 50 "debug0"
+#message 51 "debug1"
+#message 52 "debug2"
+#message 53 "debug3"
+#message 54 "debug4"
+#message 55 "debug5"
+#message 56 "debug6"
+#message 57 "debug7"
+#message 58 "debug8"
+#message 59 "debug9"
+#message 60 "debug10"
+#message 61 "debug11"
+#message 62 "debug12"
+#message 63 "debug13"
+#message 64 "debug14"
+#message 65 "debug15"
+#message 66 "debug16"
+#message 67 "debug17"
+#message 68 "debug18"
+#message 69 "debug19"
+#message 70 "debug20"
+#message 71 "debug21"
+#message 72 "debug22"
+#message 73 "debug23"
+#message 74 "debug24"
+#message 75 "debug25"
+#message 76 "debug26"
+#message 77 "debug27"
+#message 78 "debug28"
+#message 79 "debug29"

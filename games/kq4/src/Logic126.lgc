@@ -1,0 +1,265 @@
+set(f36);
+status.line.off();
+cycle_delay = 2;
+if (isset(new_room)) {
+  v152 = 208;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.view(181);
+  add.to.pic(181, 0, 0, 96, 120, 6, 1);
+  if (isset(f66)) {
+    add.to.pic(181, 2, 0, 99, 111, 7, 1);
+    set.view(o4, 181);
+    animate.obj(o4);
+    position(o4, 104, 73);
+    set.loop(o4, 3);
+    fix.loop(o4);
+    set.cel(o4, 1);
+    set.priority(o4, 8);
+    draw(o4);
+    stop.update(o4);
+  }
+  else {
+    add.to.pic(181, 1, 0, 101, 106, 15, 1);
+  }
+  if (isset(f67)) {
+    stop.update(o4);
+    set.view(o5, 181);
+    animate.obj(o5);
+    position(o5, 100, 106);
+    set.loop(o5, 4);
+    fix.loop(o5);
+    set.priority(o5, 9);
+    v159 = 6;
+    cycle.time(o5, v159);
+    draw(o5);
+  }
+  add.to.pic(181, 2, 1, 45, 120, 13, 1);
+  set.view(o6, 181);
+  animate.obj(o6);
+  position(o6, 65, 91);
+  set.loop(o6, 5);
+  fix.loop(o6);
+  set.cel(o6, 0);
+  set.priority(o6, 15);
+  draw(o6);
+  stop.cycling(o6);
+  v220 = 0;
+  set(f220);
+  v221 = 0;
+  reset(f221);
+  reset(f222);
+  reset(f223);
+  show.pic();
+  return();
+}
+if ((isset(f221)) && 
+    (isset(f112))) {
+  v221--;
+  if (isset(f66)) {
+    set.loop(o4, 3);
+    random(2, 4, v222);
+    cycle.time(o4, v222);
+    start.cycling(o4);
+  }
+  if (isset(f67)) {
+    set.loop(o5, 4);
+    random(4, 6, v159);
+    cycle.time(o5, v159);
+    start.cycling(o5);
+  }
+  if ((v221 == 1) && 
+      (isset(f66))) {
+    set.cel(o4, 1);
+    stop.update(o4);
+    force.update(o4);
+  }
+  if ((isset(f223)) && 
+      (v221 == 7)) {
+    draw(o5);
+    start.update(o5);
+    random(4, 7, v158);
+    cycle.time(o5, v158);
+    start.cycling(o5);
+  }
+}
+if ((v221 <= 0) && 
+    (isset(f221)) && 
+    (!isset(f67))) {
+  if (!isset(f222)) {
+    reset(f221);
+    set(f220);
+  }
+  else {
+    if (isset(f222)) {
+      set(f67);
+      new.room(127); //##LE001##
+    }
+  }
+}
+if ((v221 <= 0) && 
+    (isset(f221)) && 
+    (isset(f67))) {
+  set(f220);
+}
+if ((isset(f220)) && 
+    (!isset(f66)) && 
+    (!isset(f67))) {
+  reset(f220);
+  v220++;
+  if (v220 == 1) {
+    set(windows_remain);
+    v221 = 7;
+    if (isset(f56)) {
+      print.at("Rosella sees an image in the mirror. \"Wh-who are you?\" she "
+               "queries.", 19, 5, 35);
+    }
+    else {
+      print.at("Rosella sees an image in the mirror. \"Wh-who are you?\" she "
+               "queries.", 17, 5, 35);
+    }
+    v155 = 3;
+    cycle.time(o6, v155);
+    start.cycling(o6);
+    set(f221);
+  }
+  if (v220 == 2) {
+    new.room(127); //##LE002##
+  }
+}
+if ((isset(f220)) && 
+    (isset(f66)) && 
+    (!isset(f67))) {
+  reset(f220);
+  v220++;
+  if (v220 == 1) {
+    load.sound(104);
+    sound(104, f154);
+    set(windows_remain);
+    v221 = 8;
+    if (isset(f56)) {
+      print.at("Rosella is much heartened by this news! \"Where is the land of "
+               "Tamir?\"", 19, 5, 30);
+    }
+    else {
+      print.at("Rosella is much heartened by this news! \"Where is the land of "
+               "Tamir?\"", 17, 5, 30);
+    }
+    start.cycling(o6);
+    cycle.time(o6, v155);
+    set(f221);
+  }
+  if (v220 == 2) {
+    stop.update(o6);
+    set.cel(o6, 0);
+    force.update(o6);
+    start.update(o4);
+    set(windows_remain);
+    v221 = 8;
+    if (isset(f56)) {
+      print.at("Genesta smiles. \"Tamir is very far away. But with my magic, I "
+               "can bring you here.\"", 19, 3, 35);
+    }
+    else {
+      print.at("Genesta smiles. \"Tamir is very far away. But with my magic, I "
+               "can bring you here.\"", 17, 3, 35);
+    }
+    set(f221);
+  }
+  if (v220 == 3) {
+    set(windows_remain);
+    v221 = 7;
+    if (isset(f56)) {
+      print.at("Rosella senses that there is more to the story. \"But, I "
+               "suppose there are some problems?\"", 19, 2, 36);
+    }
+    else {
+      print.at("Rosella senses that there is more to the story. \"But, I "
+               "suppose there are some problems?\"", 17, 2, 36);
+    }
+    v155 = 4;
+    cycle.time(o6, v155);
+    start.update(o6);
+    set(f221);
+    set(f222);
+  }
+}
+if ((isset(f220)) && 
+    (isset(f67))) {
+  reset(f220);
+  v220++;
+  if (v220 == 1) {
+    load.sound(106);
+    sound(106, f154);
+    set(windows_remain);
+    v221 = 7;
+    if (isset(f56)) {
+      print.at("Confused, Rosella says, \"I don't know! What if I can't help "
+               "you or find the tree?\"", 19, 5, 30);
+    }
+    else {
+      print.at("Confused, Rosella says, \"I don't know! What if I can't help "
+               "you or find the tree?\"", 17, 5, 30);
+    }
+    v155 = 3;
+    cycle.time(o6, v155);
+    start.cycling(o6);
+    set(f221);
+  }
+  if (v220 == 2) {
+    stop.update(o6);
+    set.cel(o6, 0);
+    force.update(o6);
+    start.update(o4);
+    set(windows_remain);
+    v221 = 7;
+    if (isset(f56)) {
+      print.at("Genesta pleads, \"You must decide NOW, Rosella. My powers are "
+               "growing weaker by the minute.\"", 19, 4, 35);
+    }
+    else {
+      print.at("Genesta pleads, \"You must decide NOW, Rosella. My powers are "
+               "growing weaker by the minute.\"", 17, 4, 35);
+    }
+    set(f221);
+  }
+  if (v220 == 3) {
+    close.window();
+    new.room(125); //##LE003##
+  }
+}
+return();
+
+//Messages
+#message 1 "With the return of his long-lost son, Alexander, and the rescue of his daughter, Rosella, from the terrible dragon, old King Graham decides it's time to pass on his adventurer's hat to younger blood."
+#message 2 "He flings the battered hat towards his children while his wife, Queen Valanice, proudly looks on."
+#message 3 "The hat arches through the air."
+#message 4 "King Graham experiences a terrible squeezing pain in his chest."
+#message 5 "\"Help me,\" he rasps."
+#message 6 "The adventurer's hat lies, unclaimed, upon the floor...forgotten."
+#message 7 "King Graham lies weakly in bed, Father Death hovering near."
+#message 8 "Grief suddenly overwhelming her, Rosella runs from the room."
+#message 9 "\"Oh, Father!\" she sobs. \"You're still young; you should have many years ahead of you! Oh, I wish I could help you, Father!\""
+#message 10 "Rosella looks up but sees no one. \"Who's speaking to me?\""
+#message 11 "Rosella sees an image in the mirror. \"Wh-who are you?\" she queries."
+#message 12 "\"I am the fairy, Genesta. In my land of Tamir there is a remarkable tree. This tiny tree needs one hundred years to bear a single fruit.\""
+#message 13 "Rosella is much heartened by this news! \"Where is the land of Tamir?\""
+#message 14 "Genesta smiles. \"Tamir is very far away. But with my magic, I can bring you here.\""
+#message 15 "Rosella senses that there is more to the story. \"But, I suppose there are some problems?\""
+#message 16 "Again, Genesta smiles. \"Yes, you are correct, Rosella. If you are willing to come to Tamir I will explain the situation.\""
+#message 17 "Confused, Rosella says, \"I don't know! What if I can't help you or find the tree?\""
+#message 18 "Genesta pleads, \"You must decide NOW, Rosella. My powers are growing weaker by the minute.\""
+#message 19 "Now, the fairy is but a faint glimmer, and her voice barely audible. \"If you care for your father, say `yes' now!...\" And suddenly she's gone."
+#message 20 "\"YES!!\""
+#message 92 "\"Do you really mean that?\" a soft voice asks."
+#message 102 "\"I am,\" the voice says. \"Look in the magic mirror.\""
+#message 120 "\"But, this is no ordinary fruit; for if a person were to eat it, one would find that good health and well-being would be theirs for many years.\""
+#message 160 "\"However, once I bring you here, I can't send you back; you will have to help me first.\""
+#message 200 "Debug0"
+#message 201 "Debug1"
+#message 202 "Debug2"
+#message 203 "Suddenly...!"
+#message 204 "Debug4"
+#message 205 "Debug5"
+#message 206 "Debug6"

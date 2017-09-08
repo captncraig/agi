@@ -1,0 +1,145 @@
+if (isset(new_room)) {
+  set.horizon(1);
+  load.sound(70);
+  load.sound(33);
+  load.logics(227);
+  call(227);
+  load.view(53);
+  load.view(54);
+  load.view(92);
+  v152 = 37;
+  load.logics(211);
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  animate.obj(o3);
+  set.view(o3, 92);
+  set.loop(o3, 0);
+  set.cel(o3, 0);
+  stop.cycling(o3);
+  position(o3, 72, 85);
+  draw(o3);
+  animate.obj(o1);
+  animate.obj(o2);
+  set.view(o1, 53);
+  set.view(o2, 54);
+  set.priority(o1, 4);
+  set.priority(o2, 4);
+  v152 = 2;
+  cycle.time(o1, v152);
+  cycle.time(o2, v152);
+  step.time(o1, v152);
+  step.time(o2, v152);
+  position(o1, 55, 24);
+  position(o2, 93, 26);
+  wander(o1);
+  wander(o2);
+  draw(o1);
+  draw(o2);
+  if (prev_room_no == 47) {
+    position(Ego, 74, 91);
+  }
+  else {
+    if (prev_room_no == 36) {
+      if (v34 < 103) {
+        position(Ego, 3, 95);
+      }
+    }
+    else {
+      if (prev_room_no == 38) {
+        if (v34 < 101) {
+          position(Ego, 151, 95);
+        }
+      }
+      else {
+        position(Ego, 76, 166);
+      }
+    }
+  }
+  set.view(Ego, 0);
+  draw(Ego);
+  show.pic();
+  sound(33, f154);
+  print("Genesta's tiny fairies guard the palace door.");
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "island") || 
+    said("examine", "around", "island") || 
+    said("examine", "around", "room"))) {
+  print("Before you, the palace door beckons, flanked on both sides by lilac "
+        "shrubs.");
+}
+if ((said("examine", "door") || 
+    said("examine", "castle", "door"))) {
+  print("It's an elegant door.");
+}
+if ((said("examine", "path") || 
+    said("examine", "rock", "path"))) {
+  print("A flagstone path leads to the palace door.");
+}
+if (said("open", "door")) {
+  if (posn(Ego,67,86,81,92)) {
+    if (isset(f231)) {
+      print("The door is already open.");
+    }
+    else {
+      set(f231);
+      end.of.loop(o3, f230);
+      sound(70, f154);
+    }
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("bang", "door") || 
+    said("bang") || 
+    said("bang", "abominable", "door") || 
+    said("bang", "abominable", "abominable", "door"))) {
+  if (posn(Ego,67,86,81,92)) {
+    print("The tiny fairies closely watch you.");
+  }
+  else {
+    set(f113);
+  }
+}
+if (said("examine", "beach")) {
+  print("You can see the beach in the distance.");
+}
+if (!isset(input_parsed)) {
+  call(211);
+}
+if (!isset(input_parsed)) {
+  call(227);
+}
+Label1:
+if (isset(f230)) {
+  ignore.objs(o3);
+}
+if (ego_edge_code == bottom_edge) {
+  new.room(40); //##LE001##
+}
+if (isset(ego_touching_signal_line)) {
+  new.room(47); //##LE002##
+}
+if (ego_edge_code == left_edge) {
+  new.room(36); //##LE003##
+}
+if (ego_edge_code == right_edge) {
+  new.room(38); //##LE004##
+}
+return();
+
+//Messages
+#message 1 "Before you, the palace door beckons, flanked on both sides by lilac shrubs."
+#message 2 "It's an elegant door."
+#message 3 "A flagstone path leads to the palace door."
+#message 4 "The door is already open."
+#message 5 "Genesta's tiny fairies guard the palace door."
+#message 6 "The tiny fairies closely watch you."
+#message 7 "You can see the beach in the distance."

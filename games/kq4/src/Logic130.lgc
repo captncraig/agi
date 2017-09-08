@@ -1,0 +1,224 @@
+set(f36);
+status.line.off();
+cycle_delay = 2;
+if (isset(new_room)) {
+  v153 = 206;
+  load.pic(v153);
+  draw.pic(v153);
+  discard.pic(v153);
+  load.view(183);
+  if (!isset(f68)) {
+    add.to.pic(183, 0, 0, 76, 101, 10, 1);
+    set.view(o3, 183);
+    animate.obj(o3);
+    position(o3, 94, 77);
+    set.loop(o3, 4);
+    fix.loop(o3);
+    set.priority(o3, 15);
+    v222 = 3;
+    cycle.time(o3, v222);
+    draw(o3);
+    set.view(o4, 183);
+    animate.obj(o4);
+    position(o4, 90, 47);
+    set.loop(o4, 1);
+    fix.loop(o4);
+    set.cel(o4, 0);
+    set.priority(o4, 15);
+    draw(o4);
+    stop.cycling(o4);
+    set.view(o5, 183);
+    animate.obj(o5);
+    position(o5, 104, 50);
+    set.loop(o5, 2);
+    fix.loop(o5);
+    set.cel(o5, 0);
+    set.priority(o5, 15);
+  }
+  else {
+    add.to.pic(183, 0, 1, 27, 101, 10, 1);
+    set.view(o3, 183);
+    animate.obj(o3);
+    position(o3, 44, 76);
+    set.loop(o3, 6);
+    set.priority(o3, 15);
+    v222 = 3;
+    cycle.time(o3, v222);
+    draw(o3);
+    set.view(o4, 183);
+    animate.obj(o4);
+    position(o4, 41, 45);
+    set.loop(o4, 5);
+    set.cel(o4, 0);
+    set.priority(o4, 15);
+    draw(o4);
+    stop.cycling(o4);
+  }
+  v220 = 0;
+  set(f220);
+  v221 = 0;
+  reset(f222);
+  reset(f223);
+  reset(f224);
+  reset(f221);
+  v223 = 0;
+  show.pic();
+  return();
+}
+if ((isset(f112)) && 
+    (!isset(f221))) {
+  random(1, 5, v223);
+  if (v223 == 1) {
+    v157 = 2;
+    cycle.time(o4, v157);
+    end.of.loop(o4, f221);
+  }
+}
+if (isset(f221)) {
+  set.cel(o4, 0);
+  reset(f221);
+}
+if ((v221 > 0) && 
+    (isset(f112))) {
+  v221--;
+  if ((isset(f222)) && 
+      (v221 == 2)) {
+    stop.update(o3);
+    set.cel(o3, 2);
+    force.update(o3);
+    cycle.time(o4, v157);
+    end.of.loop(o4, f223);
+    v156 = 8;
+    draw(o5);
+    cycle.time(o5, v156);
+    move.obj(o5, 103, 76, 1, f224);
+  }
+  if (v221 <= 0) {
+    close.window();
+    set(f220);
+  }
+}
+if ((isset(f220)) && 
+    (!isset(f68))) {
+  reset(f220);
+  v220++;
+  if (v220 == 1) {
+    load.sound(110);
+    sound(110, f154);
+    set(windows_remain);
+    v221 = 17;
+    if (isset(f56)) {
+      print.at("Genesta looks sadder than ever. \"You're wrong, Rosella. You "
+               "see, I'm losing my magical powers. Yesterday as I was strolling "
+               "through the woods, Lolotte, the evil fairy, caught me unawares "
+               "and stole my magic talisman.\"", 15, 2, 37);
+    }
+    else {
+      print.at("Genesta looks sadder than ever. \"You're wrong, Rosella. You "
+               "see, I'm losing my magical powers. Yesterday as I was strolling "
+               "through the woods, Lolotte, the evil fairy, caught me unawares "
+               "and stole my magic talisman.\"", 13, 2, 37);
+    }
+  }
+  if (v220 == 2) {
+    set(windows_remain);
+    set(f222);
+    v221 = 18;
+    if (isset(f56)) {
+      print.at("The fairy sighs, \"She yanked it from my neck and raced away "
+               "screeching with laughter. Immediately I felt my powers "
+               "diminishing and my body weakening. I will die in 24 hours if my "
+               "talisman is not returned.\"", 16, 2, 38);
+    }
+    else {
+      print.at("The fairy sighs, \"She yanked it from my neck and raced away "
+               "screeching with laughter. Immediately I felt my powers "
+               "diminishing and my body weakening. I will die in 24 hours if my "
+               "talisman is not returned.\"", 14, 2, 38);
+    }
+  }
+  if (v220 == 3) {
+    close.window();
+    set(f68);
+    new.room(129); //##LE001##
+  }
+}
+if ((isset(f220)) && 
+    (isset(f68))) {
+  reset(f220);
+  v220++;
+  if (v220 == 1) {
+    load.sound(112);
+    sound(112, f154);
+    set(windows_remain);
+    v221 = 8;
+    if (isset(f56)) {
+      print.at("Suddenly, Rosella remembers the tiny tree. \"Can you tell me "
+               "where to find the magic fruit?\"", 17, 5, 33);
+    }
+    else {
+      print.at("Suddenly, Rosella remembers the tiny tree. \"Can you tell me "
+               "where to find the magic fruit?\"", 15, 5, 33);
+    }
+  }
+  if (v220 == 2) {
+    stop.cycling(o3);
+    set.cel(o3, 5);
+    set(windows_remain);
+    v221 = 13;
+    if (isset(f56)) {
+      print.at("Remorsefully, Genesta looks at Rosella. \"It will not be easy "
+               "to reach the tree. It grows on a tiny island within a vast "
+               "swamp on the other side of the great mountains.\"", 16, 4, 35);
+    }
+    else {
+      print.at("Remorsefully, Genesta looks at Rosella. \"It will not be easy "
+               "to reach the tree. It grows on a tiny island within a vast "
+               "swamp on the other side of the great mountains.\"", 14, 4, 35);
+    }
+  }
+  if (v220 == 3) {
+    start.cycling(o3);
+    set(windows_remain);
+    v221 = 9;
+    if (isset(f56)) {
+      print.at("Bravely fighting back tears, Rosella says, \"I will help you in "
+               "any way I can, Genesta. How can I find Lolotte?\"", 16, 2, 38);
+    }
+    else {
+      print.at("Bravely fighting back tears, Rosella says, \"I will help you in "
+               "any way I can, Genesta. How can I find Lolotte?\"", 14, 2, 38);
+    }
+  }
+  if (v220 == 4) {
+    new.room(128); //##LE002##
+  }
+}
+return();
+
+//Messages
+#message 21 "The lovely fairy speaks. \"I am the fairy, Genesta. Welcome to Tamir!\""
+#message 22 "Rosella looks awestruck at the fairy. She is stunningly beautiful! But still there is a certain sadness to her."
+#message 23 "Genesta looks sadder than ever. \"You're wrong, Rosella. You see, I'm losing my magical powers. Yesterday as I was strolling through the woods, Lolotte, the evil fairy, caught me unawares and stole my magic talisman.\""
+#message 24 "The fairy sighs, \"She yanked it from my neck and raced away screeching with laughter. Immediately I felt my powers diminishing and my body weakening. I will die in 24 hours if my talisman is not returned.\""
+#message 25 "Intently, Genesta looks at Rosella. \"Lolotte is very evil and will use the talisman to bring more evil to Tamir. Now I fear it will contaminate my whole country!\""
+#message 26 "Rosella is unsure as to what SHE can do. Meekly, she asks, \"I want to help you, but how?\""
+#message 27 "\"You can do more than you think, Rosella,\" Genesta assures her. \"I believe you will be able to penetrate Lolotte's domain.\""
+#message 28 "Suddenly, Rosella remembers the tiny tree. \"Can you tell me where to find the magic fruit?\""
+#message 29 "Remorsefully, Genesta looks at Rosella. \"It will not be easy to reach the tree. It grows on a tiny island within a vast swamp on the other side of the great mountains.\""
+#message 30 "Bravely fighting back tears, Rosella says, \"I will help you in any way I can, Genesta. How can I find Lolotte?\""
+#message 31 "The beautiful fairy points eastward. \"Lolotte's castle overlooks Tamir from the great mountains.\""
+#message 32 "Genesta looks weaker as she says, \"There is not much more I can do, Rosella. As it is, it will be difficult for me to fly home again.\""
+#message 33 "\"One thing I must do for you, though. I shall disguise you as a peasant girl so as not to attract attention.\""
+#message 34 "\"Th-thank-you, Genesta...I think,\" Rosella stammers."
+#message 35 "\"It will be better for you,\" the fairy says. \"Well, I must be off while I can still fly. I KNOW you can do it!\""
+#message 36 "\"Good-bye, good luck.\""
+#message 37 "Well, you're on your own, Rosella."
+#message 200 "Debug0"
+#message 201 "Debug1"
+#message 202 "Debug2"
+#message 204 "Debug4"
+#message 205 "Debug5"
+#message 206 "Debug6"
+#message 220 "Finally, Rosella speaks. \"I know you would like me to help you in some way, but I don't know how I could help a fairy.\""
+#message 250 "\"Further, I can not send you home without my talisman.\""

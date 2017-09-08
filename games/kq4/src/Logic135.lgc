@@ -1,0 +1,648 @@
+set(f36);
+cycle_delay = 2;
+if (isset(new_room)) {
+  prevent.input();
+  status.line.on();
+  reset(menu_enabled);
+  set.horizon(1);
+  v152 = 153;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.view(209);
+  load.view(171);
+  load.view(212);
+  load.view(213);
+  load.view(208);
+  if (isset(f74)) {
+    load.sound(208);
+  }
+  else {
+    if ((has("Magic Fruit")) && 
+        (has("Magic Hen"))) {
+      load.sound(206);
+    }
+    else {
+      if ((has("Magic Fruit")) && 
+          (!has("Magic Hen"))) {
+        load.sound(201);
+      }
+    }
+    if ((!has("Magic Fruit")) && 
+        (has("Magic Hen"))) {
+      load.sound(201);
+    }
+    else {
+      if ((!has("Magic Fruit")) && 
+          (!has("Magic Hen"))) {
+        load.sound(212);
+      }
+    }
+  }
+  animate.obj(o1);
+  animate.obj(o2);
+  set.view(o1, 212);
+  set.view(o2, 213);
+  set.priority(o1, 10);
+  set.priority(o2, 10);
+  v152 = 1;
+  cycle.time(o1, v152);
+  cycle.time(o2, v152);
+  step.time(o1, v152);
+  step.time(o2, v152);
+  set.loop(o1, 1);
+  set.loop(o2, 0);
+  position(o1, 32, 112);
+  position(o2, 107, 109);
+  wander(o1);
+  wander(o2);
+  ignore.objs(o1);
+  ignore.objs(o2);
+  draw(o1);
+  draw(o2);
+  animate.obj(o3);
+  set.view(o3, 208);
+  position(o3, 73, 121);
+  set.loop(o3, 1);
+  fix.loop(o3);
+  set.cel(o3, 4);
+  ignore.blocks(o3);
+  ignore.objs(o3);
+  set.priority(o3, 15);
+  if (isset(f74)) {
+    draw(o3);
+    stop.cycling(o3);
+  }
+  animate.obj(o12);
+  set.view(o12, 171);
+  position(o12, 67, 119);
+  ignore.blocks(o12);
+  ignore.objs(o12);
+  set.priority(o12, 14);
+  if (isset(f74)) {
+    set.loop(o12, 0);
+    set.cel(o12, 0);
+    draw(o12);
+    stop.update(o12);
+  }
+  else {
+    set.loop(o12, 3);
+    fix.loop(o12);
+    set.cel(o12, 0);
+  }
+  animate.obj(o4);
+  set.view(o4, 209);
+  position(o4, 59, 120);
+  ignore.blocks(o4);
+  ignore.blocks(o4);
+  set.priority(o4, 15);
+  if (isset(f74)) {
+    set.loop(o4, 3);
+    fix.loop(o4);
+    set.cel(o4, 0);
+    draw(o4);
+    stop.cycling(o4);
+  }
+  else {
+    set.loop(o4, 0);
+    fix.loop(o4);
+    set.cel(o4, 0);
+  }
+  load.view(97);
+  animate.obj(o5);
+  set.view(o5, 97);
+  position(o5, 61, 122);
+  set.loop(o5, 0);
+  set.cel(o5, 0);
+  ignore.blocks(o5);
+  ignore.objs(o5);
+  set.priority(o5, 15);
+  stop.update(o5);
+  if (!isset(f74)) {
+    set.view(o6, 97);
+    animate.obj(o6);
+    position(o6, 77, 123);
+    set.loop(o6, 0);
+    set.cel(o6, 0);
+    ignore.blocks(o6);
+    ignore.objs(o6);
+    set.priority(o6, 15);
+    stop.update(o6);
+  }
+  if (has("Magic Hen")) {
+    animate.obj(o7);
+    set.view(o7, 208);
+    position(o7, 78, 124);
+    set.loop(o7, 3);
+    fix.loop(o7);
+    set.cel(o7, 5);
+    set.priority(o7, 10);
+    ignore.objs(o7);
+    ignore.blocks(o7);
+  }
+  if (has("Magic Hen")) {
+    set(f220);
+  }
+  else {
+    set(f221);
+  }
+  if ((isset(f74)) && 
+      (!has("Magic Hen"))) {
+    v220 = 11;
+  }
+  else {
+    if (!isset(f74)) {
+      set(f233);
+      set(f232);
+    }
+  }
+  v154 = 2;
+  v155 = 3;
+  v162 = 0;
+  show.pic();
+  return();
+}
+if ((v221 > 0) && 
+    (isset(f112))) {
+  v221--;
+  if (v221 <= 0) {
+    close.window();
+    if (isset(f225)) {
+      set(f220);
+    }
+    else {
+      set(f221);
+    }
+  }
+}
+if ((isset(f232)) && 
+    (isset(f228))) {
+  current.cel(o5, v162);
+  if (v162 == 3) {
+    draw(o12);
+    set.loop(o12, 3);
+    fix.loop(o12);
+    set.cel(o12, 0);
+    cycle.time(o12, v155);
+    stop.cycling(o12);
+    if (!has("Magic Hen")) {
+      stop.update(o12);
+    }
+  }
+  if (v162 == 6) {
+    erase(o5);
+    set(f223);
+  }
+}
+if ((isset(f233)) && 
+    (isset(f228))) {
+  current.cel(o6, v160);
+  if (v160 == 3) {
+    draw(o3);
+    cycle.time(o3, v155);
+    stop.cycling(o3);
+  }
+  if (v160 == 6) {
+    erase(o6);
+    reset(f233);
+    set(f222);
+  }
+}
+if ((isset(f223)) && 
+    (isset(f222))) {
+  reset(f232);
+  reset(f228);
+  reset(f223);
+  reset(f222);
+  set(windows_remain);
+  v221 = 2;
+  print.at("...you find yourself outside!", 1, 6, 30);
+}
+if (isset(f226)) {
+  current.cel(o12, v162);
+  if (v162 == 2) {
+    set.cel(o12, 3);
+    score  += 2;
+    set(windows_remain);
+    v221 = 5;
+    print.at("\"My hen!\" Genesta suddenly exclaims. \"Where ever did you find "
+             "her?!\"", 1, 4, 35);
+  }
+  if (v162 == 4) {
+    set.loop(o3, 0);
+    fix.loop(o3);
+    start.cycling(o3);
+    reset(f226);
+    cycle.time(o12, v155);
+  }
+}
+if (isset(f237)) {
+  current.cel(o3, v162);
+  if (v162 == 2) {
+    ignore.blocks(o7);
+    draw(o7);
+    move.obj(o7, 0, 124, 1, f224);
+    reset(f237);
+  }
+}
+if (object_touching_edge == 7) {
+  erase(o7);
+}
+if ((isset(f220)) && 
+    (has("Magic Hen"))) {
+  reset(f220);
+  v220++;
+  if (v220 == 1) {
+    if (has("Magic Fruit")) {
+      sound(206, f154);
+    }
+    else {
+      sound(201, f154);
+    }
+    set(f225);
+    set(f228);
+    start.update(o5);
+    draw(o5);
+    cycle.time(o5, v155);
+    end.of.loop(o5, f224);
+    current.cel(o5, v162);
+    start.update(o6);
+    draw(o6);
+    cycle.time(o6, v155);
+    end.of.loop(o6, f224);
+    current.cel(o6, v160);
+  }
+  if (v220 == 2) {
+    set(f226);
+    v157 = 5;
+    cycle.time(o12, v157);
+    end.of.loop(o12, f224);
+    current.cel(o12, v162);
+  }
+  if (v220 == 3) {
+    close.window();
+    set(windows_remain);
+    v221 = 9;
+    print.at("You explain that the ogre had had possession of her. \"Poor "
+             "thing,\" she says. \"Well, at least she's back home again.\"", 1, 4, 35);
+  }
+  if (v220 == 4) {
+    set(f237);
+    set.loop(o3, 1);
+    fix.loop(o3);
+    set.cel(o3, 0);
+    end.of.loop(o3, f220);
+    current.cel(o3, v162);
+  }
+  if (v220 == 5) {
+    v220 = 1;
+    reset(f220);
+    drop("Magic Hen");
+    reset(f225);
+    set(f221);
+  }
+}
+if ((isset(f227)) && 
+    (has("Magic Fruit")) && 
+    (!isset(f74))) {
+  current.cel(o3, v162);
+  if (v162 == 2) {
+    reset(f227);
+    if (isset(f235)) {
+      set.loop(o4, 1);
+      fix.loop(o4);
+      set.cel(o4, 0);
+      end.of.loop(o4, f221);
+      reset(f235);
+    }
+    else {
+      if (isset(f236)) {
+        set.cel(o5, 0);
+        set.loop(o5, 0);
+        draw(o5);
+        set(f229);
+        cycle.time(o5, v154);
+        end.of.loop(o5, f230);
+        current.cel(o5, v159);
+      }
+      else {
+        position(o5, 54, 123);
+        set.cel(o5, 0);
+        set.loop(o5, 0);
+        draw(o5);
+        set(f229);
+        cycle.time(o5, v155);
+        end.of.loop(o5, f224);
+        current.cel(o5, v159);
+      }
+    }
+    set.loop(o3, 1);
+    set.cel(o3, 4);
+  }
+}
+if ((isset(f229)) && 
+    (has("Magic Fruit")) && 
+    (!isset(f74))) {
+  current.cel(o5, v159);
+  if (v159 == 2) {
+    if (isset(f236)) {
+      set.loop(o12, 0);
+      set.cel(o12, 1);
+      force.update(o12);
+      reset(f228);
+    }
+    else {
+      draw(o4);
+      stop.cycling(o4);
+    }
+  }
+  if (v159 == 6) {
+    set.loop(o3, 1);
+    set.cel(o3, 4);
+    erase(o5);
+    reset(f229);
+    if (isset(f236)) {
+      reset(f236);
+    }
+    else {
+      cycle.time(o4, v155);
+      end.of.loop(o4, f221);
+    }
+  }
+}
+if ((isset(f227)) && 
+    (isset(f74))) {
+  current.cel(o3, v162);
+  if (v162 == 2) {
+    reset(f227);
+    set.cel(o5, 0);
+    set.loop(o5, 0);
+    draw(o5);
+    set(f229);
+    cycle.time(o5, v154);
+    end.of.loop(o5, f230);
+    current.cel(o5, v161);
+    set.loop(o3, 1);
+    set.cel(o3, 4);
+  }
+}
+if ((isset(f229)) && 
+    (isset(f74))) {
+  current.cel(o5, v161);
+  if (v161 == 2) {
+    erase(o12);
+    force.update(o12);
+  }
+}
+if ((isset(f221)) && 
+    (has("Magic Fruit"))) {
+  reset(f221);
+  v220++;
+  if (v220 == 1) {
+    if (!has("Magic Hen")) {
+      sound(201, f154);
+    }
+    set(f228);
+    start.update(o5);
+    draw(o5);
+    cycle.time(o5, v155);
+    end.of.loop(o5, f224);
+    current.cel(o5, v162);
+    start.update(o6);
+    draw(o6);
+    cycle.time(o6, v155);
+    end.of.loop(o6, f224);
+    current.cel(o6, v160);
+  }
+  if (v220 == 2) {
+    set(windows_remain);
+    v221 = 15;
+    print.at("\"Now for you, Rosella,\" Genesta says. \"It's my turn to help "
+             "YOU out. I will return you to Daventry; and with the magic fruit "
+             "you will be able to save your father's life. We'd better hurry, "
+             "though, as he doesn't have much time left.\"", 1, 3, 35);
+  }
+  if (v220 == 3) {
+    set(windows_remain);
+    v221 = 4;
+    print.at("Yes, you ARE anxious to get home again.", 1, 6, 30);
+  }
+  if (v220 == 4) {
+    set(windows_remain);
+    v221 = 5;
+    print.at("\"But first,\" Genesta proclaims, \"let's replace these peasant "
+             "clothes with your royal gown.\"", 1, 4, 35);
+  }
+  if (v220 == 5) {
+    set(f236);
+    set(f227);
+    set.loop(o3, 2);
+    fix.loop(o3);
+    set.cel(o3, 0);
+    end.of.loop(o3, f224);
+    current.cel(o3, v162);
+  }
+  if (v220 == 6) {
+    set(windows_remain);
+    v221 = 7;
+    print.at("With a twinkle in her eyes, Genesta announces, \"There is someone "
+             "else deserving of a reward for his kindness and heroism.\"", 1, 3, 35);
+  }
+  if (v220 == 7) {
+    set(f227);
+    set.loop(o3, 2);
+    fix.loop(o3);
+    set.cel(o3, 0);
+    end.of.loop(o3, f224);
+    current.cel(o3, v162);
+  }
+  if (v220 == 8) {
+    set.cel(o12, 0);
+    force.update(o12);
+    set(windows_remain);
+    v221 = 8;
+    print.at("\"You have a beautiful soul, Edgar,\" the fairy says to the ugly, "
+             "little man. \"You should look like what you are.\"", 1, 3, 36);
+  }
+  if (v220 == 9) {
+    set(f227);
+    set(f235);
+    set.loop(o3, 2);
+    fix.loop(o3);
+    set.cel(o3, 0);
+    end.of.loop(o3, f224);
+    current.cel(o3, v162);
+  }
+  if (v220 == 10) {
+    set.loop(o4, 2);
+    fix.loop(o4);
+    set.cel(o4, 0);
+    cycle.time(o4, v154);
+    end.of.loop(o4, f221);
+  }
+  if (v220 == 11) {
+    new.room(139); //##LE001##
+  }
+  if (v220 == 12) {
+    sound(208, f154);
+    cycle.time(o4, v155);
+    end.of.loop(o4, f221);
+  }
+  if (v220 == 13) {
+    set(windows_remain);
+    v221 = 7;
+    print.at("\"Well, Rosella,\" Genesta announces. \"It's time for you to go. "
+             "Your father desperately needs you.\"", 1, 4, 35);
+    set.cel(o12, 1);
+    force.update(o12);
+  }
+  if (v220 == 14) {
+    set(windows_remain);
+    v221 = 3;
+    print.at("\"Good-bye! We'll never forget you!\"", 1, 2, 37);
+  }
+  if (v220 == 15) {
+    set(f227);
+    set.loop(o3, 2);
+    fix.loop(o3);
+    set.cel(o3, 0);
+    end.of.loop(o3, f224);
+    current.cel(o3, v162);
+  }
+  if (v220 == 16) {
+    erase(o5);
+    new.room(136); //##LE002##
+  }
+}
+if ((isset(f227)) && 
+    (!has("Magic Fruit"))) {
+  current.cel(o3, v162);
+  if (v162 == 2) {
+    reset(f227);
+    set.cel(o5, 0);
+    set.loop(o5, 0);
+    draw(o5);
+    set(f228);
+    cycle.time(o5, v154);
+    end.of.loop(o5, f230);
+    current.cel(o5, v161);
+    set.loop(o3, 1);
+    set.cel(o3, 4);
+  }
+}
+if ((isset(f228)) && 
+    (!isset(f232)) && 
+    (!isset(f233)) && 
+    (!has("Magic Fruit"))) {
+  current.cel(o5, v161);
+  if (v161 == 2) {
+    if (isset(f231)) {
+      erase(o12);
+      force.update(o12);
+      reset(f228);
+    }
+    else {
+      set.loop(o12, 0);
+      set.cel(o12, 1);
+      force.update(o12);
+      reset(f228);
+    }
+  }
+}
+if (isset(f230)) {
+  reset(f230);
+  erase(o5);
+  set(f221);
+}
+if ((isset(f221)) && 
+    (!has("Magic Fruit"))) {
+  reset(f221);
+  v220++;
+  if (v220 == 1) {
+    if (!has("Magic Hen")) {
+      sound(212, f154);
+    }
+    set(f228);
+    start.update(o5);
+    draw(o5);
+    cycle.time(o5, v155);
+    end.of.loop(o5, f224);
+    current.cel(o5, v162);
+    start.update(o6);
+    draw(o6);
+    cycle.time(o6, v155);
+    end.of.loop(o6, f224);
+    current.cel(o6, v160);
+  }
+  if (v220 == 2) {
+    set(windows_remain);
+    v221 = 12;
+    print.at("\"Now for you, Rosella,\" Genesta says. \"You have performed so "
+             "heroically for all of us here in Tamir -- but -- you forgot one "
+             "thing...you forgot the magic fruit for your father.\"", 1, 3, 35);
+  }
+  if (v220 == 3) {
+    set(windows_remain);
+    v221 = 3;
+    print.at("Sadly, you realize this terrible error.", 1, 8, 30);
+  }
+  if (v220 == 4) {
+    set(windows_remain);
+    v221 = 9;
+    print.at("The fairy continues, \"Well, it's too late now. I must "
+             "immediately return you to Daventry so you may at least bid him "
+             "good-bye.\"", 1, 4, 35);
+  }
+  if (v220 == 5) {
+    set(f227);
+    set.loop(o3, 2);
+    fix.loop(o3);
+    set.cel(o3, 0);
+    end.of.loop(o3, f224);
+    current.cel(o3, v162);
+  }
+  if (v220 == 6) {
+    set(windows_remain);
+    v221 = 8;
+    print.at("\"You look like yourself again,\" assesses the fairy. \"You best "
+             "be off. We won't forget you here! Good luck!\"", 1, 4, 35);
+  }
+  if (v220 == 7) {
+    set(f227);
+    set(f231);
+    set.loop(o3, 2);
+    fix.loop(o3);
+    set.cel(o3, 0);
+    end.of.loop(o3, f224);
+    current.cel(o3, v162);
+  }
+  if (v220 == 8) {
+    erase(o5);
+    new.room(136); //##LE003##
+  }
+}
+return();
+
+//Messages
+#message 1 "...you find yourself outside!"
+#message 2 "\"My hen!\" Genesta suddenly exclaims. \"Where ever did you find her?!\""
+#message 3 "You explain that the ogre had had possession of her. \"Poor thing,\" she says. \"Well, at least she's back home again.\""
+#message 4 "\"Now for you, Rosella,\" Genesta says. \"You have performed so heroically for all of us here in Tamir -- but -- you forgot one thing...you forgot the magic fruit for your father.\""
+#message 5 "Sadly, you realize this terrible error."
+#message 6 "The fairy continues, \"Well, it's too late now. I must immediately return you to Daventry so you may at least bid him good-bye.\""
+#message 7 "\"You look like yourself again,\" assesses the fairy. \"You best be off. We won't forget you here! Good luck!\""
+#message 8 "You made it just in time. Just in time, that is, to look your father in the eyes before he quietly dies. He must have been waiting for your return."
+#message 16 "\"Rosella,\" he says, \"I love you. Will you marry me?\""
+#message 17 "You think about it."
+#message 18 "You think about it some more."
+#message 19 "Then..."
+#message 20 "\"I'm sorry, Edgar,\" you tell him. \"You're very sweet...but I must immediately return home.\""
+#message 21 "\"Perhaps we'll meet again,\" you say."
+#message 22 "\"Well, Rosella,\" Genesta announces. \"It's time for you to go. Your father desperately needs you.\""
+#message 23 "\"Good-bye! We'll never forget you!\""
+#message 100 "\"Now for you, Rosella,\" Genesta says. \"It's my turn to help YOU out. I will return you to Daventry; and with the magic fruit you will be able to save your father's life. We'd better hurry, though, as he doesn't have much time left.\""
+#message 101 "Yes, you ARE anxious to get home again."
+#message 102 "\"But first,\" Genesta proclaims, \"let's replace these peasant clothes with your royal gown.\""
+#message 103 "With a twinkle in her eyes, Genesta announces, \"There is someone else deserving of a reward for his kindness and heroism.\""
+#message 104 "\"You have a beautiful soul, Edgar,\" the fairy says to the ugly, little man. \"You should look like what you are.\""
+#message 105 "This handsome hunk is Edgar?!!"

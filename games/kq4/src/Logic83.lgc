@@ -1,0 +1,320 @@
+if (isset(new_room)) {
+  set(f82);
+  discard.view(0);
+  v152 = 83;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  if (isset(f38)) {
+    load.view(188);
+    add.to.pic(188, 3, 0, 77, 57, 4, 4);
+    discard.view(188);
+  }
+  load.view(1);
+  set.view(Ego, 1);
+  load.view(143);
+  animate.obj(o3);
+  set.view(o3, 143);
+  set.priority(o3, 4);
+  ignore.horizon(o3);
+  ignore.objs(o3);
+  set.loop(o3, 0);
+  position(o3, 17, 49);
+  v152 = 1;
+  cycle.time(o3, v152);
+  draw(o3);
+  animate.obj(o4);
+  set.view(o4, 143);
+  set.priority(o4, 4);
+  ignore.horizon(o4);
+  ignore.objs(o4);
+  set.loop(o4, 1);
+  position(o4, 133, 49);
+  v152 = 1;
+  cycle.time(o4, v152);
+  draw(o4);
+  if (v37 == 2) {
+    load.view(66);
+    set(f221);
+    v221 = 30;
+    accept.input();
+    animate.obj(o1);
+    animate.obj(o2);
+    set.view(o1, 1);
+    set.view(o2, 66);
+    set.loop(o2, 3);
+    position(o2, 73, 163);
+    observe.blocks(Ego);
+    set.loop(Ego, 3);
+  }
+  else {
+    load.view(167);
+    animate.obj(o1);
+    set.view(o1, 167);
+    position(o1, 74, 124);
+    ignore.blocks(Ego);
+  }
+  v224 = 0;
+  position(Ego, 74, 155);
+  draw(Ego);
+  show.pic();
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "cell") || 
+    said("examine", "around", "cell") || 
+    said("examine", "bed chamber") || 
+    said("examine", "torture", "bed chamber") || 
+    said("examine", "around", "bed chamber") || 
+    said("examine", "around", "torture", "bed chamber") || 
+    said("examine", "castle") || 
+    said("examine", "dark", "castle") || 
+    said("examine", "bad", "castle") || 
+    said("examine", "around", "castle") || 
+    said("examine", "around", "bad", "castle") || 
+    said("examine", "around", "dark", "castle"))) {
+  print("You have found yourself in a HORRIBLE cell!  It looks as if others "
+        "have found their way here, too.  Hopefully, you won't end up like "
+        "them!");
+}
+if ((said("examine", "james") || 
+    said("examine", "bone"))) {
+  print("At least two unfortunate individuals have met their end here.");
+}
+if ((said("examine", "machine") || 
+    said("examine", "torture", "machine"))) {
+  print("An ominous machine lurks in the corner of this cell.  As to its "
+        "purpose; you don't want to know!");
+}
+if ((said("use", "machine") || 
+    said("use", "torture", "machine") || 
+    said("turn", "abominable", "machine") || 
+    said("turn", "abominable", "torture", "machine") || 
+    said("begin", "machine") || 
+    said("begin", "torture", "machine") || 
+    said("turn", "wheel") || 
+    said("turn", "wheel", "abominable", "machine") || 
+    said("turn", "wheel", "abominable", "torture", "machine"))) {
+  print("You don't know how to use this machine; and you don't EVER want to "
+        "know!");
+}
+if (said("examine", "whip")) {
+  print("A whip hangs on the wall.");
+}
+if (said("carry", "whip")) {
+  print("The whip is securely attached to the wall.  Besides, you wouldn't want "
+        "it.");
+}
+if ((said("examine", "chain") || 
+    said("examine", "heavy", "chain") || 
+    said("examine", "ball") || 
+    said("examine", "ball", "abominable", "chain"))) {
+  print("You see heavy chains for locking up prisoners.");
+}
+if ((said("carry", "chain") || 
+    said("carry", "heavy", "chain"))) {
+  print("The chains are securely attached to the wall.");
+}
+if ((said("examine", "window") || 
+    said("examine", "out", "window") || 
+    said("look in", "window"))) {
+  print("The window is too high.");
+}
+if (said("examine", "wall")) {
+  print("%m10 importance on the walls.");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down") || 
+    said("examine", "down", "dirt"))) {
+  print("%m10 interest on the floor.");
+}
+if (isset(f221)) {
+  if (said("open", "door")) {
+    print("The door is locked.");
+  }
+  if (said("unlatch", "door")) {
+    print("You don't have the key.");
+  }
+  if ((said("call") || 
+      said("call", "abominable", "help") || 
+      said("help") || 
+      said("save", "me") || 
+      said("help", "me"))) {
+    print("It does no good.");
+  }
+}
+if (!isset(f221)) {
+  if (said("bang", "kq")) {
+    if (posn(Ego,64,119,90,136)) {
+      set(f36);
+      prevent.input();
+      set.loop(o1, 2);
+      set.cel(o1, 0);
+      erase(Ego);
+      draw(o1);
+      v222 = 0;
+      v223 = 0;
+      v225 = 19;
+      v224 = 1;
+      end.of.loop(o1, f225);
+    }
+    else {
+      print("The middle of the room looks like a great place to get down and "
+            "rap.  You need to move closer.");
+    }
+  }
+}
+Label1:
+if (isset(f225)) {
+  v222++;
+  if (v222 == 1) {
+    reverse.loop(o1, f225);
+  }
+  else {
+    if (v222 == 2) {
+      end.of.loop(o1, f225);
+    }
+    else {
+      if (v222 == 3) {
+        reverse.loop(o1, f225);
+      }
+      else {
+        reset(f225);
+        v222 = 0;
+        set(f227);
+      }
+    }
+  }
+}
+if (isset(f227)) {
+  reset(f227);
+  random(0, 5, v152);
+  set.loop.v(o1, v152);
+  end.of.loop(o1, f225);
+}
+if (isset(f226)) {
+  reset(f226);
+  erase(o1);
+  draw(Ego);
+  reset(f36);
+  accept.input();
+}
+if (v224 > 0 && 
+    isset(f112)) {
+  v224--;
+  if (v224 <= 0) {
+    v225++;
+    close.window();
+    if (v225 != 35) {
+      v224 = 8;
+      set(windows_remain);
+      print.at.v(v225, 1, 2, 37);
+    }
+    else {
+      set(f226);
+    }
+  }
+}
+if (v221 > 0 && 
+    isset(f112)) {
+  v221--;
+  if (v221 <= 0) {
+    print("You hear the henchmen returning.  Perhaps they are setting you free!");
+    set(f36);
+    prevent.input();
+    set.view(o1, 1);
+    get.posn(Ego, v152, v153);
+    position.v(o1, v152, v153);
+    current.loop(Ego, v152);
+    set.loop.v(o1, v152);
+    current.cel(Ego, v152);
+    set.cel.v(o1, v152);
+    ignore.blocks(o1);
+    ignore.objs(Ego);
+    draw(o1);
+    erase(Ego);
+    observe.objs(Ego);
+    draw(o2);
+    stop.cycling(o2);
+    if (v34 > 123 && 
+        v33 > 63 && 
+        v33 < 83) {
+      set(f224);
+    }
+    else {
+      if (v34 < 111 && 
+          v33 > 92) {
+        move.obj(o1, 97, 110, 0, f222);
+      }
+      else {
+        if (v34 < 124) {
+          move.obj(o1, 74, 123, 0, f224);
+        }
+        else {
+          if (v34 < 129) {
+            move.obj(o1, 74, 128, 0, f224);
+          }
+          else {
+            move.obj(o1, 77, 134, 0, f224);
+          }
+        }
+      }
+    }
+  }
+}
+if (isset(f222)) {
+  reset(f222);
+  move.obj(o1, 74, 123, 0, f224);
+}
+if (isset(f224)) {
+  reset(f224);
+  move.obj(o1, 74, 161, 0, f223);
+}
+if (isset(f223)) {
+  new.room(86); //##LE001##
+}
+if (ego_edge_code == bottom_edge && 
+    !isset(f221)) {
+  observe.blocks(Ego);
+  new.room(86); //##LE002##
+}
+return();
+
+//Messages
+#message 1 "You have found yourself in a HORRIBLE cell!  It looks as if others have found their way here, too.  Hopefully, you won't end up like them!"
+#message 2 "At least two unfortunate individuals have met their end here."
+#message 3 "An ominous machine lurks in the corner of this cell.  As to its purpose; you don't want to know!"
+#message 4 "You don't know how to use this machine; and you don't EVER want to know!"
+#message 5 "A whip hangs on the wall."
+#message 6 "The whip is securely attached to the wall.  Besides, you wouldn't want it."
+#message 7 "You see heavy chains for locking up prisoners."
+#message 8 "The chains are securely attached to the wall."
+#message 9 "The window is too high."
+#message 10 "There is nothing of"
+#message 11 "%m10 importance on the walls."
+#message 12 "%m10 interest on the floor."
+#message 13 "You hear the henchmen returning.  Perhaps they are setting you free!"
+#message 14 "The door is locked."
+#message 15 "You don't have the key."
+#message 16 "The middle of the room looks like a great place to get down and rap.  You need to move closer."
+#message 20 "\"We are the KQ4,\""
+#message 21 "\"Now we're out the door!\""
+#message 22 "\"The Bert wanted more,\""
+#message 23 "\"We said, `What For?!'\""
+#message 24 "\"The game's already a sight to see,\""
+#message 25 "\"We ship the most discs in history!\""
+#message 26 "\"More changes keep coming from the Bert everyday,\""
+#message 27 "\"But we just had to say `No Way!'\""
+#message 28 "\"She went to Rick with changes to make,\""
+#message 29 "\"He said to her, `Give us a break!'\""
+#message 30 "\"She continues on and gave him lip,\""
+#message 31 "\"Rick finally said `But Bert, it's shipped!'\""
+#message 32 "\"So we are the KQ4,\""
+#message 33 "\"Pick up our book at your local store,\""
+#message 34 "\"'Cuz now we're gone, there ain't no more!\""
+#message 60 "It does no good."

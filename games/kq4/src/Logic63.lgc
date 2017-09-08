@@ -1,0 +1,492 @@
+if (isset(new_room)) {
+  v152 = 63;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.logics(151);
+  load.sound(48);
+  load.sound(52);
+  if (isset(f38)) {
+    set(f82);
+    load.view(188);
+    add.to.pic(188, 0, 2, 74, 80, 4, 4);
+    discard.view(188);
+    load.view(111);
+    animate.obj(o3);
+    set.view(o3, 111);
+    set.loop(o3, 1);
+    ignore.horizon(o3);
+    position(o3, 114, 114);
+    set.priority(o3, 15);
+    draw(o3);
+  }
+  load.logics(151);
+  load.view(113);
+  load.view(1);
+  load.view(10);
+  load.view(23);
+  load.view(40);
+  animate.obj(o12);
+  animate.obj(o2);
+  set.view(o2, 113);
+  set.loop(o2, 2);
+  set.cel(o2, 0);
+  stop.cycling(o2);
+  position(o2, 72, 114);
+  draw(o2);
+  set.view(o12, 23);
+  set.loop(o12, 2);
+  set.cel(o12, 6);
+  position(o12, 55, 141);
+  v155 = 1;
+  set(f223);
+  draw(o12);
+  prevent.input();
+  if (v144 == 6) {
+    set(f232);
+  }
+  if (v144 == 5) {
+    set(f143);
+    load.logics(235);
+    animate.obj(o1);
+    set.view(o1, 113);
+    set.loop(o1, 0);
+    set.cel(o1, 0);
+    set.priority(o1, 8);
+    position(o1, 73, 102);
+    draw(o1);
+    set(f236);
+    v117 = 0;
+    set(f237);
+    load.sound(26);
+    sound(26, f154);
+  }
+  show.pic();
+  v154 = 0;
+}
+if (isset(f236)) {
+  get.posn(o1, v134, v135);
+  distance(Ego, o1, v161);
+}
+if (isset(f112)) {
+  reset(f112);
+  v168++;
+}
+if (v34 < 114) {
+  set.priority(Ego, 7);
+}
+else {
+  if (!isset(f36)) {
+    release.priority(Ego);
+  }
+}
+if ((v155 == 1) && 
+    (isset(f223))) {
+  reset(f223);
+  v152 = 2;
+  reverse.loop(o12, f223);
+  v155++;
+}
+if ((v155 == 2) && 
+    (isset(f223))) {
+  reset(f223);
+  v152 = 2;
+  set.view(o12, 40);
+  set.loop(o12, 0);
+  set.cel(o12, 4);
+  position(o12, 56, 130);
+  reverse.loop(o12, f223);
+  v155++;
+}
+if ((v155 == 3) && 
+    (isset(f223))) {
+  reset(f223);
+  set.view(Ego, 1);
+  get.posn(o12, v134, v135);
+  position.v(Ego, v134, v135);
+  set.loop(Ego, 0);
+  draw(Ego);
+  erase(o12);
+  v155++;
+  accept.input();
+}
+if ((isset(ego_touching_signal_line)) && 
+    (v154 == 0)) {
+  sound(52, f154);
+  reset(ego_touching_signal_line);
+  v37 = 6;
+  ignore.blocks(Ego);
+  set(f36);
+  set.view(Ego, 10);
+  set.priority(Ego, 9);
+  load.sound(52);
+  sound(52, f154);
+  if ((ego_dir == right || 
+      ego_dir == downright)) {
+    set.loop(Ego, 0);
+  }
+  else {
+    set.loop(Ego, 1);
+  }
+  fix.loop(Ego);
+  v152 = 3;
+  step.size(Ego, v152);
+  v152 = 3;
+  cycle.time(Ego, v152);
+  start.cycling(Ego);
+  move.obj(Ego, 70, 169, 0, f238);
+}
+if (isset(f238)) {
+  set(f152);
+  set.view(Ego, 10);
+  new.room(60); //##LE001##
+}
+if (isset(f236)) {
+  if (v168 == 2) {
+    stop.cycling(o1);
+  }
+  if (v168 == 12) {
+    v168 = 0;
+    v152 = 3;
+    cycle.time(o1, v152);
+    random(1, 2, v152);
+    if (v152 == 1) {
+      set.loop(o1, 0);
+    }
+    else {
+      set.loop(o1, 4);
+    }
+    start.cycling(o1);
+  }
+  if ((said("deliver", "horse") || 
+      said("deliver", "horse", "boy", "ghost") || 
+      said("deliver", "horse", "boy") || 
+      said("deliver", "horse", "ghost"))) {
+    if (has("Toy Horse")) {
+      if (posn(Ego,70,112,85,116)) {
+        v117 = 0;
+        print("You give the toy horse to the little boy ghost in hopes that he "
+              "will go away like the others before him.  For a moment, you fear "
+              "that he will not as he takes time to examine it carefully.  "
+              "Suddenly, he grins at you and in a twinkling, disappears.");
+        drop("Toy Horse");
+        score  += 2;
+        set.loop(o1, 1);
+        set.cel(o1, 0);
+        v152 = 3;
+        cycle.time(o1, v152);
+        end.of.loop(o1, f232);
+        v153 = 1;
+      }
+      else {
+        set(f113);
+      }
+    }
+    else {
+      set(f115);
+    }
+  }
+  if ((isset(f232)) && 
+      (v144 == 5) && 
+      (v153 == 1)) {
+    v153++;
+    erase(o1);
+    v168 = 20;
+    v144 = 6;
+    reset(f236);
+    reset(f237);
+    set(f154);
+  }
+}
+if ((isset(f222)) && 
+    (v154 == 1)) {
+  set(f36);
+  prevent.input();
+  v37 = 16;
+  reset(f222);
+  if (v33 < 75) {
+    v152 = 0;
+    v134 = 56;
+    move.obj.v(Ego, v134, v34, v152, f222);
+  }
+  else {
+    v152 = 0;
+    v134 = 88;
+    move.obj.v(Ego, v134, v34, v152, f222);
+  }
+  v154++;
+}
+if ((isset(f222)) && 
+    (v154 == 2)) {
+  reset(f222);
+  if (v33 < 75) {
+    move.obj(Ego, 56, 132, 0, f222);
+  }
+  else {
+    move.obj(Ego, 88, 132, 0, f222);
+  }
+  v154++;
+}
+if ((isset(f222)) && 
+    (v154 == 3)) {
+  reset(f222);
+  set.view(o12, 40);
+  if (v33 < 75) {
+    set.loop(o12, 0);
+  }
+  else {
+    set.loop(o12, 1);
+  }
+  set.cel(o12, 0);
+  position.v(o12, v33, v34);
+  erase(Ego);
+  draw(o12);
+  end.of.loop(o12, f222);
+  v154++;
+}
+if ((isset(f222)) && 
+    (v154 == 4)) {
+  reset(f222);
+  set.view(o12, 23);
+  if (v33 < 75) {
+    set.loop(o12, 2);
+    position(o12, 55, 141);
+  }
+  else {
+    set.loop(o12, 1);
+    position(o12, 70, 141);
+  }
+  set.cel(o12, 0);
+  end.of.loop(o12, f222);
+  v154++;
+}
+if ((isset(f222)) && 
+    (v154 == 5)) {
+  reset(f222);
+  new.room(60); //##LE002##
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "cottage") || 
+    said("examine", "around", "cottage") || 
+    said("examine", "attic") || 
+    said("examine", "around", "attic"))) {
+  print("After adjusting your eyes to the gloom, you soon see that you have "
+        "stumbled upon the musty attic of the old house. The trapdoor in the "
+        "floor is open and, from it, a ladder leads down to the room below. "
+        "Useless junk and boxes clutter the room.  There is an interesting "
+        "chest near the open trapdoor.");
+}
+if (said("open", "chest")) {
+  if (isset(f232)) {
+    if (!isset(f234)) {
+      if (posn(Ego,70,114,85,116)) {
+        end.of.loop(o2, f152);
+        set(f234);
+      }
+      else {
+        set(f113);
+      }
+    }
+    else {
+      print("The chest is already open.");
+    }
+  }
+  else {
+    print("The boy ghost laughs and teases, and refuses to leave his spot on "
+          "top of the chest.");
+  }
+}
+if (said("close", "chest")) {
+  if (isset(f234)) {
+    if (posn(Ego,70,114,85,116)) {
+      reverse.loop(o2, f152);
+      reset(f234);
+    }
+    else {
+      set(f113);
+    }
+  }
+  else {
+    print("The chest is already closed.");
+  }
+}
+if (said("look in", "chest")) {
+  if (isset(f232)) {
+    if (isset(f234)) {
+      if (posn(Ego,70,114,85,116)) {
+        if (has("Sheet Music")) {
+          print("You peek into the open chest, and find...nothing.");
+        }
+        else {
+          print("You peek into the open chest, and find...an old set of sheet "
+                "music! You take the sheet music and carry it with you.");
+          sound(48, f154);
+          get("Sheet Music");
+          score  += 2;
+        }
+      }
+    }
+    else {
+      print("The wooden chest is not open.");
+    }
+  }
+  else {
+    print("The boy ghost laughs and teases, and refuses to leave his spot on "
+          "top of the chest.");
+  }
+}
+if (said("carry", "chest")) {
+  print("The chest is too heavy.  You cannot carry it.");
+}
+if (said("examine", "trapdoor")) {
+  if (posn(Ego,56,128,97,148)) {
+    print("The trapdoor in the attic floor is open.  From it, a ladder leads to "
+          "the room below.");
+  }
+  else {
+    set(f113);
+  }
+}
+if (said("examine", "ladder")) {
+  print("A ladder descends from the open trapdoor into the room below.");
+}
+if (said("close", "trapdoor")) {
+  print("There is no need to do that.");
+}
+if (said("open", "trapdoor")) {
+  print("The trapdoor is already open.");
+}
+if ((said("climb", "ladder") || 
+    said("climb", "down", "ladder"))) {
+  set(f222);
+  v154 = 1;
+}
+if ((said("look in", "trapdoor") || 
+    said("examine", "through", "trapdoor"))) {
+  if (posn(Ego,56,128,97,148)) {
+    print("You can see into the room below.  There's nothing there.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("examine", "window") || 
+    said("look in", "window") || 
+    said("examine", "out", "window") || 
+    said("examine", "through", "window"))) {
+  if (posn(Ego,71,106,76,108)) {
+    print("You see the cemetery out the window.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("examine", "junk") || 
+    said("carry", "junk"))) {
+  print("The old junk is useless.");
+}
+if ((said("examine", "box") || 
+    said("look in", "box") || 
+    said("open", "box") || 
+    said("carry", "box"))) {
+  print("There is nothing of interest in the old boxes.");
+}
+if (said("examine", "wall")) {
+  print("There is nothing of importance on the walls.");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down") || 
+    said("examine", "down", "dirt"))) {
+  print("There is nothing of interest on the floor.");
+}
+if ((said("examine", "birdcage") || 
+    said("look in", "birdcage") || 
+    said("carry", "birdcage") || 
+    said("open", "birdcage"))) {
+  if (posn(Ego,70,114,85,116)) {
+    print("The empty old birdcage is useless.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("detach", "ghost", "from", "chest") || 
+    said("move", "ghost", "from", "chest") || 
+    said("detach", "ghost") || 
+    said("move", "ghost") || 
+    said("move", "boy", "ghost") || 
+    said("move", "boy") || 
+    said("carry", "ghost", "from", "chest") || 
+    said("carry", "ghost", "off", "chest") || 
+    said("move", "ghost", "from", "chest") || 
+    said("move", "boy", "ghost", "from", "chest") || 
+    said("move", "boy", "from", "chest") || 
+    said("move", "ghost") || 
+    said("move", "ghost", "off", "chest"))) {
+  print("You can't, as the ghost has no substance.");
+}
+if (said("examine", "chest")) {
+  if (!isset(f232)) {
+    print("The top of the wooden chest is currently occupied by a naughty "
+          "little ghost.");
+  }
+  else {
+    print("An interesting wooden chest catches your attention.");
+  }
+}
+if ((said("carry", "music") || 
+    said("carry", "music", "sheet") || 
+    said("carry", "sheet", "music"))) {
+  if (!has("Sheet Music")) {
+    print("You don't see any sheet music.");
+  }
+  else {
+    set(f114);
+  }
+}
+if ((v144 == 5) && 
+    (isset(f237))) {
+  call(235);
+}
+if (!isset(input_parsed)) {
+  call(151);
+}
+if (isset(f106)) {
+  reset(f106);
+  print("The boy ghost isn't interested.");
+}
+Label1:
+return();
+
+//Messages
+#message 1 "After adjusting your eyes to the gloom, you soon see that you have stumbled upon the musty attic of the old house. The trapdoor in the floor is open and, from it, a ladder leads down to the room below. Useless junk and boxes clutter the room.  There is an interesting chest near the open trapdoor."
+#message 2 "The chest is already open."
+#message 3 "The chest is already closed."
+#message 4 "You peek into the open chest, and find...an old set of sheet music! You take the sheet music and carry it with you."
+#message 5 "The wooden chest is not open."
+#message 6 "You peek into the open chest, and find...nothing."
+#message 7 "The chest is too heavy.  You cannot carry it."
+#message 8 "The trapdoor in the attic floor is open.  From it, a ladder leads to the room below."
+#message 9 "A ladder descends from the open trapdoor into the room below."
+#message 10 "There is no need to do that."
+#message 11 "The trapdoor is already open."
+#message 12 "You can see into the room below.  There's nothing there."
+#message 13 "You see the cemetery out the window."
+#message 14 "The old junk is useless."
+#message 15 "There is nothing of interest in the old boxes."
+#message 16 "There is nothing of importance on the walls."
+#message 17 "There is nothing of interest on the floor."
+#message 18 "The empty old birdcage is useless."
+#message 19 "The boy ghost laughs and teases, and refuses to leave his spot on top of the chest."
+#message 20 "You can't, as the ghost has no substance."
+#message 21 "The top of the wooden chest is currently occupied by a naughty little ghost."
+#message 22 "An interesting wooden chest catches your attention."
+#message 23 "You give the toy horse to the little boy ghost in hopes that he will go away like the others before him.  For a moment, you fear that he will not as he takes time to examine it carefully.  Suddenly, he grins at you and in a twinkling, disappears."
+#message 24 "The boy ghost isn't interested."
+#message 25 "You don't see any sheet music."

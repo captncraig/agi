@@ -1,0 +1,709 @@
+if (isset(new_room)) {
+  set.horizon(60);
+  discard.view(0);
+  load.sound(48);
+  load.logics(151);
+  load.view(1);
+  load.view(117);
+  v152 = 42;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  v221 = 0;
+  v222 = 0;
+  v223 = 0;
+  animate.obj(o1);
+  v152 = 5;
+  cycle.time(o1, v152);
+  step.time(o1, v152);
+  if (has("Pouch of Diamonds")) {
+    load.view(118);
+    load.view(119);
+    set.view(o1, 119);
+    set.loop(o1, 4);
+    ignore.objs(o1);
+    ignore.blocks(o1);
+    set.priority(o1, 4);
+    position(o1, 92, 103);
+    animate.obj(o5);
+    set.view(o5, 119);
+    ignore.objs(o5);
+    ignore.blocks(o5);
+    set.priority(o5, 4);
+    position(o5, 98, 103);
+    set(f227);
+  }
+  else {
+    set.view(o1, 117);
+    set.priority(o1, 14);
+    ignore.objs(o1);
+    add.to.pic(117, 5, 2, 40, 138, 4, 0);
+    if (isset(f172) && 
+        !isset(f42)) {
+      v222 = 7;
+      set.loop(o1, 3);
+      position(o1, 30, 129);
+    }
+    else {
+      set.loop(o1, 4);
+      position(o1, 29, 131);
+    }
+  }
+  if (isset(f172)) {
+    v223 = 5;
+    animate.obj(o2);
+    animate.obj(o3);
+    add.to.pic(117, 5, 1, 33, 75, 4, 0);
+    set.view(o2, 117);
+    set.view(o3, 117);
+    v152 = 4;
+    cycle.time(o2, v152);
+    step.time(o2, v152);
+    set.loop(o2, 0);
+    set.loop(o3, 2);
+    position(o2, 58, 124);
+    ignore.objs(o2);
+    ignore.blocks(o3);
+    position(o3, 59, 146);
+    set.priority(o2, 12);
+    set.priority(o3, 13);
+    draw(o2);
+    draw(o3);
+    stop.update(o3);
+    block(60, 135, 72, 155);
+    if (!isset(f42)) {
+      if (!has("Pouch of Diamonds")) {
+        load.view(118);
+      }
+      animate.obj(o4);
+      set.view(o4, 118);
+      set.loop(o4, 4);
+      ignore.blocks(o4);
+      position(o4, 113, 101);
+      draw(o4);
+      stop.update(o4);
+    }
+  }
+  draw(o1);
+  animate.obj(o7);
+  set.view(o7, 117);
+  set.loop(o7, 7);
+  ignore.horizon(o7);
+  position(o7, 62, 74);
+  v152 = 4;
+  step.time(o7, v152);
+  cycle.time(o7, v152);
+  draw(o7);
+  if (isset(f227)) {
+    add.to.pic(117, 6, 1, 26, 141, 0, 0);
+  }
+  if (!isset(f172)) {
+    add.to.pic(117, 6, 0, 59, 143, 0, 0);
+  }
+  set.view(Ego, 1);
+  position(Ego, 23, 109);
+  draw(Ego);
+  show.pic();
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("deliver", "pouch", "rol") || 
+    said("deliver", "anyword", "pouch", "rol") || 
+    said("deliver", "anyword", "anyword", "pouch", "rol") || 
+    said("deliver", "anyword", "anyword", "anyword", "pouch", "rol") || 
+    said("deliver", "anyword", "anyword", "anyword", "anyword", "pouch", "rol") || 
+    said("deliver", "diamond", "rol") || 
+    said("deliver", "anyword", "diamond") || 
+    said("deliver", "anyword", "anyword", "diamond") || 
+    said("deliver", "anyword", "anyword", "anyword", "diamond"))) {
+  if (has("Pouch of Diamonds")) {
+    if (posn(Ego,85,102,106,106)) {
+      if (isset(f172)) {
+        set(f36);
+        prevent.input();
+        drop("Pouch of Diamonds");
+        set.loop(o1, 5);
+        set.cel(o1, 0);
+        stop.update(o1);
+        move.obj(o5, 105, 103, 0, f223);
+        draw(o5);
+        sound(48, f154);
+        get("Fishing Pole");
+        set(f42);
+        v57 = 2;
+        set(f221);
+        set(f222);
+        score  += 3;
+        print("You give the pouch of diamonds to the astonished woman.  She and "
+              "her husband exchange glances.  %m2");
+      }
+      else {
+        print("The woman is already upset that you're here!  Don't be bothering "
+              "her with things!");
+      }
+    }
+    else {
+      if (posn(Ego,63,130,74,150) && 
+          isset(f172)) {
+        set(f36);
+        prevent.input();
+        drop("Pouch of Diamonds");
+        set.loop(o1, 5);
+        set.cel(o1, 0);
+        stop.update(o1);
+        move.obj(o5, 105, 103, 0, f223);
+        draw(o5);
+        sound(48, f154);
+        get("Fishing Pole");
+        set(f42);
+        v57 = 2;
+        set(f221);
+        score  += 3;
+        print("You offer the pouch of diamonds to the fisherman, who takes it "
+              "gladly.  %m2");
+      }
+      else {
+        set(f113);
+      }
+    }
+  }
+  else {
+    set(f115);
+  }
+}
+if (said("examine", "crone")) {
+  if (isset(f172)) {
+    if (isset(f42) && 
+        !isset(f221)) {
+      print("The fisherman's worn and tattered wife sits at the table with her "
+            "husband, knitting.  Since your generous gift of the diamonds, "
+            "however, her grouchy look has been replaced by one of contentment.");
+    }
+    else {
+      if ((has("Pouch of Diamonds") || 
+          isset(f221))) {
+        print("You can see that a hard life by the sea has taken its toll on "
+              "the poor wife of the old fisherman.  Her lined face frowns as "
+              "she continually kneads and works her bread dough.");
+      }
+      else {
+        print("The grizzled old fisherman and his tattered wife sit at their "
+              "table talking and drinking hot coffee.");
+      }
+    }
+  }
+  else {
+    if (has("Pouch of Diamonds")) {
+      print("A poor and tattered woman kneads bread dough at the counter.  She "
+            "looks very tired, and a little grumpy.");
+    }
+    else {
+      print("A poor and tattered woman knits at the table.  She looks very "
+            "tired, and a little grumpy.");
+    }
+  }
+}
+if (isset(f172) && 
+    (said("speak") || 
+    said("speak", "people") || 
+    said("embrace") || 
+    said("embrace", "people"))) {
+  print("Both a man and a woman are here.  Be more specific.");
+}
+if ((said("speak", "crone") || 
+    said("crone") || 
+    said("speak") || 
+    said("speak", "with", "crone"))) {
+  if (isset(f172)) {
+    if (isset(f42)) {
+      if (v50 < 3) {
+        v50 = 3;
+        print("You speak to the fisherman's wife.  She smiles as she replies, "
+              "\"You're a very kind girl.  You've helped us out a lot.  Why, I "
+              "might even be able ta buy some bran' new clothes!\"");
+      }
+      else {
+        print("You say a few words to the woman, but she seems not to hear you "
+              "as she is humming softly to herself.");
+      }
+    }
+    else {
+      if (v50 < 2) {
+        v50 = 2;
+        print("You introduce yourself to the old fisherman's wife.  With little "
+              "patience, she responds, \"What're you doin' here, young lady?!  "
+              "Can't you see I'm busy?!  We have enough problems without "
+              "worryin' 'bout you!\"");
+      }
+      else {
+        print("You try to talk pleasantly to the tired-looking woman, but your "
+              "words fall on deaf ears. She is obviously annoyed by your "
+              "presence.");
+      }
+    }
+  }
+  else {
+    if (v50 < 1) {
+      v50 = 1;
+      print("You say hello to the poor woman.  She looks at you impatiently, "
+            "and answers, \"I don't have time fer you, young lady!  Now, you "
+            "git on out o' here!\"");
+    }
+    else {
+      print("\"I said GIT, and I mean GIT!\"");
+    }
+  }
+}
+if (said("carry", "crone")) {
+  print("You couldn't get the fisherman's wife.");
+}
+if ((said("embrace", "crone") || 
+    said("embrace"))) {
+  print("She wouldn't appreciate it.");
+}
+if (said("help", "crone")) {
+  print("How can you do that, Rosella?");
+}
+if (!isset(f172)) {
+  if (said("examine", "people")) {
+    if (has("Pouch of Diamonds")) {
+      print("A poor and tattered woman kneads bread dough at the counter.  She "
+            "looks very tired, and a little grumpy.");
+    }
+    else {
+      print("A poor and tattered woman knits at the table.  She looks very "
+            "tired, and a little grumpy.");
+    }
+  }
+  if (said("speak", "people")) {
+    if (v50 < 1) {
+      v50 = 1;
+      print("You say hello to the poor woman.  She looks at you impatiently, "
+            "and answers, \"I don't have time fer you, young lady!  Now, you "
+            "git on out o' here!\"");
+    }
+    else {
+      print("\"I said GIT, and I mean GIT!\"");
+    }
+  }
+  if (said("carry", "people")) {
+    print("You couldn't get the fisherman's wife.");
+  }
+  if (said("embrace", "people")) {
+    print("She wouldn't appreciate it.");
+  }
+  if (said("help", "people")) {
+    print("How can you do that, Rosella?");
+  }
+}
+if ((said("examine", "table") || 
+    said("examine", "wood", "table"))) {
+  print("It looks like an old worn table.");
+}
+if ((said("examine", "beneath", "table") || 
+    said("examine", "beneath", "wood", "table"))) {
+  print("%m53of interest under the table.");
+}
+if (said("examine", "chair")) {
+  print("Yep, those are chairs, all right!");
+}
+if ((said("sit") || 
+    said("sit", "chair") || 
+    said("sit", "abominable", "table") || 
+    said("sit", "abominable", "wood", "table"))) {
+  print("You don't have time for that!");
+}
+if (said("examine", "bed")) {
+  print("The lumpy bed looks old and uninviting.");
+}
+if (said("examine", "beneath", "bed")) {
+  print("%m53under the bed.");
+}
+if ((said("lay", "bed") || 
+    said("lay", "abominable", "bed") || 
+    said("lay", "abominable", "bed") || 
+    said("lay", "down") || 
+    said("lay") || 
+    said("lay", "down", "abominable", "bed") || 
+    said("carry", "abominable", "bed"))) {
+  print("You don't have time for that!");
+}
+if (said("examine", "stove")) {
+  print("At least the stove keeps it warm in here.");
+}
+if ((said("examine", "window") || 
+    said("look in", "window") || 
+    said("examine", "out", "window"))) {
+  if ((posn(Ego,5,112,19,124) || 
+      posn(Ego,26,104,41,108))) {
+    print("You see the ocean out the window.");
+  }
+  else {
+    if (posn(Ego,109,104,120,121)) {
+      print("You see the meadow out the window.");
+    }
+    else {
+      set(f113);
+    }
+  }
+}
+if ((said("examine", "door") || 
+    said("examine", "wood", "door"))) {
+  print("This is a plain wooden door.");
+}
+if (said("examine", "wall")) {
+  print("%m53of importance on the walls.");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down", "dirt"))) {
+  print("%m53of interest on the floor.");
+}
+if ((said("close", "door") || 
+    said("close", "wood", "door"))) {
+  if (posn(Ego,1,105,33,113)) {
+    print("There's no need for that.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room"))) {
+  if (isset(f172)) {
+    if (isset(f42)) {
+      print("The inside of the fisherman's shack looks almost as shabby as the "
+            "outside.");
+    }
+    else {
+      print("%m31  You notice the fisherman's pole in the corner.");
+    }
+  }
+  else {
+    print("The inside of the fisherman's shack looks almost as shabby as the "
+          "outside.");
+  }
+}
+if (isset(f172)) {
+  if (said("examine", "dwarf")) {
+    if (isset(f42)) {
+      print("The salty old fisherman now looks satisfied as he sits at his "
+            "table.  Obviously, your generous gift pleased him.");
+    }
+    else {
+      if ((has("Pouch of Diamonds") || 
+          isset(f221))) {
+        print("The old fisherman sits dejectedly at the table, drinking a mug "
+              "of hot coffee.");
+      }
+      else {
+        print("The grizzled old fisherman and his tattered wife sit at their "
+              "table talking and drinking hot coffee.");
+      }
+    }
+  }
+  if ((said("speak", "dwarf") || 
+      said("speak", "with", "dwarf") || 
+      said("dwarf"))) {
+    if (isset(f42)) {
+      if (v57 == 2) {
+        print("You speak to the old fisherman, and he replies, \"You've really "
+              "helped me and the missus, girlie!  Those diamonds will come in "
+              "awful handy.  We can't thank ya enough!\"");
+        v57++;
+      }
+      else {
+        print("Again, you say a few words to the fisherman.  \"All right, "
+              "already!\" he exclaims.  \"I told ya that I was grateful!  Don't "
+              "you have somethin' else ta do?\"");
+      }
+    }
+    else {
+      if (v57 == 0) {
+        print("You talk to the grizzled fisherman as he sits at the table.  "
+              "Sighing, he tells you, \"Them fish ain't been bitin' lately.  If "
+              "things don't git better soon, I don't know WHAT ta do!\"");
+        v57++;
+      }
+      else {
+        if (v57 == 1) {
+          print("In reply, the old fisherman comments, \"Me and the wife ain't "
+                "gettin' any younger, and times is tough.  If you've got any "
+                "ideas, girlie, let me know.\"");
+          v57++;
+        }
+        else {
+          print("The fisherman chooses to ignore your attempted conversation.  "
+                "Instead, he looks dismally into his coffee cup and sighs "
+                "heavily.");
+        }
+      }
+    }
+  }
+  if (said("carry", "dwarf")) {
+    print("You couldn't get the fisherman.");
+  }
+  if (said("embrace", "dwarf")) {
+    print("You think, for a moment, that it might help, but then change your "
+          "mind.");
+  }
+  if (said("help", "dwarf")) {
+    print("How can you do that, Rosella?");
+  }
+  if (!isset(f42)) {
+    if ((said("carry", "fishing pole") || 
+        said("carry", "fishing", "fishing pole"))) {
+      print("You can't take their fishing pole, as that's their only means of "
+            "survival!");
+    }
+    if ((said("rob", "fishing pole") || 
+        said("rob", "fishing", "fishing pole"))) {
+      print("You're not a thief, Rosella!");
+    }
+  }
+}
+if (isset(f172)) {
+  if ((said("examine", "people") || 
+      said("carry", "people") || 
+      said("help", "people") || 
+      said("embrace", "people"))) {
+    print("Both a man and a woman are here.  Be more specific.");
+  }
+}
+if (said("examine", "coffee")) {
+  print("The coffee is brown.");
+}
+if ((said("examine", "cauldron") || 
+    said("examine", "cauldron") || 
+    said("examine", "coffee", "cauldron"))) {
+  print("The smell of hot coffee fills the room.");
+}
+if ((said("drink", "coffee") || 
+    said("carry", "coffee") || 
+    said("carry", "drink", "coffee"))) {
+  print("You don't like coffee.");
+}
+if ((said("rob", "knitting") || 
+    said("carry", "knitting"))) {
+  print("You're not a thief, Rosella!");
+}
+if ((said("examine", "fishing pole") || 
+    said("examine", "fishing", "fishing pole"))) {
+  if (isset(f42)) {
+    reset(input_parsed);
+  }
+  else {
+    if ((!isset(f172) || 
+        isset(f42))) {
+      print("You must be seeing things!");
+    }
+    else {
+      print("You notice the fisherman's pole in the corner.");
+    }
+  }
+}
+if (said("examine", "bookshelf")) {
+  print("%m53you need on the shelves.");
+}
+if ((has("Pouch of Diamonds") || 
+    isset(f221))) {
+  if (said("examine", "bread dough")) {
+    if (posn(Ego,84,100,97,110)) {
+      print("You can see that a hard life by the sea has taken its toll on the "
+            "poor wife of the old fisherman.  Her lined face frowns as she "
+            "continually kneads and works her bread dough.");
+    }
+    else {
+      set(f113);
+    }
+  }
+  if (said("carry", "bread dough")) {
+    if (posn(Ego,84,100,97,110)) {
+      print("You have no need for bread dough.");
+    }
+    else {
+      set(f113);
+    }
+  }
+  if (said("chew", "bread dough")) {
+    if (posn(Ego,84,100,97,110)) {
+      print("You don't like it.");
+    }
+    else {
+      set(f113);
+    }
+  }
+}
+if (!has("Dead Fish")) {
+  if (said("examine", "dead fish")) {
+    print("You see a large fish hanging on the wall.");
+  }
+  if (said("carry", "dead fish")) {
+    print("No.  It belongs here.");
+  }
+}
+if (!isset(input_parsed)) {
+  call(151);
+}
+if (isset(f106)) {
+  reset(f106);
+  if (isset(f172)) {
+    print("The fisherman and his wife look at it with interest, but then shrug "
+          "and shake their heads.");
+  }
+  else {
+    print("The woman is already upset that you're here!  Don't be bothering her "
+          "with things!");
+  }
+}
+Label1:
+if (isset(f223)) {
+  v221++;
+  if (v221 == 2) {
+    if (isset(f222)) {
+      print("Obediently, she retrieves the pole and hands it to you.\"Thank you "
+            "very much\",   she says, smiling.  \"You have certainly helped "
+            "us.\"");
+    }
+    set.loop(o1, 4);
+    start.update(o1);
+    erase(o5);
+    reset(f223);
+    reset(f36);
+    accept.input();
+  }
+  if (v221 == 1) {
+    set.view(o5, 118);
+    erase(o4);
+    if (isset(f222)) {
+      move.obj(o5, 98, 103, 0, f223);
+    }
+    else {
+      v221++;
+      move.obj(o5, 70, 129, 0, f223);
+    }
+  }
+  if (v221 == 3) {
+    print("Obediently, she retrieves the pole and hands it to you.\"Thank you "
+          "very much\",   she says, smiling.  \"You have certainly helped us.\"");
+    set.view(o5, 119);
+    move.obj(o5, 98, 103, 0, f223);
+    v221 = 1;
+  }
+}
+if (v222 > 0 && 
+    isset(f112)) {
+  v222--;
+  if (v222 <= 0) {
+    random(4, 8, v222);
+    if (isset(f224)) {
+      reset(f224);
+      stop.cycling(o1);
+      set.cel(o1, 0);
+    }
+    else {
+      set(f224);
+      start.cycling(o1);
+    }
+  }
+}
+if (v223 > 0 && 
+    isset(f112)) {
+  v223--;
+  if (v223 <= 0) {
+    random(1, 3, v152);
+    random(3, 7, v223);
+    if (v152 == 1) {
+      set.loop(o2, 0);
+      start.cycling(o2);
+    }
+    if (v152 == 2) {
+      set.loop(o2, 0);
+      stop.cycling(o2);
+      set.cel(o2, 0);
+    }
+    if (v152 == 3) {
+      v223 = 0;
+      set.loop(o2, 1);
+      end.of.loop(o2, f225);
+    }
+  }
+}
+if (isset(f225)) {
+  reset(f225);
+  reverse.loop(o2, f226);
+}
+if (isset(f226)) {
+  reset(f226);
+  set.loop(o2, 0);
+  set.cel(o2, 0);
+  stop.cycling(o2);
+  random(3, 7, v223);
+}
+if (isset(ego_touching_signal_line)) {
+  new.room(7); //##LE001##
+}
+return();
+
+//Messages
+#message 1 "You give the pouch of diamonds to the astonished woman.  She and her husband exchange glances.  %m2"
+#message 2 "\"Wife, give the girl my fishing pole in trade\", he tells her."
+#message 3 "You offer the pouch of diamonds to the fisherman, who takes it gladly.  %m2"
+#message 4 "The fisherman and his wife look at it with interest, but then shrug and shake their heads."
+#message 5 "The woman is already upset that you're here!  Don't be bothering her with things!"
+#message 6 "A poor and tattered woman knits at the table.  She looks very tired, and a little grumpy."
+#message 7 "You can see that a hard life by the sea has taken its toll on the poor wife of the old fisherman.  Her lined face frowns as she continually kneads and works her bread dough."
+#message 8 "The fisherman's worn and tattered wife sits at the table with her husband, knitting.  Since your generous gift of the diamonds, however, her grouchy look has been replaced by one of contentment."
+#message 9 "You say hello to the poor woman.  She looks at you impatiently, and answers, \"I don't have time fer you, young lady!  Now, you git on out o' here!\""
+#message 10 "\"I said GIT, and I mean GIT!\""
+#message 11 "You introduce yourself to the old fisherman's wife.  With little patience, she responds, \"What're you doin' here, young lady?!  Can't you see I'm busy?!  We have enough problems without worryin' 'bout you!\""
+#message 12 "You try to talk pleasantly to the tired-looking woman, but your words fall on deaf ears. She is obviously annoyed by your presence."
+#message 13 "You speak to the fisherman's wife.  She smiles as she replies, \"You're a very kind girl.  You've helped us out a lot.  Why, I might even be able ta buy some bran' new clothes!\""
+#message 14 "You say a few words to the woman, but she seems not to hear you as she is humming softly to herself."
+#message 15 "You couldn't get the fisherman's wife."
+#message 16 "She wouldn't appreciate it."
+#message 17 "How can you do that, Rosella?"
+#message 18 "It looks like an old worn table."
+#message 19 "%m53of interest under the table."
+#message 20 "Yep, those are chairs, all right!"
+#message 21 "You don't have time for that!"
+#message 22 "The lumpy bed looks old and uninviting."
+#message 23 "%m53under the bed."
+#message 24 "You don't have time for that!"
+#message 25 "At least the stove keeps it warm in here."
+#message 26 "You see the ocean out the window."
+#message 27 "This is a plain wooden door."
+#message 28 "%m53of importance on the walls."
+#message 29 "%m53of interest on the floor."
+#message 30 "There's no need for that."
+#message 31 "The inside of the fisherman's shack looks almost as shabby as the outside."
+#message 32 "You see the meadow out the window."
+#message 33 "Both a man and a woman are here.  Be more specific."
+#message 34 "You talk to the grizzled fisherman as he sits at the table.  Sighing, he tells you, \"Them fish ain't been bitin' lately.  If things don't git better soon, I don't know WHAT ta do!\""
+#message 35 "In reply, the old fisherman comments, \"Me and the wife ain't gettin' any younger, and times is tough.  If you've got any ideas, girlie, let me know.\""
+#message 36 "The fisherman chooses to ignore your attempted conversation.  Instead, he looks dismally into his coffee cup and sighs heavily."
+#message 37 "You speak to the old fisherman, and he replies, \"You've really helped me and the missus, girlie!  Those diamonds will come in awful handy.  We can't thank ya enough!\""
+#message 38 "Again, you say a few words to the fisherman.  \"All right, already!\" he exclaims.  \"I told ya that I was grateful!  Don't you have somethin' else ta do?\""
+#message 39 "Obediently, she retrieves the pole and hands it to you.\"Thank you very much\",   she says, smiling.  \"You have certainly helped us.\""
+#message 40 "The old fisherman sits dejectedly at the table, drinking a mug of hot coffee."
+#message 41 "The salty old fisherman now looks satisfied as he sits at his table.  Obviously, your generous gift pleased him."
+#message 42 "You can't take their fishing pole, as that's their only means of survival!"
+#message 43 "You're not a thief, Rosella!"
+#message 44 "You couldn't get the fisherman."
+#message 45 "You think, for a moment, that it might help, but then change your mind."
+#message 46 "A poor and tattered woman kneads bread dough at the counter.  She looks very tired, and a little grumpy."
+#message 47 "The smell of hot coffee fills the room."
+#message 48 "You don't like coffee."
+#message 49 "The grizzled old fisherman and his tattered wife sit at their table talking and drinking hot coffee."
+#message 50 "%m31  You notice the fisherman's pole in the corner."
+#message 51 "You notice the fisherman's pole in the corner."
+#message 52 "You must be seeing things!"
+#message 53 "There is nothing "
+#message 54 "%m53you need on the shelves."
+#message 55 "The coffee is brown."
+#message 56 "You see a large fish hanging on the wall."
+#message 57 "No.  It belongs here."
+#message 58 "You have no need for bread dough."
+#message 59 "You don't like it."

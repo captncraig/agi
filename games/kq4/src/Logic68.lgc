@@ -1,0 +1,462 @@
+if (isset(new_room)) {
+  set(f82);
+  discard.view(0);
+  v152 = 68;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.logics(151);
+  load.view(111);
+  animate.obj(o3);
+  set.view(o3, 111);
+  set.loop(o3, 0);
+  position(o3, 110, 135);
+  v152 = 5;
+  cycle.time(o3, v152);
+  if (isset(f38)) {
+    load.logics(232);
+    if (prev_room_no == 17) {
+      v117 = 0;
+    }
+    if (v144 == 0) {
+      v144 = 1;
+      reset(f148);
+    }
+    animate.obj(o4);
+    set.view(o4, 111);
+    set.loop(o4, 1);
+    ignore.horizon(o4);
+    position(o4, 113, 32);
+    set.priority(o4, 5);
+    start.cycling(o4);
+    draw(o4);
+  }
+  if (v144 == 2) {
+    if ((!isset(f163) || 
+        v143 == 68)) {
+      load.logics(233);
+      animate.obj(o1);
+      load.view(105);
+      set.view(o1, 105);
+      ignore.blocks(o1);
+      ignore.objs(o1);
+      if (!isset(f163)) {
+        random(1, 2, v152);
+        if (v152 == 1) {
+          set.loop(o1, 0);
+        }
+        else {
+          set.loop(o1, 1);
+        }
+        position(o1, 71, 158);
+        set(f163);
+      }
+      else {
+        if (v142 == 67) {
+          position(o1, 0, 158);
+        }
+        else {
+          position(o1, 140, 158);
+        }
+      }
+      v142 = 68;
+      set(f237);
+      draw(o1);
+      load.sound(23);
+      sound(23, f154);
+    }
+  }
+  if ((v144 == 4) && 
+      (v143 == 68)) {
+    load.logics(234);
+    animate.obj(o1);
+    load.view(107);
+    set.view(o1, 107);
+    position(o1, 82, 148);
+    ignore.objs(o1);
+    draw(o1);
+    observe.blocks(o1);
+    wander(o1);
+    set(f237);
+    load.sound(25);
+    sound(25, f154);
+  }
+  if ((v144 == 5) && 
+      (!isset(f143))) {
+    v117 = 0;
+    load.logics(235);
+    animate.obj(o1);
+    load.view(108);
+    set.view(o1, 108);
+    position(o1, 56, 74);
+    ignore.blocks(o1);
+    ignore.objs(o1);
+    draw(o1);
+    set(f237);
+    v117 = 0;
+    set(f225);
+    load.sound(26);
+    sound(26, f154);
+  }
+  else {
+    if (v144 == 5) {
+      set(f148);
+      v117 = 15;
+    }
+  }
+  load.view(1);
+  set.view(Ego, 1);
+  animate.obj(o2);
+  set.view(o2, 1);
+  set.priority(o2, 4);
+  position(o2, 105, 137);
+  ignore.blocks(o2);
+  ignore.objs(o2);
+  ignore.horizon(o2);
+  draw(o2);
+  if (prev_room_no == 17) {
+    position(Ego, 80, 163);
+  }
+  if (prev_room_no == 67) {
+    position(Ego, 20, 146);
+  }
+  if (prev_room_no == 60) {
+    position(Ego, 93, 74);
+  }
+  if (prev_room_no == 62) {
+    position(Ego, 43, 73);
+  }
+  if (prev_room_no == 64) {
+    position(Ego, 129, 145);
+  }
+  draw(o3);
+  draw(Ego);
+  show.pic();
+}
+get.posn(o1, v134, v135);
+distance(Ego, o1, v161);
+if (isset(f112)) {
+  reset(f112);
+  v168++;
+  v117++;
+}
+if (posn(Ego,75,76,95,85)) {
+  set.priority(Ego, 6);
+}
+else {
+  release.priority(Ego);
+}
+if (v34 < 75) {
+  set.priority(Ego, 5);
+}
+if ((v144 == 2) && 
+    (!isset(f238))) {
+  set(f238);
+  if (v134 > 81) {
+    move.obj(o1, 0, 158, 0, f230);
+    v143 = 67;
+  }
+  else {
+    move.obj(o1, 159, 158, 0, f230);
+    v143 = 64;
+  }
+}
+if ((v144 == 4) && 
+    (v168 == 15) && 
+    (isset(f163))) {
+  ignore.blocks(o1);
+  set(f238);
+  if (v134 < 66) {
+    move.obj(o1, 0, 158, 0, f230);
+    v143 = 67;
+  }
+  else {
+    move.obj(o1, 159, 158, 0, f230);
+    v143 = 64;
+  }
+}
+if (isset(f230)) {
+  v168 = 0;
+  reset(f230);
+  erase(o1);
+  reset(f237);
+  reset(f236);
+  set(f154);
+}
+if ((v144 == 5) && 
+    (isset(f225)) && 
+    (isset(f237))) {
+  reset(f225);
+  if (prev_room_no != 17) {
+    v117 = 15;
+  }
+  call(235);
+  v152 = 1;
+  cycle.time(o1, v152);
+  step.time(o1, v152);
+  start.cycling(o1);
+  move.obj(o1, 93, 74, 0, f234);
+  draw(o1);
+}
+if ((v144 == 5) && 
+    (isset(f234))) {
+  reset(f234);
+  move.obj(o1, 93, 70, 0, f235);
+}
+if ((v144 == 5) && 
+    (isset(f235))) {
+  reset(f235);
+  reset(f237);
+  v168 = 0;
+  erase(o1);
+  set(f154);
+  v117 = 0;
+}
+if (isset(f233)) {
+  reset(f233);
+  reset(f230);
+  erase(o1);
+  reset(f237);
+  reset(f148);
+  if (v144 == 5) {
+    reset(f148);
+    v117 = 0;
+    load.view(108);
+    load.sound(26);
+    set.view(o1, 108);
+    set.loop(o1, 4);
+    position(o1, 71, 74);
+    ignore.blocks(o1);
+    ignore.objs(o1);
+    draw(o1);
+    v152 = 3;
+    cycle.time(o1, v152);
+    end.of.loop(o1, f225);
+    set(f237);
+    sound(26, f154);
+  }
+}
+if (v34 > 139) {
+  current.view(Ego, v152);
+  set.view.v(o2, v152);
+  current.loop(Ego, v152);
+  if (v152 == 3) {
+    set.loop(o2, 2);
+  }
+  else {
+    if (v152 == 2) {
+      set.loop(o2, 3);
+    }
+    else {
+      set.loop.v(o2, v152);
+    }
+  }
+  current.cel(Ego, v152);
+  set.cel.v(o2, v152);
+  get.posn(Ego, v33, v31);
+  v31 -= 167;
+  v221 = 117;
+  v221 -= v31;
+  reposition.to.v(o2, v33, v221);
+  if (!isset(f157) && 
+      (ego_dir == stopped || 
+      ego_dir == v106)) {
+    stop.cycling(o2);
+  }
+  else {
+    start.cycling(o2);
+  }
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "cottage") || 
+    said("examine", "around", "cottage") || 
+    said("examine", "entry") || 
+    said("examine", "around", "entry"))) {
+  print("This is the entry room of the old house.  Downstairs there are two "
+        "open doorways, and upstairs an additional two doorways.  The room is "
+        "cobwebbed and dusty, and the wallpaper peels from the walls.");
+}
+if (said("examine", "picture")) {
+  print("You notice two interesting portraits above the downstairs doorways.  "
+        "One, of a middle-aged woman, and the other, of a young man.  You "
+        "wonder who they are.");
+}
+if (said("carry", "picture")) {
+  print("The portraits are too high.  You could never reach them.  Besides, "
+        "it's not important.");
+}
+if ((said("examine", "behind", "picture") || 
+    said("examine", "beneath", "picture"))) {
+  print("There is nothing behind the portraits.");
+}
+if ((said("examine", "mirror") || 
+    said("look in", "mirror"))) {
+  if (posn(Ego,75,140,90,146)) {
+    print("You look in the broken mirror and see the reflection of a poor, but "
+          "beautiful, peasant girl.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("examine", "staircase") || 
+    said("examine", "up", "staircase") || 
+    said("examine", "down", "staircase"))) {
+  print("The stairs lead up to the second story.");
+}
+if ((said("examine", "clock") || 
+    said("examine", "grandfather", "clock"))) {
+  print("An old grandfather clock sits in the corner.  With each swing of its "
+        "pendulum, time relentlessly marches on.");
+}
+if ((said("look in", "clock") || 
+    said("open", "grandfather", "clock") || 
+    said("look in", "grandfather", "clock") || 
+    said("open", "clock"))) {
+  print("There is nothing of interest inside the grandfather clock.");
+}
+if ((said("examine", "time") || 
+    said("read", "time") || 
+    said("time") || 
+    said("read", "time", "clock"))) {
+  if (v64 > 12) {
+    v66 = v64;
+    v66 -= 12;
+  }
+  if (v64 == 12) {
+    if (v63 < 10) {
+      print("%m18%v64:0%v63 P.M.");
+    }
+    else {
+      print("%m18%v64:%v63 P.M.");
+    }
+  }
+  if (v64 == 24) {
+    if (v63 < 10) {
+      print("%m18%v66:0%v63 A.M.");
+    }
+    else {
+      print("%m18%v66:%v63 A.M.");
+    }
+  }
+  if (v64 > 12 && 
+      v64 < 24) {
+    if (v63 < 10) {
+      print("%m18%v66:0%v63 P.M.");
+    }
+    else {
+      print("%m18%v66:%v63 P.M.");
+    }
+  }
+  if (v64 < 12) {
+    if (v63 < 10) {
+      print("%m18%v64:0%v63 A.M.");
+    }
+    else {
+      print("%m18%v64:%v63 A.M.");
+    }
+  }
+}
+if ((said("wind", "clock") || 
+    said("wind", "up", "grandfather", "clock") || 
+    said("wind", "grandfather", "clock") || 
+    said("wind", "up", "clock"))) {
+  print("You can't.  You don't know how.  Besides, they're not important.");
+}
+if (said("examine", "wall")) {
+  print("There is nothing of importance on the walls.");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down") || 
+    said("examine", "down", "dirt"))) {
+  print("There is nothing of interest on the floor.");
+}
+if (said("examine", "door")) {
+  print("Doors lead in all directions.");
+}
+if (said("examine", "carpet")) {
+  print("A tattered rug lies on the floor.");
+}
+if (said("carry", "carpet")) {
+  print("You don't need it.");
+}
+if (said("examine", "table")) {
+  print("The once beautiful marble-topped table rests below the broken mirror.");
+}
+if ((said("carry", "clock") || 
+    said("carry", "grandfather", "clock"))) {
+  print("It is too heavy to move.");
+}
+if ((v144 == 2) && 
+    (isset(f237))) {
+  call(233);
+}
+if ((v144 == 4) && 
+    (isset(f237))) {
+  call(234);
+}
+if ((v144 == 5) && 
+    (isset(f237))) {
+  call(235);
+}
+Label1:
+if (isset(f38)) {
+  call(232);
+}
+if (ego_edge_code == bottom_edge) {
+  reset(f148);
+  new.room(17); //##LE001##
+}
+if ((isset(ego_touching_signal_line)) && 
+    (v34 < 80) && 
+    (v33 > 80)) {
+  new.room(60); //##LE002##
+}
+if ((isset(ego_touching_signal_line)) && 
+    (v34 < 80) && 
+    (v33 < 80)) {
+  new.room(62); //##LE003##
+}
+if ((isset(ego_touching_signal_line)) && 
+    (v33 < 40)) {
+  new.room(67); //##LE004##
+}
+if ((isset(ego_touching_signal_line)) && 
+    (v34 > 80) && 
+    (v33 > 115)) {
+  new.room(64); //##LE005##
+}
+return();
+
+//Messages
+#message 1 "This is the entry room of the old house.  Downstairs there are two open doorways, and upstairs an additional two doorways.  The room is cobwebbed and dusty, and the wallpaper peels from the walls."
+#message 2 "You notice two interesting portraits above the downstairs doorways.  One, of a middle-aged woman, and the other, of a young man.  You wonder who they are."
+#message 3 "The portraits are too high.  You could never reach them.  Besides, it's not important."
+#message 4 "There is nothing behind the portraits."
+#message 5 "You look in the broken mirror and see the reflection of a poor, but beautiful, peasant girl."
+#message 6 "The stairs lead up to the second story."
+#message 7 "An old grandfather clock sits in the corner.  With each swing of its pendulum, time relentlessly marches on."
+#message 8 "There is nothing of interest inside the grandfather clock."
+#message 10 "You can't.  You don't know how.  Besides, they're not important."
+#message 11 "There is nothing of importance on the walls."
+#message 12 "There is nothing of interest on the floor."
+#message 13 "Doors lead in all directions."
+#message 14 "A tattered rug lies on the floor."
+#message 15 "You don't need it."
+#message 16 "The once beautiful marble-topped table rests below the broken mirror."
+#message 17 "It is too heavy to move."
+#message 18 "The time is "
+#message 19 "%m18%v64:%v63 A.M."
+#message 20 "%m18%v64:0%v63 A.M."
+#message 21 "%m18%v66:%v63 P.M."
+#message 22 "%m18%v66:0%v63 P.M."
+#message 23 "%m18%v64:%v63 P.M."
+#message 24 "%m18%v64:0%v63 P.M."
+#message 25 "%m18%v66:%v63 A.M."
+#message 26 "%m18%v66:0%v63 A.M."

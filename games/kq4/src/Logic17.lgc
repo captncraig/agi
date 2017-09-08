@@ -1,0 +1,279 @@
+if (isset(new_room)) {
+  if (prev_room_no == 68) {
+    discard.view(1);
+    load.view(0);
+    set.view(Ego, 0);
+    position(Ego, 78, 137);
+  }
+  set.horizon(70);
+  if (!isset(f38)) {
+    v152 = 17;
+  }
+  else {
+    set(f82);
+    v152 = 117;
+  }
+  load.pic(v152);
+  load.sound(70);
+  load.logics(203);
+  draw.pic(v152);
+  discard.pic(v152);
+  animate.obj(o1);
+  load.view(136);
+  set.view(o1, 136);
+  set.loop(o1, 1);
+  set.cel(o1, 0);
+  position(o1, 71, 128);
+  stop.cycling(o1);
+  set.priority(o1, 9);
+  ignore.blocks(o1);
+  observe.objs(o1);
+  draw(o1);
+  if ((isset(f38)) && 
+      (!has("Obsidian Scarab"))) {
+    load.view(24);
+    load.sound(21);
+    animate.obj(o12);
+    animate.obj(o10);
+    set.view(o10, 136);
+    set.cel(o10, 0);
+    ignore.blocks(o10);
+    position(o10, 61, 127);
+    set.priority(o10, 10);
+    v154 = 2;
+    step.size(o10, v154);
+    draw(o10);
+    stop.motion(o10);
+    stop.cycling(o10);
+    v161 = 0;
+  }
+  if (prev_room_no == 11) {
+    get.posn(Ego, v33, v34);
+    if (v33 > 70) {
+      position(Ego, 132, 80);
+    }
+    else {
+      position(Ego, 8, 75);
+    }
+  }
+  if (prev_room_no == 23) {
+    v152 = 166;
+    position.v(Ego, v33, v152);
+  }
+  draw(Ego);
+  show.pic();
+}
+if ((isset(f38)) && 
+    (!has("Obsidian Scarab"))) {
+  if ((center.posn(Ego,73,124,87,133)) && 
+      (v161 == 0)) {
+    set.priority(Ego, 12);
+    v161++;
+    set(f36);
+    prevent.input();
+    start.motion(o10);
+    start.cycling(o10);
+    end.of.loop(o10, f222);
+  }
+  if (isset(f222)) {
+    sound(21, f154);
+    reset(f222);
+    set.view(o12, 24);
+    position.v(o12, v33, v34);
+    set.loop(o12, 5);
+    erase(Ego);
+    draw(o12);
+    v154 = 4;
+    cycle.time(o12, v154);
+    end.of.loop(o12, f223);
+  }
+  if (isset(f223)) {
+    set(f238);
+    reset(f223);
+    set.view(o12, 24);
+    set.cel(o12, 0);
+    set.loop(o12, 4);
+    v154 = 2;
+    cycle.time(o12, v154);
+    end.of.loop(o12, f224);
+  }
+  if (isset(f224)) {
+    reset(f224);
+    release.loop(o12);
+    set.loop(o12, 0);
+    v154 = 3;
+    cycle.time(o12, v154);
+    step.time(o12, v154);
+    start.cycling(o12);
+    move.obj(o12, 77, 143, 0, f237);
+    reverse.loop(o10, f230);
+  }
+  if (isset(f237)) {
+    reset(f237);
+    move.obj(o12, 77, 160, 0, f236);
+  }
+  if (isset(f236)) {
+    stop.cycling(o12);
+    reset(f236);
+    set(f140);
+  }
+}
+if (isset(f238)) {
+  print("To wander forever is now your fate.");
+  reset(f238);
+}
+if ((isset(f225)) && 
+    (v157 == 1)) {
+  reset(f225);
+  v152 = 3;
+  end.of.loop(o1, f225);
+  v157++;
+  sound(70, f154);
+}
+if ((isset(f225)) && 
+    (v157 == 2)) {
+  reset(f225);
+  ignore.objs(o1);
+  v157++;
+  set(f235);
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room"))) {
+  if (isset(f38)) {
+    print("%m1  The house is even spookier at night!");
+  }
+  else {
+    print("Indeed, this is a spooky old house!  It looks as if no one has lived "
+          "here for many years.  Flanking the old house on both sides is a "
+          "run-down cemetery.  A thick forest looms all around.");
+  }
+}
+if (said("examine", "cottage")) {
+  print("This is not a pleasant house; in fact, it's downright scary!  It looks "
+        "old and abandoned, and badly in need of tender loving care.  To make "
+        "matters worse, it sits right in the middle of an old cemetery!");
+}
+if (said("examine", "cemetary")) {
+  print("A decrepit and over-grown cemetery surrounds the old house.");
+}
+if (said("examine", "grave")) {
+  print("The graves are in the cemetery.");
+}
+if (said("examine", "bush")) {
+  print("Overgrown shrubs front the old house.");
+}
+if (said("examine", "gravestone")) {
+  print("The graves are in the cemetery.");
+}
+if (said("examine", "lion")) {
+  print("You see an interesting statue.");
+}
+if ((said("read", "gravestone") || 
+    said("read", "epitaph"))) {
+  print("The graves are in the cemetery.");
+}
+if ((said("examine", "window") || 
+    said("look in", "window"))) {
+  if ((posn(Ego,24,131,58,137) || 
+      posn(Ego,95,131,129,141))) {
+    print("You peek through the window, but can make out no details.");
+  }
+  else {
+    set(f113);
+  }
+}
+if (said("examine", "door")) {
+  print("This is a finely carved wooden door.");
+}
+if (said("break", "window")) {
+  print("It looks like many of the windows are already broken!");
+}
+if (said("open", "window")) {
+  print("The windows do not open.");
+}
+if (said("break", "door")) {
+  print("You could never do that.");
+}
+if (said("open", "door")) {
+  if (!isset(f235)) {
+    if (posn(Ego,70,122,85,133)) {
+      set(f225);
+      v157 = 1;
+    }
+    else {
+      set(f113);
+    }
+  }
+  else {
+    print("The door is already open.");
+  }
+}
+if (said("unlatch", "door")) {
+  print("The door is already unlocked.");
+}
+if ((said("bang", "door") || 
+    said("bang", "abominable", "door") || 
+    said("bang") || 
+    said("bang", "abominable", "abominable", "door"))) {
+  if (!isset(f235)) {
+    if (posn(Ego,70,128,85,133)) {
+      print("With trepidation, you rap on the door.  Not surprisingly, nobody "
+            "answers.");
+    }
+    else {
+      set(f113);
+    }
+  }
+  else {
+    print("The door is already open.");
+  }
+}
+if (said("examine", "staircase")) {
+  print("Wide stone steps lead up to the front door of the spooky old house.");
+}
+if (!isset(input_parsed)) {
+  call(203);
+}
+Label1:
+if (ego_edge_code == bottom_edge) {
+  new.room(23); //##LE001##
+}
+if (ego_edge_code == right_edge) {
+  new.room(18); //##LE002##
+}
+if (ego_edge_code == horizon_edge) {
+  new.room(11); //##LE003##
+}
+if (ego_edge_code == left_edge) {
+  new.room(16); //##LE004##
+}
+if ((isset(ego_touching_signal_line)) && 
+    (v33 < 95) && 
+    (v33 > 60)) {
+  new.room(68); //##LE005##
+}
+return();
+
+//Messages
+#message 1 "Indeed, this is a spooky old house!  It looks as if no one has lived here for many years.  Flanking the old house on both sides is a run-down cemetery.  A thick forest looms all around."
+#message 2 "This is not a pleasant house; in fact, it's downright scary!  It looks old and abandoned, and badly in need of tender loving care.  To make matters worse, it sits right in the middle of an old cemetery!"
+#message 3 "A decrepit and over-grown cemetery surrounds the old house."
+#message 4 "The graves are in the cemetery."
+#message 5 "You see an interesting statue."
+#message 6 "You peek through the window, but can make out no details."
+#message 7 "This is a finely carved wooden door."
+#message 8 "It looks like many of the windows are already broken!"
+#message 9 "The windows do not open."
+#message 10 "You could never do that."
+#message 11 "The door is already unlocked."
+#message 12 "With trepidation, you rap on the door.  Not surprisingly, nobody answers."
+#message 13 "Wide stone steps lead up to the front door of the spooky old house."
+#message 14 "Overgrown shrubs front the old house."
+#message 15 "%m1  The house is even spookier at night!"
+#message 16 "To wander forever is now your fate."
+#message 17 "The door is already open."

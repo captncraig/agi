@@ -1,0 +1,205 @@
+if (isset(new_room)) {
+  set(f82);
+  v152 = 76;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.sound(52);
+  load.logics(216);
+  load.view(1);
+  load.view(43);
+  load.view(36);
+  call(216);
+  animate.obj(o1);
+  set.view(o1, 43);
+  set.loop(o1, 4);
+  v152 = 3;
+  cycle.time(o1, v152);
+  ignore.objs(o1);
+  ignore.blocks(o1);
+  animate.obj(o12);
+  set.view(o12, 36);
+  if (prev_room_no == 75) {
+    position(Ego, 25, 144);
+    if (isset(f49)) {
+      v152 = 2;
+      step.size(o2, v152);
+      position(o2, 3, 146);
+    }
+  }
+  else {
+    position(Ego, 102, 96);
+  }
+  if (has("Lit Oil Lantern")) {
+    set.view(Ego, 43);
+    set(f48);
+  }
+  else {
+    set.view(Ego, 1);
+  }
+  if (isset(f49)) {
+    random(1, 2, v152);
+    if (v152 == 2) {
+      draw(o2);
+      follow.ego(o2, 10, f221);
+      sound(37, f154);
+    }
+    else {
+      v221 = 0;
+      reset(f49);
+    }
+  }
+  if (v37 != 20) {
+    draw(Ego);
+  }
+  show.pic();
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("place", "board", "down") || 
+    said("lay", "board", "down") || 
+    said("place", "down", "board") || 
+    said("lay", "down", "board") || 
+    said("place", "board", "across", "chasm") || 
+    said("lay", "board", "across", "chasm") || 
+    said("place", "board", "over", "chasm") || 
+    said("lay", "board", "over", "chasm") || 
+    said("place", "board", "across") || 
+    said("lay", "board", "across"))) {
+  if (has("Small Board")) {
+    if (posn(Ego,65,110,90,161)) {
+      drop("Small Board");
+      print("Feeling in the dark, you manage to place the board across the "
+            "crevice.  Now, can you cross it safely?");
+      v222 = v34;
+      v223 = v34;
+      v222 -= 2;
+      v223  += 2;
+      if (v33 > 80) {
+        v224 = 1;
+      }
+      else {
+        v224 = 0;
+      }
+      set(f227);
+    }
+    else {
+      set(f113);
+    }
+  }
+  else {
+    set(f115);
+  }
+}
+if ((said("examine", "chasm") || 
+    said("find", "chasm"))) {
+  print("Where is it?!");
+}
+if ((said("examine", "exit") || 
+    said("examine", "hole"))) {
+  print("It seems far away.");
+}
+Label1:
+if (!isset(new_room)) {
+  call(216);
+}
+if (v221 > 0) {
+  v221--;
+  if (v221 <= 0) {
+    position(o2, 3, 146);
+    draw(o2);
+    follow.ego(o2, 10, f221);
+  }
+}
+if (isset(f227)) {
+  if (posn(Ego,70,110,85,161)) {
+    if ((v222 > v34 || 
+        v223 < v34)) {
+      reset(f227);
+    }
+  }
+  if (v224 == 0 && 
+      v33 > 86) {
+    reset(f227);
+    get("Small Board");
+    if (v51 == 0) {
+      v51 = 1;
+      score  += 2;
+    }
+    else {
+      if (v51 == 1) {
+        v51 = 2;
+        score  += 2;
+      }
+    }
+    print("Having successfully crossed the crevice, you pick the board up.");
+  }
+  if (v224 == 1 && 
+      v33 < 69) {
+    if (v51 == 0) {
+      v51 = 1;
+      score  += 2;
+    }
+    else {
+      if (v51 == 1) {
+        v51 = 2;
+        score  += 2;
+      }
+    }
+    reset(f227);
+    get("Small Board");
+    print("Having successfully crossed the crevice, you pick the board up.");
+  }
+}
+if (!isset(f225) && 
+    !isset(f227) && 
+    posn(Ego,70,110,85,161)) {
+  set(f225);
+  set(f36);
+  prevent.input();
+  if ((ego_dir == upright || 
+      ego_dir == right || 
+      ego_dir == downright)) {
+    set.loop(o12, 0);
+  }
+  else {
+    set.loop(o12, 1);
+  }
+  set.cel(o12, 0);
+  get.posn(Ego, v152, v153);
+  position.v(o12, v152, v153);
+  draw(o12);
+  v37 = 20;
+  erase(Ego);
+  erase(o1);
+  if (isset(f49)) {
+    reset(f49);
+    erase(o2);
+  }
+  end.of.loop(o12, f226);
+  window_close_time = 3;
+  print("OH NOOOOOOOO!  A chasm!!");
+  sound(52, f154);
+}
+if (isset(f226)) {
+  set(f226);
+  erase(o12);
+  set(f140);
+}
+if (v37 != 20) {
+  if (posn(Ego,0,114,15,167)) {
+    new.room(75); //##LE001##
+  }
+  if (isset(ego_touching_signal_line)) {
+    new.room(73); //##LE002##
+  }
+}
+return();
+
+//Messages
+#message 1 "OH NOOOOOOOO!  A chasm!!"
+#message 2 "Feeling in the dark, you manage to place the board across the crevice.  Now, can you cross it safely?"
+#message 3 "Having successfully crossed the crevice, you pick the board up."
+#message 4 "Where is it?!"
+#message 5 "It seems far away."

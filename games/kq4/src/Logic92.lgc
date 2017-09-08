@@ -1,0 +1,814 @@
+if (isset(new_room)) {
+  set(f82);
+  discard.view(0);
+  v152 = 92;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  if (v37 != 2) {
+    load.logics(244);
+    call(244);
+    if (!isset(f86)) {
+      load.sound(42);
+      load.sound(41);
+      load.logics(240);
+    }
+  }
+  load.view(1);
+  set.view(Ego, 1);
+  load.view(143);
+  animate.obj(o7);
+  set.view(o7, 143);
+  set.priority(o7, 10);
+  ignore.horizon(o7);
+  ignore.objs(o7);
+  set.loop(o7, 0);
+  position(o7, 20, 52);
+  v152 = 1;
+  cycle.time(o7, v152);
+  draw(o7);
+  animate.obj(o8);
+  set.view(o8, 143);
+  set.priority(o8, 10);
+  ignore.horizon(o8);
+  ignore.objs(o8);
+  set.loop(o8, 1);
+  position(o8, 142, 53);
+  v152 = 1;
+  cycle.time(o8, v152);
+  draw(o8);
+  key_pressed = 0;
+  v223 = 0;
+  v224 = 11;
+  v225 = 0;
+  v227 = 0;
+  v228 = 0;
+  v229 = 0;
+  v230 = 0;
+  animate.obj(o6);
+  v152 = 3;
+  step.size(o6, v152);
+  ignore.objs(o6);
+  ignore.blocks(o6);
+  if (v37 == 2) {
+    load.sound(44);
+    load.view(65);
+    load.view(62);
+    load.view(66);
+    prevent.input();
+    set(f36);
+    reset(menu_enabled);
+    v47 = cycle_delay;
+    cycle_delay = 2;
+    add.to.pic(65, 3, 0, 57, 82, 4, 0);
+    add.to.pic(65, 3, 1, 57, 42, 5, 0);
+    animate.obj(o1);
+    animate.obj(o2);
+    animate.obj(o3);
+    animate.obj(o4);
+    animate.obj(o5);
+    set.view(o1, 65);
+    set.view(o2, 62);
+    set.view(o3, 66);
+    set.view(o4, 66);
+    set.view(o5, 1);
+    set.loop(o1, 0);
+    set.loop(o2, 2);
+    set.loop(o3, 3);
+    set.loop(o4, 3);
+    set.loop(o5, 3);
+    set.cel(o2, 0);
+    v152 = 2;
+    cycle.time(o1, v152);
+    v152 = 3;
+    step.time(o2, v152);
+    cycle.time(o2, v152);
+    ignore.objs(o5);
+    ignore.objs(o3);
+    ignore.objs(o4);
+    position(o1, 71, 89);
+    position(o2, 90, 82);
+    if (prev_room_no == 86) {
+      position(o3, 140, 115);
+      position(o4, 140, 115);
+      position(o5, 140, 115);
+    }
+    else {
+      position(o3, 60, 149);
+      position(o4, 85, 149);
+      position(o5, 77, 148);
+    }
+    draw(o1);
+    draw(o2);
+    draw(o3);
+    draw(o4);
+    draw(o5);
+    stop.update(o2);
+    stop.update(o1);
+    if (prev_room_no == 86) {
+      move.obj(o3, 120, 115, 0, f227);
+      v224 = 18;
+    }
+    else {
+      move.obj(o5, 77, 139, 0, f221);
+      move.obj(o3, 60, 140, 0, f222);
+      move.obj(o4, 85, 140, 0, f223);
+    }
+    if ((v112 > 0)) {
+      set(f221);
+      set(f222);
+      set(f223);
+      if (v112 == 1) {
+        score  += 7;
+        v224 = 25;
+        v226 = 3;
+      }
+      else {
+        if (v112 == 2) {
+          drop("Magic Hen");
+          score  += 7;
+          v224 = 32;
+          v226 = 3;
+        }
+        else {
+          if (v112 == 3) {
+            drop("Pandora's Box");
+            score  += 7;
+            v224 = 44;
+            v226 = 3;
+          }
+        }
+      }
+    }
+  }
+  else {
+    if (!isset(f86)) {
+      load.view(70);
+      load.view(66);
+      animate.obj(o3);
+      set.view(o3, 70);
+      set.loop(o3, 0);
+      set.cel(o3, 0);
+      position(o3, 85, 82);
+      stop.cycling(o3);
+      v152 = 3;
+      step.size(o3, v152);
+      draw(o3);
+    }
+    load.view(189);
+    load.view(112);
+    animate.obj(o6);
+    v152 = 3;
+    step.size(o6, v152);
+    ignore.objs(o6);
+    ignore.blocks(o6);
+    if (v67 == room_no) {
+      set(f230);
+      set.view(o6, 189);
+      set.loop(o6, 5);
+      set.cel(o6, 0);
+      position(o6, 53, 43);
+      draw(o6);
+      stop.cycling(o6);
+      random(4, 8, v231);
+    }
+    else {
+      v231 = 0;
+      set.view(o6, 112);
+    }
+    add.to.pic(189, 6, 0, 57, 82, 5, 0);
+    if (prev_room_no == 91) {
+      position(Ego, 20, 113);
+    }
+    else {
+      if (prev_room_no == 93) {
+        position(Ego, 127, 113);
+      }
+      else {
+        position(Ego, 77, 148);
+      }
+    }
+    draw(Ego);
+  }
+  v232 = 0;
+  v233 = 0;
+  if (v37 == 2) {
+    sound(44, f154);
+  }
+  show.pic();
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "around", "chair", "room") || 
+    said("examine", "castle") || 
+    said("examine", "dark", "castle") || 
+    said("examine", "bad", "castle") || 
+    said("examine", "around", "castle") || 
+    said("examine", "around", "bad", "castle") || 
+    said("examine", "around", "dark", "castle"))) {
+  print("Lolotte's throne room is cold, dark, and ominous.  From here, she "
+        "rules her domain with an evil hand.");
+}
+if ((said("examine", "chair") || 
+    said("examine", "gold", "chair"))) {
+  print("Currently, Lolotte's ornate gilded throne is empty.");
+}
+if ((said("sit") || 
+    said("sit", "chair") || 
+    said("sit", "gold", "chair") || 
+    said("sit", "down", "chair") || 
+    said("sit", "down", "gold", "chair"))) {
+  print("You don't have time for that!");
+}
+if (said("examine", "staircase")) {
+  print("The carpeted stairs lead to Lolotte's gilded throne.");
+}
+if ((said("examine", "tapestries") || 
+    said("examine", "picture") || 
+    said("examine", "cute", "picture") || 
+    said("examine", "cute", "tapestries"))) {
+  print("Two strange-looking tapestries hang on the wall behind Lolotte's "
+        "throne.");
+}
+if ((said("examine", "behind", "tapestries") || 
+    said("examine", "behind", "cute", "tapestries") || 
+    said("examine", "beneath", "tapestries") || 
+    said("examine", "beneath", "cute", "tapestries"))) {
+  print("There is nothing but wall behind the tapestry.");
+}
+if ((said("examine", "door") || 
+    said("look in", "door"))) {
+  print("You see two open doorways.");
+}
+if (said("examine", "wall")) {
+  print("%m8 importance on the walls.");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down") || 
+    said("examine", "down", "dirt"))) {
+  print("%m8 interest on the floor.");
+}
+if (said("examine", "carpet")) {
+  print("The carpet leads to Lolotte's throne.");
+}
+if (!isset(input_parsed) && 
+    v37 != 2) {
+  if ((said("examine", "crow") || 
+      said("examine", "abominable", "crow") || 
+      said("examine", "bad", "crow") || 
+      said("examine", "bird") || 
+      said("examine", "abominable", "bird") || 
+      said("examine", "bad", "bird"))) {
+    if (isset(f230)) {
+      reset(input_parsed);
+    }
+    else {
+      print("The raven is not here!");
+    }
+  }
+}
+if (!isset(input_parsed) && 
+    isset(f230)) {
+  call(244);
+}
+if ((!isset(input_parsed)) && 
+    (v37 != 2) && 
+    (!isset(f86))) {
+  if ((said("speak", "goon") || 
+      said("speak", "dwarf") || 
+      said("speak") || 
+      said("awaken", "goon") || 
+      said("awaken", "dwarf") || 
+      said("hit", "goon") || 
+      said("hit", "dwarf") || 
+      said("speak", "with", "goon") || 
+      said("embrace", "goon") || 
+      said("embrace") || 
+      said("embrace", "dwarf"))) {
+    set(f113);
+  }
+  call(240);
+}
+Label1:
+if (isset(f221)) {
+  stop.update(o5);
+}
+if (isset(f222)) {
+  stop.update(o3);
+}
+if (isset(f223)) {
+  stop.update(o4);
+}
+if (isset(f221) && 
+    isset(f222) && 
+    isset(f223)) {
+  reset(f221);
+  reset(f222);
+  reset(f223);
+  v226++;
+  if (v226 == 1) {
+    set(windows_remain);
+    start.update(o1);
+    print.at("\"Well, my pets,\" Lolotte hisses.  \"What have you drug home "
+             "today?\"", 1, 2, 37);
+    v224 = 11;
+    key_pressed = 0;
+    v223 = 8;
+    v225 = 4;
+    set.cel(o5, 1);
+    set.cel(o3, 0);
+    set.cel(o4, 0);
+    force.update(o5);
+    force.update(o3);
+    force.update(o4);
+  }
+  if (v226 == 2) {
+    start.update(o4);
+    start.update(o5);
+    start.update(o3);
+    move.obj(o4, 140, 115, 0, f223);
+    move.obj(o5, 140, 115, 0, f221);
+    move.obj(o3, 140, 115, 0, f222);
+  }
+  if (v226 == 3) {
+    cycle_delay = v47;
+    new.room(86); //##LE001##
+  }
+  if (v226 == 4) {
+    start.update(o3);
+    start.update(o5);
+    start.update(o4);
+    move.obj(o3, 60, 140, 0, f222);
+    move.obj(o5, 77, 140, 0, f221);
+    move.obj(o4, 85, 140, 0, f223);
+  }
+  if (v226 == 5) {
+    set.cel(o5, 1);
+    set.cel(o3, 0);
+    set.cel(o4, 0);
+    force.update(o5);
+    force.update(o3);
+    force.update(o4);
+    key_pressed = 0;
+    v223 = 1;
+  }
+  if (v226 == 6) {
+    set(menu_enabled);
+    cycle_delay = v47;
+    new.room(30); //##LE002##
+  }
+  if (v226 == 7) {
+    start.update(o3);
+    start.update(o5);
+    start.update(o4);
+    move.obj(o5, 2, 115, 0, f221);
+    move.obj(o3, 2, 115, 0, f222);
+    move.obj(o4, 2, 115, 0, f223);
+  }
+  if (v226 == 8) {
+    set(menu_enabled);
+    cycle_delay = v47;
+    new.room(81); //##LE003##
+  }
+}
+if (v223 > 0) {
+  if (key_pressed == 13) {
+    key_pressed = 0;
+    if (v224 != 18 && 
+        v224 != 22 && 
+        v224 != 24 && 
+        v224 != 49 && 
+        v224 != 51 && 
+        v224 != 25 && 
+        v224 != 32 && 
+        v224 != 44 && 
+        v224 != 56 && 
+        v224 != 55) {
+      if (v223 != 1) {
+        v223 = 1;
+      }
+    }
+    if ((v224 == 22 || 
+        v224 == 24 || 
+        v224 == 49 || 
+        v224 == 51) && 
+        isset(f225)) {
+      stop.update(o2);
+      if (v223 != 1) {
+        v223 = 1;
+      }
+    }
+    if (v224 == 55 && 
+        isset(f51)) {
+      if (v223 != 1) {
+        v223 = 1;
+      }
+    }
+  }
+}
+if (v228 > 0) {
+  if (key_pressed == 13) {
+    key_pressed = 0;
+    if ((v224 == 25 || 
+        v224 == 32 || 
+        v224 == 44 || 
+        v224 == 56)) {
+      if (v228 != 1) {
+        close.window();
+        v228 = 1;
+      }
+    }
+  }
+}
+if (v224 == 18 && 
+    !isset(f242)) {
+  if (key_pressed == 13) {
+    key_pressed = 0;
+    set(f242);
+    close.window();
+  }
+}
+if (v223 > 0 && 
+    isset(f112)) {
+  v223--;
+  if (v223 <= 0) {
+    key_pressed = 0;
+    v224++;
+    close.window();
+    v225 = 6;
+    if ((v224 == 12 || 
+        v224 == 14 || 
+        v224 == 15 || 
+        v224 == 16 || 
+        v224 == 22 || 
+        v224 == 28 || 
+        v224 == 34 || 
+        v224 == 41 || 
+        v224 == 42 || 
+        v224 == 46 || 
+        v224 == 51 || 
+        v224 == 55)) {
+      v225 = 0;
+    }
+    if (v224 == 19) {
+      set.loop(o3, 3);
+      set.loop(o5, 3);
+      set.loop(o4, 3);
+      set.cel(o3, 0);
+      set.cel(o5, 1);
+      set.cel(o3, 0);
+      force.update(o3);
+      force.update(o5);
+      force.update(o4);
+    }
+    if (v224 != 57) {
+      v223 = 12;
+      set(windows_remain);
+      if (v225 > 0) {
+        start.update(o1);
+      }
+      else {
+        stop.update(o1);
+      }
+      print.at.v(v224, 1, 2, 37);
+    }
+    if (v224 == 18) {
+      set.loop(o1, 1);
+      set.cel(o1, 0);
+      end.of.loop(o1, f224);
+      start.update(o4);
+      start.update(o5);
+      start.update(o3);
+      move.obj(o4, 85, 115, 0, f223);
+      move.obj(o5, 77, 115, 0, f221);
+      move.obj(o3, 60, 115, 0, f222);
+      v223 = 0;
+    }
+    if ((v224 == 22 || 
+        v224 == 49)) {
+      start.update(o2);
+      end.of.loop(o2, f225);
+    }
+    if ((v224 == 24 || 
+        v224 == 51)) {
+      start.update(o2);
+      reverse.loop(o2, f225);
+    }
+    if ((v224 == 25 || 
+        v224 == 32 || 
+        v224 == 44)) {
+      set.loop(o1, 2);
+      set.cel(o1, 0);
+      end.of.loop(o1, f229);
+      v228 = 5;
+      v112++;
+      v223 = 0;
+    }
+    if (v224 == 55) {
+      start.update(o3);
+      move.obj(o3, 72, 133, 0, f228);
+      set(f51);
+      v153 = 42;
+      v153  += 2;
+      v152 = 89;
+      v221 = 1;
+Label2:
+      get.room.v(v221, v222);
+      if (v222 == 255) {
+        put.v(v221, v152);
+      }
+      v221++;
+      if (v221 < v153) {
+        goto(Label2);
+      }
+      set(f52);
+      set(f53);
+    }
+    if (v224 == 56) {
+      v230 = 5;
+      v223 = 0;
+      v112++;
+    }
+  }
+}
+if (v225 > 0 && 
+    isset(f112)) {
+  v225--;
+  if (v225 <= 0) {
+    stop.update(o1);
+  }
+}
+if (v228 > 0 && 
+    isset(f112)) {
+  v228--;
+  if (v228 <= 0) {
+    start.update(o3);
+    start.update(o5);
+    start.update(o4);
+    move.obj(o3, 60, 155, 0, f222);
+    move.obj(o5, 77, 155, 0, f221);
+    move.obj(o4, 85, 155, 0, f223);
+  }
+}
+if (v230 > 0 && 
+    isset(f112)) {
+  v230--;
+  if (v230 <= 0) {
+    start.update(o3);
+    start.update(o5);
+    start.update(o4);
+    set(f222);
+    move.obj(o5, 35, 115, 0, f221);
+    move.obj(o3, 45, 115, 0, f222);
+    set.loop(o3, 1);
+    fix.loop(o3);
+    move.obj(o4, 61, 115, 0, f223);
+    set.loop(o4, 1);
+    fix.loop(o4);
+    v226 = 6;
+  }
+}
+if (isset(f227)) {
+  v227++;
+  if (v227 == 1) {
+    move.obj(o3, 100, 115, 0, f227);
+    move.obj(o5, 120, 115, 0, f224);
+  }
+  if (v227 == 2) {
+    move.obj(o3, 60, 115, 0, f222);
+    move.obj(o5, 77, 115, 0, f221);
+    move.obj(o4, 85, 115, 0, f223);
+    v226 = 3;
+  }
+}
+if (isset(f225)) {
+  stop.update(o2);
+}
+if (isset(f228)) {
+  reset(f228);
+  set.loop(o3, 2);
+  v229 = 2;
+}
+if (v229 > 0 && 
+    isset(f112)) {
+  v229--;
+  if (v229 <= 0) {
+    stop.update(o3);
+  }
+}
+if (v37 != 2 && 
+    !isset(f241) && 
+    !isset(f86)) {
+  if ((posn(Ego,40,122,113,150) || 
+      posn(Ego,75,80,107,95))) {
+    set(f241);
+    set(f237);
+    set(f238);
+  }
+}
+if (isset(f238)) {
+  prevent.input();
+  reset(f238);
+  end.of.loop(o3, f240);
+}
+if (isset(f240)) {
+  sound(41, f154);
+  v37 = 23;
+  reset(f240);
+  set.view(o3, 66);
+  start.cycling(o3);
+  follow.ego(o3, 8, f239);
+}
+if (isset(f239)) {
+  sound(42, f154);
+  v37 = 2;
+  set(f41);
+  print("This isn't good, Rosella!  You've done it this time!");
+  new.room(81); //##LE004##
+}
+if ((isset(f154)) && 
+    (v37 == 23)) {
+  sound(41, f154);
+}
+if (isset(f230)) {
+  if (v231 > 0 && 
+      isset(f112)) {
+    v231--;
+    if (v231 <= 0) {
+      random(1, 3, v152);
+      if (v152 == 1) {
+        v153 = 1;
+        cycle.time(o6, v153);
+        set.loop(o6, 1);
+        set.cel(o6, 0);
+        reposition.to(o6, 53, 43);
+        v232 = 2;
+        end.of.loop(o6, f233);
+      }
+      if (v152 == 2) {
+        v153 = 3;
+        cycle.time(o6, v153);
+        set.loop(o6, 3);
+        set.cel(o6, 0);
+        reposition.to(o6, 58, 43);
+        v232 = 1;
+        end.of.loop(o6, f233);
+      }
+      if (v152 == 3) {
+        if (v33 > 47) {
+          v153 = 1;
+          cycle.time(o6, v153);
+          end.of.loop(o6, f231);
+        }
+        else {
+          v231 = 2;
+        }
+      }
+    }
+  }
+}
+else {
+  random(1, 3, v152);
+  if (v233 > 0 && 
+      isset(f112)) {
+    v233--;
+  }
+  if ((v233 > 0 || 
+      v37 == 2)) {
+    v152 = 2;
+  }
+  if (v152 == 1 && 
+      !isset(f237)) {
+    set.view(o6, 112);
+    set(f230);
+    set.priority(o6, 9);
+    if (v33 > 47) {
+      v67 = 92;
+      position(o6, 8, 84);
+      draw(o6);
+      move.obj(o6, 53, 41, 0, f235);
+    }
+    else {
+      reset(f230);
+      v233 = 2;
+    }
+  }
+}
+if (isset(f233)) {
+  reset(f233);
+  v232--;
+  if (v232 <= 0) {
+    set.loop(o6, 5);
+    set.cel(o6, 0);
+    reposition.to(o6, 53, 43);
+    stop.cycling(o6);
+    random(4, 8, v231);
+  }
+  else {
+    end.of.loop(o6, f233);
+  }
+}
+if (isset(f231)) {
+  reset(f231);
+  start.cycling(o6);
+  set.view(o6, 112);
+  set.priority(o6, 9);
+  v67 = 91;
+  move.obj(o6, 8, 82, 0, f232);
+}
+if (isset(f232)) {
+  reset(f232);
+  erase(o6);
+  reset(f230);
+  v233 = 16;
+}
+if (isset(f235)) {
+  reset(f235);
+  set.priority(o6, 5);
+  set.view(o6, 189);
+  reposition.to(o6, 53, 43);
+  set.loop(o6, 5);
+  set.cel(o6, 6);
+  v232 = 1;
+  reverse.loop(o6, f233);
+}
+if (isset(ego_touching_signal_line) && 
+    v37 != 2) {
+  if (v33 > 75) {
+    new.room(93); //##LE005##
+  }
+  else {
+    new.room(91); //##LE006##
+  }
+}
+if (ego_edge_code == bottom_edge && 
+    !isset(f237)) {
+  new.room(80); //##LE007##
+}
+return();
+
+//Messages
+#message 1 "Lolotte's throne room is cold, dark, and ominous.  From here, she rules her domain with an evil hand."
+#message 2 "Currently, Lolotte's ornate gilded throne is empty."
+#message 3 "You don't have time for that!"
+#message 4 "The carpeted stairs lead to Lolotte's gilded throne."
+#message 5 "Two strange-looking tapestries hang on the wall behind Lolotte's throne."
+#message 6 "There is nothing but wall behind the tapestry."
+#message 7 "You see two open doorways."
+#message 8 "There is nothing of"
+#message 9 "%m8 importance on the walls."
+#message 10 "%m8 interest on the floor."
+#message 11 "\"Well, my pets,\" Lolotte hisses.  \"What have you drug home today?\""
+#message 12 "Lolotte gives you the once over, and as she does her red eyes begin to narrow."
+#message 13 "\"Are you a foolish girl who wandered here by mistake...or are you a SPY sent here by my enemy, Genesta?!\""
+#message 14 "You swear to Lolotte that you are nothing but a poor peasant girl who has lost her way."
+#message 15 "She doesn't seem to believe you as her mouth begins to snarl and her eyes narrow to mere slits."
+#message 16 "For the first time, you experience real fear and begin to tremble."
+#message 17 "Lolotte snarls, \"You don't look STUPID enough to have wandered HERE. I believe you're a SPY!\""
+#message 18 "\"Take her to the cell!!\""
+#message 19 "Lolotte gives you a sickly-sweet look.  \"You're lucky, my dear,\" she coos."
+#message 20 "\"My precious son, Edgar, has taken a liking to you, and he believes you.\""
+#message 21 "\"He's convinced me to give you a chance to prove your innocence.\""
+#message 22 "You glance at the homely young man standing next to Lolotte.  He blushes."
+#message 23 "Lolotte continues, \"I wish to own the unicorn that inhabits the meadowland.\""
+#message 24 "\"Bring me the unicorn, and I shall not only set you free, but reward you as well.\""
+#message 25 "To her henchmen, Lolotte orders, \"Go!  Take her back to the forest!\""
+#message 26 "\"So,\" Lolotte says.  \"I hear you were a good girl and brought me the unicorn.\""
+#message 27 "\"I'm ALMOST convinced you might be innocent after all.  But...,\" she clears her throat, \"not quite.\""
+#message 28 "Oh, oh.  This doesn't sound good, you think."
+#message 29 "Lolotte continues, \"I am desirous of the hen that lays the golden eggs.\""
+#message 30 "\"Currently, the hen is kept by the ogre and his wife.\""
+#message 31 "\"Bring me the hen, and you shall have your freedom and a great reward!\""
+#message 32 "\"Take her away!\" Lolotte orders her goons."
+#message 33 "\"What a good girl you are!\" Lolotte gushes.  \"I really ought to give you your reward right now!\""
+#message 34 "She pauses, and you wonder what she's up to."
+#message 35 "Lolotte goes on to say, \"But, I have just the tiniest bit of doubt left.\""
+#message 36 "\"If you do just ONE MORE thing for me, I'll be COMPLETELY convinced of your innocence.\""
+#message 37 "\"You'll receive a wonderful reward!\" Somehow, you don't quite believe her."
+#message 38 "\"I want to have Pandora's Box.\""
+#message 39 "\"It is said that whoever owns it would be in possession of the purest evil.\""
+#message 40 "\"With the power and evil of Pandora's Box, I would be UNSTOPPABLE!!\""
+#message 41 "Your terror returns as you realize what an evil being Lolotte really is!"
+#message 42 "You wonder if you should be helping her in this way.  But...what can you do about it?  Nothing... right now."
+#message 43 "\"I don't know the whereabouts of Pandora's Box,\" Lolotte tells you.  \"You must search for it yourself.\""
+#message 44 "Again, she orders her henchmen to \"Take her away!\""
+#message 45 "Lolotte smiles an evil smile.  \"You know,\" she says.  \"I've never asked you your name.  What is it?\""
+#message 46 "You tell her \"Rosella.\""
+#message 47 "\"Rosella.  What a pretty name.\"  You wonder what this is all about."
+#message 48 "You find out soon enough.  \"Well, Rosella,\"  Lolotte grins, ominously, \"You've earned your reward!\""
+#message 49 "\"My son, Edgar, has fallen in love with you.  I wish him to be happy.\""
+#message 50 "\"I give you the honor of being his wife and MY daughter-in-law!\""
+#message 51 "Your heart turns flips and somersaults as you hear this."
+#message 52 "\"You'll be married first thing in the morning,\"  she informs you."
+#message 53 "\"Edgar offers you the comfort of his room.  He will make other arrangements this evening.\""
+#message 54 "She motions to her goons.  \"Let us relieve you of your burdensome load before you retire.\""
+#message 55 "You are so shocked by this tragic turn of events, that you hardly notice your possessions being taken away."
+#message 56 "To her goons, Lolotte orders, \"Escort our Rosella to her room.\""
+#message 57 "This isn't good, Rosella!  You've done it this time!"
+#message 58 "The carpet leads to Lolotte's throne."
+#message 59 "The raven is not here!"

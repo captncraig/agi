@@ -1,0 +1,874 @@
+if (isset(new_room)) {
+  discard.view(0);
+  v152 = 57;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  if (v112 > 2) {
+    set(f82);
+    load.sound(12);
+    load.sound(13);
+    load.sound(48);
+    load.logics(151);
+    load.view(88);
+  }
+  load.view(1);
+  load.view(90);
+  v222 = 0;
+  v223 = 0;
+  v224 = 0;
+  v225 = 0;
+  v226 = 0;
+  if ((v112 > 2) && 
+      (v52 != 1)) {
+    load.view(31);
+  }
+  v152 = 2;
+  animate.obj(o1);
+  ignore.blocks(o1);
+  set.view(o1, 90);
+  set.loop(o1, 4);
+  cycle.time(o1, v152);
+  step.time(o1, v152);
+  position(o1, 72, 148);
+  draw(o1);
+  animate.obj(o8);
+  set.view(o8, 90);
+  set.loop(o8, 5);
+  position(o8, 54, 63);
+  v152 = 5;
+  cycle.time(o8, v152);
+  draw(o8);
+  if (v112 > 2) {
+    animate.obj(o2);
+    animate.obj(o3);
+    animate.obj(o4);
+    animate.obj(o5);
+    animate.obj(o6);
+    animate.obj(o7);
+    ignore.blocks(o7);
+    ignore.blocks(o3);
+    ignore.blocks(o4);
+    ignore.blocks(o5);
+    ignore.blocks(o6);
+    ignore.objs(o2);
+    ignore.objs(o4);
+    ignore.objs(o6);
+    ignore.objs(o5);
+    ignore.objs(o7);
+    set.priority(o2, 4);
+    set.priority(o4, 4);
+    set.priority(o6, 4);
+    set.priority(o5, 4);
+    set.priority(o7, 4);
+    v152 = 2;
+    cycle.time(o2, v152);
+    cycle.time(o4, v152);
+    cycle.time(o6, v152);
+    v152 = 3;
+    cycle.time(o3, v152);
+    step.time(o3, v152);
+    position(o2, 37, 103);
+    position(o3, 39, 124);
+    position(o4, 50, 97);
+    position(o5, 55, 124);
+    position(o6, 67, 96);
+    position(o7, 70, 120);
+    if (v52 == 1) {
+      load.view(89);
+      set.view(o3, 89);
+      set.view(o5, 89);
+      set.view(o7, 89);
+      set.loop(o3, 0);
+      set.loop(o5, 1);
+      set.loop(o7, 2);
+      set.cel(o3, 3);
+      set.cel(o5, 3);
+      set.cel(o7, 3);
+      stop.cycling(o3);
+      stop.cycling(o5);
+      stop.cycling(o7);
+      stop.update(o5);
+      stop.update(o7);
+      position(o5, 51, 124);
+      position(o7, 68, 120);
+    }
+    else {
+      set.view(o2, 88);
+      set.view(o3, 88);
+      set.view(o4, 88);
+      set.view(o5, 88);
+      set.view(o6, 88);
+      set.view(o7, 88);
+      set.loop(o2, 0);
+      set.loop(o3, 1);
+      set.loop(o4, 3);
+      set.loop(o5, 4);
+      set.loop(o6, 5);
+      set.loop(o7, 6);
+      stop.cycling(o4);
+      stop.cycling(o6);
+      end.of.loop(o2, f227);
+      v223 = 8;
+      if (v52 == 2) {
+        set(f224);
+      }
+      else {
+        set(f226);
+      }
+      draw(o2);
+      draw(o4);
+      draw(o6);
+    }
+    draw(o3);
+    draw(o5);
+    draw(o7);
+  }
+  set.view(Ego, 1);
+  ego_dir = 0;
+  position(Ego, 73, 165);
+  set.loop(Ego, 3);
+  draw(Ego);
+  show.pic();
+  if (v112 > 2) {
+    sound(12, f154);
+    if (v52 == 1 && 
+        !isset(f47)) {
+      set(f222);
+      animate.obj(o9);
+      set.view(o9, 88);
+      set.loop(o9, 7);
+      set.cel(o9, 0);
+      v152 = 4;
+      set.priority(o9, 4);
+      ignore.objs(o9);
+      step.time(o9, v152);
+      cycle.time(o9, v152);
+      position(o9, 53, 149);
+      draw(o9);
+      v226 = 2;
+      stop.cycling(o9);
+      print("As you re-enter the dismal cave, the three one-eyed witches throw "
+            "something toward you, which lands on the ground.  \"Here, take "
+            "it,\" they cry.  \"It'll ward off the undead.  You'll need it.  "
+            "Now, PLEASE give us back our eye!!\"");
+    }
+    if (v52 == 1) {
+      set(f229);
+    }
+  }
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "cave") || 
+    said("examine", "skull", "cave") || 
+    said("examine", "around", "cave"))) {
+  if (isset(f222)) {
+    print("%m1%m45%m46  %m37");
+  }
+  else {
+    if (v112 > 2) {
+      print("%m1%m45%m46");
+    }
+    else {
+      print("%m1%m46");
+    }
+  }
+}
+if ((said("examine", "cauldron") || 
+    said("examine", "abominable", "cauldron") || 
+    said("examine", "abominable", "cauldron") || 
+    said("look in", "cauldron") || 
+    said("look in", "abominable", "cauldron") || 
+    said("look in", "abominable", "cauldron"))) {
+  print("A greenish, foul brew boils ominously within the cauldron.");
+}
+if ((said("carry", "cauldron") || 
+    said("carry", "abominable", "cauldron") || 
+    said("carry", "abominable", "cauldron"))) {
+  print("It's too heavy to carry.");
+}
+if ((said("examine", "brew") || 
+    said("examine", "green", "brew"))) {
+  print("The green brew looks disgusting...and smells that way, too!");
+}
+if ((said("carry", "brew") || 
+    said("carry", "green", "brew"))) {
+  print("You wouldn't want it!");
+}
+if ((said("chew", "brew") || 
+    said("chew", "green", "brew") || 
+    said("drink", "brew") || 
+    said("drink", "green", "brew"))) {
+  print("You gag at the thought!");
+}
+if ((said("examine", "out") || 
+    said("examine", "outside") || 
+    said("examine", "out", "cave") || 
+    said("examine", "out", "skull", "cave") || 
+    said("examine", "outside", "cave") || 
+    said("examine", "outside", "skull", "cave"))) {
+  print("Outside the cave, you see the terrible grabbing trees.");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down") || 
+    said("examine", "down", "dirt"))) {
+  if (isset(f222)) {
+    print("You see a black scarab on the cave floor.");
+  }
+  else {
+    print("There is nothing of interest on the cave floor.");
+  }
+}
+if ((said("examine", "outside") || 
+    said("examine", "outside", "cave") || 
+    said("examine", "outside", "skull", "cave") || 
+    said("examine", "out") || 
+    said("examine", "out", "cave") || 
+    said("examine", "out", "skull", "cave"))) {
+  if (!isset(f38)) {
+    print("Outside, the sky is nice and blue.");
+  }
+  else {
+    print("Outside, the night sky is lit by the full moon.");
+  }
+}
+if (said("examine", "skull")) {
+  print("You shiver at the sight of a human skull on the shelf!");
+}
+if ((said("examine", "wall") || 
+    said("examine", "cave", "wall"))) {
+  print("There is nothing of interest on the rough cave walls.");
+}
+if (said("examine", "bookshelf")) {
+  print("You see bottles and jars of disgusting-looking stuff.  None of it "
+        "interests you, though.");
+}
+if (said("examine", "fire")) {
+  print("A hot fire burns under a large cauldron filled with a bubbling brew.");
+}
+if (v112 > 2) {
+  if ((said("deliver", "eye") || 
+      said("deliver", "eye", "back") || 
+      said("fling", "eye") || 
+      said("fling", "eye", "crone") || 
+      said("deliver", "eye", "crone"))) {
+    if (has("Glass Eye")) {
+      reverse.loop(o3, f238);
+      reverse.loop(o5, f239);
+      reverse.loop(o7, f220);
+      prevent.input();
+      drop("Glass Eye");
+      score  += 3;
+      v53 = 5;
+      if (isset(f221)) {
+        print("You toss the glass eye to the pleading witches.  \"Aha!  Foolish "
+              "girl!\"  they shriek.  \"Leave us be, or you'll flavor our brew!");
+      }
+      else {
+        print("You throw the glass eye to the three old hags, who once again "
+              "take turns peering at you.  \"Come closer, dear,\" one says.  "
+              "\"We'd like to give a little gift to you.\"");
+      }
+    }
+    else {
+      set(f115);
+    }
+  }
+  if ((said("examine", "crone") || 
+      said("examine", "people"))) {
+    if (v52 == 2) {
+      print("The ugly old hags are relieved to receive their precious glass "
+            "eye.  They huddle in a group to prevent you from taking it again.");
+    }
+    else {
+      if (v52 == 1) {
+        print("The old one-eyed witches seem powerless without their glass eye. "
+              " You actually feel rather sorry for them.");
+      }
+      else {
+        print("Three old one-eyed crones inhabit this dreary cave.  They "
+              "possess a glass eye, which they pass from one to another, that "
+              "enables them to see.  Through the glass eye, they each in turn "
+              "peer at you with a frightening mixture of curiousity and malice.");
+      }
+    }
+  }
+  if (said("speak", "rol")) {
+    if (v52 == 0) {
+      if (v53 == 2) {
+        print("As you speak with them again, they beg you to come closer so "
+              "they can see you better and feel your pretty hair.");
+      }
+      else {
+        v53++;
+        if (v53 == 1) {
+          print("Even though the old hags are frightening, you decide to speak "
+                "to them.  They don't answer as they are mumbling and muttering "
+                "among themselves, and peering through their glass eye at you.");
+        }
+        else {
+          print("Again, you attempt to talk to the three one-eyed witches.  "
+                "This time, one cackles, \"What a pretty little thing you are, "
+                "dearie.  Come here and let me touch your golden hair.\"");
+        }
+      }
+    }
+    else {
+      if (v52 == 1) {
+        if (v53 == 5) {
+          print("You again talk to the old witches, who cry and wail for the "
+                "return of their glass eye.");
+        }
+        else {
+          v53++;
+          if (v53 == 3) {
+            print("\"Give us back our eye!\" the old witches plead.");
+          }
+          else {
+            if (v53 == 4) {
+              print("Your voice is drowned out by the wails of the three ugly "
+                    "hags as they beg for the return of their glass eye.");
+            }
+            else {
+              print("\"We need our eye!\" the three crones cry.  \"Give it back "
+                    "to us!\"");
+            }
+          }
+        }
+      }
+      else {
+        if (v53 == 7) {
+          print("\"Come over here, girl.\"  The old, one-eyed witches attempt "
+                "to entice you with promises of a gift, in payment for your "
+                "return of their glass eye.");
+        }
+        else {
+          v53++;
+          if (v53 == 6) {
+            print("You speak with the three ugly witches.  They mutter to "
+                  "themselves, after which one cajoles, \"Come here, girl.  We "
+                  "have something to give you for being such a nice girl and "
+                  "returning our eye.\"");
+          }
+          else {
+            print("You try talking to the old hags again.  In a syrupy voice, "
+                  "one hag says, \"Don't be afraid, dear.  Come here, we have a "
+                  "gift for you.\"");
+          }
+        }
+      }
+    }
+  }
+  if ((said("carry", "eye") || 
+      said("rob", "eye"))) {
+    if (v52 == 1) {
+      print("You already have the glass eye.");
+    }
+    else {
+      if (posn(Ego,62,118,68,126)) {
+        if (v52 == 2) {
+          print("The witches won't let you steal the eye again.");
+        }
+        else {
+          prevent.input();
+          set(f229);
+          normal.motion(o3);
+          discard.view(31);
+          load.view(89);
+          ignore.blocks(o3);
+          get.posn(o3, v33, v34);
+          if (v33 > 75) {
+            if (v34 > 148) {
+              move.obj(o3, 95, 150, 0, f230);
+            }
+            else {
+              move.obj(o3, 95, 140, 0, f231);
+            }
+          }
+          else {
+            if (v34 > 148) {
+              move.obj(o3, 43, 150, 0, f230);
+            }
+            else {
+              move.obj(o3, 43, 140, 0, f231);
+            }
+          }
+          set.view(o5, 89);
+          set.view(o7, 89);
+          set.loop(o5, 1);
+          set.loop(o7, 2);
+          set.cel(o5, 0);
+          set.cel(o7, 0);
+          erase(o4);
+          erase(o6);
+          v152 = 252;
+          v153 = 0;
+          reposition(o5, v152, v153);
+          v152 = 254;
+          reposition(o7, v152, v153);
+          end.of.loop(o5, f232);
+          end.of.loop(o7, f232);
+          set(f221);
+          get("Glass Eye");
+          sound(48, f154);
+          v52 = 1;
+          score  += 3;
+          print("You just manage to grab the glass eye!");
+          print("\"Give us back our eye!\" the old witches plead.");
+          v53 = 2;
+        }
+      }
+      else {
+        set(f113);
+      }
+    }
+  }
+  if (said("kill", "crone")) {
+    print("You couldn't do it.");
+  }
+  if (said("carry", "crone")) {
+    print("You wouldn't want them.");
+  }
+  if ((said("embrace", "crone") || 
+      said("embrace"))) {
+    print("YUCK!!!");
+  }
+  if (said("carry", "charm")) {
+    if (isset(f222)) {
+      if (posn(Ego,43,143,60,154)) {
+        erase(o9);
+        score  += 2;
+        get("Obsidian Scarab");
+        sound(48, f154);
+        set(f116);
+        set(f47);
+        v226 = 0;
+        reset(f222);
+      }
+      else {
+        set(f113);
+      }
+    }
+    else {
+      print("There's no scarab here.");
+    }
+  }
+  if (v52 != 1) {
+    if (said("examine", "eye")) {
+      print("The blind, one-eyed hags peer at you though a glass eye.");
+    }
+  }
+  if (!isset(input_parsed)) {
+    call(151);
+  }
+  if (isset(f106)) {
+    reset(f106);
+    print("The witches don't want it.");
+  }
+}
+Label1:
+if (isset(f227)) {
+  v223++;
+  reset(f227);
+  if (v223 == 1) {
+    set.loop(o4, 2);
+    set.cel(o4, 4);
+    reverse.loop(o4, f227);
+  }
+  if (v223 == 2) {
+    set.cel(o6, 0);
+    end.of.loop(o6, f227);
+  }
+  if (v223 == 3) {
+    v224 = 2;
+  }
+  if (v223 == 4) {
+    set.cel(o6, 4);
+    reverse.loop(o6, f227);
+  }
+  if (v223 == 5) {
+    set.cel(o4, 0);
+    end.of.loop(o4, f227);
+  }
+  if (v223 == 6) {
+    v224 = 2;
+    if (!isset(f224)) {
+      v223 = 0;
+    }
+  }
+  if (v223 == 7) {
+    set.loop(o4, 3);
+    set.cel(o4, 4);
+    reverse.loop(o4, f227);
+  }
+  if (v223 == 8) {
+    set.cel(o2, 0);
+    end.of.loop(o2, f227);
+  }
+  if (v223 == 9) {
+    v224 = 2;
+  }
+  if (v223 == 10) {
+    set.cel(o2, 4);
+    reverse.loop(o2, f227);
+  }
+  if (v223 == 11) {
+    set.cel(o4, 0);
+    end.of.loop(o4, f227);
+    if (!isset(f224)) {
+      set.view(o3, 90);
+      set.loop(o3, 2);
+      erase(o2);
+      observe.blocks(o3);
+      force.update(o3);
+      follow.ego(o3, 7, f233);
+      reset(f226);
+      v225 = 5;
+    }
+  }
+  if (v223 == 12) {
+    v224 = 2;
+    v223 = 0;
+  }
+  if (v223 == 100) {
+    set.cel(o4, 2);
+    set.cel(o6, 2);
+  }
+}
+if (v112 > 2) {
+  if (posn(Ego,50,118,77,128) && 
+      !isset(f229) && 
+      !isset(f233)) {
+    if (v222 == 4) {
+      set(f36);
+      prevent.input();
+      stop.motion(Ego);
+      set(f229);
+      sound(13, f154);
+      set.view(Ego, 31);
+      set.loop(Ego, 4);
+      set(f157);
+      if (v52 == 2) {
+        set.view(o3, 90);
+        set.loop(o3, 0);
+        erase(o2);
+        set(f231);
+      }
+      else {
+        set(f228);
+      }
+      v223 = 99;
+      set(f227);
+      if (v224 > 0) {
+        v224 = 0;
+      }
+      if (v33 > 64) {
+        reposition.to(Ego, 66, 122);
+      }
+      else {
+        reposition.to(Ego, 50, 125);
+      }
+      window_close_time = 2;
+      print("Watch out!");
+      window_close_time = 2;
+      print("Too late!");
+      v222 = 3;
+    }
+    else {
+      if (isset(f112)) {
+        v222++;
+      }
+    }
+  }
+  else {
+    v222 = 0;
+  }
+  if (v52 == 2 && 
+      posn(Ego,30,118,49,128) && 
+      !isset(f229) && 
+      !isset(f233)) {
+    set(f233);
+    set(f229);
+    set(f225);
+  }
+}
+if (isset(f228)) {
+  reset(f228);
+  get.posn(o3, v152, v153);
+  if (v153 > 148) {
+    normal.motion(o2);
+    if (v152 > 75) {
+      move.obj(o3, 95, 150, 0, f230);
+    }
+    else {
+      move.obj(o3, 43, 150, 0, f230);
+    }
+  }
+}
+if (isset(f230)) {
+  reset(f230);
+  get.posn(o3, v152, v153);
+  if (v153 > 148) {
+    if (v152 > 75) {
+      move.obj(o3, 95, 140, 0, f231);
+    }
+    else {
+      move.obj(o3, 43, 140, 0, f231);
+    }
+  }
+}
+if (isset(f231)) {
+  reset(f231);
+  if (v52 == 1) {
+    move.obj(o3, 39, 124, 0, f223);
+  }
+  else {
+    start.cycling(o3);
+    follow.ego(o3, 7, f233);
+  }
+}
+if (isset(f223)) {
+  reset(f223);
+  set.view(o3, 89);
+  set.loop(o3, 0);
+  set.cel(o3, 0);
+  end.of.loop(o3, f242);
+  accept.input();
+}
+if (isset(f242)) {
+  reset(f242);
+  accept.input();
+}
+if (isset(f233)) {
+  reset(f233);
+  if (!isset(f36)) {
+    sound(13, f154);
+    set(f36);
+    prevent.input();
+    window_close_time = 2;
+    print("Watch out!");
+    window_close_time = 2;
+    print("Too late!");
+  }
+  v223 = 99;
+  set(f227);
+  if (v224 > 0) {
+    v224 = 0;
+  }
+  reset(f157);
+  erase(Ego);
+  ignore.blocks(o3);
+  ignore.objs(o3);
+  set.view(o3, 31);
+  if (isset(f225)) {
+    erase(o2);
+    start.cycling(o3);
+  }
+  get.posn(o3, v33, v34);
+  if (v33 > 75) {
+    if (v34 > 148) {
+      move.obj(o3, 95, 150, 0, f234);
+    }
+    else {
+      move.obj(o3, 95, 140, 0, f234);
+    }
+  }
+  else {
+    if (v34 > 148) {
+      move.obj(o3, 43, 150, 0, f234);
+    }
+    else {
+      move.obj(o3, 43, 140, 0, f234);
+    }
+  }
+}
+if (isset(f234)) {
+  reset(f234);
+  move.obj(o3, 75, 137, 0, f236);
+}
+if (isset(f236)) {
+  reset(f236);
+  move.obj(o3, 75, 140, 0, f235);
+}
+if (isset(f235)) {
+  reset(f235);
+  print("You knew you needed a hot bath, but not THIS hot!");
+  set(f157);
+  ignore.objs(o2);
+  set.view(o2, 90);
+  v152 = 73;
+  v153 = 132;
+  reposition.to.v(o3, v152, v153);
+  v152 = 74;
+  v153 = 129;
+  reposition.to.v(o2, v152, v153);
+  set.priority(o2, 5);
+  set.loop(o2, 2);
+  draw(o2);
+  set.priority(o3, 15);
+  set.loop(o3, 5);
+  set.cel(o3, 0);
+  end.of.loop(o3, f237);
+}
+if (isset(f237)) {
+  stop.cycling(o2);
+  reset(f237);
+  set(f140);
+}
+if (v52 == 0) {
+  if (isset(ego_touching_signal_line) && 
+      !isset(f233) && 
+      !isset(f240) && 
+      !isset(f226)) {
+    set(f240);
+    follow.ego(o3, 2, f233);
+  }
+  if (isset(f240) && 
+      !isset(ego_touching_signal_line)) {
+    reset(f240);
+    follow.ego(o3, 7, f233);
+  }
+}
+if (isset(f112) && 
+    v224 > 0) {
+  v224--;
+  if (v224 <= 0) {
+    set(f227);
+  }
+}
+if (isset(f243)) {
+  reset(f243);
+  discard.view(89);
+  load.view(31);
+  end.of.loop(o2, f227);
+  v223 = 8;
+  set(f224);
+  reset(f229);
+  v52 = 2;
+  accept.input();
+}
+if (isset(f238) && 
+    isset(f239) && 
+    isset(f220)) {
+  reset(f238);
+  reset(f239);
+  reset(f220);
+  set.view(o2, 88);
+  set.view(o3, 88);
+  set.view(o4, 88);
+  set.view(o5, 88);
+  set.view(o6, 88);
+  set.view(o7, 88);
+  set.loop(o2, 0);
+  set.loop(o3, 1);
+  set.loop(o4, 3);
+  set.loop(o5, 4);
+  set.loop(o6, 5);
+  set.loop(o7, 6);
+  set.cel(o2, 4);
+  set.cel(o4, 0);
+  set.cel(o6, 0);
+  v152 = 4;
+  v153 = 0;
+  reposition(o5, v152, v153);
+  v152 = 2;
+  reposition(o7, v152, v153);
+  position(o2, 37, 103);
+  reposition.to(o3, 39, 124);
+  position(o4, 50, 97);
+  position(o6, 67, 96);
+  stop.cycling(o4);
+  stop.cycling(o6);
+  draw(o2);
+  draw(o4);
+  draw(o6);
+  set(f243);
+}
+if (v225 <= 0 && 
+    !isset(f36) && 
+    posn(Ego,62,138,93,150) && 
+    !isset(f226)) {
+  print("Ouch!!");
+  v225 = 3;
+}
+if (v225 > 0 && 
+    isset(f112)) {
+  v225--;
+}
+if (v226 > 0 && 
+    isset(f112)) {
+  v226--;
+  if (v226 <= 0) {
+    end.of.loop(o9, f241);
+  }
+}
+if (isset(f241)) {
+  reset(f241);
+  if (isset(f222)) {
+    set.cel(o9, 0);
+    random(1, 3, v226);
+  }
+}
+if (!isset(f36) && 
+    ego_edge_code == bottom_edge) {
+  accept.input();
+  new.room(6); //##LE001##
+}
+return();
+
+//Messages
+#message 1 "This is a dismal and dreary cave.  "
+#message 2 "A greenish, foul brew boils ominously within the cauldron."
+#message 3 "The green brew looks disgusting...and smells that way, too!"
+#message 4 "You wouldn't want it!"
+#message 5 "You gag at the thought!"
+#message 6 "Outside the cave, you see the terrible grabbing trees."
+#message 7 "There is nothing of interest on the cave floor."
+#message 8 "Outside, the sky is nice and blue."
+#message 9 "Outside, the night sky is lit by the full moon."
+#message 10 "There is nothing of interest on the rough cave walls."
+#message 11 "You toss the glass eye to the pleading witches.  \"Aha!  Foolish girl!\"  they shriek.  \"Leave us be, or you'll flavor our brew!"
+#message 12 "You throw the glass eye to the three old hags, who once again take turns peering at you.  \"Come closer, dear,\" one says.  \"We'd like to give a little gift to you.\""
+#message 13 "Three old one-eyed crones inhabit this dreary cave.  They possess a glass eye, which they pass from one to another, that enables them to see.  Through the glass eye, they each in turn peer at you with a frightening mixture of curiousity and malice."
+#message 14 "The old one-eyed witches seem powerless without their glass eye.  You actually feel rather sorry for them."
+#message 15 "The ugly old hags are relieved to receive their precious glass eye.  They huddle in a group to prevent you from taking it again."
+#message 16 "Even though the old hags are frightening, you decide to speak to them.  They don't answer as they are mumbling and muttering among themselves, and peering through their glass eye at you."
+#message 17 "Again, you attempt to talk to the three one-eyed witches.  This time, one cackles, \"What a pretty little thing you are, dearie.  Come here and let me touch your golden hair.\""
+#message 18 "As you speak with them again, they beg you to come closer so they can see you better and feel your pretty hair."
+#message 19 "\"Give us back our eye!\" the old witches plead."
+#message 20 "Your voice is drowned out by the wails of the three ugly hags as they beg for the return of their glass eye."
+#message 21 "\"We need our eye!\" the three crones cry.  \"Give it back to us!\""
+#message 22 "You again talk to the old witches, who cry and wail for the return of their glass eye."
+#message 23 "You speak with the three ugly witches.  They mutter to themselves, after which one cajoles, \"Come here, girl.  We have something to give you for being such a nice girl and returning our eye.\""
+#message 24 "You try talking to the old hags again.  In a syrupy voice, one hag says, \"Don't be afraid, dear.  Come here, we have a gift for you.\""
+#message 25 "\"Come over here, girl.\"  The old, one-eyed witches attempt to entice you with promises of a gift, in payment for your return of their glass eye."
+#message 26 "You just manage to grab the glass eye!"
+#message 27 "Watch out!"
+#message 28 "You knew you needed a hot bath, but not THIS hot!"
+#message 29 "You couldn't do it."
+#message 30 "You wouldn't want them."
+#message 31 "YUCK!!!"
+#message 32 "The witches don't want it."
+#message 33 "As you re-enter the dismal cave, the three one-eyed witches throw something toward you, which lands on the ground.  \"Here, take it,\" they cry.  \"It'll ward off the undead.  You'll need it.  Now, PLEASE give us back our eye!!\""
+#message 34 "%m1%m45%m46  %m37"
+#message 35 "The witches won't let you steal the eye again."
+#message 36 "There's no scarab here."
+#message 37 "You see a black scarab on the cave floor."
+#message 38 "You see bottles and jars of disgusting-looking stuff.  None of it interests you, though."
+#message 39 "Too late!"
+#message 40 "It's too heavy to carry."
+#message 41 "The blind, one-eyed hags peer at you though a glass eye."
+#message 42 "A hot fire burns under a large cauldron filled with a bubbling brew."
+#message 43 "Ouch!!"
+#message 44 "You already have the glass eye."
+#message 45 "  Within it reside three one-eyed old witches."
+#message 46 "  In the center of the cave, over a hot fire, boils a foul-smelling brew inside a large black cauldron."
+#message 47 "%m1%m46"
+#message 48 "%m1%m45%m46"
+#message 49 "You shiver at the sight of a human skull on the shelf!"

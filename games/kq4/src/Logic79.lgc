@@ -1,0 +1,532 @@
+if (isset(new_room)) {
+  set(f82);
+  if (!isset(f38)) {
+    v152 = 79;
+  }
+  else {
+    v152 = 179;
+  }
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  set.horizon(75);
+  load.sound(52);
+  if (v112 < 4) {
+    v224 = 0;
+  }
+  if (v112 != 4) {
+    set(f36);
+    load.logics(240);
+    animate.obj(o1);
+    animate.obj(o2);
+    animate.obj(o3);
+    animate.obj(o12);
+    load.view(67);
+    load.view(68);
+    load.view(71);
+    load.view(35);
+    set.view(o1, 67);
+    set.view(o2, 67);
+    set.view(o3, 67);
+    set.loop(o1, 1);
+    set.loop(o2, 1);
+    set.loop(o3, 1);
+    position(o1, 27, 38);
+    position(o2, 50, 38);
+    position(o3, 27, 29);
+    ignore.objs(o1);
+    ignore.objs(o2);
+    ignore.objs(o3);
+    ignore.blocks(o2);
+    ignore.blocks(o3);
+    v221 = 0;
+    v222 = 0;
+    v223 = 0;
+    v155 = 0;
+    v161 = 3;
+    cycle.time(o1, v161);
+    cycle.time(o2, v161);
+    cycle.time(o3, v161);
+    draw(o1);
+    draw(o2);
+    if (isset(f176)) {
+      draw(o3);
+      set(f223);
+      load.view(211);
+      set.view(Ego, 211);
+    }
+    set(f221);
+    set(f222);
+    if (v112 == 1 && 
+        !isset(f176)) {
+      set(f226);
+    }
+    if (v112 == 2 && 
+        !has("Magic Hen")) {
+      set(f226);
+    }
+    if (v112 == 3 && 
+        !has("Pandora's Box")) {
+      set(f226);
+    }
+  }
+  if ((prev_room_no == 30) && 
+      (v112 < 4)) {
+    if (!isset(f176)) {
+      position(Ego, 38, 163);
+      set.loop(Ego, 3);
+      stop.motion(Ego);
+      stop.cycling(Ego);
+    }
+    else {
+      position(Ego, 29, 160);
+      set.loop(Ego, 0);
+      fix.loop(Ego);
+      stop.motion(Ego);
+      stop.cycling(Ego);
+      set.priority(Ego, 12);
+      ignore.objs(Ego);
+      set(f223);
+    }
+    load.sound(29);
+    sound(29, f154);
+  }
+  else {
+    position(Ego, 38, 163);
+  }
+  if (prev_room_no == 80) {
+    position(Ego, 113, 75);
+    ego_dir = 0;
+    set.priority(Ego, 13);
+  }
+  draw(Ego);
+  show.pic();
+  if ((prev_room_no == 80 || 
+      v112 > 3)) {
+    animate.obj(o12);
+    v224 = 1;
+    load.view(11);
+  }
+}
+if (v224 == 0) {
+  v224 = 1;
+  window_close_time = 4;
+  print("Oh, oh!  Lolotte's goons!");
+}
+if (!isset(f36)) {
+  if (isset(ego_touching_signal_line)) {
+    sound(52, f154);
+    reset(ego_touching_signal_line);
+    get.posn(Ego, v134, v135);
+    if (v34 > 152) {
+      if (v33 > 49) {
+        v134  += 12;
+      }
+      else {
+        v134 -= 12;
+      }
+    }
+    else {
+      if (v34 > 125) {
+        if (v33 > 57) {
+          v134  += 12;
+        }
+        else {
+          v134 -= 12;
+        }
+      }
+      else {
+        if (v34 > 99) {
+          if (v33 > 45) {
+            v134  += 12;
+          }
+          else {
+            v134 -= 12;
+          }
+        }
+        else {
+          if (v33 > 56) {
+            v134  += 12;
+          }
+          else {
+            v134 -= 12;
+          }
+        }
+      }
+    }
+    position.v(o12, v134, v135);
+    ignore.blocks(o12);
+    set(f36);
+    set.view(o12, 11);
+    if ((ego_dir == right || 
+        ego_dir == downright)) {
+      set.loop(o12, 2);
+    }
+    else {
+      set.loop(o12, 3);
+    }
+    fix.loop(o12);
+    v152 = 3;
+    step.size(o12, v152);
+    v152 = 3;
+    cycle.time(o12, v152);
+    start.cycling(o12);
+    if (v34 < 134) {
+      if (v34 < 115) {
+        set.priority(o12, 6);
+      }
+      else {
+        if (v33 > 54) {
+          set.priority(o12, 6);
+        }
+        else {
+          set.priority(o12, 9);
+        }
+      }
+    }
+    else {
+      if (v34 > 152) {
+        goto(Label1);
+      }
+      if (v33 < 55) {
+        set.priority(o12, 9);
+      }
+    }
+Label1:
+    erase(Ego);
+    draw(o12);
+    set(f238);
+    v159 = 167;
+    v158 = 0;
+    move.obj.v(o12, v134, v159, v158, f228);
+  }
+}
+if ((isset(f228)) && 
+    (isset(f238))) {
+  stop.sound();
+  set(f154);
+  erase(o12);
+  set(f140);
+}
+if (v112 != 4) {
+  if (isset(f221)) {
+    if (v221 == 0) {
+      v161 = 4;
+      step.time(o1, v161);
+      move.obj(o1, 13, 38, 0, f221);
+      v153 = 1;
+    }
+    if (v221 == 1) {
+      v161 = 3;
+      step.time(o1, v161);
+      move.obj(o1, 13, 54, 0, f221);
+    }
+    if (v221 == 2) {
+      set.loop(o1, 6);
+      fix.loop(o1);
+      move.obj(o1, 6, 80, 3, f221);
+      v153++;
+    }
+    if (v221 == 3) {
+      set.view(o1, 68);
+      release.loop(o1);
+      v161 = 1;
+      step.time(o1, v161);
+      move.obj(o1, 6, 156, 1, f221);
+    }
+    if (v221 == 4) {
+      if (!isset(f176)) {
+        move.obj(o1, 25, 157, 1, f221);
+      }
+      else {
+        move.obj(o1, 26, 135, 1, f221);
+        set.loop(o1, 0);
+        fix.loop(o1);
+      }
+    }
+    if (v221 == 5) {
+      reset(f221);
+      set(f224);
+      v221--;
+    }
+    if (v221 == 6) {
+      prevent.input();
+      v37 = 2;
+      set.loop(o12, 2);
+      fix.loop(o12);
+      v161 = 2;
+      step.time(o12, v161);
+      v161 = 3;
+      cycle.time(o12, v161);
+      start.cycling(o12);
+      if (isset(f226)) {
+        move.obj(o12, 1, 130, 0, f221);
+      }
+      else {
+        move.obj(o12, 14, 100, 0, f221);
+      }
+    }
+    if (v221 == 7) {
+      set.loop(o12, 3);
+      fix.loop(o12);
+      v161 = 2;
+      step.time(o12, v161);
+      move.obj(o12, 10, 75, 0, f221);
+      v152 = 8;
+      v153 = 236;
+      reposition(o12, v152, v153);
+    }
+    if (v221 == 8) {
+      set.loop(o12, 4);
+      fix.loop(o12);
+      v161 = 2;
+      step.time(o12, v161);
+      move.obj(o12, 10, 40, 0, f221);
+      v152 = 4;
+      v153 = 248;
+      reposition(o12, v152, v153);
+    }
+    if (v221 == 9) {
+      set.priority(o12, 4);
+      move.obj(o12, 40, 40, 0, f221);
+    }
+    if (v221 == 10) {
+      new.room(92); //##LE001##
+    }
+    if (v221 == 11) {
+      new.room(30); //##LE002##
+    }
+    if (v221 == 6 && 
+        isset(f226)) {
+      v221 = 10;
+    }
+    v221++;
+  }
+  if (isset(f222)) {
+    if (v222 == 0) {
+      v161 = 4;
+      step.time(o2, v161);
+      move.obj(o2, 11, 38, 0, f222);
+    }
+    if (v222 == 1) {
+      v161 = 3;
+      step.time(o2, v161);
+      set.priority(o2, 12);
+      move.obj(o2, 45, 54, 0, f222);
+    }
+    if (v222 == 2) {
+      set.loop(o2, 6);
+      fix.loop(o2);
+      move.obj(o2, 55, 80, 3, f222);
+    }
+    if (v222 == 3) {
+      set.view(o2, 68);
+      release.loop(o2);
+      v161 = 1;
+      step.time(o2, v161);
+      move.obj(o2, 70, 156, 1, f222);
+    }
+    if (v222 == 4) {
+      if (!isset(f176)) {
+        move.obj(o2, 45, 157, 1, f222);
+      }
+      else {
+        move.obj(o2, 45, 135, 1, f222);
+      }
+    }
+    if (v222 == 5) {
+      reset(f222);
+      set(f225);
+      v222--;
+    }
+    v222++;
+  }
+  if (isset(f223)) {
+    if (v223 == 0) {
+      v161 = 5;
+      step.time(o3, v161);
+      move.obj(o3, 67, 29, 2, f223);
+    }
+    if (v223 == 1) {
+      v161 = 4;
+      step.time(o3, v161);
+      set.priority(o3, 12);
+      move.obj(o3, 85, 54, 2, f223);
+    }
+    if (v223 == 2) {
+      set.view(o3, 68);
+      release.loop(o3);
+      move.obj(o3, 95, 100, 4, f223);
+    }
+    if (v223 == 3) {
+      v161 = 2;
+      step.time(o3, v161);
+      move.obj(o3, 85, 133, 4, f223);
+    }
+    if (v223 == 4) {
+      move.obj(o3, 53, 161, 4, f223);
+    }
+    if (v223 == 5) {
+      set.view(o3, 71);
+      set.loop(o3, 0);
+      v161 = 2;
+      step.time(o3, v161);
+      end.of.loop(o3, f223);
+    }
+    if (v223 == 6) {
+      reset(f223);
+      set(f227);
+      v223--;
+    }
+    v223++;
+  }
+  if ((prev_room_no == 30) && 
+      (v112 < 4) && 
+      (isset(f154)) && 
+      (!isset(f229))) {
+    set(f229);
+    sound(29, f154);
+  }
+  if (!isset(f176)) {
+    if (isset(f224) && 
+        isset(f225) && 
+        v221 == 5 && 
+        v222 == 5) {
+      reset(f224);
+      reset(f225);
+      set.view(o12, 35);
+      set.loop(o12, 1);
+      position(o12, 25, 163);
+      erase(Ego);
+      erase(o1);
+      erase(o2);
+      draw(o12);
+      end.of.loop(o12, f221);
+      v221++;
+    }
+  }
+  else {
+    if (isset(f224) && 
+        isset(f225) && 
+        isset(f227) && 
+        v221 == 5 && 
+        v222 == 5 && 
+        v223 == 6) {
+      reset(f224);
+      reset(f225);
+      reset(f227);
+      set.view(o12, 35);
+      set.loop(o12, 0);
+      position(o12, 25, 137);
+      set.view(o3, 71);
+      set.loop(o3, 1);
+      position(o3, 30, 161);
+      erase(Ego);
+      erase(o1);
+      erase(o2);
+      draw(o12);
+      ignore.objs(o12);
+      v152 = 3;
+      cycle.time(o12, v152);
+      set.priority(o12, 13);
+      end.of.loop(o12, f221);
+      reset(f176);
+      v221++;
+    }
+  }
+}
+if (!isset(input_received)) {
+  goto(Label2);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "cliff") || 
+    said("examine", "up", "cliff"))) {
+  print("The treacherous path winds narrowly around the craggy mountain.  In "
+        "the distance, perched upon a rocky ledge, you see a dark unfriendly "
+        "castle.");
+}
+if (said("examine", "path")) {
+  print("The mountain path is thin and dangerous.  It seems to lead to the dark "
+        "castle.");
+}
+if (said("examine", "castle")) {
+  print("The dark castle looks very forbidding.  It perches precariously upon "
+        "an over-hanging mountain ledge.  The path, upon which you are now "
+        "treading, seems to lead directly to the sinister castle.");
+}
+if (said("examine", "rock")) {
+  print("The whole mountain is rocky.");
+}
+if (said("climb", "rock")) {
+  print("It's difficult to climb rocks while wearing that dress!");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down") || 
+    said("examine", "down", "dirt"))) {
+  print("The ground is a long way down.");
+}
+if ((said("examine", "black sky") || 
+    said("examine", "up") || 
+    said("examine", "up", "black sky"))) {
+  if (!isset(f38)) {
+    print("The sky is very blue.");
+  }
+  else {
+    print("It's easy to see by the light of a full moon.");
+  }
+}
+if (said("examine", "forest")) {
+  print("You see a forest of trees below you.");
+}
+if (said("climb", "cliff")) {
+  print("The craggy mountains are much too steep to climb.");
+}
+if (said("examine", "down")) {
+  print("The ground is a long way down.");
+}
+if ((said("run") || 
+    said("escape") || 
+    said("run", "away") || 
+    said("turn", "around"))) {
+  print("You're frozen with terror as you watch Lolotte's henchmen fly toward "
+        "you.");
+}
+if (isset(f38) && 
+    said("examine", "moon")) {
+  print("The night sky is lovely.");
+}
+if (!isset(f38) && 
+    said("examine", "cloud")) {
+  print("Billowy clouds float serenely in the blue sky.");
+}
+if (!isset(input_parsed)) {
+  call(240);
+}
+Label2:
+if (ego_edge_code == horizon_edge) {
+  new.room(80); //##LE003##
+}
+if (ego_edge_code == bottom_edge) {
+  new.room(30); //##LE004##
+}
+return();
+
+//Messages
+#message 1 "The treacherous path winds narrowly around the craggy mountain.  In the distance, perched upon a rocky ledge, you see a dark unfriendly castle."
+#message 2 "The mountain path is thin and dangerous.  It seems to lead to the dark castle."
+#message 3 "The dark castle looks very forbidding.  It perches precariously upon an over-hanging mountain ledge.  The path, upon which you are now treading, seems to lead directly to the sinister castle."
+#message 4 "The whole mountain is rocky."
+#message 5 "It's difficult to climb rocks while wearing that dress!"
+#message 6 "The ground is a long way down."
+#message 7 "The sky is very blue."
+#message 8 "It's easy to see by the light of a full moon."
+#message 9 "You see a forest of trees below you."
+#message 10 "The craggy mountains are much too steep to climb."
+#message 11 "The ground is a long way down."
+#message 12 "Oh, oh!  Lolotte's goons!"
+#message 13 "You're frozen with terror as you watch Lolotte's henchmen fly toward you."
+#message 14 "The night sky is lovely."
+#message 15 "Billowy clouds float serenely in the blue sky."

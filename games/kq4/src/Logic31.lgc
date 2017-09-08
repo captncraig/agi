@@ -1,0 +1,895 @@
+if (isset(new_room)) {
+  set.horizon(80);
+  set(f157);
+  load.sound(99);
+  load.sound(36);
+  if (!isset(f180)) {
+    load.view(5);
+    load.view(7);
+  }
+  else {
+    load.view(29);
+  }
+  load.view(195);
+  if (prev_room_no == 44) {
+    v45 = 150;
+    v46 = 4;
+  }
+  if (!isset(f38)) {
+    load.logics(230);
+    call(230);
+    load.view(58);
+  }
+  load.view(160);
+  if (isset(f180)) {
+    set.view(Ego, 29);
+    position(Ego, 4, 120);
+    set(f36);
+    ego_dir = 3;
+  }
+  else {
+    v37 = 12;
+    set.view(Ego, 5);
+  }
+  load.logics(209);
+  if (!isset(f38)) {
+    v152 = 31;
+  }
+  else {
+    v152 = 131;
+  }
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  v58 = 0;
+  if (prev_room_no != 31) {
+    v224 = 0;
+    v48 = 0;
+  }
+  if (!isset(f38)) {
+    animate.obj(o1);
+    set.view(o1, 160);
+    set.cel(o1, 0);
+    set.loop(o1, 0);
+    stop.cycling(o1);
+    ignore.objs(o1);
+    position(o1, 100, 100);
+    v221 = 6;
+    animate.obj(o2);
+    set.view(o2, 58);
+    set.cel(o2, 0);
+    set.loop(o2, 5);
+    stop.cycling(o2);
+    ignore.objs(o2);
+    v152 = 4;
+    step.time(o2, v152);
+    cycle.time(o2, v152);
+    position(o2, 90, 90);
+    v225 = 2;
+    if (isset(f231)) {
+      v152 = 15;
+      random(18, 75, v153);
+      position.v(o8, v153, v152);
+      draw(o8);
+    }
+    if (isset(f230)) {
+      v152 = 18;
+      random(80, 140, v153);
+      position.v(o9, v153, v152);
+      draw(o9);
+    }
+    animate.obj(o5);
+    ignore.horizon(o5);
+    set.view(o5, 160);
+    set.loop(o5, 4);
+    random(1, 3, v152);
+    if ((v152 == 1 || 
+        v152 == 2)) {
+      set(f232);
+      if (v152 == 1) {
+        set.cel(o5, 0);
+      }
+      else {
+        set.cel(o5, 1);
+      }
+      random(6, 100, v153);
+      random(24, 37, v154);
+      position.v(o5, v153, v154);
+      draw(o5);
+      stop.cycling(o5);
+    }
+    draw(o1);
+    draw(o2);
+  }
+  else {
+    set(f233);
+    animate.obj(o6);
+    ignore.horizon(o6);
+    ignore.objs(o6);
+    set.view(o6, 160);
+    set.priority(o6, 4);
+    set.loop(o6, 5);
+    set.cel(o6, 0);
+    random(6, 111, v153);
+    random(96, 108, v154);
+    position.v(o6, v153, v154);
+    draw(o6);
+    stop.cycling(o6);
+  }
+  v152 = 0;
+  if (v112 > 0 && 
+      !isset(f69) && 
+      !isset(f38) && 
+      !isset(f180)) {
+    random(1, 3, v152);
+  }
+  if ((prev_room_no == 44 || 
+      v152 == 3 || 
+      v58 > 0)) {
+    load.view(139);
+    animate.obj(o3);
+    ignore.horizon(o3);
+    set.view(o3, 139);
+    v153 = 4;
+    cycle.time(o3, v153);
+  }
+  if ((v152 == 3 || 
+      v58 > 0)) {
+    v58 = 4;
+    v221 = 254;
+    set.loop(o3, 0);
+    set.cel(o3, 0);
+    position(o3, 66, 60);
+  }
+  if (prev_room_no == 44) {
+    animate.obj(o7);
+    set.view(o7, 195);
+    position(o7, 75, 166);
+    v152 = 2;
+    step.size(o7, v152);
+    v226 = 120;
+    set(f234);
+    set(f242);
+    accept.input();
+    v45 = 150;
+    v46 = 4;
+    set.loop(o3, 2);
+    set.cel(o3, 0);
+    position(o3, 65, 140);
+    draw(o3);
+    end.of.loop(o3, f221);
+    v221 = 30;
+  }
+  if (v45 == 150 && 
+      v46 == 4) {
+    animate.obj(o4);
+    ignore.horizon(o4);
+    set.view(o4, 5);
+    position(o4, 70, 55);
+    set.loop(o4, 4);
+    set.cel(o4, 0);
+    draw(o4);
+    set(f228);
+  }
+  if (prev_room_no != 44) {
+    draw(Ego);
+  }
+  if (isset(f38)) {
+    random(2, 3, v152);
+  }
+  else {
+    random(1, 5, v152);
+  }
+  if (v45 > 20) {
+    if (isset(f242)) {
+      v152 = 0;
+    }
+    else {
+      v152 = 3;
+    }
+  }
+  if (v46 == 0 && 
+      v45 > 1) {
+    v152 = 3;
+  }
+  if ((isset(f180) || 
+      v58 > 0)) {
+    v152 = 0;
+  }
+  if (v152 == 3) {
+    animate.obj(o7);
+    set.view(o7, 195);
+    get.posn(Ego, v33, v34);
+    position.v(o7, v33, v34);
+    v152 = 2;
+    step.size(o7, v152);
+    v226 = 18;
+    set(f234);
+  }
+  else {
+    if (!isset(f242)) {
+      v226 = 0;
+    }
+  }
+  show.pic();
+}
+if (isset(f63)) {
+  reset(f63);
+  if (isset(f242)) {
+    reset(f242);
+  }
+  if (isset(f38) && 
+      !isset(f59)) {
+    new.room(31); //##LE001##
+  }
+  if (isset(f231)) {
+    reset(f231);
+    erase(o8);
+  }
+  if (isset(f230)) {
+    reset(f230);
+    erase(o9);
+  }
+  if (isset(f222)) {
+    erase(o1);
+    reset(f223);
+    reset(f222);
+  }
+  if (isset(f224)) {
+    erase(o2);
+    reset(f225);
+    reset(f224);
+  }
+  if (isset(f232)) {
+    reset(f232);
+    erase(o5);
+  }
+  if (isset(f234)) {
+    erase(o7);
+  }
+  if (isset(f233)) {
+    reset(f233);
+    erase(o6);
+  }
+  v225 = 0;
+  v221 = 0;
+  if (!isset(f38)) {
+    set(new_room);
+    call(230);
+    reset(new_room);
+    if (isset(f231)) {
+      position(o8, 18, 15);
+      draw(o8);
+    }
+    if (isset(f230)) {
+      position(o9, 80, 18);
+      draw(o9);
+    }
+    set.cel(o1, 0);
+    v221 = 6;
+    draw(o1);
+    set.cel(o2, 0);
+    v225 = 3;
+    random(1, 3, v152);
+    if ((v152 == 1 || 
+        v152 == 2)) {
+      set(f232);
+      if (v152 == 1) {
+        set.cel(o5, 0);
+      }
+      else {
+        set.cel(o5, 1);
+      }
+      random(6, 100, v153);
+      random(24, 37, v154);
+      position.v(o5, v153, v154);
+      draw(o5);
+      stop.cycling(o5);
+    }
+    draw(o2);
+  }
+  else {
+    set(f233);
+    random(6, 111, v153);
+    random(96, 108, v154);
+    position.v(o6, v153, v154);
+    draw(o6);
+    stop.cycling(o6);
+  }
+  v152 = 0;
+  if (v112 > 0 && 
+      !isset(f38) && 
+      !isset(f69) && 
+      !isset(f180)) {
+    random(1, 3, v152);
+  }
+  if ((v152 == 3 || 
+      v58 > 0)) {
+    load.view(139);
+    animate.obj(o3);
+    ignore.horizon(o3);
+    v153 = 4;
+    cycle.time(o3, v153);
+    set.view(o3, 139);
+    if (v58 <= 0) {
+      v58 = 4;
+    }
+    v221 = 254;
+    set.loop(o3, 0);
+    set.cel(o3, 0);
+    position(o3, 66, 60);
+  }
+  if (isset(f228)) {
+    erase(o4);
+  }
+  if (v45 == 150 && 
+      v46 == 4) {
+    animate.obj(o4);
+    ignore.horizon(o4);
+    set.view(o4, 5);
+    position(o4, 70, 55);
+    set.loop(o4, 4);
+    set.cel(o4, 0);
+    draw(o4);
+    set(f228);
+  }
+  get.posn(Ego, v152, v153);
+  if (ego_edge_code == left_edge) {
+    v152 = 146;
+  }
+  if (ego_edge_code == right_edge) {
+    v152 = 5;
+  }
+  if (ego_edge_code == horizon_edge) {
+    v153 = 160;
+  }
+  if (ego_edge_code == bottom_edge) {
+    v153 = 83;
+  }
+  reposition.to.v(Ego, v152, v153);
+  ego_edge_code = 0;
+  force.update(Ego);
+  if (isset(f38)) {
+    random(2, 3, v152);
+  }
+  else {
+    random(1, 5, v152);
+  }
+  if (v45 > 20) {
+    if (isset(f242)) {
+      v152 = 0;
+    }
+    else {
+      v152 = 3;
+    }
+  }
+  if (v46 == 0 && 
+      v45 > 1) {
+    v152 = 3;
+  }
+  if ((isset(f180) || 
+      v58 > 0)) {
+    v152 = 0;
+  }
+  get.posn(Ego, v33, v34);
+  if (isset(f234)) {
+    position.v(o7, v33, v34);
+    v226 = 1;
+  }
+  else {
+    if (v152 == 3) {
+      animate.obj(o7);
+      set.view(o7, 195);
+      position.v(o7, v33, v34);
+      v152 = 2;
+      step.size(o7, v152);
+      v226 = 18;
+      set(f234);
+    }
+    else {
+      v226 = 0;
+    }
+  }
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if (v45 == 150 && 
+    v46 == 4) {
+  if ((said("examine") || 
+      said("examine", "around") || 
+      said("examine", "room") || 
+      said("examine", "around", "room"))) {
+    print("You see an island in the distance.");
+  }
+  if (said("examine", "island")) {
+    print("The island appears to be very small.");
+  }
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room"))) {
+  if (isset(f38)) {
+    print("The ocean appears even more vast at night.");
+  }
+  else {
+    print("You are swimming in a great ocean.  Playful fish leap about you as "
+          "you swim.");
+  }
+}
+if ((v37 != 12) && 
+    (said("enter", "swimming") || 
+    said("enter", "swimming", "lake") || 
+    said("enter", "swimming", "ocean") || 
+    said("float", "lake") || 
+    said("float", "ocean") || 
+    said("float") || 
+    said("dive", "lake") || 
+    said("wade", "lake") || 
+    said("dive", "ocean") || 
+    said("wade", "ocean") || 
+    said("dive") || 
+    said("wade"))) {
+  if (isset(f180)) {
+    print("The dolphin nips your feet as you attempt to go into the water.  You "
+          "decide to just keep riding.");
+  }
+  else {
+    print("Just enter the water.");
+  }
+}
+if ((v37 == 12) && 
+    (said("enter", "swimming") || 
+    said("enter", "swimming", "lake") || 
+    said("enter", "swimming", "ocean") || 
+    said("float", "lake") || 
+    said("float", "ocean") || 
+    said("float") || 
+    said("dive", "lake") || 
+    said("wade", "lake") || 
+    said("dive", "ocean") || 
+    said("wade", "ocean") || 
+    said("dive") || 
+    said("wade"))) {
+  print("You're already swimming.");
+}
+if (isset(f180)) {
+  if (said("examine", "dolphin")) {
+    print("You can feel the dolphin's strong muscles working, as it swims "
+          "through the ocean with you on its back.");
+  }
+  if ((said("speak", "dolphin") || 
+      said("speak") || 
+      said("speak", "with", "dolphin"))) {
+    print("You speak to the dolphin, and it chatters back.");
+  }
+  if ((said("embrace", "dolphin") || 
+      said("embrace"))) {
+    print("There's no need for that.");
+  }
+  if ((said("carry", "dolphin") || 
+      said("capture", "dolphin"))) {
+    print("You're already riding the dolphin.");
+  }
+  if (said("pat", "dolphin")) {
+    print("The dolphin's skin feels smooth and slippery.");
+  }
+}
+if (!isset(input_parsed)) {
+  call(209);
+}
+Label1:
+if (!isset(f38)) {
+  call(230);
+  if (isset(f112) && 
+      v221 > 0 && 
+      !isset(f222)) {
+    v221--;
+    if (v221 <= 0) {
+      random(3, 7, v221);
+      random(5, 140, v222);
+      random(100, 160, v223);
+      random(1, 4, v152);
+      if (v152 == 1) {
+        set.loop(o1, 0);
+      }
+      else {
+        if (v152 == 2) {
+          set.loop(o1, 1);
+        }
+        else {
+          if (v152 == 3) {
+            set.loop(o1, 2);
+          }
+          else {
+            set.loop(o1, 3);
+          }
+        }
+      }
+      reposition.to.v(o1, v222, v223);
+      end.of.loop(o1, f223);
+      set(f222);
+    }
+  }
+  if (isset(f223)) {
+    set.cel(o1, 0);
+    reset(f223);
+    reset(f222);
+  }
+  if (isset(f112) && 
+      v225 > 0 && 
+      !isset(f224)) {
+    v225--;
+    if (v225 <= 0) {
+      random(5, 140, v152);
+      random(20, 60, v153);
+      reposition.to.v(o2, v152, v153);
+      end.of.loop(o2, f225);
+      set(f224);
+    }
+  }
+  if (isset(f225)) {
+    random(1, 2, v225);
+    set.cel(o2, 0);
+    reset(f225);
+    reset(f224);
+  }
+}
+if ((v48 == 4 || 
+    v45 == 9)) {
+  v224 = 2;
+}
+if (v224 > 0 && 
+    isset(f112)) {
+  v224--;
+  if (v224 <= 0) {
+    v37 = 13;
+    set(f36);
+    stop.motion(Ego);
+    set(f157);
+    prevent.input();
+    set.view(Ego, 7);
+    set.loop(Ego, 0);
+    fix.loop(Ego);
+    v220 = 5;
+    if (isset(f38)) {
+      print("The ocean confuses you at night.  Panicking, you lose "
+            "control...and drown.");
+    }
+    else {
+      print("You're too tired to swim anymore.  Your body gives out as you "
+            "prepare to join Davy Jones in his locker.");
+    }
+  }
+}
+if (isset(f112) && 
+    v220 > 0) {
+  v220--;
+  if (v220 <= 0) {
+    erase(Ego);
+    if (!isset(f38)) {
+      erase(o1);
+      erase(o2);
+    }
+    set(f140);
+    if (v37 == 26) {
+      print("You make a tasty morsel for that hungry shark!");
+    }
+  }
+}
+if (isset(f221)) {
+  reset(f221);
+  position(Ego, 71, 135);
+  stop.motion(Ego);
+  set.loop(Ego, 2);
+  draw(Ego);
+  erase(o3);
+  print("Again, you find yourself swimming in the ocean.");
+}
+if (v230 > 0 && 
+    isset(f112)) {
+  v230--;
+  if (v230 <= 0) {
+    position(o8, 2, 15);
+    v152 = 4;
+    set.dir(o8, v152);
+    draw(o8);
+    set(f231);
+  }
+}
+if (v231 > 0 && 
+    isset(f112)) {
+  v231--;
+  if (v231 <= 0) {
+    position(o9, 150, 15);
+    v152 = 6;
+    set.dir(o9, v152);
+    draw(o9);
+    set(f230);
+  }
+}
+if (v58 > 0 && 
+    isset(f112)) {
+  v58--;
+  if (v58 <= 0) {
+    stop.motion(Ego);
+    set(f36);
+    prevent.input();
+    draw(o3);
+    sound(36, f154);
+    end.of.loop(o3, f226);
+  }
+}
+if (isset(f226)) {
+  reset(f226);
+  erase(o3);
+  set.loop(o3, 1);
+  position.v(o3, v33, v34);
+  set.cel(o3, 0);
+  draw(o3);
+  erase(Ego);
+  end.of.loop(o3, f227);
+}
+if (isset(f227)) {
+  set(f69);
+  erase(o3);
+  new.room(44); //##LE002##
+}
+if (v226 > 0) {
+  v226--;
+  if (v226 == 0) {
+    if (isset(f36)) {
+      v226 = 3;
+    }
+    else {
+      sound(99, f154);
+      current.loop(Ego, v152);
+      set.loop.v(o7, v152);
+      draw(o7);
+      print("\"SHARK!\"");
+      follow.ego(o7, 10, f229);
+    }
+  }
+}
+if (isset(f229)) {
+  reset(f229);
+  if (isset(f36)) {
+    erase(o7);
+    v226 = 0;
+  }
+  else {
+    erase(o7);
+    v37 = 26;
+    set(f36);
+    stop.motion(Ego);
+    set(f157);
+    prevent.input();
+    set.view(Ego, 7);
+    set.loop(Ego, 0);
+    fix.loop(Ego);
+    v220 = 5;
+  }
+}
+if (ego_edge_code != no_edge) {
+  v48++;
+}
+if (isset(f38)) {
+  if (ego_edge_code != no_edge) {
+    set(f63);
+  }
+}
+else {
+  if ((v37 == 13 || 
+      v37 == 26)) {
+    ego_edge_code = 0;
+  }
+  else {
+    if (ego_edge_code == bottom_edge) {
+      if (v46 == 0) {
+        v46 = 4;
+      }
+      else {
+        v46--;
+      }
+      if (v45 == 150 && 
+          v46 == 0) {
+        new.room(43); //##LE003##
+      }
+      if (v46 == 4) {
+        if (v45 == 5) {
+          new.room(33); //##LE004##
+        }
+        else {
+          if (v45 == 4) {
+            new.room(34); //##LE005##
+          }
+          else {
+            if (v45 == 3) {
+              new.room(35); //##LE006##
+            }
+            else {
+              set(f63);
+            }
+          }
+        }
+      }
+      else {
+        if (v45 == 1 && 
+            v46 == 3) {
+          new.room(95); //##LE007##
+        }
+        else {
+          set(f63);
+        }
+      }
+    }
+    if (ego_edge_code == right_edge) {
+      v45--;
+      if (v45 == 150 && 
+          v46 == 0) {
+        new.room(43); //##LE008##
+      }
+      if (v45 == 187) {
+        new.room(1); //##LE009##
+      }
+      if (v45 == 5) {
+        if (v46 == 4) {
+          new.room(33); //##LE010##
+        }
+        else {
+          if (v46 == 3) {
+            if (v36 < 110) {
+              new.room(33); //##LE011##
+            }
+            else {
+              new.room(39); //##LE012##
+            }
+          }
+          else {
+            if (v46 == 2) {
+              new.room(39); //##LE013##
+            }
+            else {
+              if (v46 == 1) {
+                v45 = 10;
+                new.room(32); //##LE014##
+              }
+              else {
+                set(f63);
+              }
+            }
+          }
+        }
+      }
+      else {
+        if (v45 == 0) {
+          if (v46 == 4) {
+            new.room(1); //##LE015##
+          }
+          else {
+            if (v46 == 2) {
+              new.room(13); //##LE016##
+            }
+            else {
+              if (v46 == 1) {
+                new.room(19); //##LE017##
+              }
+              else {
+                new.room(25); //##LE018##
+              }
+            }
+          }
+        }
+        else {
+          if (v45 == 1 && 
+              v46 == 3) {
+            new.room(95); //##LE019##
+          }
+          else {
+            set(f63);
+          }
+        }
+      }
+    }
+    if (ego_edge_code == horizon_edge) {
+      v46++;
+      if (v46 > 4) {
+        v46 = 0;
+      }
+      if (v45 == 150 && 
+          v46 == 0) {
+        new.room(43); //##LE020##
+      }
+      if (v46 == 1) {
+        if (v45 == 5) {
+          v45 = 10;
+          new.room(32); //##LE021##
+        }
+        else {
+          if (v45 == 4) {
+            v45 = 80;
+            new.room(32); //##LE022##
+          }
+          else {
+            if (v45 == 3) {
+              v45 = 145;
+              new.room(32); //##LE023##
+            }
+            else {
+              set(f63);
+            }
+          }
+        }
+      }
+      else {
+        if (v45 == 1 && 
+            v46 == 3) {
+          new.room(95); //##LE024##
+        }
+        else {
+          set(f63);
+        }
+      }
+    }
+    if (ego_edge_code == left_edge) {
+      v45++;
+      if (v45 == 150 && 
+          v46 == 0) {
+        new.room(43); //##LE025##
+      }
+      if (v45 == 3) {
+        if (v46 == 4) {
+          new.room(35); //##LE026##
+        }
+        else {
+          if (v46 == 3) {
+            if (v36 < 110) {
+              new.room(35); //##LE027##
+            }
+            else {
+              new.room(41); //##LE028##
+            }
+          }
+          else {
+            if (v46 == 2) {
+              new.room(41); //##LE029##
+            }
+            else {
+              if (v46 == 1) {
+                v45 = 145;
+                new.room(32); //##LE030##
+              }
+              else {
+                set(f63);
+              }
+            }
+          }
+        }
+      }
+      else {
+        set(f63);
+      }
+    }
+  }
+}
+return();
+
+//Messages
+#message 1 "You are swimming in a great ocean.  Playful fish leap about you as you swim."
+#message 2 "You're too tired to swim anymore.  Your body gives out as you prepare to join Davy Jones in his locker."
+#message 3 "Again, you find yourself swimming in the ocean."
+#message 4 "You can feel the dolphin's strong muscles working, as it swims through the ocean with you on its back."
+#message 5 "You speak to the dolphin, and it chatters back."
+#message 6 "There's no need for that."
+#message 7 "Just enter the water."
+#message 8 "You're already swimming."
+#message 9 "The ocean appears even more vast at night."
+#message 10 "You see an island in the distance."
+#message 11 "The island appears to be very small."
+#message 12 "The ocean confuses you at night.  Panicking, you lose control...and drown."
+#message 13 "\"SHARK!\""
+#message 14 "You make a tasty morsel for that hungry shark!"
+#message 15 "You're already riding the dolphin."
+#message 16 "The dolphin's skin feels smooth and slippery."
+#message 17 "The dolphin nips your feet as you attempt to go into the water.  You decide to just keep riding."

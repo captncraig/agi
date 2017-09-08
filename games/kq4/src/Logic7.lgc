@@ -1,0 +1,659 @@
+if (isset(new_room)) {
+  set(f82);
+  set.horizon(82);
+  if (prev_room_no == 42) {
+    discard.view(1);
+    load.view(0);
+    set.view(Ego, 0);
+    position(Ego, 93, 127);
+  }
+  load.sound(70);
+  load.logics(200);
+  load.logics(213);
+  load.view(10);
+  load.view(11);
+  load.view(40);
+  load.view(114);
+  load.view(2);
+  load.view(3);
+  load.view(4);
+  load.view(5);
+  load.sound(51);
+  if (!isset(f38)) {
+    v152 = 7;
+  }
+  else {
+    v152 = 107;
+  }
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  v230 = 0;
+  if (!isset(f38)) {
+    animate.obj(o5);
+    set.view(o5, 114);
+    set.cel(o5, 0);
+    set.loop(o5, 0);
+    ignore.blocks(o5);
+    ignore.objs(o5);
+    position(o5, 104, 125);
+    set.priority(o5, 9);
+    draw(o5);
+    stop.update(o5);
+  }
+  animate.obj(o7);
+  ignore.horizon(o7);
+  set.view(o7, 114);
+  set.loop(o7, 1);
+  ignore.objs(o7);
+  set.priority(o7, 5);
+  ignore.blocks(o7);
+  position(o7, 95, 16);
+  v152 = 3;
+  step.time(o7, v152);
+  cycle.time(o7, v152);
+  draw(o7);
+  if (!isset(f38)) {
+    animate.obj(o6);
+    load.view(163);
+    set.view(o6, 163);
+    set.loop(o6, 0);
+    fix.loop(o6);
+    ignore.horizon(o6);
+    position(o6, 55, 16);
+    draw(o6);
+    wander(o6);
+    set(f233);
+  }
+  animate.obj(o12);
+  if (prev_room_no == 1) {
+    if (v91 == 1) {
+      position(Ego, 63, 82);
+    }
+    if (v91 == 2) {
+      position(Ego, 40, 82);
+    }
+    if (v37 == 9) {
+      position(Ego, 36, 82);
+    }
+    if (v37 == 10) {
+      position(Ego, 30, 82);
+    }
+    if ((v37 == 11 || 
+        v37 == 15)) {
+      position(Ego, 20, 82);
+    }
+    if ((v37 == 12 || 
+        v37 == 14)) {
+      position(Ego, 3, 82);
+    }
+  }
+  if (prev_room_no == 13) {
+    if (v91 == 1) {
+      position(Ego, 146, 166);
+    }
+    if (v91 == 2) {
+      position(Ego, 73, 166);
+    }
+    if (v37 == 9) {
+      position(Ego, 63, 166);
+    }
+    if (v37 == 10) {
+      position(Ego, 52, 166);
+    }
+    if ((v37 == 11 || 
+        v37 == 15)) {
+      position(Ego, 38, 166);
+    }
+    if ((v37 == 12 || 
+        v37 == 14)) {
+      position(Ego, 13, 166);
+    }
+  }
+  if (prev_room_no == 95 && 
+      v34 > 153 && 
+      v34 < 160) {
+    position(Ego, 1, 153);
+  }
+  if (v37 == 0) {
+    set(f222);
+  }
+  draw(Ego);
+  load.view(59);
+  animate.obj(o9);
+  animate.obj(o10);
+  set.view(o9, 59);
+  set.view(o10, 59);
+  set.loop(o9, 0);
+  set.loop(o10, 2);
+  position(o9, 49, 158);
+  position(o10, 14, 114);
+  v152 = 3;
+  cycle.time(o9, v152);
+  cycle.time(o10, v152);
+  set.priority(o9, 5);
+  set.priority(o10, 5);
+  ignore.objs(o9);
+  ignore.objs(o10);
+  draw(o9);
+  draw(o10);
+  if ((!isset(f172)) && 
+      (v137 == 2)) {
+    load.view(115);
+    animate.obj(o8);
+    set.view(o8, 115);
+    set.loop(o8, 0);
+    fix.loop(o8);
+    set(f230);
+    ignore.blocks(o8);
+    if (v119 < 5) {
+      position(o8, 25, 126);
+      draw(o8);
+      move.obj(o8, 97, 125, 0, f234);
+      start.cycling(o8);
+    }
+    else {
+      if (v119 < 10) {
+        position(o8, 92, 126);
+        draw(o8);
+        move.obj(o8, 97, 125, 0, f234);
+        start.cycling(o8);
+      }
+      else {
+        v137 = 3;
+        set(f172);
+      }
+    }
+  }
+  get.posn(Ego, v33, v34);
+  show.pic();
+}
+if (!isset(f222) && 
+    !isset(f223) && 
+    !isset(f224)) {
+  if (v34 > 140 && 
+      v34 < 157) {
+    if (v33 < 8 && 
+        v34 > 153) {
+      ego_dir = 0;
+      reposition.to.v(Ego, v35, v36);
+    }
+    if (v33 > 13 && 
+        v33 < 20) {
+      v33 = 13;
+      ego_dir = 0;
+      reposition.to.v(Ego, v35, v36);
+    }
+  }
+  if (isset(ego_touching_signal_line)) {
+    set.view(Ego, 2);
+    v37 = 9;
+  }
+  if (isset(ego_on_water)) {
+    set.view(Ego, 3);
+    v37 = 10;
+  }
+  if ((v33 < 32) && 
+      (v33 > 11)) {
+    v37 = 11;
+    reset(f157);
+    set.view(Ego, 4);
+  }
+  if (v33 < 14) {
+    set(f157);
+    set.view(Ego, 5);
+    v37 = 12;
+  }
+  if ((v37 == 9) && 
+      (!isset(ego_touching_signal_line)) && 
+      (!isset(ego_on_water))) {
+    set.view(Ego, 0);
+    v37 = 0;
+  }
+  if (v37 == 12) {
+    ignore.blocks(Ego);
+  }
+  else {
+    observe.blocks(Ego);
+  }
+}
+if ((v37 != 0) && 
+    (v34 < 155)) {
+  set.priority(Ego, 9);
+}
+if ((v37 == 0 || 
+    v34 > 154)) {
+  release.priority(Ego);
+}
+if (isset(f234)) {
+  reset(f234);
+  v230++;
+  if (v230 == 1) {
+    stop.cycling(o8);
+    set.priority(o8, 11);
+    start.update(o5);
+    v152 = 3;
+    cycle.time(o5, v152);
+    end.of.loop(o5, f234);
+  }
+  if (v230 == 2) {
+    set.priority(o8, 10);
+    start.cycling(o8);
+    move.obj(o8, 110, 125, 0, f234);
+  }
+  if (v230 == 3) {
+    v137 = 3;
+    set(f172);
+    erase(o8);
+    v152 = 3;
+    cycle.time(o5, v152);
+    reverse.loop(o5, f234);
+  }
+  if (v230 == 4) {
+    stop.update(o5);
+  }
+}
+if (posn(Ego,0,120,55,132) && 
+    (v37 == 0) && 
+    (!isset(f238))) {
+  set(f222);
+  set(f152);
+  ignore.blocks(Ego);
+}
+else {
+  reset(f222);
+  if (v37 != 12) {
+    observe.blocks(Ego);
+  }
+}
+if ((isset(f222)) && 
+    (isset(f152)) && 
+    (v34 < 121 || 
+    v34 > 131)) {
+  reset(f152);
+  set(f238);
+  set(ego_touching_signal_line);
+}
+if (posn(Ego,55,98,69,119)) {
+  set(f223);
+  v107 = 52;
+  v108 = 118;
+}
+else {
+  reset(f223);
+}
+if (posn(Ego,78,132,108,167)) {
+  set(f224);
+  v107 = 72;
+  v108 = 160;
+}
+else {
+  reset(f224);
+}
+if (isset(ego_touching_signal_line)) {
+  if ((isset(f222) || 
+      isset(f223) || 
+      isset(f224))) {
+    reset(ego_touching_signal_line);
+    sound(51, f154);
+    get.posn(Ego, v134, v135);
+    position.v(o12, v134, v135);
+    ignore.blocks(o12);
+    set(f36);
+    prevent.input();
+    set.view(o12, 11);
+    if ((ego_dir == right || 
+        ego_dir == downright)) {
+      set.loop(o12, 2);
+    }
+    else {
+      set.loop(o12, 3);
+    }
+    fix.loop(o12);
+    v152 = 3;
+    step.size(o12, v152);
+    v152 = 3;
+    cycle.time(o12, v152);
+    start.cycling(o12);
+    erase(Ego);
+    draw(o12);
+    if (isset(f223)) {
+      v158 = 0;
+      move.obj.v(o12, v107, v108, v158, f226);
+    }
+    if (isset(f224)) {
+      v158 = 0;
+      move.obj.v(o12, v107, v108, v158, f226);
+      set.priority(o12, 14);
+    }
+    if (isset(f222)) {
+      if (v135 < 125) {
+        set.priority(o12, 9);
+        v108 = 132;
+        v158 = 0;
+        move.obj.v(o12, v33, v108, v158, f226);
+      }
+      else {
+        set.priority(o12, 14);
+        v108 = 158;
+        v158 = 0;
+        move.obj.v(o12, v33, v108, v158, f226);
+      }
+    }
+  }
+}
+if (isset(f226)) {
+  v152 = 1;
+  step.size(o12, v152);
+  cycle.time(o12, v152);
+  if ((isset(f223) || 
+      isset(f224))) {
+    set.view(o12, 40);
+    set.loop(o12, 3);
+    set.cel(o12, 2);
+    reverse.loop(o12, f228);
+  }
+  else {
+    set.view(o12, 11);
+    if ((ego_dir == right || 
+        ego_dir == downright)) {
+      set.loop(o12, 0);
+    }
+    else {
+      set.loop(o12, 1);
+    }
+    end.of.loop(o12, f228);
+  }
+  reset(f226);
+}
+if (isset(f228)) {
+  if (v37 != 12) {
+    observe.blocks(Ego);
+  }
+  get.posn(o12, v134, v135);
+  if ((isset(f223) || 
+      isset(f224))) {
+    set.view(Ego, 0);
+  }
+  else {
+    if (v134 > 20) {
+      set.view(Ego, 4);
+      v37 = 11;
+    }
+    else {
+      set.view(Ego, 5);
+      v37 = 12;
+    }
+  }
+  position.v(Ego, v134, v135);
+  get.posn(Ego, v33, v34);
+  if (v34 < 150) {
+    set.priority(Ego, 9);
+  }
+  else {
+    set.priority(Ego, 15);
+  }
+  draw(Ego);
+  erase(o12);
+  ego_dir = 0;
+  reset(f222);
+  reset(f223);
+  reset(f224);
+  reset(f238);
+  reset(f228);
+  reset(f36);
+  accept.input();
+  stop.sound();
+}
+if (isset(f112)) {
+  reset(f112);
+  v169++;
+}
+if (isset(f233)) {
+  get.posn(o6, v226, v227);
+}
+if ((isset(f233)) && 
+    (v227 < 6 || 
+    v226 < 5 || 
+    v226 > 152)) {
+  erase(o6);
+  reset(f233);
+  v169 = 0;
+}
+if ((v169 == 3) && 
+    (!isset(f233)) && 
+    !isset(f38)) {
+  random(5, 90, v162);
+  v161 = 6;
+  position.v(o6, v162, v161);
+  draw(o6);
+  move.obj(o6, 45, 15, 0, f235);
+  set(f233);
+}
+if (isset(f235)) {
+  reset(f235);
+  wander(o6);
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room"))) {
+  print("A poor fisherman's shanty adorns this part of the coastline.  A pier "
+        "stretches, from the house, out into the ocean to the west.  You see a "
+        "pretty meadowland off to the east.");
+}
+if (said("examine", "cottage")) {
+  print("The fisherman's shack looks badly in need of repair, as the sun, wind, "
+        "and salt spray have taken their toll.  From the house, an old pier "
+        "leads out into the ocean.");
+}
+if ((said("examine", "window") || 
+    said("look in", "window"))) {
+  if ((posn(Ego,102,122,119,141) || 
+      posn(Ego,83,112,93,118) || 
+      posn(Ego,95,122,103,126) || 
+      posn(Ego,134,136,152,143))) {
+    print("You peek through the window, but can make out no details.");
+  }
+  else {
+    set(f113);
+  }
+}
+if (said("examine", "door")) {
+  print("This is a plain wooden door.");
+}
+if (said("break", "window")) {
+  if ((posn(Ego,88,122,119,141) || 
+      posn(Ego,83,112,93,118) || 
+      posn(Ego,134,136,152,143))) {
+    print("That's vandalism!");
+  }
+  else {
+    set(f113);
+  }
+}
+if (said("open", "window")) {
+  if ((posn(Ego,88,122,119,141) || 
+      posn(Ego,83,112,93,118) || 
+      posn(Ego,134,136,152,143))) {
+    print("The windows do not open.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("break", "door") || 
+    said("break", "down", "door"))) {
+  print("You could never do that.");
+}
+if (said("open", "door")) {
+  if (posn(Ego,86,120,106,133)) {
+    if (!isset(f38)) {
+      if (isset(f231)) {
+        print("The door is already open.");
+      }
+      else {
+        set(f36);
+        prevent.input();
+        start.update(o5);
+        v152 = 3;
+        cycle.time(o5, v152);
+        end.of.loop(o5, f232);
+        sound(70, f154);
+      }
+    }
+    else {
+      print("You can't.  It's locked and you don't have the key.");
+    }
+  }
+  else {
+    set(f113);
+  }
+}
+if (said("unlatch", "door")) {
+  if (posn(Ego,86,120,106,133)) {
+    if (!isset(f38)) {
+      print("The door is already unlocked.");
+    }
+    else {
+      print("You can't.  It's locked and you don't have the key.");
+    }
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("bang") || 
+    said("bang", "door"))) {
+  if (posn(Ego,86,120,106,133)) {
+    if (!isset(f38)) {
+      print("You assertively knock on the shanty door.  A woman's voice "
+            "answers, \"Jest come on in!\"");
+    }
+    else {
+      print("You assertively knock on the shanty door.  From inside, a man's "
+            "voice calls out, \"D'ya know what TIME it is?!  GO AWAY!!\"");
+    }
+  }
+  else {
+    set(f113);
+  }
+}
+if (said("examine", "dock")) {
+  print("The old worn pier juts out into the ocean from the weather-beaten "
+        "house.");
+}
+if (said("examine", "beneath", "dock")) {
+  print("There is only ocean under the pier.");
+}
+if (said("examine", "grass")) {
+  print("A pretty meadow leads eastward from here.");
+}
+if (v137 == 2) {
+  if (said("examine", "dwarf")) {
+    print("You see a grizzled old fisherman on the pier.  Apparently, he isn't "
+          "having any luck today.");
+  }
+  if ((said("speak", "dwarf") || 
+      said("speak") || 
+      said("speak", "with", "dwarf"))) {
+    print("You say a few words to the old fisherman.  However, he must have "
+          "other things on his mind as he seems to ignore you.");
+  }
+}
+if (!isset(input_parsed)) {
+  call(200);
+}
+if (!isset(input_parsed)) {
+  call(213);
+}
+Label1:
+if (isset(f232)) {
+  reset(f232);
+  reset(f36);
+  accept.input();
+  set(f231);
+  v37 = 0;
+}
+if (isset(f231) && 
+    posn(Ego,86,119,120,131)) {
+  ignore.blocks(Ego);
+}
+else {
+  if (!isset(f222)) {
+    if (v37 != 12) {
+      observe.blocks(Ego);
+    }
+  }
+}
+if (ego_edge_code == bottom_edge) {
+  if (v33 > 140) {
+    v91 = 1;
+  }
+  if ((v33 < 140) && 
+      (v33 > 67)) {
+    v91 = 2;
+  }
+  if (v137 == 2) {
+    v137 = 3;
+    set(f172);
+  }
+  new.room(13); //##LE001##
+}
+if (ego_edge_code == right_edge) {
+  v37 = 0;
+  if (v137 == 2) {
+    v137 = 3;
+    set(f172);
+  }
+  new.room(8); //##LE002##
+}
+if (ego_edge_code == horizon_edge) {
+  if (v33 > 55) {
+    v91 = 1;
+  }
+  if ((v33 < 55) && 
+      (v33 > 39)) {
+    v91 = 2;
+  }
+  if (v137 == 2) {
+    v137 = 3;
+    set(f172);
+  }
+  new.room(1); //##LE003##
+}
+if (ego_edge_code == left_edge) {
+  if (v137 == 2) {
+    v137 = 3;
+    set(f172);
+  }
+  new.room(95); //##LE004##
+}
+if ((v33 > 105) && 
+    (isset(ego_touching_signal_line))) {
+  v37 = 0;
+  new.room(42); //##LE005##
+}
+return();
+
+//Messages
+#message 1 "A poor fisherman's shanty adorns this part of the coastline.  A pier stretches, from the house, out into the ocean to the west.  You see a pretty meadowland off to the east."
+#message 2 "The fisherman's shack looks badly in need of repair, as the sun, wind, and salt spray have taken their toll.  From the house, an old pier leads out into the ocean."
+#message 3 "You peek through the window, but can make out no details."
+#message 4 "This is a plain wooden door."
+#message 5 "That's vandalism!"
+#message 6 "The windows do not open."
+#message 7 "You could never do that."
+#message 8 "The door is already unlocked."
+#message 9 "You assertively knock on the shanty door.  A woman's voice answers, \"Jest come on in!\""
+#message 10 "You can't.  It's locked and you don't have the key."
+#message 11 "You assertively knock on the shanty door.  From inside, a man's voice calls out, \"D'ya know what TIME it is?!  GO AWAY!!\""
+#message 12 "The old worn pier juts out into the ocean from the weather-beaten house."
+#message 13 "There is only ocean under the pier."
+#message 14 "A pretty meadow leads eastward from here."
+#message 15 "The door is already open."
+#message 16 "You see a grizzled old fisherman on the pier.  Apparently, he isn't having any luck today."
+#message 17 "You say a few words to the old fisherman.  However, he must have other things on his mind as he seems to ignore you."

@@ -1,0 +1,824 @@
+if (isset(new_room)) {
+  set(f82);
+  v152 = 49;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  set.horizon(40);
+  ignore.blocks(Ego);
+  set.priority(Ego, 10);
+  draw(Ego);
+  load.sound(70);
+  load.sound(48);
+  load.logics(241);
+  load.view(129);
+  animate.obj(o2);
+  animate.obj(o5);
+  animate.obj(o1);
+  set.view(o1, 129);
+  set.loop(o1, 1);
+  set.priority(o1, 4);
+  ignore.blocks(o1);
+  ignore.objs(o1);
+  position(o1, 21, 119);
+  if (isset(f175)) {
+    set.loop(o1, 0);
+    set.cel(o1, 5);
+    set(f241);
+    set(f224);
+    position(o1, 21, 121);
+  }
+  stop.cycling(o1);
+  draw(o1);
+  animate.obj(o4);
+  set.view(o4, 129);
+  set.loop(o4, 3);
+  set.priority(o4, 4);
+  ignore.blocks(o4);
+  position(o4, 105, 107);
+  draw(o4);
+  if (isset(f38)) {
+    add.to.pic(129, 6, 0, 22, 112, 4, 4);
+    animate.obj(o8);
+    animate.obj(o9);
+    animate.obj(o10);
+    animate.obj(o11);
+    set.view(o8, 129);
+    set.view(o9, 129);
+    set.view(o10, 129);
+    set.view(o11, 129);
+    set.loop(o8, 5);
+    set.loop(o9, 5);
+    set.loop(o10, 5);
+    set.loop(o11, 5);
+    position(o8, 38, 97);
+    position(o9, 42, 95);
+    position(o10, 45, 94);
+    position(o11, 48, 96);
+    set.priority(o8, 14);
+    set.priority(o9, 14);
+    set.priority(o10, 14);
+    set.priority(o11, 14);
+    v152 = 2;
+    cycle.time(o11, v152);
+    cycle.time(o8, v152);
+    v152 = 3;
+    cycle.time(o9, v152);
+    draw(o8);
+    draw(o9);
+    draw(o10);
+    draw(o11);
+  }
+  if (prev_room_no == 51) {
+    position(Ego, 107, 111);
+  }
+  if (prev_room_no == 4) {
+    set.loop(Ego, 0);
+    ego_dir = 0;
+    position(Ego, 28, 118);
+    set.priority(Ego, 10);
+  }
+  if (prev_room_no == 50) {
+    position(Ego, 128, 116);
+  }
+  if (prev_room_no == 48) {
+    position(Ego, 90, 68);
+  }
+  if (prev_room_no == 51) {
+    set.loop(Ego, 2);
+    ego_dir = 5;
+  }
+  if ((prev_room_no == 51) && 
+      (!isset(f149))) {
+    prev_room_no = 50;
+  }
+  if ((prev_room_no == 51) && 
+      (isset(f149)) && 
+      (v127 != 49)) {
+    set(f239);
+  }
+  if ((prev_room_no == 50) && 
+      (v127 != 49)) {
+    set(f239);
+  }
+  if ((prev_room_no == 4) && 
+      (isset(f142)) && 
+      (isset(f199))) {
+    set(f240);
+  }
+  if ((isset(f239) || 
+      isset(f240))) {
+    load.view(120);
+    load.view(34);
+    animate.obj(o6);
+    set.view(o6, 120);
+    if (isset(f239)) {
+      position(o6, 135, 120);
+    }
+    else {
+      position(o6, 35, 128);
+      set(f229);
+    }
+    v156 = 0;
+    load.sound(10);
+    load.sound(11);
+    sound(10, f154);
+    set(f228);
+  }
+  else {
+    load.logics(221);
+    load.view(125);
+    if ((isset(f149) || 
+        isset(f199))) {
+      load.view(126);
+      load.view(33);
+    }
+    load.sound(5);
+    load.sound(49);
+    load.sound(6);
+    if (v127 == 49) {
+      if (isset(f181)) {
+        set.view(o5, 126);
+        position(o5, 91, 143);
+        v152 = 4;
+        cycle.time(o5, v152);
+        set.loop(o5, 1);
+        if (!has("Magic Hen")) {
+          animate.obj(o7);
+          set.view(o7, 126);
+          set.loop(o7, 2);
+          ignore.objs(o7);
+          position(o7, 116, 120);
+          stop.cycling(o7);
+          set.priority(o7, 12);
+          draw(o7);
+          set(f230);
+        }
+        if (prev_room_no == 50) {
+          v168 = 24;
+          set(f231);
+        }
+        else {
+          v168 = 0;
+        }
+        draw(o5);
+        set(f225);
+        v127 = 49;
+      }
+      else {
+        v158 = 1;
+        set.view(o5, 125);
+        position(o5, 91, 136);
+        v158 = 1;
+        set(f226);
+        draw(o5);
+        set(f225);
+        v127 = 49;
+        set(f226);
+      }
+    }
+  }
+  if ((prev_room_no == 4) && 
+      (!isset(f199))) {
+    load.view(101);
+    load.sound(63);
+    set.view(o2, 101);
+    set.loop(o2, 0);
+    fix.loop(o2);
+    position(o2, 86, 118);
+    set.priority(o2, 10);
+    v152 = 1;
+    cycle.time(o2, v152);
+    v152 = 2;
+    step.size(o2, v152);
+    ignore.objs(o2);
+    follow.ego(o2, 10, f234);
+  }
+  else {
+    set.view(o2, 129);
+    set.loop(o2, 4);
+    v152 = 6;
+    cycle.time(o2, v152);
+    position(o2, 74, 114);
+  }
+  draw(o2);
+  if (has("Bone")) {
+    load.view(9);
+    animate.obj(o3);
+    set.view(o3, 9);
+    set.loop(o3, 2);
+    fix.loop(o3);
+    set.priority(o3, 15);
+    animate.obj(o12);
+    set.view(o12, 9);
+    set.loop(o12, 0);
+    fix.loop(o12);
+  }
+  v223 = 0;
+  if (!isset(f142)) {
+    set(f142);
+  }
+  show.pic();
+}
+if (isset(f112)) {
+  reset(f112);
+  v221++;
+  if ((!isset(f232)) && 
+      (!isset(f225))) {
+    v168++;
+  }
+  if (has("Magic Hen")) {
+    v169++;
+  }
+  if (isset(f228)) {
+    v156++;
+  }
+  if (isset(f181)) {
+    v222++;
+  }
+}
+if (v34 < 107) {
+  set(f232);
+  set.priority(Ego, 6);
+}
+else {
+  reset(f232);
+}
+if (isset(f239)) {
+  if (v156 == 1) {
+    draw(o6);
+    move.obj(o6, 119, 115, 2, f229);
+    v168 = 25;
+  }
+  if (isset(f229)) {
+    reset(f229);
+    follow.ego(o6, 8, f226);
+    v158 = 2;
+  }
+}
+if ((isset(f240)) && 
+    (isset(f229))) {
+  reset(f229);
+  draw(o6);
+  follow.ego(o6, 10, f226);
+  v158 = 2;
+}
+get.posn(o2, v134, v135);
+get.posn(o5, v107, v108);
+if ((posn(Ego,90,106,106,117)) && 
+    (isset(f223))) {
+  observe.blocks(Ego);
+}
+if (posn(Ego,1,10,97,108)) {
+  observe.blocks(Ego);
+}
+if ((!posn(Ego,90,106,106,117)) && 
+    (!posn(Ego,20,110,42,119))) {
+  ignore.blocks(Ego);
+}
+if ((posn(Ego,20,113,31,121)) && 
+    (isset(f224)) && 
+    (isset(f241))) {
+  ignore.blocks(Ego);
+}
+if ((posn(Ego,20,113,31,121)) && 
+    (!isset(f224))) {
+  observe.blocks(Ego);
+}
+if (!isset(f232)) {
+  release.priority(Ego);
+}
+if ((v33 < 30) && 
+    (v34 < 126) && 
+    (v222 < 39) && 
+    (isset(f181))) {
+  v222 = 37;
+  if (v222 == 37) {
+    v222 = 40;
+  }
+}
+if (isset(f231)) {
+  reset(f231);
+  print("Wake up you sluggard!  She's getting away!");
+  v222 = 40;
+}
+if (isset(f225)) {
+  if (v222 == 40) {
+    v222 = 41;
+    if ((has("Magic Hen")) && 
+        (prev_room_no != 50)) {
+      print("SQUAWK! SQUAWK!  Oh, oh!  The hen has woken the ogre!");
+    }
+    set.cel(o5, 0);
+    set.loop(o5, 0);
+    v152 = 2;
+    cycle.time(o5, v152);
+    end.of.loop(o5, f226);
+    v158 = 1;
+    sound(5, f154);
+    reset(f181);
+  }
+}
+if ((v158 == 1) && 
+    (isset(f226)) && 
+    (!isset(f228))) {
+  reset(f226);
+  release.priority(o5);
+  set.view(o5, 125);
+  if (isset(f225)) {
+    position(o5, 91, 136);
+  }
+  start.cycling(o5);
+  v152 = 3;
+  step.size(o5, v152);
+  follow.ego(o5, 8, f226);
+  v158++;
+}
+if ((v158 == 2) && 
+    (isset(f226))) {
+  reset(f226);
+  erase(Ego);
+  if (!isset(f228)) {
+    set.view(o5, 33);
+    set.cel(o5, 0);
+    v152 = 3;
+    cycle.time(o5, v152);
+    start.cycling(o5);
+    sound(6, f154);
+    end.of.loop(o5, f226);
+  }
+  else {
+    set.view(o6, 34);
+    set.cel(o6, 0);
+    v152 = 3;
+    cycle.time(o6, v152);
+    sound(11, f154);
+    start.cycling(o6);
+    end.of.loop(o6, f226);
+  }
+  v158++;
+}
+if ((v158 == 3) && 
+    (isset(f226))) {
+  reset(f226);
+  v158++;
+  set(f238);
+  if (!isset(f228)) {
+    call(221);
+  }
+  else {
+    call(223);
+  }
+}
+if (v168 == 45) {
+  print("Is that the ogre you hear outside?");
+  v168 = 46;
+}
+if ((v168 == 60) && 
+    (prev_room_no != 50) && 
+    (!isset(f181))) {
+  v127 = 49;
+  if (!isset(f241)) {
+    v152 = 4;
+    set.loop(o1, 0);
+    set.priority(o1, 4);
+    position(o1, 21, 121);
+    ignore.objs(o1);
+    ignore.blocks(o1);
+    cycle.time(o1, v152);
+    end.of.loop(o1, f241);
+    set(f224);
+    v159 = 1;
+  }
+  else {
+    sound(5, f154);
+    set.view(o5, 125);
+    ignore.blocks(o5);
+    position(o5, 12, 119);
+    draw(o5);
+    start.cycling(o5);
+    set.priority(o5, 9);
+    ignore.objs(o5);
+    move.obj(o5, 40, 119, 4, f226);
+    v158 = 1;
+    distance(Ego, o5, v228);
+    if (v228 < 18) {
+      set(f226);
+    }
+  }
+}
+if ((v159 == 1) && 
+    (isset(f241))) {
+  sound(5, f154);
+  set.view(o5, 125);
+  ignore.blocks(o5);
+  position(o5, 12, 119);
+  draw(o5);
+  start.cycling(o5);
+  set.priority(o5, 9);
+  ignore.objs(o5);
+  move.obj(o5, 40, 119, 4, f226);
+  v158 = 1;
+  v159++;
+  distance(Ego, o5, v228);
+  if (v228 < 18) {
+    set(f226);
+  }
+}
+if (isset(f235)) {
+  reset(f235);
+  set(f36);
+  set(f237);
+  v152 -= 11;
+  v147 = 2;
+  reposition(o2, v152, v147);
+  set.loop(o2, 3);
+  v152 = 3;
+  cycle.time(o2, v152);
+  erase(Ego);
+  sound(6, f154);
+  v223 = 1;
+}
+if (v223 > 0) {
+  v223--;
+  if ((isset(f237)) && 
+      (v223 <= 0)) {
+    set.cel(o2, 0);
+    set.loop(o2, 4);
+    v152 = 3;
+    cycle.time(o2, v152);
+    end.of.loop(o2, f236);
+    v221 = 0;
+  }
+}
+if ((isset(f236)) && 
+    (v221 == 5)) {
+  stop.cycling(o2);
+  set.cel(o2, 5);
+  set(f140);
+}
+if ((v153 == 1) && 
+    (isset(f233))) {
+  sound(63, f154);
+  reset(f233);
+  stop.motion(o2);
+  stop.cycling(o2);
+  position.v(o12, v33, v34);
+  set.priority(o12, 11);
+  erase(Ego);
+  set.cel(o12, 0);
+  v152 = 2;
+  cycle.time(o12, v152);
+  draw(o12);
+  end.of.loop(o12, f233);
+  v153++;
+}
+if ((v153 == 2) && 
+    (isset(f233))) {
+  reset(f233);
+  set.view(Ego, 0);
+  draw(Ego);
+  erase(o12);
+  v226 = v33;
+  v227 = v34;
+  v226  += 8;
+  v227 -= 18;
+  position.v(o3, v226, v227);
+  draw(o3);
+  ignore.objs(o3);
+  ignore.blocks(o3);
+  v152 = 2;
+  move.obj.v(o3, v134, v135, v152, f233);
+  v153++;
+}
+if ((v153 == 3) && 
+    (isset(f233))) {
+  reset(f233);
+  erase(o3);
+  set.loop(o2, 1);
+  start.cycling(o2);
+  end.of.loop(o2, f233);
+  v153++;
+  stop.sound();
+}
+if ((v153 == 4) && 
+    (isset(f233))) {
+  reset(f233);
+  set.loop(o2, 2);
+  fix.loop(o2);
+  print("Quickly, you toss the bone to the big dog who catches it in mid-air.  "
+        "Happy with his surprise gift, he takes it to his favorite rug, lies "
+        "down, and begins gnawing at it.  He seems to have completely forgotten "
+        "you.");
+  start.cycling(o2);
+  move.obj(o2, 74, 114, 0, f233);
+  v153++;
+}
+if ((v153 == 6) && 
+    (isset(f233))) {
+  reset(f233);
+  discard.view(101);
+  load.view(33);
+}
+if ((v153 == 5) && 
+    (isset(f233))) {
+  release.priority(o2);
+  set.view(o2, 129);
+  set.loop(o2, 4);
+  stop.motion(o2);
+  v152 = 4;
+  cycle.time(o2, v152);
+  reset(f36);
+  accept.input();
+  v153++;
+}
+if (isset(f221)) {
+  reset(f221);
+  v152 = 0;
+  v34 = 105;
+  move.obj.v(Ego, v33, v34, v152, f227);
+}
+if (isset(f227)) {
+  new.room(51); //##LE001##
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "cottage") || 
+    said("examine", "around", "cottage"))) {
+  print("This isn't the most cozy-looking living room you've ever seen.  In "
+        "fact, the ogres' house looks almost...frightening!");
+}
+if (said("examine", "table")) {
+  if (!isset(f225)) {
+    print("It's a large wooden table.");
+  }
+  else {
+    print("The terrible ogre is asleep at the table, snoring loudly.");
+  }
+}
+if (said("examine", "beneath", "table")) {
+  print("There is nothing of interest under the table.");
+}
+if (said("examine", "chair")) {
+  print("There are two chairs at the table.");
+}
+if ((said("sit") || 
+    said("sit", "down") || 
+    said("sit", "down", "chair") || 
+    said("sit", "down", "abominable", "table"))) {
+  print("You don't have time for that!");
+}
+if (said("examine", "staircase")) {
+  print("The stairway goes upwards.");
+}
+if ((said("examine", "window") || 
+    said("look in", "window") || 
+    said("examine", "out", "window") || 
+    said("examine", "through", "window"))) {
+  print("You see the forest out the window.");
+}
+if (said("examine", "door")) {
+  print("The front door leads outside. There is an open doorway to the right, "
+        "and a closet door under the stairs.");
+}
+if ((said("open", "door") || 
+    said("open", "closet", "door"))) {
+  if (posn(Ego,20,113,32,123)) {
+    v152 = 4;
+    set.loop(o1, 0);
+    set.priority(o1, 4);
+    position(o1, 22, 119);
+    ignore.objs(o1);
+    ignore.blocks(o1);
+    cycle.time(o1, v152);
+    end.of.loop(o1, f241);
+    set(f224);
+    sound(70, f154);
+  }
+  else {
+    if (posn(Ego,104,107,116,112)) {
+      ego_dir = 0;
+      set.loop(o4, 2);
+      position(o4, 102, 113);
+      v152 = 4;
+      cycle.time(o4, v152);
+      end.of.loop(o4, f221);
+      set(f223);
+      block(99, 106, 104, 112);
+      sound(70, f154);
+    }
+    else {
+      set(f113);
+    }
+  }
+}
+if ((said("close", "door") || 
+    said("close", "closet", "door"))) {
+  if (posn(Ego,20,113,32,123)) {
+    v152 = 4;
+    set.loop(o1, 0);
+    set.priority(o1, 4);
+    position(o1, 22, 119);
+    ignore.objs(o1);
+    ignore.blocks(o1);
+    cycle.time(o1, v152);
+    reverse.loop(o1, f241);
+    reset(f224);
+    sound(70, f154);
+  }
+  else {
+    if (posn(Ego,104,107,116,112)) {
+      set.loop(o4, 2);
+      position(o4, 102, 113);
+      ignore.objs(o4);
+      v152 = 4;
+      cycle.time(o4, v152);
+      reverse.loop(o4, f221);
+      reset(f223);
+      block(99, 106, 104, 112);
+      sound(70, f154);
+    }
+    else {
+      set(f113);
+    }
+  }
+}
+if (said("bang", "door")) {
+  if (posn(Ego,20,113,32,123)) {
+    if (!isset(f241)) {
+      print("There's no answer.");
+    }
+    else {
+      print("The door is open.");
+    }
+  }
+  else {
+    if (posn(Ego,104,107,116,112)) {
+      print("There's no answer.");
+    }
+    else {
+      set(f113);
+    }
+  }
+}
+if (said("examine", "wall")) {
+  print("There is nothing of importance on the walls.");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down") || 
+    said("examine", "down", "dirt"))) {
+  print("There is nothing interesting on the floor.");
+}
+if ((said("examine", "carpet") || 
+    said("examine", "carpet"))) {
+  print("A worn rug lies on the floor.");
+}
+if ((said("deliver", "bone", "bulldog") || 
+    said("fling", "bone", "bulldog") || 
+    said("deliver", "bone") || 
+    said("fling", "bone") || 
+    said("feed", "bone") || 
+    said("feed", "bone", "bulldog"))) {
+  if (v134 > 60) {
+    if (has("Bone")) {
+      observe.objs(o2);
+      set(f36);
+      prevent.input();
+      ego_dir = 0;
+      set(f116);
+      set(f199);
+      drop("Bone");
+      move.obj(o2, 60, 119, 2, f233);
+      v153 = 1;
+      score  += 4;
+    }
+    else {
+      set(f115);
+    }
+  }
+  else {
+    print("Too late!");
+    prevent.input();
+    set(f36);
+  }
+}
+if ((said("carry", "bone") || 
+    said("rob", "bone") || 
+    said("carry", "bone", "from", "bulldog") || 
+    said("rob", "bone", "from", "bulldog"))) {
+  print("That's REALLY not a good idea!");
+}
+if ((said("deliver", "bulldog", "rol") || 
+    said("fling", "rol"))) {
+  print("The dog is only interested in his new bone.");
+}
+if ((said("carry", "chicken") || 
+    said("rob", "chicken") || 
+    said("carry", "magic", "chicken") || 
+    said("rob", "magic", "chicken"))) {
+  if (isset(f230)) {
+    if (!has("Magic Hen")) {
+      if (posn(Ego,110,134,120,137)) {
+        set(f116);
+        sound(48, f154);
+        get("Magic Hen");
+        set(f45);
+        score  += 4;
+        erase(o7);
+        v169 = 0;
+      }
+      else {
+        set(f113);
+      }
+    }
+    else {
+      set(f114);
+    }
+  }
+  else {
+    print("You don't see a hen.");
+  }
+}
+if (isset(f225)) {
+  if ((said("speak", "dwarf") || 
+      said("awaken", "dwarf") || 
+      said("speak") || 
+      said("hit", "dwarf") || 
+      said("embrace", "dwarf") || 
+      said("hit", "dwarf"))) {
+    if (isset(f181)) {
+      if (posn(Ego,95,134,120,137)) {
+        print("That REALLY wasn't a good idea!");
+        v222 = 39;
+      }
+      else {
+        set(f113);
+      }
+    }
+    else {
+      print("That's REALLY not a good idea!");
+    }
+  }
+}
+if ((said("hit", "bulldog") || 
+    said("hit", "bulldog"))) {
+  print("That's REALLY not a good idea!");
+}
+if (!isset(input_parsed)) {
+  call(241);
+}
+if (isset(f225)) {
+  if (!isset(input_parsed)) {
+    call(221);
+  }
+}
+Label1:
+if (!isset(input_parsed)) {
+  call(241);
+}
+if (posn(Ego,102,90,121,106)) {
+  new.room(51); //##LE002##
+}
+if ((v33 > 130) && 
+    (isset(ego_touching_signal_line))) {
+  new.room(50); //##LE003##
+}
+if ((v33 < 30) && 
+    (isset(ego_touching_signal_line))) {
+  new.room(4); //##LE004##
+}
+if ((v34 < 80) && 
+    (isset(ego_touching_signal_line))) {
+  new.room(48); //##LE005##
+}
+return();
+
+//Messages
+#message 1 "This isn't the most cozy-looking living room you've ever seen.  In fact, the ogres' house looks almost...frightening!"
+#message 2 "It's a large wooden table."
+#message 3 "The terrible ogre is asleep at the table, snoring loudly."
+#message 4 "There is nothing of interest under the table."
+#message 5 "There are two chairs at the table."
+#message 6 "You don't have time for that!"
+#message 7 "The stairway goes upwards."
+#message 8 "You see the forest out the window."
+#message 9 "The front door leads outside. There is an open doorway to the right, and a closet door under the stairs."
+#message 10 "There is nothing of importance on the walls."
+#message 11 "There is nothing interesting on the floor."
+#message 12 "Quickly, you toss the bone to the big dog who catches it in mid-air.  Happy with his surprise gift, he takes it to his favorite rug, lies down, and begins gnawing at it.  He seems to have completely forgotten you."
+#message 13 "That's REALLY not a good idea!"
+#message 14 "SQUAWK! SQUAWK!  Oh, oh!  The hen has woken the ogre!"
+#message 15 "Too late!"
+#message 16 "Wake up you sluggard!  She's getting away!"
+#message 17 "A worn rug lies on the floor."
+#message 18 "There's no answer."
+#message 19 "That REALLY wasn't a good idea!"
+#message 20 "Is that the ogre you hear outside?"
+#message 21 "You don't see a hen."
+#message 22 "The door is open."
+#message 23 "The dog is only interested in his new bone."

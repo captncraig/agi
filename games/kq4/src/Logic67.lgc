@@ -1,0 +1,476 @@
+if (isset(new_room)) {
+  v152 = 67;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  if (isset(f38)) {
+    set(f82);
+    load.logics(232);
+    load.view(111);
+    animate.obj(o4);
+    set.view(o4, 111);
+    set.loop(o4, 1);
+    fix.loop(o4);
+    ignore.blocks(o4);
+    ignore.objs(o4);
+    ignore.horizon(o4);
+    position(o4, 100, 114);
+    set.priority(o4, 12);
+    start.cycling(o4);
+    draw(o4);
+  }
+  load.sound(48);
+  load.sound(70);
+  load.logics(151);
+  load.view(93);
+  if (!isset(f166)) {
+    animate.obj(o2);
+    set.view(o2, 93);
+    set.loop(o2, 0);
+    position(o2, 110, 77);
+    stop.cycling(o2);
+    draw(o2);
+  }
+  if (!isset(f165)) {
+    animate.obj(o3);
+    set.view(o3, 93);
+    set.loop(o3, 2);
+    fix.loop(o3);
+    set.priority(o3, 4);
+    position(o3, 34, 112);
+    set.cel(o3, 0);
+    stop.cycling(o3);
+    ignore.objs(o3);
+    draw(o3);
+  }
+  if ((v144 == 2) && 
+      (v143 == 67)) {
+    load.logics(233);
+    animate.obj(o1);
+    load.view(105);
+    set.view(o1, 105);
+    ignore.blocks(o1);
+    ignore.objs(o1);
+    position(o1, 40, 130);
+    set(f236);
+    v142 = 67;
+    draw(o1);
+    load.sound(23);
+    sound(23, f154);
+  }
+  if (v144 == 4) {
+    if ((!isset(f163) || 
+        v143 == 67)) {
+      load.logics(234);
+      animate.obj(o1);
+      load.view(107);
+      set.view(o1, 107);
+      ignore.objs(o1);
+      if (!isset(f163)) {
+        position(o1, 71, 120);
+        set(f163);
+      }
+      else {
+        position(o1, 40, 110);
+      }
+      draw(o1);
+      wander(o1);
+      set(f236);
+      load.sound(25);
+      sound(25, f154);
+      v143 = 67;
+    }
+  }
+  if ((v144 == 5) && 
+      (!isset(f143))) {
+    load.logics(235);
+    animate.obj(o1);
+    load.view(108);
+    set.view(o1, 108);
+    position(o1, 93, 116);
+    ignore.blocks(o1);
+    ignore.objs(o1);
+    set(f236);
+    set(f225);
+    load.sound(26);
+    sound(26, f154);
+    v117 = 0;
+    reset(f148);
+  }
+  if (prev_room_no == 66) {
+    position(Ego, 36, 111);
+  }
+  else {
+    position(Ego, 130, 116);
+  }
+  draw(Ego);
+  if (isset(f165)) {
+    set(f239);
+  }
+  show.pic();
+}
+get.posn(o1, v134, v135);
+distance(Ego, o1, v161);
+if (isset(f112)) {
+  reset(f112);
+  v168++;
+  v117++;
+}
+if ((v33 > 122) && 
+    (v34 > 123)) {
+  set.priority(Ego, 11);
+}
+else {
+  release.priority(Ego);
+}
+if ((v144 == 2) && 
+    (!isset(f237))) {
+  set(f237);
+  move.obj(o1, 159, 140, 0, f230);
+  v143 = 68;
+}
+if ((v144 == 4) && 
+    (v168 == 15) && 
+    (isset(f163))) {
+  ignore.blocks(o1);
+  set(f237);
+  v143 = 68;
+  v134 = 155;
+  v152 = 0;
+  move.obj.v(o1, v134, v135, v152, f230);
+}
+if (isset(f230)) {
+  reset(f230);
+  erase(o1);
+  reset(f236);
+  set(f154);
+}
+if ((v144 == 5) && 
+    (isset(f225)) && 
+    (isset(f236))) {
+  draw(o1);
+  reset(f225);
+  call(235);
+  v152 = 1;
+  cycle.time(o1, v152);
+  step.time(o1, v152);
+  start.cycling(o1);
+  move.obj(o1, 138, 116, 0, f231);
+}
+if ((v144 == 5) && 
+    (isset(f231))) {
+  reset(f231);
+  reset(f236);
+  v117 = 0;
+  erase(o1);
+  set(f154);
+}
+if ((isset(f233)) && 
+    (v144 != 5)) {
+  reset(f233);
+  reset(f230);
+  erase(o1);
+  set(f236);
+  reset(f148);
+  if (v144 == 5) {
+    reset(f148);
+    v117 = 16;
+    load.view(108);
+    load.sound(26);
+    sound(26, f154);
+    set.view(o1, 108);
+    set.loop(o1, 4);
+    position(o1, 93, 116);
+    ignore.blocks(o1);
+    ignore.objs(o1);
+    draw(o1);
+    v152 = 3;
+    cycle.time(o1, v152);
+    end.of.loop(o1, f225);
+    set(f236);
+  }
+}
+if ((isset(f234)) && 
+    (v153 == 1)) {
+  reset(f234);
+  v152 = 3;
+  cycle.time(o3, v152);
+  start.cycling(o3);
+  end.of.loop(o3, f234);
+  v153++;
+  v221 = 2;
+}
+if (v221 > 0) {
+  v221--;
+  if (v221 <= 0) {
+    sound(70, f154);
+  }
+}
+if ((isset(f234)) && 
+    (v153 == 2)) {
+  reset(f234);
+  set(f165);
+  ignore.objs(Ego);
+  v153++;
+  erase(o3);
+}
+if ((v33 < 46) && 
+    (v34 < 120) && 
+    (isset(f165))) {
+  ignore.blocks(Ego);
+}
+else {
+  observe.blocks(Ego);
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "cottage") || 
+    said("examine", "around", "cottage") || 
+    said("examine", "parlor") || 
+    said("examine", "around", "parlor"))) {
+  print("Considering the disarray of the rest of the house, the parlor looks in "
+        " relatively good order.  However, the fireplace is cold and unused, "
+        "the bookshelves are almost bare, and the old furnishings are dusty.");
+}
+if (said("examine", "book")) {
+  if (has("Book of Shakespeare")) {
+    show.obj(230);
+  }
+  else {
+    reset(input_parsed);
+  }
+}
+if ((said("examine", "bookshelf") || 
+    said("look in", "bookshelf") || 
+    said("examine", "book"))) {
+  if ((!isset(f166)) && 
+      (v33 > 90)) {
+    set(f238);
+    print("You examine the few remaining books on the bookshelf.  Only one "
+          "catches your attention; it is entitled \"The Compleat Works of "
+          "William Shakespeare.\"");
+  }
+  else {
+    print("You examine the few remaining books on the bookshelf.  None interest "
+          "you.");
+  }
+}
+if (!isset(f166)) {
+  if ((said("carry", "book") || 
+      said("carry", "book"))) {
+    if ((!isset(f238)) && 
+        (posn(Ego,106,106,110,111))) {
+      print("You examine the few remaining books on the bookshelf.  Only one "
+            "catches your attention;  it is entitled \"The Compleat Works of "
+            "William Shakespeare.\" You remove it from the shelf and carry it "
+            "with you.");
+      erase(o2);
+      sound(48, f154);
+      get("Book of Shakespeare");
+      score  += 2;
+      set(f166);
+    }
+    else {
+      if (posn(Ego,106,106,110,111)) {
+        print("You remove the Shakespeare book from the shelf and carry it with "
+              "you.");
+        erase(o2);
+        sound(48, f154);
+        get("Book of Shakespeare");
+        score  += 2;
+        set(f166);
+      }
+      else {
+        if (v33 < 90) {
+          print("It's not over here.");
+        }
+        else {
+          set(f113);
+        }
+      }
+    }
+  }
+}
+if (isset(f166)) {
+  if (said("carry", "book")) {
+    print("None of the other books interest you.");
+  }
+}
+if (said("examine", "picture")) {
+  print("An interesting portrait of a young girl hangs above the fireplace. You "
+        "gaze at it intently, and notice that her eyes seem to stare at the "
+        "left wall of the parlor.");
+  set(f239);
+}
+if (said("carry", "picture")) {
+  print("The portrait is firmly attached to the wall.");
+}
+if ((said("examine", "behind", "picture") || 
+    said("examine", "beneath", "picture"))) {
+  print("The portrait is firmly attached to the wall.");
+}
+if (said("examine", "wall")) {
+  print("You see a portrait hanging above the fireplace.");
+}
+if (said("examine", "left", "wall")) {
+  if (isset(f239)) {
+    if (!isset(f165)) {
+      print("You examine the left wall very closely and notice a little latch.");
+      set(f239);
+    }
+    else {
+      print("You have discovered a secret door in the left wall!");
+    }
+  }
+  else {
+    print("It looks like an ordinary wall.");
+  }
+}
+if (said("examine", "latch")) {
+  if (isset(f239)) {
+    print("You could try flipping the little latch in the left wall.");
+  }
+  else {
+    print("You don't see a latch.");
+  }
+}
+if (said("flip", "latch")) {
+  if (isset(f239)) {
+    if (isset(f239)) {
+      if (!isset(f165)) {
+        if (posn(Ego,39,107,44,112)) {
+          print("You flip the latch in the wall--and behold!--you have "
+                "discovered a secret door!");
+          score  += 4;
+          v153 = 1;
+          set(f234);
+        }
+        else {
+          set(f113);
+        }
+      }
+      else {
+        print("You don't know how to close it again.  But, it doesn't matter.");
+      }
+    }
+    else {
+      print("You don't see a latch.");
+    }
+  }
+  else {
+    print("You don't see a latch.");
+  }
+}
+if ((said("examine", "fireplace") || 
+    said("look in", "fireplace"))) {
+  print("The fireplace hasn't been used in years.");
+}
+if (said("examine", "couch")) {
+  print("The old divan is still in pretty good shape; a bit dusty, though.");
+}
+if ((said("sit") || 
+    said("sit", "down") || 
+    said("sit", "abominable", "couch") || 
+    said("sit", "down", "abominable", "couch"))) {
+  print("You don't have time for that!");
+}
+if ((said("examine", "table") || 
+    said("examine", "chair") || 
+    said("examine", "cabinet") || 
+    said("examine", "chest"))) {
+  print("The furniture is old and dusty.");
+}
+if ((said("examine", "door") || 
+    said("examine", "secret", "door"))) {
+  if (!isset(f165)) {
+    print("There is nothing special about the door.");
+  }
+  else {
+    print("You have discovered a secret door in the left wall!");
+  }
+}
+if ((said("open", "door") || 
+    said("open", "secret", "door"))) {
+  if (!isset(f165)) {
+    print("You don't see a door to open.");
+  }
+  else {
+    print("It is already open.");
+  }
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down") || 
+    said("examine", "down", "dirt"))) {
+  print("There is nothing of interest on the floor.");
+}
+if (said("examine", "carpet")) {
+  print("An old, beautiful carpet lies on the floor.");
+}
+if (!has("Lit Oil Lantern") && 
+    !has("Unlit Oil Lantern")) {
+  if ((said("examine", "lamp") || 
+      said("examine", "ignite"))) {
+    print("The lamp is old and dusty.");
+  }
+}
+if ((v144 == 2) && 
+    (isset(f236))) {
+  call(233);
+}
+if ((v144 == 4) && 
+    (isset(f236))) {
+  call(234);
+}
+if ((v144 == 5) && 
+    (isset(f236))) {
+  call(235);
+}
+Label1:
+if (isset(f38)) {
+  call(232);
+}
+if ((isset(ego_touching_signal_line)) && 
+    (v33 > 80)) {
+  new.room(68); //##LE001##
+}
+if ((isset(ego_touching_signal_line)) && 
+    (v33 < 80)) {
+  new.room(66); //##LE002##
+}
+return();
+
+//Messages
+#message 1 "Considering the disarray of the rest of the house, the parlor looks in  relatively good order.  However, the fireplace is cold and unused, the bookshelves are almost bare, and the old furnishings are dusty."
+#message 2 "You examine the few remaining books on the bookshelf.  Only one catches your attention; it is entitled \"The Compleat Works of William Shakespeare.\""
+#message 3 "You examine the few remaining books on the bookshelf.  None interest you."
+#message 4 "You examine the few remaining books on the bookshelf.  Only one catches your attention;  it is entitled \"The Compleat Works of William Shakespeare.\" You remove it from the shelf and carry it with you."
+#message 5 "You remove the Shakespeare book from the shelf and carry it with you."
+#message 6 "None of the other books interest you."
+#message 7 "An interesting portrait of a young girl hangs above the fireplace. You gaze at it intently, and notice that her eyes seem to stare at the left wall of the parlor."
+#message 8 "The portrait is firmly attached to the wall."
+#message 9 "You examine the left wall very closely and notice a little latch."
+#message 10 "You see a portrait hanging above the fireplace."
+#message 11 "You don't see a latch."
+#message 12 "You could try flipping the little latch in the left wall."
+#message 13 "You flip the latch in the wall--and behold!--you have discovered a secret door!"
+#message 14 "You don't know how to close it again.  But, it doesn't matter."
+#message 15 "The fireplace hasn't been used in years."
+#message 16 "The old divan is still in pretty good shape; a bit dusty, though."
+#message 17 "You don't have time for that!"
+#message 18 "There is nothing special about the door."
+#message 19 "You have discovered a secret door in the left wall!"
+#message 20 "There is nothing of interest on the floor."
+#message 21 "There is nothing of interest in the dusty, old cabinet."
+#message 22 "There fireplace is empty."
+#message 23 "It's not over here."
+#message 24 "You don't see a door to open."
+#message 25 "It is already open."
+#message 26 "It looks like an ordinary wall."
+#message 27 "The furniture is old and dusty."
+#message 28 "The lamp is old and dusty."
+#message 29 "An old, beautiful carpet lies on the floor."

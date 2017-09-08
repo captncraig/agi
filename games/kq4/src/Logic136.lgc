@@ -1,0 +1,141 @@
+set(f36);
+cycle_delay = 2;
+if (isset(new_room)) {
+  prevent.input();
+  status.line.on();
+  reset(menu_enabled);
+  v152 = 201;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.view(196);
+  load.view(97);
+  load.sound(209);
+  animate.obj(o12);
+  set.view(o12, 196);
+  position(o12, 121, 128);
+  set.loop(o12, 2);
+  set.cel(o12, 0);
+  add.to.pic(196, 5, 0, 73, 51, 4, 1);
+  add.to.pic(196, 4, 0, 16, 129, 4, 2);
+  if (has("Magic Fruit")) {
+    animate.obj(o1);
+    set.view(o1, 196);
+    set.loop(o1, 6);
+    position(o1, 148, 126);
+    set.priority(o1, 7);
+    draw(o1);
+    stop.update(o1);
+  }
+  else {
+    add.to.pic(196, 6, 0, 150, 126, 7, 1);
+  }
+  animate.obj(o2);
+  set.view(o2, 97);
+  position(o2, 116, 134);
+  set.loop(o2, 0);
+  set.cel(o2, 0);
+  stop.update(o2);
+  reset(f65);
+  if (has("Magic Fruit")) {
+    set(f224);
+  }
+  set(f220);
+  v153 = 1;
+  v154 = 2;
+  v155 = 3;
+  show.pic();
+  return();
+}
+if (isset(f224)) {
+  sound(209, f154);
+}
+if (isset(f221)) {
+  current.cel(o2, v162);
+  if (v162 == 2) {
+    draw(o12);
+    stop.cycling(o12);
+  }
+  if (v162 == 6) {
+    erase(o2);
+    reset(f221);
+  }
+}
+if (isset(f223)) {
+  current.cel(o12, v161);
+  if (v161 == 2) {
+    erase(o1);
+    force.update(o1);
+  }
+  if (v161 == 4) {
+    reset(f223);
+    set.loop(o12, 0);
+    release.loop(o12);
+    start.cycling(o12);
+    move.obj(o12, 121, 128, 2, f220);
+  }
+}
+if (isset(f220)) {
+  reset(f220);
+  v220++;
+  if (v220 == 1) {
+    set(f221);
+    start.update(o2);
+    draw(o2);
+    cycle.time(o2, v155);
+    end.of.loop(o2, f220);
+    current.cel(o2, v162);
+  }
+  if (v220 == 2) {
+    if (has("Magic Fruit")) {
+      set(f220);
+    }
+    else {
+      v220 = 5;
+      set(f220);
+    }
+  }
+  if (v220 == 3) {
+    start.cycling(o12);
+    move.obj(o12, 143, 128, 2, f220);
+  }
+  if (v220 == 4) {
+    set.loop(o12, 3);
+    fix.loop(o12);
+    set(f223);
+    end.of.loop(o12, f222);
+    current.cel(o12, v161);
+  }
+  if (v220 == 5) {
+    start.cycling(o12);
+    move.obj(o12, 121, 167, 2, f220);
+  }
+  if (v220 == 6) {
+    new.room(138); //##LE001##
+  }
+}
+return();
+
+//Messages
+#message 1 "...you find yourself outside!"
+#message 2 "\"My hen!\" Genesta suddenly exclaims. \"Where ever did you find her?!\""
+#message 3 "You explain that the ogre had had possession of her. \"Poor thing,\" she says. \"Well, at least she's back home again.\""
+#message 4 "\"Now for you, Rosella,\" Genesta says. \"You have performed so heroically for all of us here in Tamir -- but -- you forgot one thing...you forgot the magic fruit for your father.\""
+#message 5 "Sadly, you realize this terrible error."
+#message 6 "The fairy continues, \"Well, it's too late now. I must immediately return you to Daventry so you may at least bid him good-bye.\""
+#message 7 "\"You look like yourself again,\" assesses the fairy. \"You best be off. We won't forget you here! Good luck!\""
+#message 8 "You made it just in time. Just in time, that is, to look your father in the eyes before he quietly dies. He must have been waiting for your return."
+#message 16 "\"Rosella,\" he says, \"I love you. Will you marry me?\""
+#message 17 "You think about it."
+#message 18 "You think about it some more."
+#message 19 "Then..."
+#message 20 "\"I'm sorry, Edgar,\" you tell him. \"You're very sweet...but I must immediately return home.\""
+#message 21 "\"Perhaps we'll meet again,\" you say."
+#message 22 "\"Well, Rosella,\" Genesta announces. \"It's time for you to go. Your father desperately needs you.\""
+#message 23 "\"Good-bye! We'll never forget you!\""
+#message 100 "\"Now for you, Rosella,\" Genesta says. \"It's my turn to help YOU out. I will return you to Daventry; and with the magic fruit you will be able to save your father's life. We'd better hurry, though, as he doesn't have much time left.\""
+#message 101 "Yes, you ARE anxious to get home again."
+#message 102 "\"But first,\" Genesta proclaims, \"let's replace these peasant clothes with your royal gown.\""
+#message 103 "With a twinkle in her eyes, Genesta announces, \"There is someone else deserving of a reward for his kindness and heroism.\""
+#message 104 "\"You have a beautiful soul, Edgar,\" the fairy says to the ugly, little man. \"You should look like what you are.\""
+#message 105 "This handsome hunk is Edgar?!!"

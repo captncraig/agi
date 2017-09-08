@@ -1,0 +1,317 @@
+if (isset(new_room)) {
+  set.horizon(1);
+  prevent.input();
+  program.control();
+  status.line.off();
+  set(f151);
+  cycle_delay = 1;
+  load.sound(1);
+  load.view(79);
+  load.pic(room_no);
+  draw.pic(room_no);
+  discard.pic(room_no);
+  sound(1, f229);
+  add.to.pic(79, 0, 0, 59, 148, 4, 4);
+  add.to.pic(79, 0, 1, 75, 148, 4, 4);
+  add.to.pic(79, 0, 2, 87, 148, 4, 4);
+  v226 = 0;
+  v221 = 2;
+  v222 = 3;
+  v223 = 4;
+  v224 = 5;
+  v225 = 10;
+  animate.obj(o1);
+  ignore.objs(o1);
+  set.view(o1, 79);
+  set.loop(o1, 2);
+  set.priority(o1, 15);
+  animate.obj(o2);
+  ignore.objs(o2);
+  set.view(o2, 79);
+  set.loop(o2, 2);
+  set.priority(o2, 15);
+  animate.obj(o3);
+  ignore.objs(o3);
+  set.view(o3, 79);
+  set.loop(o3, 2);
+  set.priority(o3, 15);
+  animate.obj(o4);
+  ignore.objs(o4);
+  set.view(o4, 79);
+  set.loop(o4, 2);
+  set.priority(o4, 15);
+  show.pic();
+  return();
+}
+if (isset(f229)) {
+  new.room(103); //##LE001##
+}
+if (isset(f112)) {
+  v225--;
+  if (v225 == 1) {
+    set(f220);
+  }
+}
+v221--;
+if (v221 == 1) {
+  random(1, 13, v152);
+  if (v152 == 1) {
+    v30 = 39;
+    v31 = 77;
+  }
+  if (v152 == 2) {
+    v30 = 48;
+    v31 = 107;
+  }
+  if (v152 == 3) {
+    v30 = 68;
+    v31 = 73;
+  }
+  if (v152 == 4) {
+    v30 = 92;
+    v31 = 79;
+  }
+  if (v152 == 5) {
+    v30 = 105;
+    v31 = 106;
+  }
+  if (v152 == 6) {
+    v30 = 126;
+    v31 = 88;
+  }
+  if (v152 == 7) {
+    v30 = 132;
+    v31 = 106;
+  }
+  if (v152 == 8) {
+    v30 = 55;
+    v31 = 57;
+  }
+  if (v152 == 9) {
+    v30 = 99;
+    v31 = 46;
+  }
+  if (v152 == 10) {
+    v30 = 55;
+    v31 = 150;
+  }
+  if (v152 == 11) {
+    v30 = 100;
+    v31 = 153;
+  }
+  if (v152 == 12) {
+    v30 = 84;
+    v31 = 136;
+  }
+  if (v152 == 13) {
+    v30 = 72;
+    v31 = 63;
+  }
+  position.v(o1, v30, v31);
+  set.cel(o1, 0);
+  draw(o1);
+  end.of.loop(o1, f221);
+}
+if (isset(f221)) {
+  reset(f221);
+  erase(o1);
+  random(4, 10, v221);
+}
+v222--;
+if (v222 == 1) {
+  random(1, 13, v152);
+  if (v152 == 1) {
+    v30 = 39;
+    v31 = 77;
+  }
+  if (v152 == 2) {
+    v30 = 48;
+    v31 = 107;
+  }
+  if (v152 == 3) {
+    v30 = 68;
+    v31 = 73;
+  }
+  if (v152 == 4) {
+    v30 = 92;
+    v31 = 79;
+  }
+  if (v152 == 5) {
+    v30 = 105;
+    v31 = 106;
+  }
+  if (v152 == 6) {
+    v30 = 126;
+    v31 = 88;
+  }
+  if (v152 == 7) {
+    v30 = 132;
+    v31 = 106;
+  }
+  if (v152 == 8) {
+    v30 = 55;
+    v31 = 57;
+  }
+  if (v152 == 9) {
+    v30 = 99;
+    v31 = 46;
+  }
+  if (v152 == 10) {
+    v30 = 55;
+    v31 = 150;
+  }
+  if (v152 == 11) {
+    v30 = 100;
+    v31 = 153;
+  }
+  if (v152 == 12) {
+    v30 = 84;
+    v31 = 136;
+  }
+  if (v152 == 13) {
+    v30 = 72;
+    v31 = 63;
+  }
+  position.v(o2, v30, v31);
+  draw(o2);
+  set.cel(o2, 0);
+  end.of.loop(o2, f222);
+}
+if (isset(f222)) {
+  reset(f222);
+  erase(o2);
+  random(4, 10, v222);
+}
+v223--;
+if (v223 == 1) {
+  random(1, 13, v152);
+  if (v152 == 1) {
+    v30 = 39;
+    v31 = 77;
+  }
+  if (v152 == 2) {
+    v30 = 48;
+    v31 = 107;
+  }
+  if (v152 == 3) {
+    v30 = 68;
+    v31 = 73;
+  }
+  if (v152 == 4) {
+    v30 = 92;
+    v31 = 79;
+  }
+  if (v152 == 5) {
+    v30 = 105;
+    v31 = 106;
+  }
+  if (v152 == 6) {
+    v30 = 126;
+    v31 = 88;
+  }
+  if (v152 == 7) {
+    v30 = 132;
+    v31 = 106;
+  }
+  if (v152 == 8) {
+    v30 = 55;
+    v31 = 57;
+  }
+  if (v152 == 9) {
+    v30 = 99;
+    v31 = 46;
+  }
+  if (v152 == 10) {
+    v30 = 55;
+    v31 = 150;
+  }
+  if (v152 == 11) {
+    v30 = 100;
+    v31 = 153;
+  }
+  if (v152 == 12) {
+    v30 = 84;
+    v31 = 136;
+  }
+  if (v152 == 13) {
+    v30 = 72;
+    v31 = 63;
+  }
+  position.v(o3, v30, v31);
+  set.cel(o3, 0);
+  draw(o3);
+  end.of.loop(o3, f223);
+}
+if (isset(f223)) {
+  reset(f223);
+  erase(o3);
+  random(4, 10, v223);
+}
+v224--;
+if (v224 == 1) {
+  random(1, 13, v152);
+  if (v152 == 1) {
+    v30 = 39;
+    v31 = 77;
+  }
+  if (v152 == 2) {
+    v30 = 48;
+    v31 = 107;
+  }
+  if (v152 == 3) {
+    v30 = 68;
+    v31 = 73;
+  }
+  if (v152 == 4) {
+    v30 = 92;
+    v31 = 79;
+  }
+  if (v152 == 5) {
+    v30 = 105;
+    v31 = 106;
+  }
+  if (v152 == 6) {
+    v30 = 126;
+    v31 = 88;
+  }
+  if (v152 == 7) {
+    v30 = 132;
+    v31 = 106;
+  }
+  if (v152 == 8) {
+    v30 = 55;
+    v31 = 57;
+  }
+  if (v152 == 9) {
+    v30 = 99;
+    v31 = 46;
+  }
+  if (v152 == 10) {
+    v30 = 55;
+    v31 = 150;
+  }
+  if (v152 == 11) {
+    v30 = 100;
+    v31 = 153;
+  }
+  if (v152 == 12) {
+    v30 = 84;
+    v31 = 136;
+  }
+  if (v152 == 13) {
+    v30 = 72;
+    v31 = 63;
+  }
+  position.v(o4, v30, v31);
+  set.cel(o4, 0);
+  draw(o4);
+  end.of.loop(o4, f224);
+}
+if (isset(f224)) {
+  reset(f224);
+  erase(o4);
+  random(4, 10, v224);
+}
+return();
+
+//Messages

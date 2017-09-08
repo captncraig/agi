@@ -1,0 +1,720 @@
+if (isset(new_room)) {
+  set(f82);
+  set.horizon(74);
+  v152 = 43;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.logics(151);
+  load.logics(209);
+  load.view(4);
+  load.view(2);
+  load.view(28);
+  load.sound(48);
+  load.view(55);
+  animate.obj(o6);
+  animate.obj(o7);
+  animate.obj(o8);
+  set.view(o6, 55);
+  set.view(o7, 55);
+  set.view(o8, 55);
+  set.loop(o6, 1);
+  set.loop(o7, 2);
+  set.loop(o8, 2);
+  position(o6, 145, 144);
+  position(o7, 113, 146);
+  position(o8, 34, 124);
+  set.priority(o6, 4);
+  set.priority(o7, 4);
+  set.priority(o8, 4);
+  ignore.objs(o6);
+  ignore.objs(o7);
+  ignore.objs(o8);
+  v152 = 3;
+  cycle.time(o6, v152);
+  cycle.time(o7, v152);
+  cycle.time(o8, v152);
+  draw(o6);
+  draw(o7);
+  draw(o8);
+  if ((isset(f153) || 
+      has("Dead Fish") || 
+      has("Silver Whistle"))) {
+    load.view(161);
+    load.view(29);
+    load.view(123);
+    load.sound(35);
+  }
+  animate.obj(o12);
+  ignore.objs(o12);
+  if ((!isset(f153)) && 
+      (!has("Silver Whistle"))) {
+    load.view(123);
+    animate.obj(o2);
+    set.view(o2, 123);
+    set.loop(o2, 2);
+    set.cel(o2, 0);
+    ignore.horizon(o2);
+    position(o2, 53, 66);
+    stop.cycling(o2);
+    set.priority(o2, 8);
+    set(f235);
+    ignore.blocks(o2);
+    ignore.objs(o2);
+    draw(o2);
+  }
+  animate.obj(o4);
+  animate.obj(o5);
+  set.view(o5, 123);
+  set.loop(o5, 6);
+  v152 = 3;
+  cycle.time(o5, v152);
+  position(o5, 64, 96);
+  if (isset(f153)) {
+    draw(o5);
+    set(f237);
+  }
+  if (has("Silver Whistle")) {
+    set(f237);
+  }
+  if (!isset(f38)) {
+    load.view(163);
+    animate.obj(o1);
+    ignore.objs(o1);
+    load.view(163);
+    set.view(o1, 163);
+    set.loop(o1, 0);
+    fix.loop(o1);
+    set.view(o1, 163);
+    ignore.horizon(o1);
+    position(o1, 82, 25);
+    draw(o1);
+    wander(o1);
+    set(f239);
+  }
+  reset(f238);
+  reset(f221);
+  v153 = 0;
+  set.view(Ego, 4);
+  if (v33 == 147) {
+    position(Ego, 138, 153);
+    v37 = 11;
+  }
+  if (v33 == 1) {
+    position(Ego, 82, 158);
+  }
+  if (v34 == 167) {
+    position(Ego, 82, 158);
+  }
+  if (v34 < 77) {
+    set.view(Ego, 4);
+    position(Ego, 114, 78);
+    v37 = 11;
+  }
+  draw(Ego);
+  reset(f190);
+  show.pic();
+}
+if (isset(f112)) {
+  reset(f112);
+  v168++;
+  v169++;
+  v221++;
+  v222++;
+}
+if (isset(f239)) {
+  get.posn(o1, v226, v227);
+}
+if ((isset(f239)) && 
+    (v227 < 5 || 
+    v226 < 5 || 
+    v226 > 150)) {
+  erase(o1);
+  v221 = 0;
+  reset(f239);
+}
+if ((v221 == 3) && 
+    (!isset(f239)) && 
+    !isset(f38)) {
+  v221 = 4;
+  random(54, 145, v162);
+  v161 = 6;
+  position.v(o1, v162, v161);
+  draw(o1);
+  move.obj(o1, 100, 35, 0, f225);
+  set(f239);
+}
+if (isset(f225)) {
+  reset(f225);
+  wander(o1);
+}
+if (posn(Ego,118,77,141,91)) {
+  set(ego_on_water);
+}
+if (posn(Ego,129,132,158,145)) {
+  set(ego_on_water);
+}
+if (posn(Ego,29,69,42,82)) {
+  set(ego_on_water);
+}
+if (!isset(f180)) {
+  if (isset(ego_on_water)) {
+    set.view(Ego, 4);
+    v37 = 11;
+  }
+}
+if (isset(ego_touching_signal_line)) {
+  set.view(Ego, 2);
+  v37 = 9;
+}
+if ((!isset(ego_on_water)) && 
+    (!isset(ego_touching_signal_line))) {
+  set.view(Ego, 0);
+  v37 = 0;
+}
+if ((posn(Ego,36,82,68,103)) && 
+    (!isset(f238))) {
+  set(f221);
+  set(f238);
+  v153 = 1;
+}
+if ((isset(f237)) && 
+    (!isset(f238))) {
+  set(f238);
+  set(f221);
+  v153 = 1;
+}
+if (v168 == 80) {
+  set(f221);
+  v153 = 1;
+  set(f190);
+}
+if (isset(f190)) {
+  reset(f190);
+  v169 = 100;
+}
+if ((isset(f221)) && 
+    (v153 == 1)) {
+  reset(f221);
+  start.cycling(o2);
+  end.of.loop(o2, f221);
+  v153++;
+  if (isset(f237)) {
+    if (!has("Silver Whistle")) {
+      draw(o5);
+    }
+  }
+}
+if ((isset(f221)) && 
+    (v153 == 2)) {
+  reset(f221);
+  set.loop(o2, 0);
+  fix.loop(o2);
+  start.cycling(o2);
+  ignore.blocks(o2);
+  move.obj(o2, 159, 85, 2, f221);
+  v153++;
+}
+if ((isset(f221)) && 
+    (v153 == 3)) {
+  reset(f221);
+  erase(o2);
+  reset(f235);
+  v169 = 0;
+  v153++;
+}
+if ((!isset(f237)) && 
+    (!isset(f235)) && 
+    (v169 > 10) && 
+    (v168 < 80)) {
+  reset(f221);
+  position(o2, 0, 85);
+  set.loop(o2, 0);
+  fix.loop(o2);
+  draw(o2);
+  set(f235);
+  move.obj(o2, 46, 66, 0, f221);
+  v153 = 5;
+}
+if ((isset(f221)) && 
+    (v153 == 5)) {
+  reset(f221);
+  set.loop(o2, 1);
+  set.cel(o2, 0);
+  end.of.loop(o2, f221);
+  v153++;
+}
+if ((isset(f221)) && 
+    (v153 == 6)) {
+  reset(f221);
+  v153++;
+  stop.cycling(o2);
+  reset(f238);
+}
+if (v222 == 180) {
+  if (v37 == 0) {
+    set(f36);
+    get.posn(Ego, v33, v34);
+    set.view(o12, 28);
+    position.v(o12, v33, v34);
+    draw(o12);
+    erase(Ego);
+    set.cel(o12, 0);
+    v152 = 4;
+    cycle.time(o12, v152);
+    end.of.loop(o12, f227);
+    v159 = 2;
+  }
+  else {
+    v222 = 179;
+  }
+}
+if ((isset(f227)) && 
+    (v159 == 2)) {
+  print("You die of heat stroke and lack of water.");
+  set(f140);
+}
+if ((isset(f224)) && 
+    (v156 == 1)) {
+  sound(35, f154);
+  reset(f224);
+  set.view(o4, 161);
+  position(o4, 113, 155);
+  set.loop(o4, 1);
+  fix.loop(o4);
+  set.cel(o4, 0);
+  draw(o4);
+  end.of.loop(o4, f224);
+  v156++;
+}
+if ((isset(f224)) && 
+    (v156 == 2)) {
+  reset(f224);
+  set.loop(o4, 3);
+  fix.loop(o4);
+  v152 = 3;
+  cycle.time(o4, v152);
+  start.cycling(o4);
+  v156++;
+}
+if ((isset(f224)) && 
+    (v156 == 5)) {
+  set(f36);
+  erase(o4);
+  set.view(Ego, 29);
+  set.loop(Ego, 1);
+  v156++;
+}
+if ((isset(f224)) && 
+    (v156 == 6)) {
+  reset(f224);
+  set.loop(Ego, 0);
+  ego_dir = 3;
+  v156++;
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room"))) {
+  print("You have found yourself stranded upon a desert island.  Also, it "
+        "seems, have others before you.  Now, what are you going to do, "
+        "Rosella?!");
+}
+if (said("examine", "island")) {
+  print("The small island is nothing more than a sand bar decorated with two "
+        "lonely palm trees, and various shipwrecks.");
+}
+if ((said("examine", "ocean") || 
+    said("examine", "lake"))) {
+  print("The blue ocean surrounds this small island.  You look in all "
+        "directions, but can see no sign of land.");
+}
+if (said("examine", "beach")) {
+  if (isset(f153)) {
+    print("There is a shiny whistle on the ground where the pelican was.");
+  }
+  else {
+    print("In this case, the beach and the island are one and the same!");
+  }
+}
+if ((said("examine", "black sky") || 
+    said("examine", "up") || 
+    said("examine", "up", "black sky"))) {
+  if (!isset(f38)) {
+    print("The bright blue sky seems to merge as one with the vast ocean before "
+          "you.");
+  }
+  else {
+    print("It's easy to see by the light of a full moon.");
+  }
+}
+if ((center.posn(Ego,111,96,127,100)) && 
+    (!has("Golden Bridle")) && 
+    (said("examine", "dirt") || 
+    said("examine", "down", "dirt"))) {
+  score  += 3;
+  sound(48, f154);
+  get("Golden Bridle");
+  print("You look at the ground inside the wrecked rowboat.  What is this?!  "
+        "Why, it's a golden bridle!  You pick it up and carry it with you.");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down", "dirt"))) {
+  if (!isset(f237)) {
+    print("You look at the ground and see nothing but sand.");
+  }
+  else {
+    if (!has("Silver Whistle")) {
+      print("There is a shiny whistle on the ground where the pelican was.");
+    }
+    else {
+      print("You look at the ground and see nothing but sand.");
+    }
+  }
+}
+if (said("examine", "rock")) {
+  print("There are few rocks here.");
+}
+if (said("carry", "bit")) {
+  if (has("Golden Bridle")) {
+    set(f114);
+  }
+  else {
+    print("You don't see a bridle.");
+  }
+}
+if ((said("examine", "forest") || 
+    said("examine", "palm"))) {
+  print("Only two lonely palms grow here.");
+}
+if (said("climb", "forest")) {
+  print("It is difficult to climb trees while wearing that dress!");
+}
+if (said("examine", "cloud")) {
+  print("The clouds are white and fluffy.");
+}
+if (said("examine", "gull")) {
+  print("You see many seagulls gliding through the air.  Watch where you stand.");
+}
+if ((v37 == 0) && 
+    (said("enter", "swimming") || 
+    said("enter", "swimming", "ocean") || 
+    said("enter", "swimming", "lake") || 
+    said("float", "lake") || 
+    said("float", "ocean") || 
+    said("float") || 
+    said("dive", "ocean") || 
+    said("dive", "lake") || 
+    said("wade", "ocean") || 
+    said("wade", "lake") || 
+    said("dive") || 
+    said("wade"))) {
+  print("Just enter the water.");
+}
+if ((v37 != 0) && 
+    (said("dive", "beneath", "ocean") || 
+    said("dive", "ocean") || 
+    said("dive", "beneath", "lake") || 
+    said("dive", "lake") || 
+    said("dive"))) {
+  print("The water is too shallow here.");
+}
+if ((v37 != 0) && 
+    (said("look in", "ocean") || 
+    said("look in", "lake") || 
+    said("examine", "beneath", "lake") || 
+    said("examine", "beneath", "ocean"))) {
+  print("You look under the water and see nothing but...more water!");
+}
+if ((v37 != 0) && 
+    (said("capture", "dead fish") || 
+    said("carry", "dead fish") || 
+    said("dead fish") || 
+    said("enter", "fishing"))) {
+  print("You cannot catch fish while swimming.");
+}
+if ((said("carry", "ocean") || 
+    said("carry", "lake"))) {
+  print("There's no reason to carry water.");
+}
+if ((v37 == 9) && 
+    (said("drink", "lake") || 
+    said("drink", "ocean") || 
+    said("drink") || 
+    said("carry", "drink") || 
+    said("carry", "drink", "ocean") || 
+    said("carry", "drink", "lake"))) {
+  print("You tentatively taste the water.  YUCK!!  This water's too salty!");
+}
+if ((v37 > 2) && 
+    (said("drink", "lake") || 
+    said("drink", "ocean") || 
+    said("drink") || 
+    said("carry", "drink") || 
+    said("carry", "drink", "ocean") || 
+    said("carry", "drink", "lake"))) {
+  print("You taste the ocean water.  YUCK!!  This water's too salty!");
+}
+if ((v37 == 0) && 
+    (said("drink", "lake") || 
+    said("drink", "ocean") || 
+    said("drink") || 
+    said("carry", "drink") || 
+    said("carry", "drink", "ocean") || 
+    said("carry", "drink", "lake"))) {
+  set(f113);
+}
+if ((!has("Fishing Pole")) && 
+    (said("dead fish") || 
+    said("enter", "fishing") || 
+    said("capture", "dead fish") || 
+    said("carry", "dead fish"))) {
+  print("You have no way of catching any fish.");
+}
+if ((said("examine", "shipwreck") || 
+    said("examine", "boat"))) {
+  print("It looks as if many an unlucky sailor has been stranded here.");
+}
+if (isset(f235)) {
+  if ((said("examine", "pelican") || 
+      said("examine", "bird"))) {
+    print("A pelican, with an extra-large bill, visits you on this desert "
+          "island.");
+  }
+  if ((said("speak", "pelican") || 
+      said("speak", "with", "bird") || 
+      said("speak", "bird") || 
+      said("speak") || 
+      said("speak", "with", "pelican"))) {
+    print("You feel silly trying to talk to a pelican!");
+  }
+  if ((said("carry", "pelican") || 
+      said("carry", "bird"))) {
+    print("You have to catch the pelican first.");
+  }
+  if ((said("capture", "pelican") || 
+      said("capture", "bird"))) {
+    print("You can try.");
+  }
+  if ((said("embrace", "pelican") || 
+      said("embrace") || 
+      said("embrace", "bird"))) {
+    print("You can try.");
+  }
+  if ((said("deliver", "dead fish") || 
+      said("deliver", "dead fish", "pelican") || 
+      said("deliver", "dead fish", "bird") || 
+      said("fling", "dead fish", "pelican") || 
+      said("fling", "dead fish", "bird") || 
+      said("fling", "dead fish") || 
+      said("feed", "dead fish", "bird") || 
+      said("feed", "dead fish", "pelican"))) {
+    if (!isset(f238)) {
+      if (has("Dead Fish")) {
+        set(f237);
+        score  += 4;
+        print("You throw the stinky dead fish to the pelican.  Greedily, he "
+              "catches it in his large bill.  As he does so, you notice "
+              "something shiny fall from his bill, onto the ground.");
+        drop("Dead Fish");
+        set(f153);
+      }
+      else {
+        set(f115);
+      }
+    }
+    else {
+      print("Not while the pelican is flying.");
+    }
+  }
+  if (!isset(input_parsed)) {
+    call(151);
+  }
+  if (isset(f106)) {
+    reset(f106);
+    print("The pelican isn't interested.");
+  }
+}
+if ((said("carry", "silver whistle") || 
+    said("carry", "cute", "silver whistle"))) {
+  if (isset(f153)) {
+    if (!has("Silver Whistle")) {
+      if (posn(Ego,52,92,67,100)) {
+        set(f116);
+        sound(48, f154);
+        get("Silver Whistle");
+        score  += 2;
+        erase(o5);
+        reset(f153);
+      }
+      else {
+        set(f113);
+      }
+    }
+    else {
+      set(f114);
+    }
+  }
+  else {
+    print("You look at the ground and see nothing but sand.");
+  }
+}
+if ((said("blow", "silver whistle") || 
+    said("silver whistle", "silver whistle") || 
+    said("silver whistle") || 
+    said("play", "silver whistle"))) {
+  if (has("Silver Whistle")) {
+    if (!isset(f236)) {
+      print("You put the shiny silver whistle to your lips and forcefully blow "
+            "into it, producing a loud TWEEEEEEEEEEET!  To your astonishment, a "
+            "friendly dolphin appears just off-shore and jabbers excitedly at "
+            "you.");
+      set(f224);
+      v156 = 1;
+      set(f224);
+      set(f236);
+      score  += 2;
+    }
+    else {
+      print("Okay.  TWEEEEEEEEEEEET!");
+    }
+  }
+  else {
+    set(f115);
+  }
+}
+if (isset(f236)) {
+  if (said("examine", "dolphin")) {
+    if (!isset(f180)) {
+      print("A bottle-nose dolphin pokes its nose out of the water and chatters "
+            "noisily.");
+    }
+    else {
+      print("You can feel the dolphin's strong muscles working, as it swims "
+            "through the ocean with you on its back.");
+    }
+  }
+  if ((said("speak", "dolphin") || 
+      said("speak") || 
+      said("speak", "with", "dolphin"))) {
+    print("You speak to the dolphin, and it chatters back.");
+  }
+  if ((said("carry", "dolphin") || 
+      said("capture", "dolphin"))) {
+    print("You can't get the dolphin.  You could try riding it.");
+  }
+  if ((said("embrace", "dolphin") || 
+      said("embrace"))) {
+    print("There's no need for that.");
+  }
+  if ((said("mount", "dolphin") || 
+      said("carry", "abominable", "dolphin") || 
+      said("climb", "abominable", "dolphin"))) {
+    if (posn(Ego,105,148,118,158)) {
+      v37 = 204;
+      set(f180);
+      set(f224);
+      v156 = 5;
+      score  += 2;
+    }
+    else {
+      set(f113);
+    }
+  }
+  if (said("pat", "dolphin")) {
+    if (posn(Ego,105,148,118,158)) {
+      print("The dolphin's skin feels smooth and slippery as you pet it.");
+    }
+    else {
+      set(f113);
+    }
+  }
+}
+if (said("examine", "anchor")) {
+  print("You see a rust covered anchor.");
+}
+if ((said("examine", "coconut") || 
+    said("carry", "coconut"))) {
+  print("You don't see any coconuts.");
+}
+if (!isset(input_parsed)) {
+  call(209);
+}
+Label1:
+if (!isset(f180)) {
+  if (ego_edge_code == bottom_edge) {
+    v45 = 150;
+    v46 = 4;
+    new.room(31); //##LE001##
+  }
+  if (ego_edge_code == right_edge) {
+    v45 = 149;
+    v46 = 0;
+    new.room(31); //##LE002##
+  }
+  if (ego_edge_code == horizon_edge) {
+    v45 = 150;
+    v46 = 1;
+    new.room(31); //##LE003##
+  }
+  if (ego_edge_code == left_edge) {
+    v45 = 151;
+    v46 = 0;
+    new.room(31); //##LE004##
+  }
+}
+if (isset(f180)) {
+  if (ego_edge_code == right_edge) {
+    v45 = 190;
+    v46 = 190;
+    new.room(31); //##LE005##
+  }
+}
+return();
+
+//Messages
+#message 1 "You have found yourself stranded upon a desert island.  Also, it seems, have others before you.  Now, what are you going to do, Rosella?!"
+#message 2 "The small island is nothing more than a sand bar decorated with two lonely palm trees, and various shipwrecks."
+#message 3 "The blue ocean surrounds this small island.  You look in all directions, but can see no sign of land."
+#message 4 "In this case, the beach and the island are one and the same!"
+#message 5 "The bright blue sky seems to merge as one with the vast ocean before you."
+#message 6 "It's easy to see by the light of a full moon."
+#message 7 "You look at the ground inside the wrecked rowboat.  What is this?!  Why, it's a golden bridle!  You pick it up and carry it with you."
+#message 8 "You look at the ground and see nothing but sand."
+#message 9 "There are few rocks here."
+#message 10 "Only two lonely palms grow here."
+#message 11 "It is difficult to climb trees while wearing that dress!"
+#message 12 "You see many seagulls gliding through the air.  Watch where you stand."
+#message 13 "Just enter the water."
+#message 14 "The water is too shallow here."
+#message 15 "You look under the water and see nothing but...more water!"
+#message 16 "You cannot catch fish while swimming."
+#message 17 "You tentatively taste the water.  YUCK!!  This water's too salty!"
+#message 18 "You taste the ocean water.  YUCK!!  This water's too salty!"
+#message 19 "You have no way of catching any fish."
+#message 20 "It looks as if many an unlucky sailor has been stranded here."
+#message 21 "A pelican, with an extra-large bill, visits you on this desert island."
+#message 22 "You feel silly trying to talk to a pelican!"
+#message 23 "You have to catch the pelican first."
+#message 24 "You can try."
+#message 25 "You throw the stinky dead fish to the pelican.  Greedily, he catches it in his large bill.  As he does so, you notice something shiny fall from his bill, onto the ground."
+#message 26 "You put the shiny silver whistle to your lips and forcefully blow into it, producing a loud TWEEEEEEEEEEET!  To your astonishment, a friendly dolphin appears just off-shore and jabbers excitedly at you."
+#message 27 "Okay.  TWEEEEEEEEEEEET!"
+#message 28 "A bottle-nose dolphin pokes its nose out of the water and chatters noisily."
+#message 29 "You can feel the dolphin's strong muscles working, as it swims through the ocean with you on its back."
+#message 30 "You speak to the dolphin, and it chatters back."
+#message 31 "You can't get the dolphin.  You could try riding it."
+#message 32 "There's no need for that."
+#message 33 "There is a shiny whistle on the ground where the pelican was."
+#message 34 "You die of heat stroke and lack of water."
+#message 35 "You don't see a bridle."
+#message 36 "You see a rust covered anchor."
+#message 37 "The dolphin's skin feels smooth and slippery as you pet it."
+#message 38 "The pelican isn't interested."
+#message 39 "The clouds are white and fluffy."
+#message 40 "There's no reason to carry water."
+#message 41 "You don't see any coconuts."
+#message 42 "Not while the pelican is flying."

@@ -1,0 +1,419 @@
+if (isset(new_room)) {
+  load.logics(200);
+  load.logics(213);
+  load.logics(151);
+  load.logics(150);
+  load.view(11);
+  load.view(20);
+  load.sound(52);
+  call(150);
+  set.horizon(80);
+  if (!isset(f38)) {
+    v152 = 19;
+  }
+  else {
+    v152 = 119;
+  }
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  if (prev_room_no == 20) {
+    v91 = 1;
+  }
+  if (prev_room_no == 13) {
+    if (v91 == 1) {
+      position(Ego, 130, 82);
+    }
+    if (v91 == 2) {
+      position(Ego, 100, 82);
+    }
+    if (v37 == 9) {
+      position(Ego, 93, 82);
+    }
+    if (v37 == 10) {
+      position(Ego, 80, 82);
+    }
+    if ((v37 == 11 || 
+        v37 == 15)) {
+      position(Ego, 70, 82);
+    }
+    if ((v37 == 12 || 
+        v37 == 14)) {
+      position(Ego, 67, 82);
+    }
+  }
+  if (prev_room_no == 25) {
+    if (v91 == 1) {
+      position(Ego, 144, 166);
+    }
+    if (v91 == 2) {
+      position(Ego, 94, 166);
+    }
+    if (v37 == 9) {
+      position(Ego, 72, 166);
+    }
+    if (v37 == 10) {
+      position(Ego, 51, 166);
+    }
+    if ((v37 == 11 || 
+        v37 == 15)) {
+      position(Ego, 31, 166);
+    }
+    if ((v37 == 12 || 
+        v37 == 14)) {
+      position(Ego, 10, 166);
+    }
+  }
+  draw(Ego);
+  if (!isset(f38)) {
+    animate.obj(o1);
+    load.view(163);
+    set.view(o1, 163);
+    set.loop(o1, 0);
+    fix.loop(o1);
+    ignore.horizon(o1);
+    position(o1, 85, 16);
+    draw(o1);
+    wander(o1);
+    set(f236);
+  }
+  if ((!isset(f189)) && 
+      (!isset(f182))) {
+    random(1, 3, v152);
+    if (v152 == 1) {
+      load.logics(210);
+      load.view(87);
+      load.view(86);
+      load.sound(48);
+      load.sound(15);
+      load.sound(16);
+      load.sound(17);
+      load.sound(18);
+      load.sound(19);
+      animate.obj(o10);
+      set.priority(o10, 13);
+      set.view(o10, 87);
+      set.loop(o10, 4);
+      position(o10, 142, 104);
+      draw(o10);
+      v153 = 2;
+      v155 = 2;
+      cycle.time(o10, v153);
+      v152 = 0;
+      set(f191);
+      v168 = 0;
+      set(f182);
+      set(f238);
+      sound(19, f154);
+      if (isset(sound_on)) {
+        set(f232);
+      }
+      else {
+        set(f233);
+      }
+    }
+  }
+  else {
+    reset(f182);
+  }
+  if (prev_room_no == 31) {
+    v91 = 100;
+    observe.blocks(Ego);
+  }
+  animate.obj(o12);
+  load.view(59);
+  animate.obj(o2);
+  animate.obj(o3);
+  set.view(o2, 59);
+  set.view(o3, 59);
+  set.loop(o2, 1);
+  set.loop(o3, 2);
+  position(o2, 75, 91);
+  position(o3, 44, 156);
+  v152 = 4;
+  cycle.time(o2, v152);
+  cycle.time(o3, v152);
+  set.priority(o2, 5);
+  set.priority(o3, 5);
+  ignore.objs(o2);
+  ignore.objs(o3);
+  draw(o2);
+  draw(o3);
+  show.pic();
+}
+if (isset(f112)) {
+  reset(f112);
+  if (isset(f233)) {
+    v168++;
+  }
+  v169++;
+}
+if (isset(f236)) {
+  get.posn(o1, v226, v227);
+}
+if ((isset(f236)) && 
+    (v227 < 6 || 
+    v226 < 5 || 
+    v226 > 152)) {
+  erase(o1);
+  v169 = 0;
+  reset(f236);
+}
+if ((v169 == 3) && 
+    (!isset(f236)) && 
+    !isset(f38)) {
+  random(60, 125, v162);
+  v161 = 6;
+  v169 = 4;
+  position.v(o1, v162, v161);
+  draw(o1);
+  move.obj(o1, 85, 15, 0, f235);
+  set(f236);
+}
+if (isset(f235)) {
+  reset(f235);
+  wander(o1);
+}
+if (v91 == 1) {
+  ignore.blocks(Ego);
+}
+else {
+  observe.blocks(Ego);
+}
+if (v91 != 1) {
+  if ((v33 > 96) && 
+      (isset(ego_touching_signal_line))) {
+    reset(ego_touching_signal_line);
+  }
+}
+if (v168 == 5) {
+  set(f232);
+}
+if (v37 != 6) {
+  if ((isset(f154)) && 
+      (isset(f232))) {
+    stop.cycling(o10);
+    stop.sound();
+    v168 = 0;
+    reset(f233);
+    reset(f232);
+  }
+}
+distance(o10, Ego, v154);
+if (!isset(f189)) {
+  if (isset(f238)) {
+    if ((said("deliver", "book") || 
+        said("deliver", "book", "dwarf") || 
+        said("deliver", "book", "dwarf"))) {
+      if (has("Book of Shakespeare")) {
+        if (v154 < 16) {
+          print("You hand the Book of Shakespeare to the minstrel.  Curiously, "
+                "he opens it and begins to read aloud; first hesitantly, then "
+                "with increased forcefulness as he begins to get into it.");
+          print("Suddenly, he stops and looks at you.  \"This is wonderful!\" "
+                "he exclaims. \"This gives me a new lease on life! No longer am "
+                "I a mere minstrel...now I will become a famous ACTOR!  TO BE "
+                "OR NOT TO BE.  How's that?\"  He then gives you his lute, bids "
+                "you farewell,  and wanders off to stardom.");
+          drop("Book of Shakespeare");
+          stop.sound();
+          sound(48, f154);
+          get("Wooden Lute");
+          score  += 3;
+          set(f189);
+          reset(f238);
+          set(f237);
+          get.posn(o10, v134, v135);
+          set.view(o10, 86);
+          position.v(o10, v134, v135);
+          draw(o10);
+          start.cycling(o10);
+        }
+        else {
+          set(f113);
+        }
+      }
+      else {
+        set(f115);
+      }
+    }
+  }
+}
+if ((isset(f189)) && 
+    (isset(f182))) {
+  set.loop(o10, 2);
+  v152 = 1;
+  cycle.time(o10, v152);
+  step.time(o10, v152);
+  step.size(o10, v152);
+  start.cycling(o10);
+  move.obj(o10, 152, 104, 0, f234);
+}
+if (isset(f234)) {
+  reset(f234);
+  reset(f238);
+  reset(f237);
+  erase(o10);
+}
+get.posn(Ego, v33, v34);
+if (v91 == 1) {
+  if (v34 < 103) {
+    set.priority(Ego, 12);
+  }
+  if ((v34 > 102) && 
+      (v34 < 123)) {
+    set.priority(Ego, 14);
+  }
+  if (v34 > 122) {
+    set.priority(Ego, 14);
+  }
+}
+if (v33 > 99) {
+  if (isset(ego_touching_signal_line) && 
+      !isset(f227)) {
+    v37 = 6;
+    prevent.input();
+    sound(52, f154);
+    reset(ego_touching_signal_line);
+    get.posn(Ego, v134, v135);
+    v134 -= 12;
+    position.v(o12, v134, v135);
+    ignore.blocks(o12);
+    set(f36);
+    set(f227);
+    set.view(o12, 11);
+    set.loop(o12, 5);
+    fix.loop(o12);
+    v152 = 4;
+    step.size(o12, v152);
+    v152 = 3;
+    cycle.time(o12, v152);
+    start.cycling(o12);
+    if (v34 < 103) {
+      v135 = 117;
+      v152 = 0;
+      set.priority(o12, 11);
+      move.obj.v(o12, v134, v135, v152, f226);
+    }
+    if ((v34 > 102) && 
+        (v34 < 113)) {
+      set.priority(o12, 12);
+      v135 = 149;
+      v152 = 0;
+      move.obj.v(o12, v134, v135, v152, f226);
+    }
+    if ((v34 > 112) && 
+        (v34 < 142)) {
+      set.priority(o12, 13);
+      v135 = 155;
+      v152 = 0;
+      move.obj.v(o12, v134, v135, v152, f226);
+    }
+    if (v34 > 141) {
+      set.priority(o12, 14);
+      v135 = 167;
+      v152 = 0;
+      move.obj.v(o12, v134, v135, v152, f226);
+    }
+    erase(Ego);
+    draw(o12);
+  }
+}
+if (isset(f226)) {
+  if (v34 > 141) {
+    set.priority(o12, 13);
+  }
+  release.loop(Ego);
+  set.view(o12, 20);
+  set.loop(o12, 2);
+  reset(f226);
+  stop.sound();
+  set(f154);
+  v222 = 2;
+}
+if (v222 > 0) {
+  v222--;
+  if (v222 <= 0) {
+    shake.screen(1);
+    v37 = 20;
+    set(f140);
+  }
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room"))) {
+  print("Wistfully, you stare out over the ocean, wishing you could go home and "
+        "see your family again.  Unfortunately, reality sets in, and you "
+        "remember your difficult situation.  Turning your head, you look "
+        "eastward toward a meadowland covered with wildflowers, and heave a big "
+        "sigh of sadness.");
+}
+if (said("examine", "grass")) {
+  print("A pretty meadow leads eastward.");
+}
+if (!isset(input_parsed) && 
+    isset(f238)) {
+  call(151);
+}
+if (isset(f106)) {
+  reset(f106);
+  print("The minstrel looks at your offering with mild interest, but politely  "
+        "declines.");
+}
+if (!isset(input_parsed)) {
+  call(200);
+}
+if (!isset(input_parsed)) {
+  call(213);
+}
+if (!isset(input_parsed)) {
+  if ((isset(f238) || 
+      isset(f237))) {
+    call(210);
+  }
+}
+Label1:
+if (!isset(new_room)) {
+  call(150);
+}
+if (ego_edge_code == bottom_edge) {
+  if (v33 > 131) {
+    v91 = 1;
+  }
+  if ((v33 < 131) && 
+      (v33 > 77)) {
+    v91 = 2;
+  }
+  new.room(25); //##LE001##
+}
+if (ego_edge_code == right_edge) {
+  new.room(20); //##LE002##
+}
+if (ego_edge_code == horizon_edge) {
+  if (v33 > 112) {
+    v91 = 1;
+  }
+  if ((v33 < 112) && 
+      (v33 > 100)) {
+    v91 = 2;
+  }
+  new.room(13); //##LE003##
+}
+if (ego_edge_code == left_edge) {
+  v45 = 1;
+  v46 = 1;
+  new.room(31); //##LE004##
+}
+return();
+
+//Messages
+#message 1 "Wistfully, you stare out over the ocean, wishing you could go home and see your family again.  Unfortunately, reality sets in, and you remember your difficult situation.  Turning your head, you look eastward toward a meadowland covered with wildflowers, and heave a big sigh of sadness."
+#message 2 "A pretty meadow leads eastward."
+#message 3 "The minstrel gratefully accepts your offer and gives you his lute."
+#message 4 "You hand the Book of Shakespeare to the minstrel.  Curiously, he opens it and begins to read aloud; first hesitantly, then with increased forcefulness as he begins to get into it."
+#message 5 "Suddenly, he stops and looks at you.  \"This is wonderful!\" he exclaims. \"This gives me a new lease on life! No longer am I a mere minstrel...now I will become a famous ACTOR!  TO BE OR NOT TO BE.  How's that?\"  He then gives you his lute, bids you farewell,  and wanders off to stardom."
+#message 16 "The minstrel looks at your offering with mild interest, but politely  declines."

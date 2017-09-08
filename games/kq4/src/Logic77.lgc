@@ -1,0 +1,467 @@
+if (isset(new_room)) {
+  set(f82);
+  reset(f57);
+  set.horizon(74);
+  if (isset(f38)) {
+    v152 = 177;
+  }
+  else {
+    v152 = 77;
+  }
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.logics(217);
+  load.view(40);
+  load.view(13);
+  load.view(22);
+  load.view(4);
+  load.sound(47);
+  if (has("Gold Crown")) {
+    load.view(97);
+    load.sound(59);
+    animate.obj(o1);
+    set.view(o1, 22);
+    set.loop(o1, 3);
+    fix.loop(o1);
+    set.cel(o1, 0);
+  }
+  set.view(Ego, 0);
+  animate.obj(o12);
+  ignore.objs(o12);
+  ignore.blocks(o12);
+  if (prev_room_no == 73) {
+    position(Ego, 24, 144);
+    set.loop(Ego, 0);
+    stop.motion(Ego);
+    set(f36);
+    prevent.input();
+    set.view(o12, 13);
+    set.loop(o12, 6);
+    fix.loop(o12);
+    position(o12, 10, 144);
+    move.obj(o12, 22, 144, 0, f228);
+    draw(o12);
+  }
+  else {
+    v221 = 7;
+    v222 = 1;
+    set.loop(Ego, 1);
+    stop.motion(Ego);
+    position(Ego, 139, 146);
+    draw(Ego);
+  }
+  v228 = 0;
+  v237 = 0;
+  show.pic();
+}
+get.posn(o12, v134, v135);
+if ((isset(f222)) && 
+    (v221 == 7) && 
+    (v222 == 0)) {
+  new.room(78); //##LE001##
+}
+if (v228 == 1) {
+  current.cel(o12, v148);
+  if (v148 == 6) {
+    stop.cycling(o12);
+  }
+}
+if (isset(f222)) {
+  reset(f222);
+  v228 = 0;
+  v148 = 0;
+  if (v222 == 0) {
+    position.v(Ego, v226, v227);
+    set.loop(Ego, 0);
+    v221++;
+  }
+  else {
+    position.v(Ego, v107, v108);
+    set.loop(Ego, 1);
+    v221--;
+  }
+  erase(o12);
+  draw(Ego);
+  reset(f36);
+  accept.input();
+  reset(ego_on_water);
+}
+if ((ego_dir == right || 
+    v222 == 0)) {
+  v222 = 0;
+}
+if ((ego_dir == left || 
+    v222 == 1)) {
+  v222 = 1;
+}
+if (v221 == 0) {
+  v226 = 54;
+  v227 = 144;
+}
+if (v221 == 1) {
+  v107 = 40;
+  v108 = 145;
+  v226 = 68;
+  v227 = 142;
+}
+if (v221 == 2) {
+  v107 = 54;
+  v108 = 144;
+  v226 = 80;
+  v227 = 146;
+}
+if (v221 == 3) {
+  v107 = 68;
+  v108 = 142;
+  v226 = 93;
+  v227 = 141;
+}
+if (v221 == 4) {
+  v107 = 80;
+  v108 = 146;
+  v226 = 108;
+  v227 = 145;
+}
+if (v221 == 5) {
+  v107 = 93;
+  v108 = 141;
+  v226 = 122;
+  v227 = 140;
+}
+if (v221 == 6) {
+  v107 = 108;
+  v108 = 145;
+  v226 = 139;
+  v227 = 146;
+}
+if (v221 == 7) {
+  v107 = 122;
+  v108 = 140;
+  v226 = 149;
+  v227 = 142;
+}
+if ((said("hop") || 
+    said("hop", "tuft") || 
+    said("hop", "grass", "tuft"))) {
+  if (v37 == 0) {
+    if ((v221 == 0) && 
+        (!posn(Ego,37,141,45,147))) {
+      print("Not from here.");
+    }
+    else {
+      set(f36);
+      prevent.input();
+      set.view(o12, 22);
+      if (v221 == 0) {
+        v222 = 0;
+      }
+      if (v222 == 0) {
+        set.loop(o12, 1);
+      }
+      else {
+        set.loop(o12, 2);
+      }
+      fix.loop(o12);
+      position.v(o12, v33, v34);
+      set.cel(o12, 0);
+      erase(Ego);
+      draw(o12);
+      v152 = 3;
+      v228 = 1;
+      if (v222 == 0) {
+        move.obj.v(o12, v226, v227, v152, f222);
+      }
+      else {
+        move.obj.v(o12, v107, v108, v152, f222);
+      }
+      start.cycling(o12);
+    }
+  }
+  else {
+    print("You're a frog, you can do that on your own.");
+  }
+}
+if (isset(ego_touching_signal_line)) {
+  set(f36);
+  set(ego_on_water);
+}
+if (posn(Ego,57,153,150,169)) {
+  set(f36);
+  set(ego_on_water);
+  v37 = 11;
+}
+if (v37 == 11) {
+  set(f36);
+  set(ego_on_water);
+}
+if (isset(ego_on_water)) {
+  if (isset(f112)) {
+    reset(f112);
+    v168++;
+  }
+}
+if ((isset(ego_on_water)) && 
+    (v168 < 5)) {
+  set.view(Ego, 4);
+  v37 = 11;
+  set(f36);
+  prevent.input();
+  cycle_delay = 3;
+  if ((ego_dir == upright || 
+      ego_dir == up || 
+      ego_dir == 8)) {
+    ego_dir = 1;
+  }
+  else {
+    if (ego_dir == right) {
+      ego_dir = 3;
+    }
+    else {
+      if (ego_dir != stopped) {
+        ego_dir = 5;
+      }
+    }
+  }
+  v168 = 5;
+}
+if ((v168 == 6) && 
+    (v37 == 11)) {
+  v168 = 7;
+  set(f36);
+  prevent.input();
+  print("Uh, oh!  What did you do, Rosella?!  Don't you know that some swamps "
+        "are quagmires that will suck you under?!  As you take your last "
+        "breath, you contemplate this final information.");
+  position.v(o12, v33, v34);
+  erase(Ego);
+  v152 = 5;
+  set.view(o12, 22);
+  set.loop(o12, 0);
+  fix.loop(o12);
+  draw(o12);
+  set.cel(o12, 0);
+  cycle.time(o12, v152);
+  start.cycling(o12);
+  end.of.loop(o12, f140);
+}
+if ((isset(f238)) && 
+    (v169 == 4)) {
+  sound(47, f154);
+  reset(f238);
+  set(f36);
+  prevent.input();
+  v238 = v33;
+  v239 = v34;
+  v238 -= 3;
+  v239 -= 1;
+  position.v(o1, v238, v239);
+  v152 = 2;
+  cycle.time(o1, v152);
+  start.cycling(o1);
+  draw(o1);
+  end.of.loop(o1, f231);
+}
+current.cel(o1, v237);
+if (v37 == 23) {
+  if (v237 == 2) {
+    stop.motion(Ego);
+    erase(Ego);
+  }
+}
+if (isset(f231)) {
+  print("It ain't easy being green!");
+  erase(o1);
+  set(f140);
+}
+if ((said("place", "abominable", "crown") || 
+    said("place", "crown") || 
+    said("don", "crown"))) {
+  if (has("Gold Crown")) {
+    if (v221 == 0) {
+      set(f36);
+      prevent.input();
+      move.obj(Ego, 46, 148, 0, f223);
+      ignore.blocks(Ego);
+      v162 = 1;
+    }
+    else {
+      v162 = 1;
+      set(f223);
+    }
+  }
+  else {
+    set(f115);
+  }
+}
+if ((v162 == 1) && 
+    (isset(f223))) {
+  reset(f223);
+  v162++;
+  v37 = 23;
+  sound(59, f154);
+  animate.obj(o2);
+  set.view(o2, 97);
+  set.loop(o2, 0);
+  v33 -= 6;
+  position.v(o2, v33, v34);
+  set.cel(o2, 0);
+  v152 = 2;
+  cycle.time(o2, v152);
+  end.of.loop(o2, f221);
+  draw(o2);
+  set(f223);
+}
+current.cel(o2, v153);
+if ((v153 == 3) && 
+    (isset(f223))) {
+  reset(f223);
+  set(f36);
+  prevent.input();
+  set.view(Ego, 97);
+  set.loop(Ego, 1);
+  set.cel(Ego, 0);
+  position.v(Ego, v33, v34);
+  v154 = 1;
+  stop.motion(Ego);
+  set(f157);
+  v152 = 3;
+  cycle.time(Ego, v152);
+}
+if (isset(f221)) {
+  erase(o2);
+  set(f238);
+}
+if (isset(f238)) {
+  if (isset(f112)) {
+    reset(f112);
+    v169++;
+  }
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room"))) {
+  print("From here, a huge muddy swamp spreads eastward.  Large moss-covered "
+        "swamp trees tower overhead, while grass tufts and reedy plants poke up "
+        "from the mire.  You can hear the many chirpings and croakings of "
+        "unseen swamp creatures.");
+}
+if ((said("examine", "abominable", "cave") || 
+    said("examine", "cave"))) {
+  print("A small cave leads into the mountain.");
+}
+if (said("look in", "cave")) {
+  print("It sure is dark in there!");
+}
+if ((said("dead fish") || 
+    said("enter", "fishing") || 
+    said("dead fish", "with", "fishing pole") || 
+    said("enter", "fishing", "with", "fishing pole") || 
+    said("cast", "fishing pole") || 
+    said("capture", "dead fish") || 
+    said("capture", "dead fish", "with", "fishing pole"))) {
+  if ((has("Fishing Pole") || 
+      has("Baited Fishing Pole"))) {
+    print("You think fish live in here!?");
+  }
+}
+if ((said("exit", "lake") || 
+    said("exit", "through", "exit") || 
+    said("exit", "lake", "through", "exit") || 
+    said("crawl", "through", "exit") || 
+    said("crawl", "through") || 
+    said("crawl") || 
+    said("exit"))) {
+  set(f113);
+}
+if ((said("drink", "lake") || 
+    said("drink", "lake", "lake") || 
+    said("carry", "drink") || 
+    said("drink") || 
+    said("carry", "drink", "lake") || 
+    said("carry", "drink", "lake", "lake"))) {
+  if (v33 > 40) {
+    print("You drink the mucky water.  Yech!!  It tastes AWFUL!");
+  }
+  else {
+    set(f113);
+  }
+}
+call(217);
+Label1:
+if (!isset(f234) && 
+    posn(Ego,17,141,23,147)) {
+  set(f234);
+  set(f36);
+  prevent.input();
+  set.view(o12, 40);
+  set.loop(o12, 3);
+  set.cel(o12, 0);
+  fix.loop(o12);
+  get.posn(Ego, v152, v153);
+  position.v(o12, v152, v153);
+  erase(Ego);
+  draw(o12);
+  end.of.loop(o12, f225);
+}
+if (isset(f225)) {
+  reset(f225);
+  set.view(o12, 13);
+  set.loop(o12, 5);
+  set.cel(o12, 0);
+  v152 = 251;
+  v153 = 0;
+  reposition(o12, v152, v153);
+  end.of.loop(o12, f226);
+}
+if (isset(f226)) {
+  reset(f226);
+  set.loop(o12, 7);
+  start.cycling(o12);
+  move.obj(o12, 8, 144, 0, f227);
+}
+if (isset(f227)) {
+  new.room(73); //##LE002##
+}
+if (isset(f228)) {
+  reset(f228);
+  set.loop(o12, 4);
+  last.cel(o12, v152);
+  set.cel.v(o12, v152);
+  v152 = 2;
+  v153 = 0;
+  reposition(o12, v152, v153);
+  reverse.loop(o12, f229);
+}
+if (isset(f229)) {
+  reset(f229);
+  set.view(o12, 40);
+  set.loop(o12, 2);
+  last.cel(o12, v152);
+  set.cel.v(o12, v152);
+  reverse.loop(o12, f230);
+}
+if (isset(f230)) {
+  reset(f230);
+  erase(o12);
+  draw(Ego);
+  stop.update(o12);
+  reset(f36);
+  accept.input();
+}
+return();
+
+//Messages
+#message 1 "From here, a huge muddy swamp spreads eastward.  Large moss-covered swamp trees tower overhead, while grass tufts and reedy plants poke up from the mire.  You can hear the many chirpings and croakings of unseen swamp creatures."
+#message 2 "A small cave leads into the mountain."
+#message 3 "It sure is dark in there!"
+#message 4 "Not from here."
+#message 5 "You're a frog, you can do that on your own."
+#message 6 "It ain't easy being green!"
+#message 7 "You think fish live in here!?"
+#message 8 "Uh, oh!  What did you do, Rosella?!  Don't you know that some swamps are quagmires that will suck you under?!  As you take your last breath, you contemplate this final information."
+#message 16 "You drink the mucky water.  Yech!!  It tastes AWFUL!"

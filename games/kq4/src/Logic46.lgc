@@ -1,0 +1,209 @@
+if (isset(new_room)) {
+  load.sound(33);
+  set.horizon(50);
+  v152 = 46;
+  load.logics(227);
+  call(227);
+  load.view(51);
+  load.view(52);
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  v33 = v35;
+  if (prev_room_no == 45) {
+    set(f221);
+    position(Ego, 61, 52);
+  }
+  else {
+    position(Ego, 121, 150);
+    stop.motion(Ego);
+  }
+  animate.obj(o1);
+  animate.obj(o2);
+  set.view(o1, 51);
+  set.view(o2, 52);
+  set.priority(o1, 14);
+  set.priority(o2, 14);
+  v152 = 1;
+  cycle.time(o1, v152);
+  cycle.time(o2, v152);
+  position(o2, 61, 129);
+  position(o1, 117, 44);
+  wander(o1);
+  wander(o2);
+  draw(o1);
+  draw(o2);
+  animate.obj(o3);
+  set.view(o3, 52);
+  set.priority(o3, 4);
+  ignore.horizon(o3);
+  ignore.objs(o3);
+  set.loop(o3, 4);
+  position(o3, 117, 31);
+  v152 = 1;
+  cycle.time(o3, v152);
+  draw(o3);
+  animate.obj(o4);
+  set.view(o4, 52);
+  set.priority(o4, 4);
+  ignore.horizon(o4);
+  ignore.objs(o4);
+  set.loop(o4, 5);
+  position(o4, 116, 109);
+  v152 = 1;
+  cycle.time(o4, v152);
+  draw(o4);
+  animate.obj(o5);
+  set.view(o5, 52);
+  set.priority(o5, 4);
+  ignore.horizon(o5);
+  ignore.objs(o5);
+  set.loop(o5, 6);
+  set.cel(o5, 2);
+  position(o5, 48, 30);
+  v152 = 1;
+  cycle.time(o5, v152);
+  draw(o5);
+  animate.obj(o6);
+  set.view(o6, 52);
+  set.priority(o6, 13);
+  ignore.horizon(o6);
+  ignore.objs(o6);
+  set.loop(o6, 6);
+  set.cel(o5, 0);
+  position(o6, 91, 133);
+  v152 = 1;
+  cycle.time(o6, v152);
+  draw(o6);
+  draw(Ego);
+  show.pic();
+  sound(33, f154);
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "castle") || 
+    said("examine", "ivory", "castle") || 
+    said("examine", "around", "castle") || 
+    said("examine", "tower") || 
+    said("examine", "ivory", "tower"))) {
+  print("You are on a tower stairway of the island's ivory palace.");
+}
+if ((said("examine", "staircase") || 
+    said("examine", "tower", "staircase") || 
+    said("examine", "up") || 
+    said("examine", "down"))) {
+  print("From here, the tower stairs both go upward, and downward.");
+}
+if ((said("examine", "window") || 
+    said("look in", "window") || 
+    said("examine", "out", "window"))) {
+  if (v33 < 34) {
+    print("You see the ocean out the window.");
+  }
+  else {
+    set(f113);
+  }
+}
+if (said("examine", "wall")) {
+  print("There is nothing of importance on the walls.");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down") || 
+    said("examine", "down", "dirt"))) {
+  print("There is nothing interesting on the floor.");
+}
+if ((said("examine", "tapestries") || 
+    said("examine", "picture"))) {
+  print("A beautifully embroidered tapestry hangs on the gleaming wall.");
+}
+if ((said("examine", "green plant") || 
+    said("examine", "blossom"))) {
+  print("Genesta must love beautiful plants and flowers.");
+}
+if ((said("carry", "green plant") || 
+    said("carry", "blossom"))) {
+  print("No. They belong to Genesta.");
+}
+if (!isset(input_parsed)) {
+  call(227);
+}
+Label1:
+if (posn(Ego,97,122,120,150)) {
+  v152 = 0;
+  if (ego_dir == right && 
+      v33 != v35) {
+    v153 = 3;
+    reposition(Ego, v152, v153);
+  }
+}
+if (posn(Ego,97,123,120,150)) {
+  v152 = 0;
+  if (ego_dir == left && 
+      v33 != v35) {
+    v153 = 253;
+    reposition(Ego, v152, v153);
+  }
+}
+if (posn(Ego,35,88,35,94)) {
+  set(f221);
+}
+if (posn(Ego,17,82,34,94)) {
+  reset(f221);
+}
+if (isset(f221)) {
+  observe.blocks(Ego);
+  set.priority(Ego, 13);
+}
+else {
+  release.priority(Ego);
+  ignore.blocks(Ego);
+}
+if (isset(ego_touching_signal_line) && 
+    !isset(f221)) {
+  ego_dir = 0;
+  start.motion(Ego);
+  reposition.to.v(Ego, v35, v36);
+}
+if (posn(Ego,34,50,70,93) && 
+    isset(f221)) {
+  v152 = 0;
+  if (ego_dir == right && 
+      v33 != v35) {
+    v153 = 253;
+    reposition(Ego, v152, v153);
+  }
+}
+if (posn(Ego,34,50,70,90) && 
+    isset(f221)) {
+  v152 = 0;
+  if (ego_dir == left && 
+      v33 != v35) {
+    v153 = 3;
+    reposition(Ego, v152, v153);
+  }
+}
+if (v34 < 52 && 
+    (ego_dir == right || 
+    ego_dir == upright)) {
+  new.room(45); //##LE001##
+}
+if (posn(Ego,125,143,139,164)) {
+  observe.blocks(Ego);
+  new.room(47); //##LE002##
+}
+return();
+
+//Messages
+#message 1 "You are on a tower stairway of the island's ivory palace."
+#message 2 "From here, the tower stairs both go upward, and downward."
+#message 3 "You see the ocean out the window."
+#message 4 "There is nothing of importance on the walls."
+#message 5 "There is nothing interesting on the floor."
+#message 6 "A beautifully embroidered tapestry hangs on the gleaming wall."
+#message 7 "Genesta must love beautiful plants and flowers."
+#message 8 "No. They belong to Genesta."

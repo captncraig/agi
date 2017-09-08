@@ -1,0 +1,179 @@
+if (isset(new_room)) {
+  set(f82);
+  discard.view(0);
+  load.sound(52);
+  load.logics(219);
+  v152 = 88;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.view(1);
+  set.view(Ego, 1);
+  load.view(143);
+  animate.obj(o2);
+  set.view(o2, 143);
+  set.priority(o2, 4);
+  ignore.horizon(o2);
+  ignore.objs(o2);
+  set.loop(o2, 0);
+  position(o2, 52, 63);
+  v152 = 1;
+  cycle.time(o2, v152);
+  draw(o2);
+  if (prev_room_no == 82) {
+    observe.blocks(Ego);
+    set(f221);
+    position(Ego, 97, 62);
+  }
+  else {
+    if (prev_room_no == 87) {
+      if (v37 == 23) {
+        load.sound(42);
+        load.view(66);
+        animate.obj(o1);
+        set.view(o1, 66);
+        set.loop(o1, 0);
+        set.cel(o1, 0);
+        position(o1, 32, 117);
+        v152 = 1;
+        step.time(o1, v152);
+        cycle.time(o1, v152);
+        draw(o1);
+        stop.cycling(o1);
+        set(f223);
+        position(Ego, 44, 119);
+        ego_dir = 0;
+        set(f36);
+        prevent.input();
+      }
+      else {
+        position(Ego, 37, 119);
+      }
+    }
+    else {
+      v34 = 143;
+      position(Ego, 92, 143);
+    }
+  }
+  v37 = 0;
+  get.posn(Ego, v33, v34);
+  draw(Ego);
+  show.pic();
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "tower") || 
+    said("examine", "around", "tower") || 
+    said("examine", "castle") || 
+    said("examine", "dark", "castle") || 
+    said("examine", "bad", "castle") || 
+    said("examine", "around", "castle") || 
+    said("examine", "around", "bad", "castle") || 
+    said("examine", "around", "dark", "castle"))) {
+  print("These stone tower steps could be very dangerous.");
+}
+if ((said("examine", "staircase") || 
+    said("examine", "rock", "staircase") || 
+    said("examine", "up", "staircase") || 
+    said("examine", "up", "rock", "staircase"))) {
+  print("Watch your step on these narrow stairs.");
+}
+if ((said("examine", "door") || 
+    said("look in", "door"))) {
+  print("There is an open doorway before you.");
+}
+if (!isset(input_parsed)) {
+  call(219);
+}
+Label1:
+if (isset(f223)) {
+  sound(42, f154);
+  v37 = 2;
+  set(f41);
+  print("This isn't good, Rosella!  You've done it this time!");
+  new.room(81); //##LE001##
+}
+if ((v33 > 66) && 
+    (v37 != 6)) {
+  observe.blocks(Ego);
+}
+if (posn(Ego,49,123,49,135)) {
+  set(f221);
+}
+if (posn(Ego,48,116,48,135)) {
+  reset(f221);
+}
+if ((isset(f221)) && 
+    (v37 != 6)) {
+  observe.blocks(Ego);
+}
+if ((posn(Ego,50,117,67,124)) && 
+    (!isset(f221))) {
+  ignore.blocks(Ego);
+}
+if ((!isset(f221)) && 
+    (posn(Ego,51,116,69,116))) {
+  ego_dir = 0;
+  start.motion(Ego);
+  reposition.to.v(Ego, v35, v36);
+}
+if (isset(f221)) {
+  if ((ego_dir == up) && 
+      (v37 != 6)) {
+    set.loop(Ego, 2);
+    fix.loop(Ego);
+  }
+  else {
+    if ((ego_dir == down) && 
+        (v37 != 6)) {
+      set.loop(Ego, 3);
+      fix.loop(Ego);
+    }
+    else {
+      release.loop(Ego);
+    }
+  }
+}
+if ((isset(ego_touching_signal_line)) && 
+    (v37 != 6)) {
+  sound(52, f154);
+  reset(f221);
+  v37 = 6;
+  set(f36);
+  current.loop(Ego, v147);
+  load.view(10);
+  set.view(Ego, 10);
+  if (v147 == 0) {
+    set.loop.v(Ego, v147);
+    fix.loop(Ego);
+  }
+  else {
+    set.loop(Ego, 1);
+    fix.loop(Ego);
+  }
+  v153 = 167;
+  v156 = 4;
+  ignore.blocks(Ego);
+  move.obj.v(Ego, v33, v153, v156, f222);
+}
+if (v33 < 29) {
+  new.room(87); //##LE002##
+}
+if (v34 > 144) {
+  new.room(93); //##LE003##
+}
+if (v34 < 61) {
+  new.room(82); //##LE004##
+}
+return();
+
+//Messages
+#message 1 "These stone tower steps could be very dangerous."
+#message 2 "Watch your step on these narrow stairs."
+#message 3 "There is an open doorway before you."
+#message 4 "This isn't good, Rosella!  You've done it this time!"

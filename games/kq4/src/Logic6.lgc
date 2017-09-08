@@ -1,0 +1,159 @@
+if (isset(new_room)) {
+  if (prev_room_no == 57) {
+    discard.view(1);
+    load.view(0);
+    set.view(Ego, 0);
+    ego_dir = 7;
+    position(Ego, 103, 140);
+  }
+  set.horizon(60);
+  load.logics(204);
+  animate.obj(o1);
+  load.view(99);
+  set.view(o1, 99);
+  if (!isset(f38)) {
+    v152 = 6;
+  }
+  else {
+    v152 = 106;
+  }
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  set.priority(o1, 14);
+  v153 = 2;
+  cycle.time(o1, v153);
+  ignore.horizon(o1);
+  set.loop(o1, 0);
+  position(o1, 115, 30);
+  draw(o1);
+  if (prev_room_no == 12) {
+    if (v33 > 132) {
+      position(Ego, 132, 166);
+    }
+    else {
+      if (v33 < 42) {
+        position(Ego, 42, 166);
+      }
+    }
+  }
+  draw(Ego);
+  show.pic();
+}
+if (isset(ego_touching_signal_line)) {
+  new.room(57); //##LE001##
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room"))) {
+  print("A cave, bearing a slight resemblance to a skull, juts out from the "
+        "craggy mountainside.  Huge rocks block your exit to the north, and "
+        "you're  completely surrounded by those grabby trees!  Nice situation, "
+        "huh?");
+}
+if ((said("examine", "cave") || 
+    said("examine", "skull") || 
+    said("examine", "skull", "cave"))) {
+  print("The rocky skull cave juts out from the base of the steep mountainside. "
+        "Smoke rises lazily from a large crack in the cave's (forehead?).");
+}
+if ((said("look in", "cave") || 
+    said("look in", "cave") || 
+    said("look in", "skull") || 
+    said("look in", "skull", "cave") || 
+    said("look in", "cave"))) {
+  print("You try to peer into the dark cave but can make out no details.");
+}
+if (said("examine", "rock")) {
+  print("Large boulders block your way to the north.");
+}
+if (said("climb", "rock")) {
+  print("The rocks are too large to climb over.");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down") || 
+    said("examine", "down", "dirt"))) {
+  print("You see nothing interesting on the ground.");
+}
+if ((said("examine", "black sky") || 
+    said("examine", "up") || 
+    said("examine", "up", "black sky"))) {
+  if (isset(f38)) {
+    print("It's easy to see by the light of a full moon.");
+  }
+  else {
+    print("In spite of these dreary surroundings, the sky is quite nice and "
+          "blue.");
+  }
+}
+if (said("examine", "grass")) {
+  print("Even grass doesn't grow here.");
+}
+if (said("examine", "bush")) {
+  print("There are not many bushes or shrubs here.");
+}
+if (said("examine", "green plant")) {
+  print("Not many plants grow here; only those awful trees!");
+}
+if (said("examine", "blossom")) {
+  print("What flower, in it's right mind, would grow here!");
+}
+if (said("carry", "blossom")) {
+  print("There are no flowers here!");
+}
+if (said("examine", "forest")) {
+  print("Those are vicious looking trees, aren't they?");
+}
+if (said("climb", "forest")) {
+  print("You've GOT to be KIDDING!!");
+}
+if (said("kill", "forest")) {
+  print("That would be impossible for you to do.");
+}
+if (isset(f38) && 
+    said("examine", "moon")) {
+  print("The night sky is lovely.");
+}
+if (!isset(f38) && 
+    said("examine", "cloud")) {
+  print("Billowy clouds float serenely in the blue sky.");
+}
+if (!isset(input_parsed)) {
+  call(204);
+}
+Label1:
+if (ego_edge_code == bottom_edge) {
+  new.room(12); //##LE002##
+}
+if (ego_edge_code == horizon_edge) {
+  new.room(28); //##LE003##
+}
+if (ego_edge_code == left_edge) {
+  new.room(5); //##LE004##
+}
+return();
+
+//Messages
+#message 1 "A cave, bearing a slight resemblance to a skull, juts out from the craggy mountainside.  Huge rocks block your exit to the north, and you're  completely surrounded by those grabby trees!  Nice situation, huh?"
+#message 2 "The rocky skull cave juts out from the base of the steep mountainside. Smoke rises lazily from a large crack in the cave's (forehead?)."
+#message 3 "You try to peer into the dark cave but can make out no details."
+#message 4 "Large boulders block your way to the north."
+#message 5 "The rocks are too large to climb over."
+#message 6 "You see nothing interesting on the ground."
+#message 7 "In spite of these dreary surroundings, the sky is quite nice and blue."
+#message 8 "It's easy to see by the light of a full moon."
+#message 9 "Even grass doesn't grow here."
+#message 10 "There are not many bushes or shrubs here."
+#message 11 "Not many plants grow here; only those awful trees!"
+#message 12 "What flower, in it's right mind, would grow here!"
+#message 13 "There are no flowers here!"
+#message 14 "Those are vicious looking trees, aren't they?"
+#message 15 "You've GOT to be KIDDING!!"
+#message 16 "That would be impossible for you to do."
+#message 17 "The night sky is lovely."
+#message 18 "Billowy clouds float serenely in the blue sky."
+#message 19 "It's easy to see by the light of a full moon."

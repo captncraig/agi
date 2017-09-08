@@ -1,0 +1,577 @@
+if (isset(new_room)) {
+  set(f82);
+  discard.view(0);
+  load.view(1);
+  set.view(Ego, 1);
+  v152 = 53;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  set.horizon(1);
+  v221 = 0;
+  v222 = 0;
+  if (!isset(f39)) {
+    load.sound(62);
+    load.view(73);
+    load.view(27);
+    if (v37 != 17) {
+      load.view(145);
+      animate.obj(o20);
+      set.view(o20, 145);
+      stop.update(o20);
+    }
+    animate.obj(o1);
+    animate.obj(o2);
+    animate.obj(o3);
+    animate.obj(o4);
+    animate.obj(o5);
+    animate.obj(o6);
+    animate.obj(o7);
+    animate.obj(o8);
+    animate.obj(o9);
+    animate.obj(o10);
+    animate.obj(o11);
+    animate.obj(o12);
+    animate.obj(o13);
+    animate.obj(o14);
+    animate.obj(o15);
+    animate.obj(o16);
+    animate.obj(o17);
+    animate.obj(o18);
+    animate.obj(o19);
+    set.view(o1, 73);
+    set.view(o2, 73);
+    set.view(o3, 73);
+    set.view(o4, 73);
+    set.view(o5, 73);
+    set.view(o6, 73);
+    set.view(o7, 73);
+    set.view(o8, 73);
+    set.view(o9, 73);
+    set.view(o10, 73);
+    set.view(o11, 73);
+    set.view(o12, 73);
+    set.view(o13, 73);
+    set.view(o14, 73);
+    set.view(o15, 73);
+    set.view(o16, 73);
+    set.view(o17, 73);
+    set.view(o18, 73);
+    set.view(o19, 1);
+    set.loop(o1, 1);
+    set.loop(o2, 1);
+    set.loop(o3, 1);
+    set.loop(o4, 1);
+    set.loop(o5, 1);
+    set.loop(o6, 1);
+    set.loop(o7, 1);
+    set.loop(o8, 2);
+    set.loop(o9, 2);
+    set.loop(o10, 2);
+    set.loop(o11, 2);
+    set.loop(o12, 0);
+    set.loop(o13, 0);
+    set.loop(o14, 0);
+    set.loop(o15, 0);
+    set.loop(o16, 0);
+    set.loop(o17, 0);
+    set.loop(o18, 0);
+    set.loop(o19, 0);
+    set.cel(o1, 0);
+    set.cel(o2, 1);
+    set.cel(o3, 2);
+    set.cel(o4, 3);
+    set.cel(o5, 4);
+    set.cel(o6, 5);
+    set.cel(o7, 6);
+    set.cel(o8, 0);
+    set.cel(o9, 1);
+    set.cel(o10, 2);
+    set.cel(o11, 3);
+    set.cel(o12, 0);
+    set.cel(o13, 1);
+    set.cel(o14, 2);
+    set.cel(o15, 3);
+    set.cel(o16, 4);
+    set.cel(o17, 5);
+    set.cel(o18, 6);
+    set.cel(o19, 0);
+    position(o12, 52, 81);
+    position(o13, 79, 80);
+    position(o14, 55, 105);
+    position(o15, 79, 107);
+    position(o16, 109, 106);
+    position(o17, 55, 138);
+    position(o18, 76, 139);
+    position(o1, 47, 75);
+    position(o2, 129, 108);
+    position(o3, 118, 115);
+    position(o4, 48, 96);
+    position(o5, 97, 94);
+    position(o6, 94, 76);
+    position(o7, 90, 108);
+    position(o8, 131, 131);
+    position(o9, 121, 124);
+    position(o10, 9, 126);
+    position(o11, 48, 130);
+    position(o19, 100, 100);
+    set.priority(o3, 9);
+    set.priority(o8, 12);
+    set.priority(o11, 12);
+    set.priority(o9, 12);
+    draw(o12);
+    draw(o13);
+    draw(o14);
+    draw(o15);
+    draw(o16);
+    draw(o17);
+    draw(o18);
+    draw(o1);
+    draw(o2);
+    draw(o3);
+    draw(o4);
+    draw(o5);
+    draw(o6);
+    draw(o7);
+    draw(o8);
+    draw(o9);
+    draw(o10);
+    draw(o11);
+    stop.update(o1);
+    stop.update(o2);
+    stop.update(o3);
+    stop.update(o4);
+    stop.update(o5);
+    stop.update(o6);
+    stop.update(o7);
+    stop.update(o8);
+    stop.update(o9);
+    stop.update(o10);
+    stop.update(o11);
+    stop.update(o12);
+    stop.update(o13);
+    stop.update(o14);
+    stop.update(o15);
+    stop.update(o16);
+    stop.update(o17);
+    stop.update(o18);
+  }
+  else {
+    animate.obj(o19);
+    set.view(o19, 1);
+    set.priority(o19, 15);
+    position(o19, 89, 131);
+    set.loop(o19, 1);
+    fix.loop(o19);
+    v152 = 3;
+    step.size(o19, v152);
+  }
+  v56 = 10;
+  if (v37 == 17) {
+    set(f221);
+  }
+  v33 = 25;
+  v34 = 116;
+  position(Ego, 25, 116);
+  draw(Ego);
+  if (v37 == 17) {
+    sound(62, f154);
+  }
+  show.pic();
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "bedroom") || 
+    said("examine", "around", "bedroom") || 
+    said("examine", "cottage") || 
+    said("examine", "around", "cottage"))) {
+  if (isset(f39)) {
+    print("You have entered the small upstairs bedroom of the Seven Dwarfs.");
+  }
+  else {
+    print("%m1  My goodness, these dwarfs are sloppy!");
+  }
+}
+if ((said("examine", "bed") || 
+    said("examine", "abominable", "bed") || 
+    said("examine", "seven", "bed"))) {
+  print("There are seven little beds.");
+}
+if ((said("examine", "beneath", "bed") || 
+    said("examine", "beneath", "abominable", "bed") || 
+    said("examine", "beneath", "seven", "bed"))) {
+  print("%m13under the beds.");
+}
+if ((said("lay", "down") || 
+    said("lay", "bed") || 
+    said("lay", "down", "bed") || 
+    said("lay", "abominable", "bed") || 
+    said("lay") || 
+    said("lay", "bed") || 
+    said("carry", "bed"))) {
+  print("You have better things to do.");
+}
+if ((said("examine", "window") || 
+    said("examine", "out", "window") || 
+    said("look in", "window"))) {
+  if (posn(Ego,93,109,136,142)) {
+    print("You see the forest out the window.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("examine", "chest") || 
+    said("examine", "dresser") || 
+    said("examine", "chest", "abominable", "drawer"))) {
+  print("The dwarfs share one chest of drawers.");
+}
+if ((said("open", "chest") || 
+    said("open", "dresser") || 
+    said("open", "chest", "abominable", "drawer") || 
+    said("open", "drawer") || 
+    said("look in", "chest") || 
+    said("look in", "dresser") || 
+    said("look in", "chest", "abominable", "drawer") || 
+    said("look in", "drawer"))) {
+  print("No. It's private.");
+}
+if ((said("examine", "mirror") || 
+    said("look in", "mirror"))) {
+  print("You look in the mirror and see the reflection of a poor, but "
+        "beautiful, peasant girl.");
+}
+if ((said("examine", "bookshelf") || 
+    said("examine", "abominable", "bookshelf"))) {
+  print("Quit being a snoop, Rosella!");
+}
+if ((said("examine", "staircase") || 
+    said("examine", "down", "staircase"))) {
+  print("The narrow stairs lead downward.");
+}
+if ((said("create", "bed") || 
+    said("dust") || 
+    said("dust", "room") || 
+    said("dust", "bedroom") || 
+    said("dust", "furniture") || 
+    said("sweep") || 
+    said("sweep", "room") || 
+    said("sweep", "bedroom") || 
+    said("sweep", "dirt"))) {
+  if (isset(f39)) {
+    print("This bedroom is nice and clean now.");
+  }
+  else {
+    print("The room needs more than that!");
+  }
+}
+if (v37 != 22 && 
+    v37 != 17) {
+  if ((said("clean", "room") || 
+      said("clean", "bedroom") || 
+      said("clean", "cottage") || 
+      said("clean") || 
+      said("clean", "up", "mess") || 
+      said("clean", "mess"))) {
+    if (!isset(f39)) {
+      set(f36);
+      prevent.input();
+      v37 = 17;
+      sound(62, f154);
+      set(f221);
+      v47 = cycle_delay;
+      cycle_delay = 2;
+    }
+    else {
+      print("This bedroom is nice and clean now.");
+    }
+  }
+}
+if (said("examine", "wall")) {
+  print("%m13of importance on the walls.");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down") || 
+    said("examine", "down", "dirt"))) {
+  print("%m13interesting on the floor.");
+}
+if (said("examine", "carpet")) {
+  print("A nice braided rug lies on the floor.");
+}
+if (said("examine", "beneath", "carpet")) {
+  if (isset(f39)) {
+    print("How about that!  This must be where you put all those dirty clothes. "
+          " You quickly put the rug back down before a dwarf can notice your "
+          "shabby cleaning job.");
+  }
+  else {
+    reset(input_parsed);
+  }
+}
+if (said("hop", "bed")) {
+  if (isset(f39)) {
+    if (posn(Ego,76,126,117,142)) {
+      set(f36);
+      prevent.input();
+      ego_dir = 0;
+      erase(Ego);
+      draw(o19);
+      move.obj(o19, 89, 128, 0, f229);
+      v222 = 0;
+    }
+    else {
+      print("The larger bed to the right at the front of the room looks like it "
+            "might be fun to jump on.  You need to get closer.");
+    }
+  }
+  else {
+    reset(input_parsed);
+  }
+}
+Label1:
+if ((isset(f154)) && 
+    (!isset(f39)) && 
+    (v37 == 17)) {
+  sound(62, f154);
+}
+if (isset(f221)) {
+  reset(f221);
+  set(f36);
+  set.view(o19, 1);
+  get.posn(Ego, v152, v153);
+  position.v(o19, v152, v153);
+  current.loop(Ego, v152);
+  set.loop.v(o19, v152);
+  current.cel(Ego, v152);
+  set.cel.v(o19, v152);
+  ignore.objs(Ego);
+  draw(o19);
+  erase(Ego);
+  observe.objs(Ego);
+  if (v34 < 122) {
+    move.obj(o19, 33, 119, 0, f222);
+  }
+  else {
+    move.obj(o19, 33, 128, 0, f222);
+  }
+}
+if (isset(f222)) {
+  reset(f222);
+  move.obj(o19, 51, 128, 0, f223);
+}
+if (isset(f223)) {
+  v221++;
+  if (v221 == 1) {
+    set.view(o19, 27);
+    set.loop(o19, 2);
+    fix.loop(o19);
+    move.obj(o19, 56, 128, 0, f223);
+  }
+  if (v221 == 2) {
+    erase(o17);
+    erase(o11);
+    set.view(o19, 1);
+    release.loop(o19);
+    move.obj(o19, 77, 128, 0, f223);
+  }
+  if (v221 == 3) {
+    set.view(o19, 27);
+    set.loop(o19, 2);
+    fix.loop(o19);
+    move.obj(o19, 82, 128, 0, f223);
+  }
+  if (v221 == 4) {
+    erase(o18);
+    set.view(o19, 1);
+    release.loop(o19);
+    move.obj(o19, 104, 128, 0, f223);
+  }
+  if (v221 == 5) {
+    set.view(o19, 27);
+    move.obj(o19, 109, 128, 0, f223);
+  }
+  if (v221 == 6) {
+    erase(o8);
+    erase(o9);
+    set.view(o19, 1);
+    move.obj(o19, 102, 120, 0, f223);
+  }
+  if (v221 == 7) {
+    set.view(o19, 27);
+    move.obj(o19, 102, 116, 0, f223);
+  }
+  if (v221 == 8) {
+    erase(o16);
+    erase(o3);
+    erase(o2);
+    set.view(o19, 1);
+    move.obj(o19, 85, 113, 0, f223);
+  }
+  if (v221 == 9) {
+    set.view(o19, 27);
+    move.obj(o19, 85, 110, 0, f223);
+  }
+  if (v221 == 10) {
+    erase(o13);
+    erase(o15);
+    erase(o6);
+    erase(o5);
+    erase(o7);
+    set.view(o19, 1);
+    move.obj(o19, 65, 110, 0, f223);
+  }
+  if (v221 == 11) {
+    set.view(o19, 27);
+    set.loop(o19, 3);
+    fix.loop(o19);
+    move.obj(o19, 60, 110, 0, f223);
+  }
+  if (v221 == 12) {
+    erase(o12);
+    erase(o14);
+    erase(o1);
+    erase(o4);
+    release.loop(o19);
+    set.view(o19, 1);
+    move.obj(o19, 28, 126, 0, f223);
+  }
+  if (v221 == 13) {
+    set.view(o19, 27);
+    move.obj(o19, 21, 128, 0, f223);
+  }
+  if (v221 == 14) {
+    erase(o10);
+    set.view(o19, 1);
+    move.obj(o19, 40, 123, 0, f223);
+  }
+  if (v221 == 15) {
+    move.obj(o19, 25, 116, 0, f223);
+  }
+  if (v221 == 16) {
+    new.room(54); //##LE001##
+  }
+}
+if (isset(f112) && 
+    v56 > 0) {
+  v56--;
+}
+if (!isset(f39) && 
+    !isset(f228) && 
+    v37 != 17 && 
+    (v33 > 66 || 
+    v56 == 0)) {
+  set(f228);
+  set(f109);
+  v37 = 22;
+  set(f36);
+  prevent.input();
+  set.view(o19, 1);
+  get.posn(Ego, v152, v153);
+  position.v(o19, v152, v153);
+  current.loop(Ego, v152);
+  set.loop.v(o19, v152);
+  current.cel(Ego, v152);
+  set.cel.v(o19, v152);
+  ignore.objs(Ego);
+  draw(o19);
+  erase(Ego);
+  observe.objs(Ego);
+  if (v34 < 122) {
+    move.obj(o19, 43, 119, 0, f224);
+  }
+  else {
+    move.obj(o19, 40, 123, 0, f224);
+  }
+  position(o20, 25, 113);
+  set.loop(o20, 0);
+  set.priority(o20, 4);
+  ignore.objs(o20);
+  draw(o20);
+  stop.cycling(o20);
+  print("Oh, oh!  You were caught trespassing!  You are unceremoniously ushered "
+        "out the door by an angry dwarf.");
+}
+if (isset(f224)) {
+  stop.cycling(o19);
+  reset(f224);
+  start.cycling(o20);
+  move.obj(o20, 40, 113, 0, f225);
+}
+if (isset(f225)) {
+  stop.cycling(o20);
+  set.loop(o20, 1);
+  v221 = 15;
+  start.cycling(o19);
+  move.obj(o19, 25, 116, 0, f223);
+}
+if (isset(f229)) {
+  v222++;
+  if (v222 == 1) {
+    stop.cycling(o19);
+    move.obj(o19, 89, 89, 0, f229);
+  }
+  if (v222 == 2) {
+    window_close_time = 8;
+    print("Wheeee!!!");
+    move.obj(o19, 89, 128, 0, f229);
+  }
+  if (v222 == 3) {
+    start.cycling(o19);
+    move.obj(o19, 89, 131, 0, f229);
+  }
+  if (v222 == 4) {
+    move.obj(o19, 89, 128, 0, f229);
+  }
+  if (v222 == 5) {
+    stop.cycling(o19);
+    move.obj(o19, 89, 89, 0, f229);
+  }
+  if (v222 == 6) {
+    window_close_time = 8;
+    print("Wheeee!!!");
+    move.obj(o19, 89, 128, 0, f229);
+  }
+  if (v222 == 7) {
+    start.cycling(o19);
+    move.obj(o19, 89, 131, 0, f229);
+  }
+  if (v222 == 8) {
+    reset(f229);
+    erase(o19);
+    draw(Ego);
+    reset(f36);
+    accept.input();
+  }
+}
+if (isset(ego_touching_signal_line)) {
+  new.room(54); //##LE002##
+}
+return();
+
+//Messages
+#message 1 "You have entered the small upstairs bedroom of the Seven Dwarfs."
+#message 2 "%m1  My goodness, these dwarfs are sloppy!"
+#message 3 "There are seven little beds."
+#message 4 "%m13under the beds."
+#message 5 "You have better things to do."
+#message 6 "You see the forest out the window."
+#message 7 "The dwarfs share one chest of drawers."
+#message 8 "No. It's private."
+#message 9 "You look in the mirror and see the reflection of a poor, but beautiful, peasant girl."
+#message 10 "Quit being a snoop, Rosella!"
+#message 11 "The narrow stairs lead downward."
+#message 12 "The room needs more than that!"
+#message 13 "There is nothing "
+#message 14 "%m13of importance on the walls."
+#message 15 "%m13interesting on the floor."
+#message 16 "This bedroom is nice and clean now."
+#message 17 "Oh, oh!  You were caught trespassing!  You are unceremoniously ushered out the door by an angry dwarf."
+#message 18 "A nice braided rug lies on the floor."
+#message 19 "How about that!  This must be where you put all those dirty clothes.  You quickly put the rug back down before a dwarf can notice your shabby cleaning job."
+#message 20 "The larger bed to the right at the front of the room looks like it might be fun to jump on.  You need to get closer."
+#message 21 "Wheeee!!!"

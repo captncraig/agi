@@ -1,0 +1,238 @@
+set(f36);
+cycle_delay = 2;
+if (isset(new_room)) {
+  prevent.input();
+  status.line.on();
+  reset(menu_enabled);
+  v152 = 206;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.sound(200);
+  load.view(97);
+  load.view(200);
+  load.view(51);
+  load.view(52);
+  load.view(210);
+  load.view(207);
+  add.to.pic(207, 0, 0, 56, 95, 10, 1);
+  animate.obj(o8);
+  set.view(o8, 207);
+  set.loop(o8, 1);
+  fix.loop(o8);
+  set.cel(o8, 0);
+  set.priority(o8, 15);
+  position(o8, 71, 62);
+  draw(o8);
+  stop.cycling(o8);
+  animate.obj(o9);
+  set.view(o9, 207);
+  set.loop(o9, 2);
+  fix.loop(o9);
+  set.priority(o9, 15);
+  position(o9, 79, 92);
+  draw(o9);
+  v156 = 4;
+  cycle.time(o9, v156);
+  animate.obj(o1);
+  animate.obj(o2);
+  set.view(o1, 51);
+  set.view(o2, 52);
+  set.priority(o1, 14);
+  set.priority(o2, 14);
+  v153 = 1;
+  v154 = 2;
+  cycle.time(o1, v153);
+  cycle.time(o2, v153);
+  step.time(o1, v154);
+  step.time(o2, v154);
+  set.loop(o1, 1);
+  fix.loop(o1);
+  set.loop(o2, 0);
+  fix.loop(o2);
+  position(o1, 102, 51);
+  position(o2, 53, 55);
+  wander(o1);
+  wander(o2);
+  animate.obj(o3);
+  set.view(o3, 200);
+  set.loop(o3, 0);
+  set.cel(o3, 0);
+  set.priority(o3, 11);
+  position(o3, 69, 112);
+  animate.obj(o6);
+  set.view(o6, 52);
+  set.priority(o6, 4);
+  ignore.horizon(o6);
+  ignore.objs(o6);
+  set.loop(o6, 5);
+  fix.loop(o6);
+  position(o6, 57, 38);
+  v153 = 1;
+  cycle.time(o6, v153);
+  animate.obj(o7);
+  set.view(o7, 52);
+  set.priority(o7, 4);
+  ignore.horizon(o7);
+  ignore.objs(o7);
+  set.loop(o7, 5);
+  position(o7, 99, 38);
+  cycle.time(o7, v153);
+  animate.obj(o12);
+  set.view(o12, 210);
+  current.loop(Ego, v147);
+  set.loop.v(o12, v147);
+  current.cel(Ego, v148);
+  set.cel.v(o12, v148);
+  position.v(o12, v33, v34);
+  animate.obj(o5);
+  set.view(o5, 97);
+  v156 = 4;
+  v33 -= v156;
+  v34  += v155;
+  position.v(o5, v33, v34);
+  stop.cycling(o5);
+  set.loop(o5, 0);
+  set.cel(o5, 0);
+  reset(f74);
+  set(f220);
+  v162 = 0;
+  show.pic();
+  return();
+}
+if ((v221 > 0) && 
+    (isset(f112))) {
+  v221--;
+  if ((v221 <= 0) && 
+      (isset(f222))) {
+    set(f220);
+  }
+  if ((v221 == 1) && 
+      (!isset(f222))) {
+    stop.cycling(o3);
+  }
+  if ((v221 <= 0) && 
+      (!isset(f222))) {
+    close.window();
+    set(f220);
+  }
+}
+if (isset(f221)) {
+  reset(f221);
+  v221 = 2;
+}
+current.cel(o5, v162);
+if (v162 == 2) {
+  erase(o12);
+  stop.update(o12);
+}
+if (isset(f220)) {
+  reset(f220);
+  v220++;
+  if (v220 == 1) {
+    v221 = 2;
+  }
+  if (v220 == 2) {
+    sound(200, f154);
+    v156 = 4;
+    cycle.time(o8, v156);
+    end.of.loop(o8, f221);
+  }
+  if (v220 == 3) {
+    erase(o8);
+    erase(o9);
+    discard.view(207);
+    set.horizon(1);
+    v157 = 152;
+    load.pic(v157);
+    draw.pic(v157);
+    discard.pic(v157);
+    draw(o1);
+    draw(o2);
+    draw(o3);
+    stop.cycling(o3);
+    add.to.pic(200, 3, 0, 30, 108, 15, 4);
+    draw(o6);
+    reverse.cycle(o6);
+    draw(o7);
+    draw(o12);
+    stop.update(o12);
+    show.pic();
+    set(f220);
+  }
+  if (v220 == 4) {
+    v155 = 3;
+    cycle.time(o3, v155);
+    end.of.loop(o3, f220);
+  }
+  if (v220 == 5) {
+    set.loop(o3, 1);
+    set.cel(o3, 0);
+    start.cycling(o3);
+    set(windows_remain);
+    v221 = 5;
+    if (isset(f56)) {
+      print.at("\"You have saved my life, Rosella!\" the beautiful fairy says "
+               "gratefully.", 19, 5, 30);
+    }
+    else {
+      print.at("\"You have saved my life, Rosella!\" the beautiful fairy says "
+               "gratefully.", 17, 5, 30);
+    }
+  }
+  if (v220 == 6) {
+    start.cycling(o3);
+    set(windows_remain);
+    v221 = 5;
+    if (isset(f56)) {
+      print.at("\"And, you have saved Tamir from the persecution of Lolotte. We "
+               "are deeply indebted to you.\"", 19, 3, 35);
+    }
+    else {
+      print.at("\"And, you have saved Tamir from the persecution of Lolotte. We "
+               "are deeply indebted to you.\"", 17, 3, 35);
+    }
+  }
+  if (v220 == 7) {
+    start.cycling(o3);
+    set(windows_remain);
+    v221 = 4;
+    if (isset(f56)) {
+      print.at("Suddenly, Genesta exclaims, \"I want to go outside; I need to "
+               "feel the warm sun on my face!\"", 19, 4, 35);
+    }
+    else {
+      print.at("Suddenly, Genesta exclaims, \"I want to go outside; I need to "
+               "feel the warm sun on my face!\"", 17, 4, 35);
+    }
+  }
+  if (v220 == 8) {
+    set(windows_remain);
+    if (isset(f56)) {
+      print.at("Exuberantly, she waves her magic wand and...", 19, 6, 30);
+    }
+    else {
+      print.at("Exuberantly, she waves her magic wand and...", 17, 6, 30);
+    }
+    draw(o5);
+    cycle.time(o5, v154);
+    end.of.loop(o5, f220);
+    current.cel(o5, v162);
+    set.loop(o3, 2);
+    set.cel(o3, 0);
+    end.of.loop(o3, f223);
+  }
+  if (v220 == 9) {
+    erase(o5);
+    discard.view(97);
+    close.window();
+    new.room(135); //##LE001##
+  }
+}
+return();
+
+//Messages
+#message 1 "\"You have saved my life, Rosella!\" the beautiful fairy says gratefully."
+#message 2 "\"And, you have saved Tamir from the persecution of Lolotte. We are deeply indebted to you.\""
+#message 3 "Suddenly, Genesta exclaims, \"I want to go outside; I need to feel the warm sun on my face!\""
+#message 4 "Exuberantly, she waves her magic wand and..."

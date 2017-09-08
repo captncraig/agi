@@ -1,0 +1,247 @@
+if (isset(new_room)) {
+  set.horizon(1);
+  prevent.input();
+  program.control();
+  status.line.off();
+  set(f151);
+  key_pressed = 0;
+  cycle_delay = 0;
+  load.sound(2);
+  load.view(193);
+  v162 = 98;
+  load.pic(v162);
+  draw.pic(v162);
+  discard.pic(v162);
+  sound(2, f220);
+  animate.obj(o1);
+  animate.obj(o2);
+  animate.obj(o3);
+  animate.obj(o4);
+  set.view(o1, 193);
+  set.view(o2, 193);
+  set.view(o3, 193);
+  set.view(o4, 193);
+  ignore.objs(o1);
+  ignore.objs(o2);
+  ignore.objs(o3);
+  ignore.objs(o4);
+  show.pic();
+  v220 = 0;
+  set(f221);
+  return();
+}
+if (isset(f221)) {
+  reset(f221);
+  v220++;
+  if (v220 == 1) {
+    v231 = 0;
+    v235 = 0;
+    v221 = 46;
+    v225 = 50;
+    v232 = 0;
+    v236 = 1;
+    v222 = 44;
+    v226 = 82;
+    v229 = 2;
+    v230 = 7;
+  }
+  if (v220 == 2) {
+    erase(o1);
+    erase(o2);
+    v231 = 1;
+    v235 = 0;
+    v221 = 60;
+    v225 = 54;
+    v232 = 1;
+    v236 = 2;
+    v222 = 34;
+    v226 = 82;
+    v229 = 2;
+    v230 = 7;
+  }
+  if (v220 == 3) {
+    erase(o1);
+    erase(o2);
+    v231 = 1;
+    v235 = 1;
+    v221 = 59;
+    v225 = 54;
+    v232 = 1;
+    v236 = 2;
+    v222 = 34;
+    v226 = 82;
+    v229 = 2;
+    v230 = 7;
+  }
+  if (v220 == 4) {
+    erase(o1);
+    erase(o2);
+    v231 = 2;
+    v235 = 0;
+    v221 = 44;
+    v225 = 54;
+    v232 = 2;
+    v236 = 1;
+    v222 = 57;
+    v226 = 73;
+    v233 = 2;
+    v237 = 2;
+    v223 = 33;
+    v227 = 101;
+    v229 = 3;
+    v230 = 7;
+  }
+  if (v220 == 5) {
+    erase(o1);
+    erase(o2);
+    erase(o3);
+    v231 = 4;
+    v236 = 0;
+    v221 = 52;
+    v225 = 54;
+    v232 = 4;
+    v236 = 1;
+    v222 = 44;
+    v226 = 78;
+    v233 = 4;
+    v237 = 2;
+    v223 = 54;
+    v227 = 103;
+    v234 = 4;
+    v238 = 3;
+    v224 = 45;
+    v228 = 124;
+    v229 = 4;
+    v230 = 7;
+  }
+  if (v220 == 6) {
+    erase(o1);
+    erase(o2);
+    erase(o3);
+    erase(o4);
+    v231 = 3;
+    v235 = 0;
+    v221 = 56;
+    v225 = 54;
+    v232 = 3;
+    v236 = 1;
+    v222 = 42;
+    v226 = 70;
+    v233 = 3;
+    v237 = 2;
+    v223 = 48;
+    v227 = 98;
+    v234 = 3;
+    v238 = 3;
+    v224 = 34;
+    v228 = 123;
+    v229 = 4;
+    v230 = 7;
+  }
+  if (v220 == 7) {
+    erase(o1);
+    erase(o2);
+    erase(o3);
+    erase(o4);
+    v231 = 3;
+    v235 = 0;
+    v221 = 56;
+    v225 = 54;
+    v232 = 3;
+    v236 = 1;
+    v222 = 42;
+    v226 = 70;
+    v233 = 3;
+    v237 = 4;
+    v223 = 40;
+    v227 = 101;
+    v229 = 3;
+    v230 = 7;
+  }
+  if (v220 == 8) {
+    erase(o1);
+    erase(o2);
+    erase(o3);
+    v231 = 5;
+    v235 = 0;
+    v221 = 51;
+    v225 = 53;
+    v232 = 5;
+    v236 = 1;
+    v222 = 40;
+    v226 = 83;
+    v233 = 5;
+    v237 = 2;
+    v223 = 39;
+    v227 = 114;
+    v229 = 3;
+    v230 = 7;
+  }
+  if (v220 == 9) {
+    erase(o1);
+    erase(o2);
+    erase(o3);
+    v231 = 5;
+    v235 = 0;
+    v221 = 51;
+    v225 = 53;
+    v232 = 5;
+    v236 = 3;
+    v222 = 55;
+    v226 = 83;
+    v233 = 5;
+    v237 = 4;
+    v223 = 49;
+    v227 = 114;
+    v229 = 3;
+    v230 = 7;
+  }
+  if (v220 == 10) {
+    erase(o1);
+    erase(o2);
+    erase(o3);
+    new.room(120); //##LE001##
+  }
+}
+if (v229 > 0) {
+  set.loop.v(o1, v231);
+  fix.loop(o1);
+  set.cel.v(o1, v235);
+  position.v(o1, v221, v225);
+  stop.cycling(o1);
+  draw(o1);
+}
+if (v229 > 1) {
+  set.loop.v(o2, v232);
+  fix.loop(o2);
+  set.cel.v(o2, v236);
+  position.v(o2, v222, v226);
+  stop.cycling(o2);
+  draw(o2);
+}
+if (v229 > 2) {
+  set.loop.v(o3, v233);
+  fix.loop(o3);
+  set.cel.v(o3, v237);
+  position.v(o3, v223, v227);
+  stop.cycling(o3);
+  draw(o3);
+}
+if (v229 > 3) {
+  set.loop.v(o4, v234);
+  fix.loop(o4);
+  set.cel.v(o4, v238);
+  position.v(o4, v224, v228);
+  stop.cycling(o4);
+  draw(o4);
+}
+v229 = 0;
+if (isset(f112)) {
+  v230--;
+}
+if (v230 == 1) {
+  set(f221);
+}
+return();
+
+//Messages

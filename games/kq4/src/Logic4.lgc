@@ -1,0 +1,579 @@
+if (isset(new_room)) {
+  set(f82);
+  set.horizon(80);
+  if (!isset(f38)) {
+    v152 = 4;
+  }
+  else {
+    v152 = 104;
+  }
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  animate.obj(o12);
+  animate.obj(o1);
+  animate.obj(o12);
+  load.sound(70);
+  load.view(91);
+  set.view(o1, 91);
+  set.loop(o1, 0);
+  if (prev_room_no == 49) {
+    set.cel(o1, 3);
+    set(f223);
+    v155 = 1;
+  }
+  else {
+    set.cel(o1, 0);
+  }
+  position(o1, 83, 128);
+  stop.cycling(o1);
+  ignore.blocks(o1);
+  set.priority(o1, 9);
+  draw(o1);
+  load.logics(203);
+  if (prev_room_no == 49) {
+    position(Ego, 81, 133);
+  }
+  if (prev_room_no == 28) {
+    position(Ego, 25, 80);
+  }
+  ignore.blocks(Ego);
+  draw(Ego);
+  if ((!isset(f181)) && 
+      (prev_room_no == 49) && 
+      (v127 == 49)) {
+    load.logics(221);
+    load.view(125);
+    load.view(33);
+    load.sound(5);
+    load.sound(6);
+    sound(5, f154);
+    animate.obj(o3);
+    set.view(o3, 125);
+    ignore.blocks(o3);
+    if (!isset(f178)) {
+      position(o3, 90, 129);
+      v221 = 1;
+    }
+    else {
+      v221 = 2;
+      set(f229);
+      position(o3, 60, 129);
+      draw(o3);
+    }
+    v152 = 2;
+    cycle.time(o3, v152);
+    step.time(o3, v152);
+    v152 = 4;
+    step.size(o3, v152);
+    set(f231);
+    set(f178);
+  }
+  else {
+    v221 = 0;
+  }
+  if ((prev_room_no != 49) && 
+      (!isset(f178))) {
+    if ((v112 != 2 || 
+        isset(f174))) {
+      random(1, 2, v152);
+      if (v152 == 1) {
+        load.logics(221);
+        load.view(125);
+        load.view(33);
+        load.sound(5);
+        load.sound(6);
+        sound(5, f154);
+        animate.obj(o3);
+        set.view(o3, 125);
+        position(o3, 56, 128);
+        v152 = 2;
+        cycle.time(o3, v152);
+        step.time(o3, v152);
+        v152 = 4;
+        step.size(o3, v152);
+        draw(o3);
+        observe.blocks(o3);
+        follow.ego(o3, 5, f234);
+        v152 = 0;
+        set(f231);
+        set(f178);
+        v159 = 1;
+      }
+    }
+  }
+  else {
+    reset(f178);
+  }
+  if ((v112 == 2) && 
+      (prev_room_no != 49) && 
+      (!isset(f174)) && 
+      (!isset(f231))) {
+    load.logics(223);
+    load.view(120);
+    load.view(34);
+    animate.obj(o4);
+    load.sound(10);
+    load.sound(11);
+    sound(10, f154);
+    animate.obj(o2);
+    set.view(o2, 120);
+    set.loop(o2, 5);
+    set.view(o4, 120);
+    set.loop(o4, 4);
+    fix.loop(o4);
+    position(o4, 20, 129);
+    v152 = 2;
+    cycle.time(o4, v152);
+    step.time(o4, v152);
+    draw(o4);
+    set(f237);
+    v152 = 0;
+  }
+  if ((isset(f174)) && 
+      (prev_room_no != 49) && 
+      (!isset(f231))) {
+    load.logics(223);
+    load.view(120);
+    load.view(34);
+    animate.obj(o4);
+    load.sound(10);
+    load.sound(11);
+  }
+  show.pic();
+}
+if (isset(f112)) {
+  v168++;
+  reset(f112);
+}
+if (v33 < 75) {
+  ignore.blocks(Ego);
+}
+else {
+  if (!isset(f235)) {
+    observe.blocks(Ego);
+    observe.objs(Ego);
+  }
+  else {
+    ignore.blocks(Ego);
+  }
+}
+if ((v221 == 1) && 
+    (v168 == 3)) {
+  set(f222);
+  v221++;
+  v154 = 1;
+}
+if ((v221 == 2) && 
+    (isset(f235))) {
+  set(f178);
+  v127 = 4;
+  v221++;
+  draw(o3);
+  ignore.blocks(o3);
+  move.obj(o3, 68, 129, 2, f229);
+}
+if ((v221 == 3) && 
+    (isset(f229))) {
+  v221++;
+  observe.blocks(Ego);
+  observe.blocks(o3);
+  follow.ego(o3, 5, f234);
+  set(f231);
+  v159 = 1;
+}
+if (!isset(f230)) {
+  if ((isset(f222)) && 
+      (v154 == 1)) {
+    reset(f222);
+    ignore.objs(o1);
+    set.loop(o1, 0);
+    set.cel(o1, 0);
+    v152 = 2;
+    cycle.time(o1, v152);
+    start.cycling(o1);
+    end.of.loop(o1, f235);
+    v154--;
+    reset(f233);
+    reset(f175);
+    if (!isset(f232)) {
+      v223 = 3;
+    }
+  }
+}
+if ((isset(f223)) && 
+    (v155 == 1)) {
+  reset(f223);
+  observe.objs(o1);
+  v152 = 2;
+  cycle.time(o1, v152);
+  reverse.loop(o1, f233);
+  v155--;
+  reset(f235);
+  if (!isset(f232)) {
+    v223 = 3;
+  }
+}
+if (v223 > 0) {
+  v223--;
+  if (v223 <= 0) {
+    sound(70, f154);
+  }
+}
+if (isset(f237)) {
+  if ((v112 == 2) && 
+      (!isset(f236)) && 
+      (!isset(f224))) {
+    move.obj(o4, 60, 129, 0, f224);
+    set(f226);
+  }
+  if ((isset(f224)) && 
+      (!isset(f235)) && 
+      (isset(f226))) {
+    set(f240);
+    stop.cycling(o4);
+    reset(f226);
+    set(f222);
+    v154 = 1;
+  }
+  if (!isset(f230)) {
+    if ((isset(f224)) && 
+        (isset(f235))) {
+      set.priority(o4, 10);
+      start.cycling(o4);
+      ignore.blocks(o4);
+      move.obj(o4, 93, 129, 0, f174);
+    }
+    if ((isset(f174)) && 
+        (isset(f235)) && 
+        (isset(f237))) {
+      erase(o4);
+      v155 = 1;
+      set(f223);
+      reset(f237);
+    }
+  }
+  if ((posn(Ego,1,104,117,167)) && 
+      (!isset(f174)) && 
+      (!isset(f236)) && 
+      (!isset(f240))) {
+    sound(10, f154);
+    set(f230);
+    if (!isset(f239)) {
+      call(223);
+    }
+    set(f236);
+    v153 = 1;
+    set(f221);
+  }
+  if ((isset(f221)) && 
+      (v153 == 1)) {
+    reset(f221);
+    get.posn(o4, v134, v135);
+    position.v(o2, v134, v135);
+    ignore.objs(o2);
+    draw(o2);
+    release.loop(o4);
+    start.cycling(o4);
+    v152 = 2;
+    step.size(o4, v152);
+    follow.ego(o4, 5, f234);
+    v153++;
+  }
+  distance(o4, Ego, v222);
+  if (v222 < 15) {
+    set(f234);
+  }
+  if ((isset(f234)) && 
+      (v153 == 2)) {
+    sound(11, f154);
+    reset(f234);
+    prevent.input();
+    set(f36);
+    erase(Ego);
+    set.cel(o4, 0);
+    set.view(o4, 34);
+    v152 = 3;
+    step.time(o4, v152);
+    cycle.time(o4, v152);
+    end.of.loop(o4, f221);
+    v153++;
+  }
+  if ((isset(f221)) && 
+      (v153 == 3)) {
+    set(f238);
+    call(223);
+  }
+}
+if (isset(f232)) {
+  if ((isset(f235)) && 
+      (isset(f225)) && 
+      (v157 == 0)) {
+    set.view(o4, 120);
+    ignore.blocks(o4);
+    position(o4, 88, 129);
+    release.loop(o4);
+    set.loop(o4, 1);
+    fix.loop(o4);
+    draw(o4);
+    v157 = 1;
+    sound(10, f154);
+  }
+  if ((isset(f235)) && 
+      (isset(f225)) && 
+      (v157 == 1)) {
+    reset(f221);
+    set(f36);
+    sound(11, f154);
+    erase(Ego);
+    set.cel(o4, 0);
+    v230 -= 8;
+    v135 = 0;
+    ignore.blocks(o4);
+    reposition(o4, v230, v135);
+    set.view(o4, 34);
+    v152 = 3;
+    step.time(o4, v152);
+    cycle.time(o4, v152);
+    end.of.loop(o4, f221);
+    set(f223);
+    v155 = 1;
+    v157++;
+  }
+  if ((isset(f221)) && 
+      (v157 == 2) && 
+      (isset(f233))) {
+    set(f238);
+    erase(o4);
+    call(223);
+  }
+}
+if (isset(f231)) {
+  if ((isset(f234)) && 
+      (v159 == 1)) {
+    reset(f234);
+    set(f36);
+    sound(6, f154);
+    erase(Ego);
+    set.cel(o3, 0);
+    set.view(o3, 33);
+    v152 = 3;
+    step.time(o3, v152);
+    cycle.time(o3, v152);
+    end.of.loop(o3, f227);
+    v159++;
+  }
+  if ((isset(f227)) && 
+      (v159 == 2)) {
+    set(f238);
+    call(221);
+  }
+}
+if ((isset(f154)) && 
+    (isset(f231)) && 
+    (!isset(f234))) {
+  reset(f154);
+  sound(5, f154);
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room"))) {
+  print("You see a large thatched-roof house surrounded by forest; and it looks "
+        "very formidable! It might be wise to use caution here.");
+}
+if (said("examine", "cottage")) {
+  print("This is a large, crudely built, thatched-roof house.  This place makes "
+        "you feel uneasy.");
+}
+if ((said("look in", "window") || 
+    said("examine", "window") || 
+    said("examine", "through", "window"))) {
+  if (center.posn(Ego,128,117,140,131)) {
+    print("You peek through the window, but can make out no details.");
+  }
+  else {
+    set(f113);
+  }
+}
+if (said("examine", "door")) {
+  print("This is a heavy wooden door.");
+}
+if (v112 != 2) {
+  if (said("open", "door")) {
+    if (posn(Ego,74,130,92,135)) {
+      print("You can't.  It's locked and you don't have the key.");
+    }
+    else {
+      set(f113);
+    }
+  }
+  if (said("unlatch", "door")) {
+    if (posn(Ego,74,130,92,135)) {
+      print("You can't.  It's locked and you don't have the key.");
+    }
+    else {
+      set(f113);
+    }
+  }
+  if ((said("bang", "door") || 
+      said("bang") || 
+      said("bang", "abominable", "door") || 
+      said("bang", "abominable", "abominable", "door"))) {
+    if (posn(Ego,74,130,92,135)) {
+      print("You cautiously tap at the door, but are greeted only with vicious "
+            "barking  from the other side.");
+    }
+    else {
+      set(f113);
+    }
+  }
+}
+if ((center.posn(Ego,128,117,140,131)) && 
+    (said("break", "window"))) {
+  print("That's vandalism!");
+}
+if (said("break", "door")) {
+  if (posn(Ego,74,130,92,135)) {
+    print("You could never do that.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((center.posn(Ego,128,117,140,131)) && 
+    (said("open", "window"))) {
+  print("The windows do not open.");
+}
+if ((isset(f174)) && 
+    said("open", "door")) {
+  if (!isset(f235)) {
+    if (posn(Ego,74,128,92,135)) {
+      set(f222);
+      v154 = 1;
+      set(f175);
+      ego_dir = 0;
+    }
+    else {
+      set(f113);
+    }
+  }
+  else {
+    print("There is no need, the door is open.");
+  }
+}
+if (v112 == 2) {
+  if (said("unlatch", "door")) {
+    if (posn(Ego,74,130,92,135)) {
+      print("The door is already unlocked.");
+    }
+    else {
+      set(f113);
+    }
+  }
+  if (said("bang", "door")) {
+    if (posn(Ego,74,130,92,135)) {
+      if (!isset(f175)) {
+        if (isset(f174)) {
+          print("You cautiously tap at the door. \"JUST A MINUTE!  I'M "
+                "COMIN'!\" a loud woman's voice yells.  With a jerk, the door "
+                "opens to reveal...oh no!...the ogress!!");
+          set(f36);
+          prevent.input();
+          set(f232);
+          set(f222);
+          set(f225);
+          v154 = 1;
+        }
+        else {
+          print("You cautiously tap at the door, but are greeted only with "
+                "vicious barking  from the other side.");
+        }
+      }
+      else {
+        print("There is no need, the door is open.");
+      }
+    }
+    else {
+      set(f113);
+    }
+  }
+}
+if ((v112 == 2) && 
+    (!isset(f174))) {
+  if (said("examine", "buck")) {
+    print("Poor thing.");
+  }
+  if (said("carry", "buck")) {
+    print("Are you KIDDING?!");
+  }
+}
+if (!isset(input_parsed)) {
+  call(203);
+  if ((isset(f231)) && 
+      (v112 != 2)) {
+    call(221);
+  }
+  if ((isset(f237)) && 
+      (v112 == 2)) {
+    call(223);
+  }
+}
+Label1:
+if (ego_edge_code != no_edge) {
+  observe.blocks(Ego);
+}
+if (ego_edge_code == bottom_edge) {
+  if (v112 == 2) {
+    set(f174);
+  }
+  reset(f175);
+  new.room(10); //##LE001##
+}
+if (ego_edge_code == right_edge) {
+  if (v112 == 2) {
+    set(f174);
+  }
+  reset(f175);
+  new.room(5); //##LE002##
+}
+if (ego_edge_code == horizon_edge) {
+  if (v112 == 2) {
+    set(f174);
+  }
+  reset(f175);
+  new.room(28); //##LE003##
+}
+if (ego_edge_code == left_edge) {
+  if (v112 == 2) {
+    set(f174);
+  }
+  reset(f175);
+  new.room(3); //##LE004##
+}
+if ((isset(ego_touching_signal_line)) && 
+    (v112 == 2) && 
+    (isset(f235))) {
+  observe.blocks(Ego);
+  new.room(49); //##LE005##
+}
+return();
+
+//Messages
+#message 1 "You see a large thatched-roof house surrounded by forest; and it looks very formidable! It might be wise to use caution here."
+#message 2 "You peek through the window, but can make out no details."
+#message 3 "This is a heavy wooden door."
+#message 4 "You can't.  It's locked and you don't have the key."
+#message 5 "You cautiously tap at the door, but are greeted only with vicious barking  from the other side."
+#message 7 "That's vandalism!"
+#message 8 "You could never do that."
+#message 9 "The windows do not open."
+#message 10 "The door is already unlocked."
+#message 11 "You cautiously tap at the door. \"JUST A MINUTE!  I'M COMIN'!\" a loud woman's voice yells.  With a jerk, the door opens to reveal...oh no!...the ogress!!"
+#message 12 "This is a large, crudely built, thatched-roof house.  This place makes you feel uneasy."
+#message 13 "Poor thing."
+#message 14 "Are you KIDDING?!"
+#message 15 "There is no need, the door is open."

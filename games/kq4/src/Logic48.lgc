@@ -1,0 +1,265 @@
+if (isset(new_room)) {
+  set(f82);
+  v152 = 48;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  if (isset(f38)) {
+    load.view(188);
+    add.to.pic(188, 2, 0, 71, 82, 4, 4);
+    add.to.pic(188, 2, 1, 126, 86, 4, 4);
+    discard.view(188);
+  }
+  load.view(128);
+  if (!has("Sharp Axe")) {
+    load.sound(48);
+    animate.obj(o1);
+    set.view(o1, 128);
+    set.loop(o1, 0);
+    set.cel(o1, 0);
+    stop.cycling(o1);
+    position(o1, 119, 113);
+    draw(o1);
+  }
+  position(Ego, 60, 109);
+  load.logics(223);
+  load.view(120);
+  load.view(34);
+  load.sound(10);
+  load.sound(11);
+  animate.obj(o2);
+  set.view(o2, 120);
+  set.loop(o2, 6);
+  position(o2, 49, 110);
+  if (isset(f38)) {
+    animate.obj(o8);
+    animate.obj(o9);
+    set.view(o8, 128);
+    set.view(o9, 128);
+    set.loop(o8, 4);
+    set.loop(o9, 4);
+    position(o8, 51, 121);
+    position(o9, 109, 120);
+    set.priority(o8, 15);
+    set.priority(o9, 15);
+    v152 = 2;
+    cycle.time(o8, v152);
+    draw(o8);
+    draw(o9);
+  }
+  draw(Ego);
+  show.pic();
+}
+if (isset(f112)) {
+  reset(f112);
+  v168++;
+}
+if (v168 == 58) {
+  sound(10, f154);
+}
+if (v168 == 60) {
+  draw(o2);
+  move.obj(o2, 62, 110, 2, f221);
+  set(f237);
+  call(223);
+  reset(f237);
+  v153 = 1;
+}
+if ((isset(f221)) && 
+    (v153 == 1)) {
+  reset(f221);
+  v152 = 3;
+  step.size(o2, v152);
+  follow.ego(o2, 10, f234);
+  v153++;
+}
+if (isset(f234)) {
+  reset(f234);
+  sound(11, f154);
+  reset(f234);
+  stop.motion(Ego);
+  set(f36);
+  prevent.input();
+  set.cel(Ego, 0);
+  set.view(o2, 34);
+  erase(Ego);
+  v154 = 3;
+  step.time(o2, v154);
+  cycle.time(o2, v154);
+  set(f157);
+  end.of.loop(o2, f229);
+}
+if (isset(f229)) {
+  reset(f229);
+  set(f238);
+  call(223);
+  accept.input();
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "bedroom") || 
+    said("examine", "around", "bedroom") || 
+    said("examine", "cottage") || 
+    said("examine", "around", "cottage"))) {
+  print("You have entered the ogre's upstairs bedroom where a huge bed "
+        "dominates the place.  In the left wall, you notice a closed door.");
+  if (!has("Sharp Axe")) {
+    print("Against the right wall leans the ogre's axe.");
+  }
+}
+if (said("carry", "ax")) {
+  if (posn(Ego,110,110,121,118)) {
+    if (!has("Sharp Axe")) {
+      set(f116);
+      erase(o1);
+      score  += 2;
+      sound(48, f154);
+      get("Sharp Axe");
+    }
+    else {
+      set(f114);
+    }
+  }
+  else {
+    set(f113);
+  }
+}
+if (said("examine", "bed")) {
+  print("The large bed occupies most of the room.");
+}
+if (said("examine", "beneath", "bed")) {
+  print("There is nothing under the bed.");
+}
+if ((said("lay", "abominable", "bed") || 
+    said("lay", "abominable", "bed") || 
+    said("lay", "bed") || 
+    said("lay", "abominable", "bed") || 
+    said("lay", "down", "abominable", "bed") || 
+    said("lay", "abominable", "bed") || 
+    said("lay", "bed") || 
+    said("carry", "abominable", "bed") || 
+    said("lay"))) {
+  print("You don't have time for that!");
+}
+if ((said("examine", "chest") || 
+    said("examine", "dresser") || 
+    said("examine", "chest", "abominable", "drawer"))) {
+  print("It must hold the ogre's and ogress's clothes.");
+}
+if ((said("open", "chest") || 
+    said("open", "dresser") || 
+    said("open", "chest", "abominable", "drawer") || 
+    said("open", "drawer") || 
+    said("look in", "chest") || 
+    said("look in", "dresser") || 
+    said("look in", "chest", "abominable", "drawer") || 
+    said("look in", "drawer"))) {
+  print("No.  It's private.");
+}
+if ((said("examine", "window") || 
+    said("look in", "window") || 
+    said("examine", "out", "window") || 
+    said("examine", "through", "window"))) {
+  if ((posn(Ego,66,104,86,109) || 
+      posn(Ego,116,112,122,117))) {
+    print("You see the forest out the window.");
+  }
+  else {
+    set(f113);
+  }
+}
+if (said("examine", "staircase")) {
+  print("The stairs lead downwards.");
+}
+if ((said("examine", "mirror") || 
+    said("look in", "mirror"))) {
+  if (posn(Ego,120,133,126,140)) {
+    print("You look in the mirror and see the reflection of a poor, but "
+          "beautiful, peasant girl.");
+  }
+  else {
+    set(f113);
+  }
+}
+if (said("examine", "door")) {
+  print("The door is closed.");
+  if (!has("Magic Hen")) {
+    print("From behind it, you hear a soft clucking sound.");
+  }
+}
+if (said("open", "door")) {
+  if (posn(Ego,13,118,29,136)) {
+    print("You can't.  The door is locked.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("unlatch", "door") || 
+    said("unlatch", "door", "with", "key"))) {
+  if (posn(Ego,13,118,29,136)) {
+    print("You can't.  It's locked and you don't have the key.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("break", "door") || 
+    said("break", "down", "door"))) {
+  print("You could never do that.");
+}
+if ((said("bang", "door") || 
+    said("bang", "abominable", "door"))) {
+  print("From behind it, you hear a soft clucking sound.");
+}
+if (said("examine", "wall")) {
+  print("There is nothing of importance on the walls.");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down") || 
+    said("examine", "down", "dirt"))) {
+  print("There is nothing of interest on the floor.");
+}
+if ((said("examine", "barrel") || 
+    said("look in", "barrel"))) {
+  if (posn(Ego,98,100,120,111)) {
+    print("There is nothing of importance in the barrel.");
+  }
+  else {
+    set(f113);
+  }
+}
+if (said("examine", "carpet")) {
+  print("A bear rug lies on the floor by the bed.");
+}
+Label1:
+if (isset(ego_touching_signal_line)) {
+  new.room(49); //##LE001##
+}
+return();
+
+//Messages
+#message 1 "You have entered the ogre's upstairs bedroom where a huge bed dominates the place.  In the left wall, you notice a closed door."
+#message 2 "Against the right wall leans the ogre's axe."
+#message 3 "The large bed occupies most of the room."
+#message 4 "There is nothing under the bed."
+#message 5 "You don't have time for that!"
+#message 6 "It must hold the ogre's and ogress's clothes."
+#message 7 "No.  It's private."
+#message 8 "You see the forest out the window."
+#message 9 "The stairs lead downwards."
+#message 10 "You look in the mirror and see the reflection of a poor, but beautiful, peasant girl."
+#message 11 "The door is closed."
+#message 12 "You can't.  The door is locked."
+#message 13 "You can't.  It's locked and you don't have the key."
+#message 14 "You could never do that."
+#message 15 "There is nothing of importance on the walls."
+#message 16 "There is nothing of interest on the floor."
+#message 17 "From behind it, you hear a soft clucking sound."
+#message 18 "There is nothing of importance in the barrel."
+#message 19 "A bear rug lies on the floor by the bed."

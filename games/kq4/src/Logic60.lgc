@@ -1,0 +1,480 @@
+if (isset(new_room)) {
+  v152 = 60;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.logics(151);
+  if (isset(f38)) {
+    set(f82);
+    load.logics(232);
+  }
+  if (isset(f38)) {
+    load.view(188);
+    add.to.pic(188, 0, 1, 76, 80, 4, 4);
+    discard.view(188);
+    load.view(111);
+    animate.obj(o2);
+    set.view(o2, 111);
+    set.loop(o2, 1);
+    ignore.horizon(o2);
+    position(o2, 130, 67);
+    set.priority(o2, 10);
+    draw(o2);
+  }
+  if (v144 > 4) {
+    load.view(113);
+    load.view(23);
+    add.to.pic(113, 3, 0, 67, 30, 4, 4);
+    add.to.pic(113, 3, 1, 78, 120, 10, 1);
+  }
+  if (v37 == 16) {
+    set(f36);
+    prevent.input();
+    load.view(1);
+    set.view(Ego, 23);
+    set.loop(Ego, 0);
+    fix.loop(Ego);
+    set.priority(Ego, 11);
+    set(f36);
+    position(Ego, 75, 59);
+    reverse.cycle(Ego);
+    ignore.blocks(Ego);
+    ignore.objs(Ego);
+  }
+  if (v37 == 6) {
+    set(f36);
+    prevent.input();
+    set.priority(Ego, 12);
+    position(Ego, 75, 49);
+    current.loop(Ego, v147);
+    set.loop.v(Ego, v147);
+    fix.loop(Ego);
+    ignore.blocks(Ego);
+    ignore.objs(Ego);
+    load.sound(52);
+    sound(52, f154);
+    load.view(20);
+    set(f236);
+  }
+  if (isset(f38)) {
+    load.logics(232);
+  }
+  if (v144 == 3) {
+    animate.obj(o1);
+    load.view(106);
+    set.view(o1, 106);
+    set.loop(o1, 0);
+    position(o1, 25, 123);
+    v152 = 3;
+    cycle.time(o1, v152);
+    draw(o1);
+    load.sound(24);
+    sound(24, f154);
+  }
+  if ((v144 == 5) && 
+      (!isset(f143))) {
+    if (prev_room_no == 68) {
+      load.logics(235);
+      animate.obj(o1);
+      load.view(108);
+      set.view(o1, 108);
+      position(o1, 78, 122);
+      draw(o1);
+      set.priority(o1, 11);
+      set(f227);
+      v117 = 0;
+      set(f237);
+      load.sound(26);
+      sound(26, f154);
+    }
+  }
+  if (prev_room_no == 68) {
+    position(Ego, 32, 166);
+  }
+  v221 = 0;
+  draw(Ego);
+  show.pic();
+}
+get.posn(o1, v134, v135);
+distance(Ego, o1, v161);
+if ((v144 == 3) && 
+    (isset(f154))) {
+  reset(f154);
+  sound(24, f154);
+}
+if (isset(f112)) {
+  reset(f112);
+  v168++;
+  if (v144 < 5) {
+    v117++;
+  }
+}
+if ((isset(f236)) && 
+    (v37 == 6)) {
+  reset(f236);
+  v152 = 5;
+  step.size(Ego, v152);
+  move.obj(Ego, 65, 135, 0, f238);
+}
+if (isset(f238)) {
+  stop.sound();
+  set(f154);
+  reset(f238);
+  set.view(Ego, 20);
+  v221 = 2;
+}
+if (v221 > 0) {
+  v221--;
+  if (v221 <= 0) {
+    shake.screen(1);
+    v37 = 20;
+    set(f140);
+  }
+}
+if (isset(f225)) {
+  reset(f225);
+  set.cel(o1, 0);
+  set.loop(o1, 2);
+  end.of.loop(o1, f226);
+}
+if (isset(f226)) {
+  reset(f226);
+  erase(o1);
+  v144 = 4;
+  reset(f148);
+}
+if ((v144 == 5) && 
+    (isset(f227)) && 
+    (isset(f237))) {
+  reset(f227);
+  v117 = 15;
+  call(235);
+  ignore.blocks(o1);
+  start.cycling(o1);
+  move.obj(o1, 78, 25, 0, f235);
+  draw(o1);
+}
+if ((v144 == 5) && 
+    (isset(f235))) {
+  reset(f235);
+  reset(f237);
+  v168 = 0;
+  erase(o1);
+  set(f154);
+}
+if (isset(f221)) {
+  v168 = 0;
+  reset(f221);
+  prevent.input();
+  set(f36);
+  move.obj(Ego, 75, 121, 0, f222);
+}
+if (isset(f222)) {
+  reset(f222);
+  ignore.blocks(Ego);
+  set.priority(Ego, 11);
+  set.view(Ego, 23);
+  set.loop(Ego, 0);
+  fix.loop(Ego);
+  move.obj(Ego, 75, 49, 0, f223);
+}
+if (isset(f223)) {
+  reset(f36);
+  set.view(Ego, 1);
+  new.room(63); //##LE001##
+}
+if (v37 == 16) {
+  move.obj(Ego, 75, 121, 0, f224);
+}
+if (isset(f224)) {
+  set.view(Ego, 1);
+  reset(f36);
+  reset(f224);
+  release.priority(Ego);
+  release.loop(Ego);
+  observe.blocks(Ego);
+  observe.objs(Ego);
+  v152 = 1;
+  cycle.time(Ego, v152);
+  normal.motion(Ego);
+  v37 = 0;
+  accept.input();
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "bedroom") || 
+    said("examine", "around", "bedroom") || 
+    said("examine", "cottage") || 
+    said("examine", "around", "cottage"))) {
+  print("This old bedroom must have once been very nice.  You could imagine a "
+        "cheery fire in the fireplace, while its occupant slept snugly in the "
+        "big bed.   But sadly, this room has been abandoned for years.");
+}
+if (said("examine", "bed")) {
+  print("The old bed still looks comfortable.");
+}
+if (said("examine", "beneath", "bed")) {
+  print("There is nothing under the bed.");
+}
+if ((said("lay", "bed") || 
+    said("lay", "bed") || 
+    said("lay", "bed") || 
+    said("lay") || 
+    said("lay", "down", "bed") || 
+    said("lay", "bed") || 
+    said("carry", "bed"))) {
+  print("You don't have time for that!");
+}
+if ((said("examine", "window") || 
+    said("look in", "window") || 
+    said("examine", "out", "window") || 
+    said("examine", "through", "window"))) {
+  if (posn(Ego,70,101,84,106)) {
+    print("You see the cemetary out the window.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("examine", "fireplace") || 
+    said("look in", "fireplace"))) {
+  print("The fireplace has been cold for years.  There's nothing there.");
+}
+if ((said("examine", "chest") || 
+    said("examine", "dresser") || 
+    said("examine", "chest", "abominable", "drawer"))) {
+  print("A large old chest of drawers rests against the wall.");
+}
+if ((said("open", "chest") || 
+    said("open", "dresser") || 
+    said("open", "chest", "drawer") || 
+    said("open", "drawer") || 
+    said("look in", "chest") || 
+    said("look in", "dresser") || 
+    said("look in", "chest", "drawer") || 
+    said("look in", "drawer"))) {
+  print("The chest of drawers is empty.");
+}
+if (said("examine", "wall")) {
+  print("There is nothing of importance on the walls.");
+}
+if (said("examine", "carpet")) {
+  print("A worn rug lies below the bed.");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down") || 
+    said("examine", "down", "dirt"))) {
+  print("There is nothing of interest on the floor.");
+}
+if (said("examine", "ceiling")) {
+  if (v144 > 4) {
+    print("You see a ladder descending into the room from an open trapdoor in "
+          "the ceiling.");
+  }
+  else {
+    print("You look up at the ceiling and notice a closed trapdoor.");
+  }
+}
+if ((said("examine", "trapdoor") || 
+    said("examine", "trapdoor", "ceiling"))) {
+  if (v144 > 4) {
+    print("You see a ladder, descending into the room from an open trapdoor in "
+          "the ceiling.");
+  }
+  else {
+    print("The ceiling trapdoor is closed.");
+  }
+}
+if (said("open", "trapdoor")) {
+  if (v144 > 4) {
+    print("The trapdoor is already open!");
+  }
+  else {
+    print("You have absolutely no way of reaching that trapdoor as it's too "
+          "high.  And moving the heavy furniture is out of the question.  "
+          "Forget it.");
+  }
+}
+if (said("close", "trapdoor")) {
+  if (v144 > 4) {
+    print("There is no reason to close it.");
+  }
+  else {
+    print("The trapdoor is already closed!");
+  }
+}
+if (said("examine", "ladder")) {
+  print("A ladder descends into the room from an open trapdoor in the ceiling.");
+}
+if ((said("climb", "ladder") || 
+    said("climb", "up", "ladder"))) {
+  if (v144 > 4) {
+    if (posn(Ego,75,120,85,125)) {
+      set(f221);
+    }
+    else {
+      set(f113);
+    }
+  }
+  else {
+    print("The ceiling trapdoor is closed.");
+  }
+}
+if ((said("look in", "trapdoor") || 
+    said("examine", "through", "trapdoor") || 
+    said("examine", "up", "trapdoor") || 
+    said("examine", "up", "through", "trapdoor"))) {
+  if (v144 > 4) {
+    print("The ceiling trapdoor is closed.");
+  }
+  else {
+    print("You look up through the open trapdoor, but can't make out anything "
+          "as it's too dark up there.");
+  }
+}
+if ((said("move", "furniture") || 
+    said("move", "bed") || 
+    said("move", "dresser") || 
+    said("move", "chest") || 
+    said("move", "chest", "abominable", "drawer"))) {
+  print("The furniture is too heavy to move.");
+}
+if (v144 == 3) {
+  if ((said("examine", "ghost") || 
+      said("examine", "crone") || 
+      said("examine", "crone", "ghost") || 
+      said("examine", "ghost", "abominable", "chair"))) {
+    print("You see the sad ghost of a beautiful young woman.  She sits in her "
+          "rocking chair and weeps as if her heart will break.");
+  }
+  if ((said("speak", "ghost") || 
+      said("speak", "with", "ghost") || 
+      said("speak") || 
+      said("speak", "with", "crone") || 
+      said("speak", "with", "crone", "ghost") || 
+      said("speak", "crone") || 
+      said("speak", "crone", "ghost") || 
+      said("calm", "ghost"))) {
+    print("You try to comfort the lady ghost, but she doesn't respond.  It "
+          "seems as if she doesn't even know you're here as she continues her "
+          "deep sobbing.");
+  }
+  if (said("examine", "chair")) {
+    print("The ghost of a despondent young lady sits in the rocking chair and "
+          "weeps as if her heart will break.");
+  }
+  if ((said("carry", "ghost") || 
+      said("carry", "crone", "ghost") || 
+      said("carry", "crone"))) {
+    print("You can't get a ghost!");
+  }
+  if ((said("capture", "ghost") || 
+      said("capture", "crone", "ghost") || 
+      said("capture", "crone"))) {
+    print("You can't catch a ghost!");
+  }
+  if ((said("kill", "ghost") || 
+      said("kill", "crone", "ghost") || 
+      said("kill", "crone"))) {
+    print("How can you kill something that is already dead!");
+  }
+  if ((said("embrace", "ghost") || 
+      said("embrace") || 
+      said("embrace", "crone", "ghost") || 
+      said("embrace", "crone"))) {
+    print("You can't, as the ghost has no substance.");
+  }
+  if ((said("help", "ghost") || 
+      said("help", "crone") || 
+      said("help", "crone", "ghost") || 
+      said("save", "ghost"))) {
+    print("You'd like to help the sad lady ghost, but how can you do that?");
+  }
+  if ((said("deliver", "locket") || 
+      said("deliver", "locket", "crone") || 
+      said("deliver", "locket", "crone", "ghost") || 
+      said("deliver", "locket", "ghost"))) {
+    if (posn(Ego,20,120,50,128)) {
+      if (has("Locket")) {
+        v117 = 0;
+        print("You hand the lovely locket to the distraught ghost.  The locket "
+              "seems to make her very happy as she vanishes into thin air.");
+        score  += 2;
+        drop("Locket");
+        set(f225);
+      }
+      else {
+        set(f115);
+      }
+    }
+    else {
+      set(f113);
+    }
+  }
+}
+if (!has("Lit Oil Lantern") && 
+    !has("Unlit Oil Lantern")) {
+  if ((said("examine", "lamp") || 
+      said("examine", "ignite"))) {
+    print("The lamp is old and dusty.");
+  }
+}
+if ((v144 == 5) && 
+    (isset(f237))) {
+  call(235);
+}
+if (!isset(input_parsed)) {
+  call(151);
+}
+if (isset(f106)) {
+  reset(f106);
+  print("The lady is not interested.");
+}
+Label1:
+if (isset(f38)) {
+  call(232);
+}
+if (ego_edge_code == bottom_edge) {
+  new.room(68); //##LE002##
+}
+return();
+
+//Messages
+#message 1 "This old bedroom must have once been very nice.  You could imagine a cheery fire in the fireplace, while its occupant slept snugly in the big bed.   But sadly, this room has been abandoned for years."
+#message 2 "The old bed still looks comfortable."
+#message 3 "There is nothing under the bed."
+#message 4 "You don't have time for that!"
+#message 5 "You see the cemetary out the window."
+#message 6 "The fireplace has been cold for years.  There's nothing there."
+#message 7 "A large old chest of drawers rests against the wall."
+#message 8 "The chest of drawers is empty."
+#message 9 "There is nothing of importance on the walls."
+#message 10 "There is nothing of interest on the floor."
+#message 11 "You look up at the ceiling and notice a closed trapdoor."
+#message 12 "You see a ladder descending into the room from an open trapdoor in the ceiling."
+#message 13 "The ceiling trapdoor is closed."
+#message 14 "You see a ladder, descending into the room from an open trapdoor in the ceiling."
+#message 15 "You have absolutely no way of reaching that trapdoor as it's too high.  And moving the heavy furniture is out of the question.  Forget it."
+#message 16 "The trapdoor is already open!"
+#message 17 "The trapdoor is already closed!"
+#message 18 "There is no reason to close it."
+#message 19 "A ladder descends into the room from an open trapdoor in the ceiling."
+#message 20 "You look up through the open trapdoor, but can't make out anything as it's too dark up there."
+#message 21 "The furniture is too heavy to move."
+#message 22 "You see the sad ghost of a beautiful young woman.  She sits in her rocking chair and weeps as if her heart will break."
+#message 23 "You try to comfort the lady ghost, but she doesn't respond.  It seems as if she doesn't even know you're here as she continues her deep sobbing."
+#message 24 "The ghost of a despondent young lady sits in the rocking chair and weeps as if her heart will break."
+#message 25 "You can't get a ghost!"
+#message 26 "You can't catch a ghost!"
+#message 27 "How can you kill something that is already dead!"
+#message 28 "You can't, as the ghost has no substance."
+#message 29 "You'd like to help the sad lady ghost, but how can you do that?"
+#message 30 "You hand the lovely locket to the distraught ghost.  The locket seems to make her very happy as she vanishes into thin air."
+#message 31 "The lady is not interested."
+#message 32 "The lamp is old and dusty."
+#message 33 "A worn rug lies below the bed."

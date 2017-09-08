@@ -1,0 +1,544 @@
+if (isset(new_room)) {
+  set(f82);
+  set.horizon(65);
+  load.logics(202);
+  load.view(11);
+  load.view(2);
+  load.view(3);
+  load.view(4);
+  load.sound(9);
+  load.sound(51);
+  load.sound(48);
+  animate.obj(o12);
+  animate.obj(o1);
+  if (!isset(f38)) {
+    v152 = 3;
+  }
+  else {
+    v152 = 103;
+  }
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  draw(Ego);
+  v156 = 0;
+  reset(f169);
+  if (!isset(f177)) {
+    random(1, 3, v152);
+    if (v152 == 1) {
+      load.logics(214);
+      load.view(77);
+      load.view(78);
+      load.view(72);
+      animate.obj(o2);
+      set.view(o2, 77);
+      position(o2, 3, 45);
+      draw(o2);
+      ignore.horizon(o2);
+      ignore.blocks(o2);
+      ignore.objs(o2);
+      set.priority(o2, 8);
+      set(f238);
+      v235 = 1;
+    }
+  }
+  show.pic();
+}
+if ((!isset(f238)) && 
+    (v37 != 6)) {
+  stop.sound();
+}
+distance(Ego, o1, v161);
+if (v34 < 83) {
+  set(f225);
+  reset(f169);
+}
+else {
+  reset(f225);
+}
+if (isset(f238)) {
+  if (v235 == 1) {
+    reset(f221);
+    move.obj(o2, 80, 90, 0, f221);
+    v236 = 1;
+    v235++;
+    sound(9, f154);
+  }
+  if ((v236 == 1) && 
+      (center.posn(Ego,85,98,150,165))) {
+    v236 = 5;
+    v235 = 9;
+    set(f221);
+  }
+  if ((v235 == 2) && 
+      (isset(f221))) {
+    reset(f221);
+    release.priority(o2);
+    move.obj(o2, 105, 112, 0, f221);
+    v235++;
+  }
+  if ((v235 == 3) && 
+      (isset(f221))) {
+    reset(f221);
+    set.loop(o2, 4);
+    fix.loop(o2);
+    set.cel(o2, 0);
+    v152 = 2;
+    cycle.time(o2, v152);
+    end.of.loop(o2, f221);
+    v235++;
+  }
+  if ((v235 == 4) && 
+      (isset(f221))) {
+    reset(f221);
+    set.view(o1, 72);
+    set.loop(o1, 0);
+    set.cel(o1, 0);
+    stop.cycling(o1);
+    position(o1, 112, 112);
+    draw(o1);
+    set(f236);
+    v152 = 1;
+    cycle.time(o2, v152);
+    set.loop(o2, 5);
+    fix.loop(o2);
+    set.cel(o2, 0);
+    end.of.loop(o2, f239);
+    move.obj(o2, 93, 112, 0, f221);
+    v236 = 2;
+    v235++;
+  }
+  if ((v235 == 5) && 
+      (isset(f221))) {
+    reset(f221);
+    v152 = 2;
+    cycle.time(o2, v152);
+    set.view(o2, 78);
+    release.loop(o2);
+    set.loop(o2, 1);
+    wander(o2);
+    start.cycling(o2);
+    v236 = 3;
+    v235++;
+    observe.blocks(o2);
+  }
+  if (v236 == 3) {
+    start.cycling(o2);
+    if (isset(f112)) {
+      reset(f112);
+      v168++;
+    }
+    get.posn(o2, v134, v135);
+    if (v134 < 82) {
+      normal.motion(o2);
+      v134 = 3;
+      set.dir(o2, v134);
+      reset(f152);
+    }
+    else {
+      if (!isset(f152)) {
+        wander(o2);
+        set(f152);
+      }
+    }
+    get.posn(o2, v134, v135);
+    if (v135 < 105) {
+      normal.motion(o2);
+      v135 = 6;
+      set.dir(o2, v135);
+      reset(f152);
+    }
+    else {
+      if (!isset(f152)) {
+        wander(o2);
+        set(f152);
+      }
+    }
+  }
+  if ((v168 == 20) && 
+      (v235 == 6) && 
+      (v236 == 3)) {
+    v236 = 2;
+    ignore.blocks(o2);
+    move.obj(o2, 95, 112, 0, f221);
+    v235++;
+  }
+  if ((isset(f221)) && 
+      (v235 == 7)) {
+    reset(f221);
+    ignore.objs(o2);
+    set.loop(o2, 4);
+    end.of.loop(o2, f221);
+    v235++;
+  }
+  if ((isset(f221)) && 
+      (v235 == 8)) {
+    reset(f221);
+    erase(o2);
+    set.view(o2, 77);
+    set.loop(o2, 4);
+    set.cel(o2, 7);
+    fix.loop(o2);
+    position(o2, 105, 112);
+    draw(o2);
+    erase(o1);
+    reset(f236);
+    reverse.loop(o2, f221);
+    start.cycling(o2);
+    v235++;
+  }
+  if ((v235 == 9) && 
+      (isset(f221))) {
+    reset(f221);
+    ignore.blocks(o2);
+    set.priority(o2, 9);
+    release.loop(o2);
+    start.cycling(o2);
+    v236 = 1;
+    move.obj(o2, 3, 55, 0, f221);
+    v235++;
+  }
+  if ((v235 == 10) && 
+      (isset(f221))) {
+    reset(f221);
+    erase(o2);
+    set(f154);
+    reset(f238);
+    v235++;
+  }
+}
+if (v234 == 1) {
+  reset(f222);
+  ignore.blocks(o2);
+  move.obj(o2, 49, 115, 0, f222);
+  v234++;
+  v236 = 2;
+}
+if ((v234 == 2) && 
+    (isset(f222))) {
+  reset(f222);
+  set.loop(o2, 5);
+  end.of.loop(o2, f222);
+  v234++;
+}
+if ((v234 == 3) && 
+    (isset(f222))) {
+  reset(f222);
+  erase(o2);
+  set.priority(o2, 9);
+  set.view(o2, 77);
+  position(o2, 47, 113);
+  draw(o2);
+  set.loop(o2, 7);
+  start.cycling(o2);
+  end.of.loop(o2, f222);
+  v234++;
+}
+if ((v234 == 4) && 
+    (isset(f222))) {
+  reset(f222);
+  set.priority(o2, 8);
+  set.loop(o2, 3);
+  fix.loop(o2);
+  start.cycling(o2);
+  move.obj(o2, 3, 55, 0, f222);
+  v234++;
+}
+if ((v236 == 3) && 
+    (center.posn(Ego,82,105,128,130))) {
+  print("Oh, oh!  You've startled Cupid!  He quickly jumps out of the pool and "
+        "flies away in fear.");
+  v235 = 11;
+  set(f237);
+  if (isset(f169)) {
+    v233 = 1;
+  }
+  else {
+    v234 = 1;
+  }
+}
+if (v233 == 1) {
+  ignore.blocks(o2);
+  move.obj(o2, 97, 112, 0, f223);
+  v233++;
+  v236 = 2;
+}
+if ((v233 == 2) && 
+    (isset(f223))) {
+  reset(f223);
+  set.loop(o2, 4);
+  end.of.loop(o2, f223);
+  v233++;
+}
+if ((v233 == 3) && 
+    (isset(f223))) {
+  reset(f223);
+  set.priority(o2, 8);
+  set.view(o2, 77);
+  set.loop(o2, 3);
+  fix.loop(o2);
+  start.cycling(o2);
+  move.obj(o2, 3, 55, 0, f223);
+  ignore.blocks(o2);
+  v233++;
+}
+if ((v233 == 4) && 
+    (isset(f223))) {
+  v233++;
+  reset(f223);
+  erase(o2);
+  reset(f238);
+}
+if ((!isset(f225)) && 
+    (v156 == 0) && 
+    (isset(ego_touching_signal_line))) {
+  v107 = v33;
+  v108 = v34;
+  get.posn(Ego, v134, v135);
+  v37 = 6;
+  if (v134 < 80) {
+    if (v135 < 104) {
+      v135  += 7;
+      v134  += 8;
+    }
+    else {
+      v107  += 5;
+      v134  += 15;
+      v135 -= 4;
+    }
+  }
+  else {
+    if (v135 < 104) {
+      v107 -= 10;
+      v134 -= 11;
+      v135  += 7;
+    }
+    else {
+      v107 -= 10;
+      v134 -= 16;
+      v135 -= 3;
+    }
+  }
+  set(f224);
+  v156 = 1;
+}
+if ((v156 == 1) && 
+    (isset(f224))) {
+  reset(f224);
+  set(f36);
+  prevent.input();
+  sound(51, f154);
+  v156++;
+  ignore.blocks(o12);
+  ignore.objs(o12);
+  set.view(o12, 11);
+  position.v(o12, v107, v108);
+  if (v33 < 80) {
+    set.loop(o12, 0);
+  }
+  else {
+    set.loop(o12, 1);
+  }
+  fix.loop(o12);
+  set.cel(o12, 0);
+  erase(Ego);
+  draw(o12);
+  v152 = 2;
+  cycle.time(o12, v152);
+  start.cycling(o12);
+  v152 = 0;
+  move.obj.v(o12, v134, v135, v152, f224);
+}
+if ((v156 == 2) && 
+    (isset(f224))) {
+  reset(f36);
+  stop.sound();
+  accept.input();
+  get.posn(o12, v134, v135);
+  set.view(Ego, 4);
+  position.v(Ego, v134, v135);
+  erase(o12);
+  draw(Ego);
+  reset(f224);
+  set(f169);
+  observe.blocks(Ego);
+  v156 = 0;
+}
+if ((isset(f225)) && 
+    (isset(ego_touching_signal_line))) {
+  set(f169);
+}
+if (isset(f169)) {
+  if (v34 > 86) {
+    set.view(Ego, 4);
+    v37 = 11;
+  }
+  if ((v34 < 86) && 
+      (v34 > 84)) {
+    set.view(Ego, 3);
+    v37 = 10;
+  }
+  if ((v34 < 85) && 
+      (v34 > 82)) {
+    set.view(Ego, 2);
+    v37 = 9;
+  }
+}
+if (v34 < 82) {
+  set.view(Ego, 0);
+  v37 = 0;
+  reset(f169);
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room"))) {
+  print("The beautiful pool, with its elegant marble columns, has a wonderful "
+        "setting in these woods.  The water looks so cool and inviting; you're "
+        "almost tempted to jump in and swim around.");
+}
+if ((said("examine", "pool") || 
+    said("examine", "lake"))) {
+  print("The beautiful pool is lined with tall marble columns.  Its crystal "
+        "clear water looks very inviting.");
+}
+if (said("carry", "lake")) {
+  print("You have no reason to carry water.");
+}
+if ((said("carry", "drink") || 
+    said("carry", "drink", "lake") || 
+    said("drink", "lake") || 
+    said("drink") || 
+    said("carry", "lake"))) {
+  if (isset(f169)) {
+    print("You drink some of the pool water.  At least it quenches your thirst.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down", "dirt") || 
+    said("examine", "down"))) {
+  if (!isset(f236)) {
+    print("You see nothing of importance.");
+  }
+  else {
+    print("You see a bow and two arrows on the ground.");
+  }
+}
+if ((said("float") || 
+    said("enter", "swimming") || 
+    said("wade", "pool") || 
+    said("float", "pool") || 
+    said("float", "lake") || 
+    said("float") || 
+    said("dive", "pool") || 
+    said("dive", "lake") || 
+    said("wade", "pool") || 
+    said("wade", "lake") || 
+    said("dive") || 
+    said("wade"))) {
+  if (v37 == 0) {
+    print("Just enter the water.");
+  }
+  else {
+    print("The water is too shallow to swim here.");
+  }
+}
+if ((said("dive") || 
+    said("hop", "pool") || 
+    said("hop", "abominable", "pool") || 
+    said("hop", "abominable", "lake") || 
+    said("dive", "abominable", "pool") || 
+    said("dive", "abominable", "lake") || 
+    said("dive", "pool"))) {
+  print("Just do that yourself.");
+}
+if ((said("exit") || 
+    said("exit", "pool") || 
+    said("exit", "lake") || 
+    said("climb", "out") || 
+    said("climb", "out", "pool") || 
+    said("climb", "out", "lake") || 
+    said("carry", "out", "lake") || 
+    said("carry", "out", "pool") || 
+    said("carry", "out") || 
+    said("climb", "pool") || 
+    said("climb", "lake") || 
+    said("exit", "pool"))) {
+  if (isset(f169)) {
+    print("There are steps at the north end of the pool.");
+  }
+  else {
+    print("debug2");
+  }
+}
+if ((said("examine", "column") || 
+    said("examine", "marble", "column"))) {
+  print("The marble columns flank the pretty pool.");
+}
+if (!isset(input_parsed)) {
+  call(202);
+}
+if (!isset(input_parsed)) {
+  if ((isset(f238) || 
+      isset(f237))) {
+    call(214);
+  }
+}
+Label1:
+if (ego_edge_code == bottom_edge) {
+  new.room(9); //##LE001##
+}
+if (ego_edge_code == right_edge) {
+  new.room(4); //##LE002##
+}
+if (ego_edge_code == horizon_edge) {
+  new.room(27); //##LE003##
+}
+if (ego_edge_code == left_edge) {
+  new.room(2); //##LE004##
+}
+return();
+
+//Messages
+#message 1 "The beautiful pool, with its elegant marble columns, has a wonderful setting in these woods.  The water looks so cool and inviting; you're almost tempted to jump in and swim around."
+#message 2 "The beautiful pool is lined with tall marble columns.  Its crystal clear water looks very inviting."
+#message 3 "You have no reason to carry water."
+#message 4 "You drink some of the pool water.  At least it quenches your thirst."
+#message 5 "You see nothing of importance."
+#message 6 "You see a bow and two arrows on the ground."
+#message 7 "Oh, oh!  You've startled Cupid!  He quickly jumps out of the pool and flies away in fear."
+#message 8 "Just enter the water."
+#message 9 "Just do that yourself."
+#message 10 "The water is too shallow to swim here."
+#message 11 "There are steps at the north end of the pool."
+#message 12 "The marble columns flank the pretty pool."
+#message 13 "You don't see a bow."
+#message 14 "You have to be in the pool first."
+#message 15 "debug2"
+#message 16 "debug 3."
+#message 17 "debug 4."
+#message 18 "debug 5."
+#message 19 "debug 6."
+#message 20 "debug 7."
+#message 21 "debug 8."
+#message 22 "debug 9"
+#message 23 "debug 10."
+#message 24 "debug 11."
+#message 25 "debug 12."
+#message 26 "debug 13."
+#message 27 "debug 14."
+#message 28 "debug 15."
+#message 29 "debug 16."
+#message 30 "debug 17."
+#message 31 "debug 18."
+#message 32 "debug 19"
+#message 33 "debug 20."
+#message 34 "debug 21."
+#message 35 "debug 22."
+#message 36 "debug 23."

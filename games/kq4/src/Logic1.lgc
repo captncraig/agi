@@ -1,0 +1,247 @@
+if (isset(new_room)) {
+  set.horizon(84);
+  load.logics(213);
+  load.logics(200);
+  load.logics(150);
+  if (isset(f180)) {
+    v37 = 12;
+    set(f36);
+    prevent.input();
+    load.view(161);
+    load.sound(35);
+    sound(35, f154);
+  }
+  if (!isset(f38)) {
+    v152 = 1;
+  }
+  else {
+    v152 = 101;
+  }
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  v154 = 2;
+  call(150);
+  if (prev_room_no == 25) {
+    if (v91 == 1) {
+      position(Ego, 141, 82);
+    }
+    if (v91 == 2) {
+      position(Ego, 107, 82);
+    }
+    if (v37 == 9) {
+      position(Ego, 96, 82);
+    }
+    if (v37 == 10) {
+      position(Ego, 80, 82);
+    }
+    if ((v37 == 11 || 
+        v37 == 15)) {
+      position(Ego, 70, 82);
+    }
+    if ((v37 == 12 || 
+        v37 == 14)) {
+      position(Ego, 60, 82);
+    }
+  }
+  if (prev_room_no == 7) {
+    if (v91 == 1) {
+      position(Ego, 148, 166);
+    }
+    if (v91 == 2) {
+      position(Ego, 116, 166);
+    }
+    if (v37 == 9) {
+      position(Ego, 88, 166);
+    }
+    if (v37 == 10) {
+      position(Ego, 77, 166);
+    }
+    if ((v37 == 11 || 
+        v37 == 15)) {
+      position(Ego, 51, 166);
+    }
+    if (v37 == 12) {
+      position(Ego, 13, 166);
+    }
+  }
+  animate.obj(o12);
+  animate.obj(o3);
+  load.view(55);
+  set.view(o3, 55);
+  set.loop(o3, 4);
+  set.priority(o3, 5);
+  ignore.objs(o3);
+  v154 = 3;
+  cycle.time(o3, v154);
+  position(o3, 64, 152);
+  draw(o3);
+  if (!isset(f38)) {
+    animate.obj(o1);
+    animate.obj(o2);
+    ignore.objs(o1);
+    ignore.objs(o2);
+    load.view(163);
+    set.view(o1, 163);
+    set.view(o2, 163);
+    set.loop(o1, 0);
+    fix.loop(o1);
+    set.loop(o2, 0);
+    fix.loop(o2);
+    ignore.horizon(o1);
+    ignore.horizon(o2);
+    position(o1, 82, 25);
+    position(o2, 123, 25);
+    draw(o1);
+    draw(o2);
+    wander(o1);
+    wander(o2);
+    set(f237);
+    set(f238);
+  }
+  draw(Ego);
+  show.pic();
+}
+if (isset(f112)) {
+  reset(f112);
+  v168++;
+  v169++;
+}
+if (isset(f237)) {
+  get.posn(o1, v226, v227);
+}
+if ((isset(f237)) && 
+    (v227 < 5 || 
+    v226 < 5 || 
+    v226 > 152)) {
+  erase(o1);
+  v168 = 0;
+  reset(f237);
+}
+if ((v168 == 3) && 
+    (!isset(f237)) && 
+    !isset(f38)) {
+  v168 = 4;
+  random(54, 145, v162);
+  v161 = 6;
+  position.v(o1, v162, v161);
+  draw(o1);
+  move.obj(o1, 100, 35, 0, f225);
+  set(f237);
+}
+if (isset(f225)) {
+  reset(f225);
+  wander(o1);
+}
+if (isset(f238)) {
+  get.posn(o2, v226, v227);
+}
+if ((isset(f238)) && 
+    (v227 < 5)) {
+  erase(o2);
+  v169 = 0;
+  reset(f238);
+}
+if ((v169 == 3) && 
+    (!isset(f238)) && 
+    !isset(f38)) {
+  v169 = 4;
+  random(54, 145, v162);
+  v161 = 6;
+  position.v(o2, v162, v161);
+  draw(o2);
+  move.obj(o2, 100, 35, 0, f224);
+  set(f238);
+}
+if (isset(f224)) {
+  reset(f224);
+  wander(o2);
+}
+if (isset(f180)) {
+  move.obj(Ego, 56, 108, 0, f221);
+}
+if (isset(f221)) {
+  reset(f221);
+  reset(f36);
+  animate.obj(o10);
+  set.view(o10, 161);
+  set.loop(o10, 5);
+  fix.loop(o10);
+  v154 = 2;
+  cycle.time(o10, v154);
+  v154 = 3;
+  step.size(o10, v154);
+  position(o10, 50, 108);
+  set.priority(o10, 6);
+  draw(o10);
+  move.obj(o10, 0, 108, 3, f222);
+  accept.input();
+  reset(f180);
+}
+if (isset(f222)) {
+  reset(f222);
+  erase(o10);
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room"))) {
+  print("A narrow strip of beach borders a vast ocean, which stretches off to "
+        "the west.  A pretty green meadow, dotted with bunches of wildflowers, "
+        "goes to the east.");
+}
+if (said("examine", "grass")) {
+  print("A flowery meadow stretches to the east.");
+}
+if (said("examine", "brook")) {
+  print("You see a river in the distance to the north.");
+}
+if (!isset(input_parsed)) {
+  call(200);
+}
+if (!isset(input_parsed)) {
+  call(213);
+}
+Label1:
+if (!isset(new_room)) {
+  call(150);
+}
+if (ego_edge_code == bottom_edge) {
+  if (v33 > 137) {
+    v91 = 1;
+  }
+  if ((v33 < 138) && 
+      (v33 > 90)) {
+    v91 = 2;
+  }
+  new.room(7); //##LE001##
+}
+if (ego_edge_code == left_edge) {
+  v45 = 1;
+  v46 = 4;
+  new.room(31); //##LE002##
+}
+if (ego_edge_code == right_edge) {
+  new.room(2); //##LE003##
+}
+if (ego_edge_code == horizon_edge) {
+  if (v33 > 129) {
+    v91 = 1;
+  }
+  if ((v33 < 129) && 
+      (v33 > 97)) {
+    v91 = 2;
+  }
+  new.room(25); //##LE004##
+}
+return();
+
+//Messages
+#message 1 ""
+#message 2 "A narrow strip of beach borders a vast ocean, which stretches off to the west.  A pretty green meadow, dotted with bunches of wildflowers, goes to the east."
+#message 3 "A flowery meadow stretches to the east."
+#message 4 "You tentatively taste the water.  YUCK!!   This water's too salty!"
+#message 5 "You see a river in the distance to the north."

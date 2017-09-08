@@ -1,0 +1,153 @@
+if (isset(new_room)) {
+  discard.view(0);
+  load.sound(33);
+  set.horizon(10);
+  v152 = 47;
+  load.view(51);
+  load.view(52);
+  load.logics(227);
+  call(227);
+  load.view(1);
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  set.view(Ego, 1);
+  animate.obj(o1);
+  animate.obj(o2);
+  set.view(o1, 51);
+  set.view(o2, 52);
+  set.priority(o1, 14);
+  set.priority(o2, 14);
+  v152 = 1;
+  cycle.time(o1, v152);
+  cycle.time(o2, v152);
+  position(o1, 106, 51);
+  position(o2, 47, 45);
+  wander(o1);
+  wander(o2);
+  draw(o1);
+  draw(o2);
+  animate.obj(o3);
+  animate.obj(o4);
+  set.view(o3, 52);
+  set.loop(o3, 4);
+  position(o3, 136, 75);
+  v152 = 1;
+  cycle.time(o3, v152);
+  draw(o3);
+  set.view(o4, 52);
+  set.loop(o4, 5);
+  position(o4, 22, 75);
+  v152 = 1;
+  cycle.time(o4, v152);
+  set.priority(o4, 14);
+  draw(o4);
+  if (prev_room_no == 46) {
+    position(Ego, 35, 128);
+  }
+  else {
+    position(Ego, 74, 165);
+    set.loop(Ego, 3);
+  }
+  draw(Ego);
+  show.pic();
+  sound(33, f154);
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "castle") || 
+    said("examine", "ivory", "castle") || 
+    said("examine", "entry") || 
+    said("examine", "around", "entry") || 
+    said("examine", "castle", "entry") || 
+    said("examine", "around", "castle", "entry"))) {
+  print("This is the entry hall of the enchanted ivory palace.  %m9.  The left "
+        "doorway, however, is open.");
+}
+if ((said("examine", "door") || 
+    said("examine", "castle", "door"))) {
+  print("%m9; but the left doorway is open.  The main palace door is behind "
+        "you.");
+}
+if (said("open", "door")) {
+  if ((posn(Ego,73,113,83,118) || 
+      posn(Ego,116,125,121,133))) {
+    print("You can't.  The door is locked.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("unlatch", "door") || 
+    said("unlatch", "door", "with", "key"))) {
+  if ((posn(Ego,73,113,83,118) || 
+      posn(Ego,116,125,121,133))) {
+    print("You can't.  It's locked and you don't have the key.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("break", "door") || 
+    said("break", "down", "door"))) {
+  if ((posn(Ego,73,113,83,118) || 
+      posn(Ego,116,125,121,133))) {
+    print("You could never do that.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("examine", "green plant") || 
+    said("examine", "blossom"))) {
+  print("An unusual vine clings to the back wall of the palace entry hall.");
+}
+if (said("examine", "wall")) {
+  print("There is nothing of importance on the walls.");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down") || 
+    said("examine", "down", "dirt"))) {
+  print("There is nothing interesting on the floor.");
+}
+if (said("deliver", "rol")) {
+  print("The fairies are not interested.");
+}
+if (said("bang", "door")) {
+  if ((posn(Ego,73,113,83,118) || 
+      posn(Ego,116,125,121,133))) {
+    print("There is no answer.");
+  }
+  else {
+    set(f113);
+  }
+}
+if (!isset(input_parsed)) {
+  call(227);
+}
+Label1:
+if (ego_edge_code == bottom_edge) {
+  new.room(37); //##LE001##
+}
+if (isset(ego_touching_signal_line)) {
+  new.room(46); //##LE002##
+}
+return();
+
+//Messages
+#message 1 "This is the entry hall of the enchanted ivory palace.  %m9.  The left doorway, however, is open."
+#message 2 "%m9; but the left doorway is open.  The main palace door is behind you."
+#message 3 "You can't.  The door is locked."
+#message 4 "You can't.  It's locked and you don't have the key."
+#message 5 "You could never do that."
+#message 6 "An unusual vine clings to the back wall of the palace entry hall."
+#message 7 "There is nothing of importance on the walls."
+#message 8 "There is nothing interesting on the floor."
+#message 9 "Two of the doors are closed, and presumably, off-limits to uninvited visitors"
+#message 10 "The fairies are not interested."
+#message 11 "There is no answer."

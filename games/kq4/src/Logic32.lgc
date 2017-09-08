@@ -1,0 +1,176 @@
+if (isset(new_room)) {
+  set.horizon(142);
+  v34 = 141;
+  set(f157);
+  load.logics(209);
+  load.logics(230);
+  call(230);
+  v152 = 32;
+  load.view(6);
+  v37 = 12;
+  set.view(Ego, 6);
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  if (prev_room_no == 39) {
+    v33 = 10;
+  }
+  if (prev_room_no == 40) {
+    v33 = 79;
+  }
+  if (prev_room_no == 41) {
+    v33 = 148;
+  }
+  if (prev_room_no == 31) {
+    v33 = v45;
+    v34 = 166;
+  }
+  position.v(Ego, v33, v34);
+  if (isset(f231)) {
+    position(o8, 45, 26);
+    draw(o8);
+  }
+  if (isset(f230)) {
+    position(o9, 115, 27);
+    draw(o9);
+  }
+  draw(Ego);
+  show.pic();
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room"))) {
+  print("As you swim, you notice a splendid white palace on a small island to "
+        "the north.");
+}
+if (said("examine", "island")) {
+  print("The small island contains a beautiful white palace.  Lush vegatation "
+        "encircles the palace.");
+}
+if ((said("examine", "castle") || 
+    said("examine", "ivory", "castle") || 
+    said("examine", "ivory", "castle") || 
+    said("examine", "castle", "island"))) {
+  print("The white palace is quite enchanting!  (Maybe it IS enchanted).  With "
+        "its tall slender towers, lovely arched windows and beautiful island "
+        "setting, the palace radiates goodness, peace, and serenity.");
+}
+if ((v37 != 12) && 
+    (said("enter", "swimming") || 
+    said("enter", "swimming", "lake") || 
+    said("enter", "swimming", "ocean") || 
+    said("float", "lake") || 
+    said("float", "ocean") || 
+    said("float") || 
+    said("dive", "lake") || 
+    said("wade", "lake") || 
+    said("dive", "ocean") || 
+    said("wade", "ocean") || 
+    said("dive") || 
+    said("wade"))) {
+  print("Just enter the water.");
+}
+if ((v37 == 12) && 
+    (said("enter", "swimming") || 
+    said("enter", "swimming", "lake") || 
+    said("enter", "swimming", "ocean") || 
+    said("float", "lake") || 
+    said("float", "ocean") || 
+    said("float") || 
+    said("dive", "lake") || 
+    said("wade", "lake") || 
+    said("dive", "ocean") || 
+    said("wade", "ocean") || 
+    said("dive") || 
+    said("wade"))) {
+  print("You're already swimming.");
+}
+if (!has("Dead Fish")) {
+  if (said("examine", "dead fish")) {
+    print("You don't see any fish.");
+  }
+}
+if (!isset(input_parsed)) {
+  call(209);
+}
+Label1:
+if (!isset(new_room)) {
+  call(230);
+}
+if (v230 > 0 && 
+    isset(f112)) {
+  v230--;
+  if (v230 <= 0) {
+    position(o8, 2, 26);
+    v152 = 4;
+    set.dir(o8, v152);
+    draw(o8);
+    set(f231);
+  }
+}
+if (v231 > 0 && 
+    isset(f112)) {
+  v231--;
+  if (v231 <= 0) {
+    position(o9, 150, 26);
+    v152 = 6;
+    set.dir(o9, v152);
+    draw(o9);
+    set(f230);
+  }
+}
+if (ego_edge_code == bottom_edge) {
+  v46 = 0;
+  if (v35 < 53) {
+    v45 = 5;
+  }
+  else {
+    if (v35 < 107 && 
+        v35 > 52) {
+      v45 = 4;
+    }
+    else {
+      v45 = 3;
+    }
+  }
+  new.room(31); //##LE001##
+}
+if (ego_edge_code == right_edge) {
+  v45 = 2;
+  v46 = 1;
+  new.room(31); //##LE002##
+}
+if (ego_edge_code == horizon_edge) {
+  v33 = 80;
+  if (v35 < 53) {
+    new.room(39); //##LE003##
+  }
+  else {
+    if (v35 < 107 && 
+        v35 > 52) {
+      new.room(40); //##LE004##
+    }
+    else {
+      new.room(41); //##LE005##
+    }
+  }
+}
+if (ego_edge_code == left_edge) {
+  v45 = 6;
+  v46 = 1;
+  new.room(31); //##LE006##
+}
+return();
+
+//Messages
+#message 1 "As you swim, you notice a splendid white palace on a small island to the north."
+#message 2 "You're too tired to swim anymore.  Your body gives out as you prepare to join Davy Jones in his locker."
+#message 3 "The small island contains a beautiful white palace.  Lush vegatation encircles the palace."
+#message 4 "The white palace is quite enchanting!  (Maybe it IS enchanted).  With its tall slender towers, lovely arched windows and beautiful island setting, the palace radiates goodness, peace, and serenity."
+#message 5 "Just enter the water."
+#message 6 "You're already swimming."
+#message 7 "You don't see any fish."

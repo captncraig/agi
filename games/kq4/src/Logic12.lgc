@@ -1,0 +1,457 @@
+if (isset(new_room)) {
+  set(f82);
+  set.horizon(72);
+  if (!isset(f38)) {
+    v152 = 12;
+  }
+  else {
+    v152 = 112;
+  }
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.logics(204);
+  load.logics(205);
+  load.sound(48);
+  if (has("Sharp Axe")) {
+    load.view(21);
+  }
+  load.view(18);
+  if (!isset(f194)) {
+    load.sound(64);
+    load.sound(65);
+    sound(64, f154);
+  }
+  animate.obj(o1);
+  animate.obj(o2);
+  animate.obj(o3);
+  animate.obj(o4);
+  animate.obj(o5);
+  animate.obj(o6);
+  animate.obj(o7);
+  animate.obj(o8);
+  animate.obj(o9);
+  animate.obj(o10);
+  set.view(o1, 18);
+  set.view(o2, 18);
+  set.view(o3, 18);
+  set.view(o4, 18);
+  set.view(o5, 18);
+  set.view(o6, 18);
+  set.view(o7, 18);
+  set.view(o8, 18);
+  set.view(o9, 18);
+  set.view(o10, 18);
+  set.loop(o1, 0);
+  set.loop(o2, 1);
+  set.loop(o3, 2);
+  set.loop(o4, 3);
+  set.loop(o5, 4);
+  set.loop(o6, 5);
+  set.loop(o7, 6);
+  set.loop(o8, 7);
+  set.loop(o9, 8);
+  set.loop(o10, 6);
+  set.cel(o1, 0);
+  set.cel(o2, 0);
+  set.cel(o3, 0);
+  set.cel(o4, 0);
+  set.cel(o5, 0);
+  set.cel(o6, 0);
+  set.cel(o7, 0);
+  set.cel(o8, 0);
+  set.cel(o9, 0);
+  set.cel(o10, 0);
+  stop.cycling(o1);
+  stop.cycling(o2);
+  stop.cycling(o3);
+  stop.cycling(o4);
+  stop.cycling(o5);
+  stop.cycling(o6);
+  stop.cycling(o7);
+  stop.cycling(o8);
+  stop.cycling(o9);
+  stop.cycling(o10);
+  position(o1, 90, 94);
+  position(o2, 10, 104);
+  position(o3, 35, 149);
+  position(o4, 95, 129);
+  position(o5, 9, 73);
+  position(o6, 39, 84);
+  position(o7, 21, 77);
+  position(o8, 63, 100);
+  position(o9, 80, 101);
+  position(o10, 60, 90);
+  ignore.objs(o1);
+  ignore.objs(o2);
+  ignore.objs(o3);
+  ignore.objs(o4);
+  ignore.objs(o5);
+  ignore.objs(o6);
+  ignore.objs(o7);
+  ignore.objs(o8);
+  ignore.objs(o9);
+  ignore.objs(o10);
+  ignore.blocks(o1);
+  ignore.blocks(o2);
+  ignore.blocks(o3);
+  ignore.blocks(o4);
+  ignore.blocks(o5);
+  ignore.blocks(o6);
+  ignore.blocks(o7);
+  ignore.blocks(o8);
+  ignore.blocks(o9);
+  ignore.blocks(o10);
+  set.priority(o1, 7);
+  set.priority(o3, 14);
+  set.priority(o2, 7);
+  set.priority(o4, 13);
+  set.priority(o5, 10);
+  set.priority(o6, 10);
+  set.priority(o7, 12);
+  set.priority(o8, 7);
+  set.priority(o9, 7);
+  draw(o1);
+  draw(o2);
+  draw(o3);
+  draw(o4);
+  draw(o5);
+  draw(o6);
+  draw(o7);
+  draw(o8);
+  draw(o9);
+  draw(o10);
+  stop.update(o1);
+  stop.update(o2);
+  stop.update(o3);
+  stop.update(o4);
+  stop.update(o5);
+  stop.update(o6);
+  stop.update(o7);
+  stop.update(o8);
+  stop.update(o9);
+  stop.update(o10);
+  animate.obj(o13);
+  animate.obj(o14);
+  animate.obj(o15);
+  set.view(o13, 18);
+  set.view(o14, 18);
+  set.view(o15, 18);
+  set.loop(o13, 9);
+  set.loop(o14, 9);
+  set.loop(o15, 9);
+  ignore.horizon(o13);
+  ignore.horizon(o14);
+  ignore.horizon(o15);
+  position(o13, 48, 92);
+  position(o14, 134, 85);
+  position(o15, 104, 57);
+  v152 = 8;
+  cycle.time(o13, v152);
+  v152 = 5;
+  cycle.time(o14, v152);
+  v152 = 7;
+  cycle.time(o15, v152);
+  set.priority(o13, 15);
+  set.priority(o14, 15);
+  set.priority(o15, 15);
+  draw(o13);
+  draw(o14);
+  draw(o15);
+  if (prev_room_no == 6) {
+    if (v33 > 108) {
+      position(Ego, 108, 73);
+    }
+  }
+  if (prev_room_no == 11) {
+    if ((v34 < 123) && 
+        (v34 > 107)) {
+      position(Ego, 1, 107);
+    }
+  }
+  if (prev_room_no == 18) {
+    if (v33 > 125) {
+      position(Ego, 125, 167);
+    }
+    else {
+      if (v33 < 58 && 
+          v33 > 36) {
+        position(Ego, 36, 167);
+      }
+    }
+  }
+  draw(Ego);
+  show.pic();
+}
+if ((isset(ego_touching_signal_line)) && 
+    (posn(Ego,92,85,108,96)) && 
+    (!isset(f193)) && 
+    (!isset(f194))) {
+  sound(65, f154);
+  start.update(o1);
+  set(f193);
+  stop.motion(Ego);
+  stop.cycling(Ego);
+  start.cycling(o1);
+  end.of.loop(o1, f221);
+}
+if ((isset(ego_touching_signal_line)) && 
+    (posn(Ego,13,89,27,98)) && 
+    (!isset(f193)) && 
+    (!isset(f194))) {
+  sound(65, f154);
+  start.update(o2);
+  set(f193);
+  stop.motion(Ego);
+  stop.cycling(Ego);
+  start.cycling(o2);
+  end.of.loop(o2, f221);
+}
+if ((isset(ego_touching_signal_line)) && 
+    (posn(Ego,32,137,54,153)) && 
+    (!isset(f193)) && 
+    (!isset(f194))) {
+  sound(65, f154);
+  start.update(o3);
+  set(f193);
+  stop.motion(Ego);
+  stop.cycling(Ego);
+  start.cycling(o3);
+  end.of.loop(o3, f221);
+}
+if ((isset(ego_touching_signal_line)) && 
+    (posn(Ego,96,120,121,133)) && 
+    (!isset(f193)) && 
+    (!isset(f194))) {
+  sound(65, f154);
+  start.update(o4);
+  set(f193);
+  stop.motion(Ego);
+  stop.cycling(Ego);
+  start.cycling(o4);
+  end.of.loop(o4, f221);
+}
+if ((isset(ego_touching_signal_line)) && 
+    (posn(Ego,10,69,16,86)) && 
+    (!isset(f193)) && 
+    (!isset(f194))) {
+  sound(65, f154);
+  start.update(o5);
+  set(f193);
+  stop.motion(Ego);
+  stop.cycling(Ego);
+  start.cycling(o5);
+  end.of.loop(o5, f221);
+}
+if ((isset(ego_touching_signal_line)) && 
+    (posn(Ego,38,80,49,88)) && 
+    (!isset(f193)) && 
+    (!isset(f194))) {
+  sound(65, f154);
+  start.update(o6);
+  set(f193);
+  stop.motion(Ego);
+  stop.cycling(Ego);
+  start.cycling(o6);
+  end.of.loop(o6, f221);
+}
+if ((isset(ego_touching_signal_line)) && 
+    (posn(Ego,20,68,27,86)) && 
+    (!isset(f193)) && 
+    (!isset(f194))) {
+  sound(65, f154);
+  start.update(o7);
+  set(f193);
+  stop.motion(Ego);
+  stop.cycling(Ego);
+  start.cycling(o7);
+  end.of.loop(o7, f221);
+}
+if ((isset(ego_touching_signal_line)) && 
+    (posn(Ego,59,92,71,96)) && 
+    (!isset(f193)) && 
+    (!isset(f194))) {
+  sound(65, f154);
+  start.update(o8);
+  set(f193);
+  stop.motion(Ego);
+  stop.cycling(Ego);
+  start.cycling(o8);
+  end.of.loop(o8, f221);
+}
+if ((isset(ego_touching_signal_line)) && 
+    (posn(Ego,77,85,93,96)) && 
+    (!isset(f193)) && 
+    (!isset(f194))) {
+  sound(65, f154);
+  start.update(o9);
+  set(f193);
+  stop.motion(Ego);
+  stop.cycling(Ego);
+  start.cycling(o9);
+  end.of.loop(o9, f221);
+}
+if ((isset(ego_touching_signal_line)) && 
+    (posn(Ego,60,83,71,92)) && 
+    (!isset(f193)) && 
+    (!isset(f194))) {
+  sound(65, f154);
+  start.update(o10);
+  set(f193);
+  stop.motion(Ego);
+  stop.cycling(Ego);
+  start.cycling(o10);
+  end.of.loop(o10, f221);
+}
+current.cel(o1, v221);
+current.cel(o2, v222);
+current.cel(o3, v223);
+current.cel(o4, v224);
+current.cel(o5, v225);
+current.cel(o6, v226);
+current.cel(o7, v227);
+current.cel(o8, v228);
+current.cel(o9, v229);
+current.cel(o10, v230);
+if (v221 == 2) {
+  erase(Ego);
+}
+if (v222 == 1) {
+  erase(Ego);
+}
+if (v223 == 1) {
+  erase(Ego);
+}
+if (v224 == 1) {
+  erase(Ego);
+}
+if (v225 == 2) {
+  erase(Ego);
+}
+if (v226 == 1) {
+  erase(Ego);
+}
+if (v227 == 1) {
+  erase(Ego);
+}
+if (v228 == 2) {
+  erase(Ego);
+}
+if (v229 == 1) {
+  erase(Ego);
+}
+if (v230 == 1) {
+  erase(Ego);
+}
+if (isset(f221)) {
+  reset(f221);
+  print("I guess its twig city for you, Rosella.");
+  set(f223);
+}
+if (isset(f223)) {
+  reset(f223);
+  set(f140);
+}
+if ((isset(f222)) && 
+    (v168 == 2)) {
+  set.view(Ego, 0);
+  reset(f36);
+  reset(f222);
+  reset(f157);
+  v152 = 1;
+  cycle.time(Ego, v152);
+  print("The trees tremble at your might, and are frightened by your axe.  They "
+        "will not bother you further.");
+}
+if (isset(f112)) {
+  reset(f112);
+  v168++;
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room"))) {
+  print("You have come upon a bizarre group of scary human-like trees.  A thick "
+        "forest of pine trees surrounds this strange group. Steep mountains "
+        "block your way to the east.");
+}
+if ((said("chop", "branch") || 
+    said("chop", "off", "branch") || 
+    said("chop", "forest", "with", "ax") || 
+    said("chop", "forest") || 
+    said("chop", "down", "forest") || 
+    said("chop", "arm") || 
+    said("chop", "branch") || 
+    said("wave", "ax") || 
+    said("wave", "ax", "forest") || 
+    said("use", "ax") || 
+    said("chop", "branch", "forest") || 
+    said("chop", "off", "branch", "forest") || 
+    said("chop", "branch", "with", "ax") || 
+    said("swing", "ax", "rol") || 
+    said("chop", "off", "branch", "with", "ax") || 
+    said("chop", "branch", "forest", "with", "ax") || 
+    said("chop", "off", "branch", "forest", "with", "ax") || 
+    said("break", "branch") || 
+    said("break", "off", "branch") || 
+    said("break", "branch", "with", "ax") || 
+    said("break", "off", "branch", "with", "ax") || 
+    said("break", "branch", "forest", "with", "ax") || 
+    said("break", "off", "branch", "forest", "with", "ax"))) {
+  if (!isset(f193)) {
+    if (!isset(f194)) {
+      if (has("Sharp Axe")) {
+        if (!isset(f194)) {
+          score  += 4;
+        }
+        set(f194);
+        set(f36);
+        stop.motion(Ego);
+        set.view(Ego, 21);
+        set(f157);
+        v152 = 3;
+        cycle.time(Ego, v152);
+        v168 = 0;
+        set(f222);
+        sound(48, f154);
+      }
+      else {
+        print("How would you go about doing that?");
+      }
+    }
+    else {
+      print("That's not necessary anymore.");
+    }
+  }
+  else {
+    print("Too late.");
+  }
+}
+if (!isset(input_parsed)) {
+  call(204);
+}
+if (!isset(input_parsed)) {
+  call(205);
+}
+Label1:
+if (ego_edge_code == bottom_edge) {
+  new.room(18); //##LE001##
+}
+if (ego_edge_code == horizon_edge) {
+  new.room(6); //##LE002##
+}
+if (ego_edge_code == left_edge) {
+  new.room(11); //##LE003##
+}
+return();
+
+//Messages
+#message 1 "You have come upon a bizarre group of scary human-like trees.  A thick forest of pine trees surrounds this strange group. Steep mountains block your way to the east."
+#message 3 "The trees tremble at your might, and are frightened by your axe.  They will not bother you further."
+#message 4 "I guess its twig city for you, Rosella."
+#message 5 "Too late."
+#message 6 "That's not necessary anymore."
+#message 7 "How would you go about doing that?"

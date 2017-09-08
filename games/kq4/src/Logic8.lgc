@@ -1,0 +1,318 @@
+if (isset(new_room)) {
+  set.horizon(60);
+  load.logics(201);
+  load.logics(151);
+  if (has("Wooden Lute")) {
+    load.view(14);
+  }
+  if (!isset(f38)) {
+    v152 = 8;
+  }
+  else {
+    v152 = 108;
+  }
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  if (prev_room_no == 7) {
+    if (v34 > 130) {
+      position(Ego, 3, 140);
+    }
+  }
+  if (prev_room_no == 14) {
+    if (v33 > 131) {
+      position(Ego, 130, 167);
+    }
+  }
+  draw(Ego);
+  v154 = 2;
+  if ((!has("Silver Flute")) && 
+      (!isset(f160))) {
+    random(1, 3, v152);
+    if (v152 == 1) {
+      load.logics(208);
+      load.view(75);
+      load.view(76);
+      animate.obj(o1);
+      set.view(o1, 75);
+      position(o1, 100, 90);
+      draw(o1);
+      set.loop(o1, 1);
+      fix.loop(o1);
+      cycle.time(o1, v154);
+      step.time(o1, v154);
+      wander(o1);
+      set(f238);
+      set(f109);
+      v238 = 1;
+      load.sound(48);
+      load.sound(7);
+      load.sound(8);
+      load.sound(54);
+      sound(7, f154);
+    }
+    else {
+      reset(f160);
+      reset(f109);
+    }
+  }
+  show.pic();
+}
+if (!isset(f192)) {
+  get.posn(o1, v134, v135);
+  if (v134 < 61) {
+    normal.motion(o1);
+    v134 = 3;
+    set.dir(o1, v134);
+    reset(f152);
+  }
+  else {
+    if (!isset(f152)) {
+      wander(o1);
+      set(f152);
+    }
+  }
+  get.posn(o1, v134, v135);
+  if (v135 < 75) {
+    normal.motion(o1);
+    v135 = 4;
+    set.dir(o1, v135);
+    reset(f152);
+  }
+  else {
+    if (!isset(f152)) {
+      wander(o1);
+      set(f152);
+    }
+  }
+}
+if ((isset(f154)) && 
+    (!isset(f192)) && 
+    (isset(f238))) {
+  sound(7, f154);
+}
+if (isset(f112)) {
+  reset(f112);
+  v168++;
+}
+if ((v168 == 20) && 
+    (!isset(f192))) {
+  move.obj(o1, 109, 90, 0, f221);
+}
+if (isset(f221)) {
+  move.obj(o1, 159, 90, 0, f222);
+  reset(f221);
+}
+if (isset(f222)) {
+  erase(o1);
+  reset(f222);
+  v238 = 0;
+  reset(f109);
+  reset(f238);
+}
+if (said("play", "lute")) {
+  if (has("Wooden Lute")) {
+    if (isset(f238)) {
+      if (!isset(f192)) {
+        prevent.input();
+        set(f36);
+        stop.motion(Ego);
+        set(f227);
+        set(f192);
+        sound(54, f154);
+      }
+      else {
+        print("You have already attracted Pan's attention.");
+      }
+    }
+    else {
+      print("There is nobody here who would be interested in your lute music.");
+    }
+  }
+  else {
+    set(f115);
+  }
+}
+if (isset(f227)) {
+  reset(f227);
+  set.view(Ego, 14);
+  set.loop(Ego, 1);
+  set(f157);
+  set(f225);
+  set(f223);
+  v168 = 0;
+}
+if (isset(f225)) {
+  reset(f225);
+  set.view(o1, 76);
+  release.loop(o1);
+  start.cycling(o1);
+  follow.ego(o1, 2, f226);
+  v238 = 2;
+}
+if ((isset(f223)) && 
+    (v168 == 12)) {
+  reset(f223);
+  reset(f157);
+  reset(f36);
+  set.view(Ego, 0);
+  set.loop(Ego, 0);
+  print("You begin to play a catchy tune upon the lute, attracting Pan's "
+        "attention. Curiously, he comes over to you and watches you play.");
+  accept.input();
+}
+distance(Ego, o1, v154);
+if (v238 == 2) {
+  if (v154 < 15) {
+    stop.motion(o1);
+    stop.cycling(o1);
+  }
+  else {
+    start.cycling(o1);
+    follow.ego(o1, 2, f226);
+  }
+}
+if ((said("deliver", "pan", "lute") || 
+    said("deliver", "wood", "lute") || 
+    said("deliver", "lute") || 
+    said("deliver", "lute", "pan"))) {
+  if (isset(f238)) {
+    if (has("Wooden Lute")) {
+      if (isset(f192)) {
+        if (v154 < 15) {
+          v154 = 2;
+          sound(48, f154);
+          get("Silver Flute");
+          drop("Wooden Lute");
+          score  += 3;
+          print("Pan gratefully accepts your gift of the lute and in return he "
+                "gives you his flute.  Happy now, he dances away with the lute.");
+          set.view(o1, 75);
+          set.loop(o1, 0);
+          fix.loop(o1);
+          draw(o1);
+          step.time(o1, v154);
+          cycle.time(o1, v154);
+          start.cycling(o1);
+          set(f221);
+          sound(8, f154);
+          v238 = 3;
+        }
+        else {
+          set(f113);
+          start.cycling(o1);
+        }
+      }
+      else {
+        print("You can't get Pan's attention.");
+      }
+    }
+    else {
+      set(f115);
+    }
+  }
+  else {
+    print("There is nobody here.");
+  }
+}
+if ((v238 == 3) && 
+    (isset(f154))) {
+  reset(f154);
+  sound(8, f154);
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room"))) {
+  print("A beautiful green meadow, dotted with wildflowers, serves as the "
+        "fisherman's spacious back yard.  The flowers' sweet scent fills the "
+        "air.");
+}
+if (said("examine", "cottage")) {
+  print("You see the back of an old shack.");
+}
+if ((said("examine", "window") || 
+    said("look in", "window"))) {
+  if (center.posn(Ego,8,132,23,140)) {
+    print("You peek through the window, but can make out no details.");
+  }
+  else {
+    set(f113);
+  }
+}
+if (said("examine", "door")) {
+  print("You can't see the door from here.");
+}
+if (said("open", "window")) {
+  if (center.posn(Ego,8,132,23,140)) {
+    print("The windows do not open.");
+  }
+  else {
+    set(f113);
+  }
+}
+if (said("open", "door")) {
+  print("You can't see the door from here.");
+}
+if ((said("bang", "abominable", "door") || 
+    said("bang", "abominable", "door") || 
+    said("bang", "door"))) {
+  print("You can't see the door from here.");
+}
+if (said("break", "window")) {
+  if (center.posn(Ego,8,132,23,140)) {
+    print("That's vandalism!");
+  }
+  else {
+    set(f113);
+  }
+}
+if (!isset(input_parsed)) {
+  call(201);
+  if (isset(f238)) {
+    call(208);
+  }
+}
+if (!isset(input_parsed)) {
+  call(151);
+}
+if (isset(f106)) {
+  reset(f106);
+  print("Pan would not be interested in it.");
+}
+Label1:
+if (ego_edge_code == bottom_edge) {
+  reset(f192);
+  new.room(14); //##LE001##
+}
+if (ego_edge_code == right_edge) {
+  reset(f192);
+  new.room(9); //##LE002##
+}
+if (ego_edge_code == horizon_edge) {
+  reset(f192);
+  new.room(2); //##LE003##
+}
+if (ego_edge_code == left_edge) {
+  reset(f192);
+  new.room(7); //##LE004##
+}
+return();
+
+//Messages
+#message 1 "A beautiful green meadow, dotted with wildflowers, serves as the fisherman's spacious back yard.  The flowers' sweet scent fills the air."
+#message 2 "You see the back of an old shack."
+#message 3 "You peek through the window, but can make out no details."
+#message 4 "You can't see the door from here."
+#message 5 "That's vandalism!"
+#message 6 "The windows do not open."
+#message 7 "Pan gratefully accepts your gift of the lute and in return he gives you his flute.  Happy now, he dances away with the lute."
+#message 8 "There is nobody here."
+#message 9 "You begin to play a catchy tune upon the lute, attracting Pan's attention. Curiously, he comes over to you and watches you play."
+#message 10 "You have already attracted Pan's attention."
+#message 11 "There is nobody here who would be interested in your lute music."
+#message 12 "You can't get Pan's attention."
+#message 16 "Pan would not be interested in it."

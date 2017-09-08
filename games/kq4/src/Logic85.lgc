@@ -1,0 +1,107 @@
+if (isset(new_room)) {
+  discard.view(0);
+  load.sound(52);
+  load.logics(219);
+  v152 = 85;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  set.horizon(59);
+  load.view(1);
+  set.view(Ego, 1);
+  if (prev_room_no == 81) {
+    position(Ego, 88, 62);
+  }
+  else {
+    position(Ego, 57, 149);
+    v34 = 149;
+  }
+  v37 = 0;
+  draw(Ego);
+  show.pic();
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "tower") || 
+    said("examine", "around", "tower") || 
+    said("examine", "castle") || 
+    said("examine", "dark", "castle") || 
+    said("examine", "bad", "castle") || 
+    said("examine", "around", "castle") || 
+    said("examine", "around", "bad", "castle") || 
+    said("examine", "around", "dark", "castle"))) {
+  print("These stone tower steps could be very treacherous.");
+}
+if ((said("examine", "staircase") || 
+    said("examine", "rock", "staircase") || 
+    said("examine", "up", "staircase") || 
+    said("examine", "up", "rock", "staircase"))) {
+  print("Watch your step on these narrow stairs!");
+}
+if (!isset(input_parsed)) {
+  call(219);
+}
+Label1:
+if (posn(Ego,111,87,113,111)) {
+  set(f221);
+}
+if (posn(Ego,110,96,110,111)) {
+  reset(f221);
+}
+if ((ego_dir == up) && 
+    (isset(f221)) && 
+    (v37 != 6)) {
+  set.loop(Ego, 2);
+  fix.loop(Ego);
+}
+else {
+  if ((ego_dir == down) && 
+      (isset(f221)) && 
+      (v37 != 6)) {
+    set.loop(Ego, 3);
+    fix.loop(Ego);
+  }
+  else {
+    if (v37 != 6) {
+      release.loop(Ego);
+    }
+  }
+}
+if ((isset(ego_touching_signal_line)) && 
+    (v37 != 6)) {
+  sound(52, f154);
+  reset(f221);
+  v37 = 6;
+  set(f36);
+  current.loop(Ego, v147);
+  load.view(10);
+  set.view(Ego, 10);
+  if (v147 == 0) {
+    set.loop.v(Ego, v147);
+    fix.loop(Ego);
+  }
+  else {
+    set.loop(Ego, 1);
+    fix.loop(Ego);
+  }
+  v153 = 167;
+  v156 = 4;
+  ignore.blocks(Ego);
+  move.obj.v(Ego, v33, v153, v156, f222);
+}
+if (ego_edge_code == horizon_edge) {
+  new.room(81); //##LE001##
+}
+if (v34 > 150) {
+  new.room(90); //##LE002##
+}
+return();
+
+//Messages
+#message 1 "These stone tower steps could be very treacherous."
+#message 2 "Watch your step on these narrow stairs!"

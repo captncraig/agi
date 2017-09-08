@@ -1,0 +1,289 @@
+if (isset(new_room)) {
+  set(f82);
+  if (!isset(f38)) {
+    v152 = 28;
+  }
+  else {
+    v152 = 128;
+  }
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  set.horizon(109);
+  animate.obj(o12);
+  load.logics(203);
+  if (!isset(f176)) {
+    random(1, 3, v152);
+    if (v152 == 3) {
+      load.logics(244);
+      load.view(112);
+      animate.obj(o3);
+      set.view(o3, 112);
+      ignore.horizon(o3);
+      v152 = 3;
+      step.size(o3, v152);
+      set.priority(o3, 14);
+      random(1, 2, v152);
+      if (v152 == 1) {
+        set.loop(o3, 1);
+        position(o3, 146, 29);
+        draw(o3);
+        move.obj(o3, 0, 29, 0, f233);
+      }
+      else {
+        set.loop(o3, 0);
+        position(o3, 0, 29);
+        draw(o3);
+        move.obj(o3, 146, 29, 0, f233);
+      }
+      set(f234);
+    }
+  }
+  load.view(11);
+  load.view(40);
+  if (prev_room_no == 55) {
+    load.view(0);
+    set.view(Ego, 0);
+    if (isset(f38)) {
+      position(Ego, 130, 120);
+    }
+    else {
+      position(Ego, 137, 120);
+    }
+    set.loop(Ego, 1);
+    ego_dir = 7;
+  }
+  if (prev_room_no == 22) {
+    position(Ego, 37, 112);
+  }
+  if (prev_room_no == 27) {
+    if (v34 < 112) {
+      position(Ego, 0, 114);
+    }
+    else {
+      if ((v34 > 112) && 
+          (v34 < 123)) {
+        position(Ego, 0, 128);
+      }
+    }
+  }
+  if (prev_room_no == 29) {
+    if (v34 < 155) {
+      position(Ego, 149, 132);
+    }
+    else {
+      position(Ego, 149, 164);
+    }
+  }
+  if (isset(f176)) {
+    prevent.input();
+    set(f36);
+    load.view(211);
+    set.view(Ego, 211);
+    position(Ego, 0, 164);
+  }
+  draw(Ego);
+  load.sound(51);
+  show.pic();
+}
+if (isset(f176)) {
+  move.obj(Ego, 151, 164, 0, f224);
+}
+if (isset(f224)) {
+  new.room(29); //##LE001##
+}
+if (isset(ego_touching_signal_line)) {
+  prevent.input();
+  sound(51, f154);
+  reset(ego_touching_signal_line);
+  get.posn(Ego, v134, v135);
+  position.v(o12, v134, v135);
+  ignore.blocks(o12);
+  set(f36);
+  set.view(o12, 11);
+  if (v134 > 144) {
+    set.loop(o12, 3);
+  }
+  else {
+    set.loop(o12, 2);
+  }
+  fix.loop(o12);
+  v152 = 3;
+  step.size(o12, v152);
+  v152 = 3;
+  cycle.time(o12, v152);
+  start.cycling(o12);
+  erase(Ego);
+  draw(o12);
+  if (v134 > 141) {
+    move.obj(o12, 140, 165, 0, f226);
+  }
+  else {
+    move.obj(o12, 125, 165, 0, f226);
+  }
+}
+if (isset(f226)) {
+  release.loop(Ego);
+  v152 = 1;
+  step.size(o12, v152);
+  cycle.time(o12, v152);
+  set.view(o12, 40);
+  if (v134 > 144) {
+    set.loop(o12, 3);
+  }
+  else {
+    set.loop(o12, 2);
+  }
+  set.cel(o12, 2);
+  reverse.loop(o12, f228);
+  reset(f226);
+}
+if (isset(f228)) {
+  set(f154);
+  observe.blocks(Ego);
+  set.view(Ego, 0);
+  get.posn(o12, v134, v135);
+  position.v(Ego, v134, v135);
+  erase(o12);
+  draw(Ego);
+  ego_dir = 0;
+  reset(f228);
+  reset(f36);
+  stop.sound();
+  accept.input();
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room"))) {
+  print("You see a crude mine shaft in the midst of this forest of pine trees.");
+}
+if ((said("examine", "cave") || 
+    said("examine", "cave", "cave") || 
+    said("examine", "cliff"))) {
+  if (isset(f38)) {
+    print("The crude mine is carved into a small hill.");
+    print("Its solid, wooden door is closed and padlocked.");
+  }
+  else {
+    print("The crude mine is carved into a small hill.");
+    print("Its solid, wooden door is propped open.");
+  }
+}
+if ((said("examine", "door") || 
+    said("examine", "abominable", "door"))) {
+  if (isset(f38)) {
+    print("The door is closed and padlocked.");
+  }
+  else {
+    print("The door is wide open.");
+  }
+}
+if ((isset(f38)) && 
+    (said("open", "door"))) {
+  if (posn(Ego,121,110,147,125)) {
+    print("You can't. It's closed and padlocked.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((isset(f38)) && 
+    (said("bang", "door"))) {
+  if (posn(Ego,121,110,147,125)) {
+    print("You knock on the door, but receive no answer.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((!isset(f38)) && 
+    (said("bang", "door"))) {
+  if (posn(Ego,121,110,147,125)) {
+    print("The door is already open.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((isset(f38)) && 
+    (said("unlatch", "door") || 
+    said("unlatch", "padlock") || 
+    said("open", "latch") || 
+    said("detach", "padlock") || 
+    said("carry", "padlock"))) {
+  if (posn(Ego,121,110,147,125)) {
+    print("You can't.  You don't have the key.");
+  }
+  else {
+    set(f113);
+  }
+}
+if (said("break", "door")) {
+  if (posn(Ego,121,110,147,125)) {
+    print("You could never do that.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("look in", "cave") || 
+    said("look in", "door"))) {
+  if (posn(Ego,121,110,147,125)) {
+    print("You look inside, but can make out no details.");
+  }
+  else {
+    set(f113);
+  }
+}
+if (!isset(input_parsed)) {
+  call(203);
+}
+if (isset(f234) && 
+    !isset(input_parsed)) {
+  call(244);
+}
+Label1:
+if (isset(f233)) {
+  reset(f234);
+  reset(f233);
+  erase(o3);
+}
+if (posn(Ego,143,118,151,119) && 
+    (!isset(f38))) {
+  new.room(55); //##LE002##
+}
+if (ego_edge_code == bottom_edge) {
+  new.room(4); //##LE003##
+}
+if (ego_edge_code == right_edge) {
+  if ((v34 > 125) && 
+      (v34 < 132)) {
+    position(Ego, 0, 130);
+  }
+  new.room(29); //##LE004##
+}
+if (ego_edge_code == horizon_edge) {
+  new.room(22); //##LE005##
+}
+if (ego_edge_code == left_edge) {
+  new.room(27); //##LE006##
+}
+return();
+
+//Messages
+#message 1 "You see a crude mine shaft in the midst of this forest of pine trees."
+#message 2 "The crude mine is carved into a small hill."
+#message 3 "Its solid, wooden door is closed and padlocked."
+#message 4 "Its solid, wooden door is propped open."
+#message 5 "The door is closed and padlocked."
+#message 6 "The door is wide open."
+#message 7 "You can't. It's closed and padlocked."
+#message 8 "You can't.  You don't have the key."
+#message 9 "You could never do that."
+#message 10 "You look inside, but can make out no details."
+#message 11 "You knock on the door, but receive no answer."
+#message 12 "The door is already open."

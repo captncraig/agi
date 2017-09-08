@@ -1,0 +1,588 @@
+if (isset(new_room)) {
+  set(f82);
+  set.horizon(20);
+  v152 = 44;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.sound(48);
+  load.sound(60);
+  load.sound(52);
+  load.view(44);
+  load.view(41);
+  load.view(4);
+  load.view(2);
+  load.view(5);
+  load.view(7);
+  accept.input();
+  set.view(Ego, 5);
+  position(Ego, 18, 142);
+  set.loop(Ego, 2);
+  draw(Ego);
+  animate.obj(o1);
+  set.view(o1, 44);
+  set.loop(o1, 6);
+  fix.loop(o1);
+  position(o1, 104, 140);
+  v154 = 2;
+  cycle.time(o1, v154);
+  step.time(o1, v154);
+  object.on.water(o1);
+  wander(o1);
+  draw(o1);
+  animate.obj(o2);
+  set.view(o2, 44);
+  set.loop(o2, 7);
+  set.cel(o2, 0);
+  ignore.objs(o2);
+  fix.loop(o2);
+  v156 = 2;
+  cycle.time(o2, v156);
+  v223 = 3;
+  v222 = 0;
+  set(f227);
+  v37 = 12;
+  get.posn(Ego, v33, v34);
+  show.pic();
+}
+if (isset(f112)) {
+  v168++;
+}
+if (v223 > 0 && 
+    isset(f112)) {
+  v223--;
+  if (v223 <= 0) {
+    random(1, 4, v152);
+    if (v152 == 1) {
+      position(o2, 24, 143);
+    }
+    else {
+      if (v152 == 2) {
+        position(o2, 60, 143);
+      }
+      else {
+        if (v152 == 3) {
+          position(o2, 94, 143);
+        }
+        else {
+          position(o2, 129, 143);
+        }
+      }
+    }
+    draw(o2);
+    end.of.loop(o2, f228);
+  }
+}
+if (isset(f228)) {
+  erase(o2);
+  reset(f228);
+  set.cel(o2, 0);
+  random(4, 8, v223);
+}
+if (isset(f227)) {
+  reset(f227);
+  print("Horrors!  You have been swallowed by a huge whale!");
+}
+if ((v222 > 0) && 
+    (isset(f112))) {
+  v222--;
+  if ((isset(f221)) && 
+      (v222 <= 0)) {
+    print("You frantically tickle the throat of the whale with the big peacock "
+          "feather.  You begin to feel a quiver under your feet, which quickly "
+          "turns into a mighty tremble.  Suddenly, you hear a thunderous "
+          "AAAAACCCCHHHHOOOOOOOO!, and you are swept out of the whale's mouth, "
+          "in a tremendous wave of ocean water!");
+    new.room(31); //##LE001##
+  }
+}
+if ((has("Peacock Feather")) && 
+    (!isset(f224))) {
+  if (v168 == 255) {
+    set(f36);
+    prevent.input();
+    ignore.blocks(o12);
+    ignore.objs(o12);
+    set(f224);
+  }
+}
+else {
+  if (v168 == 130) {
+    set(f36);
+    prevent.input();
+    ignore.blocks(o12);
+    ignore.objs(o12);
+    set(f224);
+  }
+}
+if (v34 < 83) {
+  set.view(Ego, 0);
+}
+else {
+  if (v34 < 116) {
+    set.view(Ego, 44);
+  }
+  else {
+    if (v34 < 119) {
+      set.view(Ego, 2);
+    }
+    else {
+      if (v34 < 132) {
+        set.view(Ego, 4);
+        reset(f157);
+      }
+      else {
+        if (v34 > 132) {
+          set.view(Ego, 5);
+          set(f157);
+        }
+      }
+    }
+  }
+}
+if ((isset(ego_touching_signal_line)) && 
+    (!isset(f232)) && 
+    (v37 != 6)) {
+  v37 = 6;
+  sound(52, f154);
+  reset(ego_touching_signal_line);
+  set(f36);
+  prevent.input();
+  animate.obj(o12);
+  ignore.blocks(o12);
+  ignore.objs(o12);
+  get.posn(Ego, v134, v135);
+  position.v(o12, v134, v135);
+  set.view(o12, 41);
+  if (v134 < 77) {
+    set.loop(o12, 0);
+  }
+  else {
+    set.loop(o12, 1);
+  }
+  fix.loop(o12);
+  draw(o12);
+  erase(Ego);
+  start.cycling(o12);
+  v152 = 126;
+  v153 = 2;
+  move.obj.v(o12, v134, v152, v153, f223);
+}
+if ((isset(f231)) && 
+    (v37 != 6)) {
+  v37 = 6;
+  sound(52, f154);
+  reset(f231);
+  set(f36);
+  prevent.input();
+  animate.obj(o12);
+  ignore.blocks(o12);
+  ignore.objs(o12);
+  get.posn(Ego, v134, v135);
+  position.v(o12, v134, v135);
+  set.view(o12, 41);
+  if (v134 < 77) {
+    set.loop(o12, 0);
+  }
+  else {
+    set.loop(o12, 1);
+  }
+  fix.loop(o12);
+  draw(o12);
+  erase(Ego);
+  start.cycling(o12);
+  v152 = 126;
+  v153 = 2;
+  move.obj.v(o12, v134, v152, v153, f223);
+}
+if (isset(f223)) {
+  stop.sound();
+  reset(f223);
+  if (v134 < 77) {
+    set.loop(o12, 2);
+  }
+  else {
+    set.loop(o12, 3);
+  }
+  fix.loop(o12);
+  set.cel(o12, 0);
+  step.size(o12, v153);
+  end.of.loop(o12, f222);
+}
+if (isset(f222)) {
+  reset(f222);
+  if (isset(f226)) {
+    v37 = 20;
+    set.view(o12, 7);
+    cycle.time(o12, v154);
+    end.of.loop(o12, f225);
+  }
+  else {
+    set.view(Ego, 5);
+    set(f157);
+    if (v134 < 77) {
+      set.loop(Ego, 0);
+    }
+    else {
+      set.loop(Ego, 1);
+    }
+    get.posn(o12, v134, v135);
+    position.v(Ego, v134, v135);
+    ego_dir = 0;
+    erase(o12);
+    draw(Ego);
+    reset(f36);
+    accept.input();
+    v37 = 12;
+  }
+}
+if ((isset(f224)) && 
+    (v37 != 6) && 
+    (!isset(f230))) {
+  set(f230);
+  get.posn(Ego, v134, v135);
+  if (v135 < 116) {
+    set(f226);
+    set(f232);
+    set(f231);
+  }
+  else {
+    get.posn(Ego, v134, v135);
+    position.v(o12, v134, v135);
+    animate.obj(o12);
+    set.view(o12, 7);
+    set.cel(o12, 0);
+    ignore.blocks(o12);
+    ignore.objs(o12);
+    draw(o12);
+    erase(Ego);
+    cycle.time(o12, v154);
+    end.of.loop(o12, f225);
+  }
+}
+if (isset(f225)) {
+  print("Well, Rosella, looks like the noxious fumes finally got to you.");
+  erase(o12);
+  unanimate.all();
+  set(f140);
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "whale") || 
+    said("examine", "abominable", "whale") || 
+    said("examine", "abominable", "dead fish"))) {
+  print("Horrors!  You have been swallowed by a huge whale!");
+  print("PHEW!!!  This place stinks!");
+}
+if ((said("examine", "belly") || 
+    said("examine", "whale", "belly") || 
+    said("examine", "dead fish", "belly") || 
+    said("examine", "abominable", "whale", "belly") || 
+    said("examine", "abominable", "dead fish", "belly"))) {
+  print("This is a disgusting place to be!  Seawater, dead fish, junk--you name "
+        "it--float around here.  Hopefully, your fate will not be the same as "
+        "poor \"James\" lying over there.");
+}
+if ((said("examine", "tongue") || 
+    said("examine", "whale", "tongue") || 
+    said("examine", "dead fish", "tongue") || 
+    said("examine", "abominable", "whale", "tongue") || 
+    said("examine", "abominable", "dead fish", "tongue"))) {
+  print("This is the biggest tongue you have ever seen!  It's also extremely "
+        "slippery, slimy, and bumpy.  Ugh!");
+}
+if ((said("examine", "gullet") || 
+    said("examine", "whale", "gullet") || 
+    said("examine", "dead fish", "gullet") || 
+    said("examine", "abominable", "whale", "gullet") || 
+    said("examine", "abominable", "dead fish", "gullet") || 
+    said("examine", "lips") || 
+    said("examine", "whale", "lips") || 
+    said("examine", "dead fish", "lips") || 
+    said("examine", "abominable", "whale", "lips") || 
+    said("examine", "abominable", "dead fish", "lips") || 
+    said("examine", "molar") || 
+    said("examine", "whale", "molar") || 
+    said("examine", "dead fish", "molar") || 
+    said("examine", "abominable", "whale", "molar") || 
+    said("examine", "abominable", "dead fish", "molar"))) {
+  print("The whale's throat and mouth are enormous!  Huge teeth, a great "
+        "tongue, and yes...even a large uvula.  What's that?, you say.  Well, "
+        "suffice it to say, it looks like a big punching bag and hangs down "
+        "from the top of the throat.  See, you learn something new every day!");
+}
+if ((said("examine", "uvula") || 
+    said("examine", "whale", "uvula") || 
+    said("examine", "dead fish", "uvula") || 
+    said("examine", "abominable", "whale", "uvula") || 
+    said("examine", "abominable", "dead fish", "uvula"))) {
+  print("Yes, that's a big uvula all right!");
+}
+if ((said("examine", "rib") || 
+    said("examine", "whale", "rib") || 
+    said("examine", "dead fish", "rib") || 
+    said("examine", "abominable", "whale", "rib") || 
+    said("examine", "abominable", "dead fish", "rib") || 
+    said("examine", "bone") || 
+    said("examine", "whale", "bone") || 
+    said("examine", "dead fish", "bone") || 
+    said("examine", "abominable", "whale", "bone") || 
+    said("examine", "abominable", "dead fish", "bone"))) {
+  print("The whale has big bones.");
+}
+if ((said("hit", "uvula") || 
+    said("hit", "whale", "uvula") || 
+    said("hit", "dead fish", "uvula") || 
+    said("hit", "abominable", "whale", "uvula") || 
+    said("hit", "abominable", "dead fish", "uvula") || 
+    said("hit", "gullet") || 
+    said("hit", "whale", "gullet") || 
+    said("hit", "dead fish", "gullet") || 
+    said("hit", "abominable", "whale", "gullet") || 
+    said("hit", "abominable", "dead fish", "gullet"))) {
+  if (posn(Ego,65,62,86,74)) {
+    print("You strike the large uvula (punching bag looking thing)...but "
+          "nothing happens.");
+  }
+  else {
+    set(f113);
+  }
+}
+if (said("examine", "james")) {
+  print("The skeleton of an unlucky man rests atop the wreckage of a small "
+        "boat.");
+}
+if ((said("look in", "james") || 
+    said("carry", "james"))) {
+  print("There is nothing of importance with the skeleton.");
+}
+if ((said("examine", "boat") || 
+    said("examine", "abominable", "boat"))) {
+  print("The boat didn't help \"James\" and it won't help you.");
+}
+if ((said("look in", "boat") || 
+    said("look in", "abominable", "boat"))) {
+  print("There's nothing in the old boat.");
+}
+if ((said("examine", "lake") || 
+    said("look in", "lake"))) {
+  if ((has(i41) || 
+      has(i43))) {
+//WARNING: non-unique object: Glass Bottle
+//WARNING: non-unique object: Glass Bottle
+    print("Seawater floats in the whale's mouth.");
+  }
+  else {
+    print("You notice a bottle floating in the seawater of the whale's mouth.");
+  }
+}
+if (said("examine", "beneath", "lake")) {
+  print("There is nothing of interest under the seawater.");
+}
+if ((said("call") || 
+    said("call", "abominable", "help") || 
+    said("help") || 
+    said("save", "me") || 
+    said("help", "me"))) {
+  print("You scream, holler, and shout for help until your throat is hoarse; "
+        "but to no avail.");
+}
+if ((said("escape") || 
+    said("escape", "whale") || 
+    said("escape", "dead fish") || 
+    said("escape", "abominable", "whale") || 
+    said("escape", "abominable", "dead fish") || 
+    said("escape", "from", "whale") || 
+    said("escape", "from", "dead fish") || 
+    said("escape", "from", "abominable", "whale") || 
+    said("escape", "from", "abominable", "dead fish") || 
+    said("escape", "lips") || 
+    said("escape", "whale", "lips") || 
+    said("escape", "dead fish", "lips") || 
+    said("escape", "abominable", "whale", "lips") || 
+    said("escape", "abominable", "dead fish", "lips") || 
+    said("escape", "from", "lips") || 
+    said("escape", "from", "whale", "lips") || 
+    said("escape", "from", "dead fish", "lips") || 
+    said("escape", "from", "abominable", "whale", "lips") || 
+    said("escape", "from", "abominable", "dead fish", "lips") || 
+    said("escape", "through", "lips") || 
+    said("escape", "through", "whale", "lips") || 
+    said("escape", "through", "dead fish", "lips") || 
+    said("escape", "through", "abominable", "whale", "lips") || 
+    said("escape", "through", "abominable", "dead fish", "lips") || 
+    said("open", "lips") || 
+    said("open", "whale", "lips") || 
+    said("open", "dead fish", "lips") || 
+    said("open", "abominable", "whale", "lips") || 
+    said("open", "abominable", "dead fish", "lips"))) {
+  print("How could you open the whale's mouth?");
+}
+if ((said("open", "lips") || 
+    said("open", "whale", "lips"))) {
+  print("You're not strong enough to do that.");
+}
+if ((said("hit", "molar") || 
+    said("hit", "whale", "molar") || 
+    said("hit", "dead fish", "molar") || 
+    said("hit", "abominable", "whale", "molar") || 
+    said("hit", "abominable", "dead fish", "molar"))) {
+  if (posn(Ego,61,59,93,69)) {
+    print("You strike the whale's teeth...but nothing happens.");
+  }
+  else {
+    set(f113);
+  }
+}
+if (said("hit", "tongue")) {
+  if (v34 < 116) {
+    print("You strike the whale's tongue...but nothing happens.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("ignite", "fire") || 
+    said("ignite", "fire", "with", "lamp") || 
+    said("ignite", "fire", "whale") || 
+    said("ignite", "fire", "dead fish") || 
+    said("ignite", "fire", "abominable", "whale") || 
+    said("ignite", "fire", "abominable", "dead fish") || 
+    said("ignite", "fire", "abominable", "whale", "belly") || 
+    said("ignite", "fire", "abominable", "dead fish", "belly") || 
+    said("ignite", "fire", "whale", "belly") || 
+    said("ignite", "fire", "dead fish", "belly") || 
+    said("ignite", "fire", "abominable", "whale", "gullet") || 
+    said("ignite", "fire", "abominable", "dead fish", "gullet") || 
+    said("ignite", "fire", "whale", "gullet") || 
+    said("ignite", "fire", "dead fish", "gullet") || 
+    said("ignite", "fire", "abominable", "whale", "lips") || 
+    said("ignite", "fire", "abominable", "dead fish", "lips") || 
+    said("ignite", "fire", "whale", "lips") || 
+    said("create", "fire") || 
+    said("create", "fire", "with", "lamp") || 
+    said("begin", "fire") || 
+    said("begin", "fire", "with", "lamp") || 
+    said("ignite", "fire", "dead fish", "lips"))) {
+  if ((has("Lit Oil Lantern") || 
+      has("Unlit Oil Lantern"))) {
+    print("You couldn't start a fire in here as it's too wet.");
+  }
+  else {
+    print("You have nothing to do that with.");
+  }
+}
+if ((said("tickle", "whale") || 
+    said("tickle") || 
+    said("tickle", "dead fish") || 
+    said("tickle", "abominable", "whale") || 
+    said("tickle", "abominable", "dead fish") || 
+    said("tickle", "with", "feather") || 
+    said("tickle", "whale", "with", "feather") || 
+    said("tickle", "dead fish", "with", "feather") || 
+    said("tickle", "gullet") || 
+    said("tickle", "uvula") || 
+    said("tickle", "whale", "gullet") || 
+    said("tickle", "whale", "uvula") || 
+    said("tickle", "dead fish", "gullet") || 
+    said("tickle", "dead fish", "uvula") || 
+    said("tickle", "gullet", "with", "feather") || 
+    said("tickle", "uvula", "with", "feather") || 
+    said("tickle", "whale", "gullet", "with", "feather") || 
+    said("tickle", "dead fish", "gullet", "with", "feather") || 
+    said("tickle", "dead fish", "uvula", "with", "feather") || 
+    said("tickle", "gullet", "whale") || 
+    said("tickle", "uvula", "whale") || 
+    said("tickle", "gullet", "dead fish") || 
+    said("tickle", "uvula", "dead fish") || 
+    said("tickle", "gullet", "dead fish", "with", "feather"))) {
+  if (has("Peacock Feather")) {
+    if (posn(Ego,65,62,86,74)) {
+      v168 = 0;
+      sound(60, f154);
+      set(f36);
+      prevent.input();
+      get.posn(Ego, v134, v135);
+      position.v(o12, v134, v135);
+      set.view(o12, 44);
+      if (v134 < 77) {
+        set.loop(o12, 5);
+      }
+      else {
+        set.loop(o12, 4);
+      }
+      erase(Ego);
+      animate.obj(o12);
+      draw(o12);
+      start.cycling(o12);
+      set.priority(o12, 15);
+      set(f221);
+      v222 = 4;
+      score  += 5;
+    }
+    else {
+      set(f113);
+    }
+  }
+  else {
+    print("You have nothing to do that with.");
+  }
+}
+if (said("carry", "boat")) {
+  print("This old boat won't help you.");
+}
+if (said("carry", "bottle")) {
+  distance(o1, Ego, v221);
+  if (v221 < 10) {
+    set(f116);
+    sound(48, f154);
+    get(i43);
+//WARNING: non-unique object: Glass Bottle
+    erase(o1);
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("climb", "tongue") || 
+    said("climb", "whale", "tongue") || 
+    said("climb", "dead fish", "tongue") || 
+    said("climb", "abominable", "whale", "tongue") || 
+    said("climb", "abominable", "dead fish", "tongue"))) {
+  print("Just climb it.");
+}
+Label1:
+return();
+
+//Messages
+#message 1 "Horrors!  You have been swallowed by a huge whale!"
+#message 2 "PHEW!!!  This place stinks!"
+#message 3 "This is a disgusting place to be!  Seawater, dead fish, junk--you name it--float around here.  Hopefully, your fate will not be the same as poor \"James\" lying over there."
+#message 4 "This is the biggest tongue you have ever seen!  It's also extremely slippery, slimy, and bumpy.  Ugh!"
+#message 5 "The whale's throat and mouth are enormous!  Huge teeth, a great tongue, and yes...even a large uvula.  What's that?, you say.  Well, suffice it to say, it looks like a big punching bag and hangs down from the top of the throat.  See, you learn something new every day!"
+#message 6 "Yes, that's a big uvula all right!"
+#message 7 "The whale has big bones."
+#message 8 "You strike the large uvula (punching bag looking thing)...but nothing happens."
+#message 9 "The skeleton of an unlucky man rests atop the wreckage of a small boat."
+#message 10 "There is nothing of importance with the skeleton."
+#message 11 "The boat didn't help \"James\" and it won't help you."
+#message 12 "There's nothing in the old boat."
+#message 13 "You notice a bottle floating in the seawater of the whale's mouth."
+#message 14 "Seawater floats in the whale's mouth."
+#message 15 "There is nothing of interest under the seawater."
+#message 16 "You scream, holler, and shout for help until your throat is hoarse; but to no avail."
+#message 17 "How could you open the whale's mouth?"
+#message 18 "You're not strong enough to do that."
+#message 19 "You strike the whale's teeth...but nothing happens."
+#message 20 "You couldn't start a fire in here as it's too wet."
+#message 21 "You have nothing to do that with."
+#message 22 "Just climb it."
+#message 23 "You frantically tickle the throat of the whale with the big peacock feather.  You begin to feel a quiver under your feet, which quickly turns into a mighty tremble.  Suddenly, you hear a thunderous AAAAACCCCHHHHOOOOOOOO!, and you are swept out of the whale's mouth, in a tremendous wave of ocean water!"
+#message 24 "Well, Rosella, looks like the noxious fumes finally got to you."
+#message 25 "You strike the whale's tongue...but nothing happens."
+#message 26 "This old boat won't help you."

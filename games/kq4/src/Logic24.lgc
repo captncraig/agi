@@ -1,0 +1,406 @@
+if (isset(new_room)) {
+  set(f82);
+  set.horizon(85);
+  load.logics(204);
+  load.logics(203);
+  load.logics(206);
+  if (!isset(f38)) {
+    v152 = 24;
+  }
+  else {
+    v152 = 124;
+  }
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.view(2);
+  load.view(4);
+  load.view(5);
+  load.sound(59);
+  if (prev_room_no == 70) {
+    v37 = 12;
+    set.view(Ego, 5);
+    set.loop(Ego, 1);
+    set(f157);
+    position(Ego, 102, 147);
+  }
+  else {
+    set.view(Ego, 0);
+  }
+  if (prev_room_no == 18) {
+    position(Ego, 17, 78);
+  }
+  if (prev_room_no == 30) {
+    if (v33 < 22) {
+      position(Ego, 22, 167);
+    }
+  }
+  if (prev_room_no == 23) {
+    if (v34 < 97 && 
+        v34 > 91) {
+      position(Ego, 1, 92);
+    }
+  }
+  draw(Ego);
+  v153 = 0;
+  if (has("Gold Crown")) {
+    load.view(25);
+    load.view(97);
+  }
+  load.view(57);
+  animate.obj(o2);
+  animate.obj(o3);
+  animate.obj(o4);
+  animate.obj(o5);
+  animate.obj(o6);
+  animate.obj(o7);
+  set.view(o2, 57);
+  set.view(o3, 57);
+  set.view(o4, 57);
+  set.view(o5, 57);
+  set.view(o6, 57);
+  set.view(o7, 57);
+  set.loop(o2, 0);
+  set.loop(o3, 1);
+  set.loop(o4, 2);
+  set.loop(o5, 4);
+  set.loop(o6, 3);
+  set.loop(o7, 5);
+  ignore.horizon(o2);
+  ignore.horizon(o6);
+  ignore.blocks(o2);
+  ignore.objs(o2);
+  ignore.blocks(o3);
+  ignore.objs(o3);
+  ignore.blocks(o4);
+  ignore.objs(o4);
+  ignore.blocks(o7);
+  ignore.objs(o7);
+  position(o2, 128, 18);
+  position(o4, 104, 151);
+  position(o3, 121, 132);
+  position(o5, 133, 73);
+  position(o6, 128, 56);
+  position(o7, 43, 144);
+  v152 = 4;
+  cycle.time(o2, v152);
+  cycle.time(o6, v152);
+  v152 = 3;
+  cycle.time(o5, v152);
+  v152 = 2;
+  cycle.time(o3, v152);
+  cycle.time(o4, v152);
+  cycle.time(o7, v152);
+  set.priority(o2, 5);
+  set.priority(o3, 5);
+  set.priority(o4, 5);
+  set.priority(o5, 5);
+  set.priority(o7, 5);
+  draw(o2);
+  draw(o3);
+  draw(o4);
+  draw(o5);
+  draw(o6);
+  draw(o7);
+  show.pic();
+}
+if (v37 == 5) {
+  if (isset(ego_on_water)) {
+    set.loop(Ego, 0);
+  }
+}
+if (v37 != 5) {
+  if ((isset(ego_touching_signal_line)) && 
+      (v37 != 9)) {
+    set.view(Ego, 2);
+    v37 = 9;
+  }
+  if ((isset(ego_on_water)) && 
+      (v33 < 95)) {
+    set.view(Ego, 4);
+    v37 = 11;
+  }
+  if ((isset(ego_on_water)) && 
+      (v33 > 95)) {
+    set.view(Ego, 5);
+    v37 = 12;
+  }
+  if ((!isset(ego_on_water)) && 
+      (!isset(ego_touching_signal_line))) {
+    set.view(Ego, 0);
+    v37 = 0;
+  }
+  if ((posn(Ego,0,94,15,99) || 
+      posn(Ego,17,107,17,111) || 
+      posn(Ego,35,127,39,128) || 
+      posn(Ego,47,134,55,134) || 
+      posn(Ego,47,135,55,135) || 
+      posn(Ego,20,111,22,122) || 
+      posn(Ego,45,136,67,137) || 
+      posn(Ego,42,144,55,147) || 
+      posn(Ego,0,100,18,108))) {
+    set.view(Ego, 4);
+    v37 = 11;
+  }
+  if ((posn(Ego,0,93,10,93) || 
+      posn(Ego,32,144,41,147) || 
+      posn(Ego,56,135,66,135))) {
+    set.view(Ego, 2);
+    v37 = 9;
+  }
+}
+if ((v33 > 103) && 
+    (v37 == 12)) {
+  set(f36);
+  set.loop(Ego, 0);
+  fix.loop(Ego);
+  v162 = 98;
+  v161 = 0;
+  move.obj.v(Ego, v162, v34, v161, f238);
+}
+if (isset(f238)) {
+  print("The force of the water pushes you back.");
+  reset(f238);
+  release.loop(Ego);
+  set(f157);
+  reset(f36);
+}
+if ((said("place", "abominable", "crown") || 
+    said("place", "crown") || 
+    said("don", "crown"))) {
+  if (has("Gold Crown")) {
+    if (v37 != 12) {
+      stop.motion(Ego);
+      set(f36);
+      prevent.input();
+      v154 = 1;
+      if (v33 > 71) {
+        if (v37 == 0) {
+          v221 = 1;
+          set(f229);
+          v134 = 71;
+          v152 = 0;
+          move.obj.v(Ego, v134, v34, v152, f221);
+        }
+      }
+      if ((v33 < 72) && 
+          (v34 < 129)) {
+        v221 = 2;
+        set(f229);
+        v134 = 24;
+        v152 = 0;
+        move.obj.v(Ego, v134, v34, v152, f221);
+      }
+      if ((v33 < 31) && 
+          (v34 > 129)) {
+        v221 = 3;
+        set(f229);
+        v134 = 24;
+        v152 = 0;
+        move.obj.v(Ego, v134, v34, v152, f221);
+      }
+      if (!isset(f229)) {
+        set(f229);
+        v154 = 2;
+        set(f221);
+      }
+    }
+    else {
+      print("You are too busy swimming.");
+    }
+  }
+  else {
+    set(f115);
+  }
+}
+if ((v154 == 1) && 
+    (isset(f221))) {
+  reset(f221);
+  if (v221 == 1) {
+    v135 = 131;
+  }
+  if (v221 == 2) {
+    v135 = 142;
+  }
+  if (v221 == 3) {
+    v135 = 142;
+  }
+  v152 = 0;
+  move.obj.v(Ego, v33, v135, v152, f221);
+  v154++;
+}
+current.cel(o1, v153);
+if ((v154 == 2) && 
+    (isset(f221))) {
+  reset(f221);
+  animate.obj(o1);
+  set.view(o1, 97);
+  v33 -= 6;
+  position.v(o1, v33, v34);
+  set.loop(o1, 0);
+  fix.loop(o1);
+  set.cel(o1, 0);
+  v152 = 2;
+  cycle.time(o1, v152);
+  end.of.loop(o1, f221);
+  sound(59, f154);
+  set.priority(o1, 15);
+  draw(o1);
+  set(f223);
+  v154++;
+}
+if ((v153 == 3) && 
+    (isset(f223))) {
+  reset(f223);
+  set.view(Ego, 25);
+  set.loop(Ego, 2);
+  fix.loop(Ego);
+  v37 = 5;
+}
+if ((isset(f221)) && 
+    (v154 == 3)) {
+  erase(o1);
+  v154++;
+}
+if ((isset(f221)) && 
+    (v154 == 4)) {
+  reset(f221);
+  ignore.blocks(Ego);
+  v135 = 143;
+  v152 = 3;
+  set.priority(Ego, 14);
+  step.time(Ego, v152);
+  cycle.time(Ego, v152);
+  move.obj.v(Ego, v33, v135, v152, f221);
+  v154++;
+}
+if ((isset(f221)) && 
+    (v154 == 5)) {
+  reset(f221);
+  set.loop(Ego, 0);
+  fix.loop(Ego);
+  v152 = 2;
+  step.time(Ego, v152);
+  cycle.time(Ego, v152);
+  move.obj(Ego, 110, 143, 0, f221);
+  v154++;
+}
+if ((isset(f221)) && 
+    (v154 == 6)) {
+  if (!isset(f162)) {
+    score  += 5;
+    set(f162);
+  }
+  reset(f222);
+  new.room(70); //##LE001##
+}
+get.posn(o12, v134, v135);
+if (v37 == 12) {
+  set(f157);
+}
+else {
+  reset(f157);
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room"))) {
+  print("You see a beautiful waterfall cascading down the mountain into a deep "
+        "blue pool.  From the pool, a river courses westward.  Around you, a "
+        "dense forest closes in.");
+}
+if (said("examine", "falls")) {
+  print("This is a magnificent waterfall!  It tumbles into a deep pool which "
+        "then flows westward as a rushing river.");
+}
+if (said("look in", "falls")) {
+  print("You can't see through the waterfall.");
+}
+if (said("examine", "behind", "falls")) {
+  print("You think you see something behind the waterfall, but you're not sure "
+        "what it is.");
+}
+if ((said("examine", "pool") || 
+    said("examine", "lake"))) {
+  print("You see a deep pool below the waterfall.");
+}
+if (said("look in", "pool")) {
+  print("You peer into the pool of water, but cannot see anything of "
+        "importance.");
+}
+if ((said("float", "beneath", "pool") || 
+    said("float", "beneath", "falls") || 
+    said("float", "beneath", "lake") || 
+    said("dive", "beneath", "pool") || 
+    said("dive", "beneath", "lake") || 
+    said("dive", "beneath", "falls") || 
+    said("enter", "beneath", "falls") || 
+    said("enter", "behind", "falls") || 
+    said("float", "behind", "falls") || 
+    said("float", "pool") || 
+    said("enter", "swimming") || 
+    said("enter", "swimming", "pool") || 
+    said("wade") || 
+    said("float") || 
+    said("wade", "pool") || 
+    said("dive") || 
+    said("float", "behind", "falls"))) {
+  if (v37 == 12) {
+    print("You're not strong enough.  The current forces you back!");
+  }
+  if (v37 == 0) {
+    print("Just enter the water.");
+  }
+  if ((v37 != 0) && 
+      (v37 != 12)) {
+    print("You're already in the water.");
+  }
+}
+if ((said("examine", "beneath", "pool") || 
+    said("examine", "beneath", "falls"))) {
+  if (v37 != 0) {
+    print("You look under the water, but can see nothing.");
+  }
+  else {
+    reset(input_parsed);
+  }
+}
+if (!isset(input_parsed)) {
+  call(203);
+}
+if (!isset(input_parsed)) {
+  call(204);
+}
+if (!isset(input_parsed)) {
+  call(206);
+}
+Label1:
+if (!isset(f36)) {
+  if (ego_edge_code == bottom_edge) {
+    new.room(30); //##LE002##
+  }
+  if (ego_edge_code == horizon_edge) {
+    new.room(18); //##LE003##
+  }
+  if (ego_edge_code == left_edge) {
+    new.room(23); //##LE004##
+  }
+}
+return();
+
+//Messages
+#message 1 "You see a beautiful waterfall cascading down the mountain into a deep blue pool.  From the pool, a river courses westward.  Around you, a dense forest closes in."
+#message 2 "This is a magnificent waterfall!  It tumbles into a deep pool which then flows westward as a rushing river."
+#message 3 "You can't see through the waterfall."
+#message 4 "You think you see something behind the waterfall, but you're not sure what it is."
+#message 5 "You see a deep pool below the waterfall."
+#message 6 "You peer into the pool of water, but cannot see anything of importance."
+#message 7 "Just enter the water."
+#message 8 "You're not strong enough.  The current forces you back!"
+#message 9 "You look under the water, but can see nothing."
+#message 10 "You're already in the water."
+#message 11 "The force of the water pushes you back."
+#message 12 "You are too busy swimming."

@@ -1,0 +1,161 @@
+if (isset(new_room)) {
+  set(f82);
+  set.horizon(70);
+  load.view.v(ego_view_no);
+  set.view.v(Ego, ego_view_no);
+  load.view(0);
+  if (!isset(f38)) {
+    v152 = 10;
+  }
+  else {
+    v152 = 110;
+  }
+  load.pic(v152);
+  load.logics(203);
+  draw.pic(v152);
+  discard.pic(v152);
+  animate.obj(o12);
+  if (prev_room_no == 4) {
+    if (v33 > 59 && 
+        v33 < 98) {
+      position(Ego, 99, 71);
+    }
+  }
+  if (prev_room_no == 16) {
+    if (v33 > 111) {
+      position(Ego, 110, 167);
+    }
+  }
+  draw(Ego);
+  animate.obj(o1);
+  load.view(163);
+  set.view(o1, 163);
+  set.loop(o1, 4);
+  fix.loop(o1);
+  v152 = 5;
+  cycle.time(o1, v152);
+  ignore.blocks(o1);
+  ignore.horizon(o1);
+  position(o1, 107, 24);
+  draw(o1);
+  if ((v127 != 4 || 
+      !isset(f181))) {
+    if (!isset(f178)) {
+      random(1, 2, v152);
+      if (v152 == 1) {
+        load.logics(221);
+        load.view(33);
+        load.view(125);
+        load.view(124);
+        load.sound(5);
+        load.sound(6);
+        set.view(o10, 125);
+        animate.obj(o10);
+        position(o10, 60, 135);
+        v152 = 3;
+        step.time(o10, v152);
+        cycle.time(o10, v152);
+        v152 = 4;
+        step.size(o10, v152);
+        draw(o10);
+        v152 = 0;
+        set(f191);
+        wander(o10);
+        set(f178);
+        sound(5, f154);
+      }
+    }
+  }
+  else {
+    reset(f178);
+  }
+  show.pic();
+}
+if (isset(f154)) {
+  reset(f154);
+  sound(5, f154);
+}
+distance(Ego, o10, v153);
+if ((isset(f191)) && 
+    (v152 == 0) && 
+    (!isset(f185))) {
+  move.obj(o10, 128, 64, 0, f221);
+}
+if (!isset(ego_hidden)) {
+  set(f185);
+}
+if (isset(f185)) {
+  follow.ego(o10, 10, f221);
+}
+if ((isset(f185)) && 
+    (v153 < 15)) {
+  set(f36);
+  sound(6, f154);
+  erase(o10);
+  position.v(o12, v33, v34);
+  set(f157);
+  set.view(o12, 33);
+  set.cel(o12, 0);
+  v154 = 3;
+  step.time(o12, v154);
+  cycle.time(o12, v154);
+  erase(Ego);
+  draw(o12);
+  end.of.loop(o12, f229);
+}
+if (isset(f229)) {
+  reset(f229);
+  set(f238);
+  call(221);
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room"))) {
+  print("A thick forest of pine trees surrounds you.  You see a house in the "
+        "distance to the north.");
+}
+if (said("examine", "cottage")) {
+  print("It's too far in the distance to see it clearly.");
+}
+if (!isset(input_parsed)) {
+  call(203);
+  if (isset(f191)) {
+    call(221);
+  }
+}
+Label1:
+if (!isset(f36)) {
+  if (ego_edge_code == bottom_edge) {
+    v127 = 0;
+    reset(f181);
+    reset(f191);
+    new.room(16); //##LE001##
+  }
+  if (ego_edge_code == right_edge) {
+    v127 = 0;
+    reset(f181);
+    reset(f191);
+    new.room(11); //##LE002##
+  }
+  if (ego_edge_code == horizon_edge) {
+    v127 = 0;
+    reset(f181);
+    reset(f191);
+    new.room(4); //##LE003##
+  }
+  if (ego_edge_code == left_edge) {
+    v127 = 0;
+    reset(f181);
+    reset(f191);
+    new.room(9); //##LE004##
+  }
+}
+return();
+
+//Messages
+#message 1 "A thick forest of pine trees surrounds you.  You see a house in the distance to the north."
+#message 2 "It's too far in the distance to see it clearly."

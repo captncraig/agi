@@ -1,0 +1,238 @@
+if (isset(new_room)) {
+  set.horizon(80);
+  if ((prev_room_no == 0 || 
+      isset(game_restarted))) {
+    v64 = 6;
+    v63 = 0;
+    status.line.on();
+    accept.input();
+    cycle_delay = 2;
+    set.loop(Ego, 1);
+    set.cel(Ego, 1);
+    position(Ego, 119, 127);
+    prev_room_no = 25;
+    v91 = 1;
+  }
+  set.view.v(Ego, ego_view_no);
+  load.logics(200);
+  load.logics(206);
+  load.logics(213);
+  load.logics(150);
+  load.view(55);
+  call(150);
+  if (!isset(f38)) {
+    v152 = 25;
+  }
+  else {
+    v152 = 125;
+  }
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  if (prev_room_no == 19) {
+    if (v91 == 1) {
+      position(Ego, 123, 82);
+    }
+    if (v91 == 2) {
+      position(Ego, 83, 82);
+    }
+    if (v37 == 9) {
+      position(Ego, 79, 82);
+    }
+    if (v37 == 10) {
+      position(Ego, 73, 82);
+    }
+    if ((v37 == 11 || 
+        v37 == 15)) {
+      position(Ego, 66, 82);
+    }
+    if ((v37 == 12 || 
+        v37 == 14)) {
+      position(Ego, 46, 82);
+    }
+  }
+  if (prev_room_no == 1) {
+    if (v91 == 1) {
+      position(Ego, 121, 166);
+    }
+    if (v91 == 2) {
+      position(Ego, 95, 166);
+    }
+    if (v37 == 9) {
+      position(Ego, 63, 166);
+    }
+    if (v37 == 10) {
+      position(Ego, 48, 166);
+    }
+    if ((v37 == 11 || 
+        v37 == 15)) {
+      position(Ego, 33, 166);
+    }
+    if ((v37 == 12 || 
+        v37 == 14)) {
+      position(Ego, 10, 166);
+    }
+  }
+  if ((prev_room_no == 26) && 
+      (v37 != 0)) {
+    v37 = 10;
+    set.view(Ego, 3);
+    position(Ego, 150, 155);
+  }
+  get.posn(Ego, v33, v34);
+  draw(Ego);
+  animate.obj(o12);
+  if (!isset(f38)) {
+    animate.obj(o3);
+    load.view(163);
+    set.view(o3, 163);
+    set.loop(o3, 0);
+    fix.loop(o3);
+    ignore.horizon(o3);
+    position(o3, 8, 16);
+    draw(o3);
+    wander(o3);
+    set(f238);
+  }
+  animate.obj(o1);
+  animate.obj(o2);
+  set.view(o1, 55);
+  set.view(o2, 55);
+  set.loop(o1, 3);
+  set.loop(o2, 1);
+  v152 = 3;
+  cycle.time(o1, v152);
+  cycle.time(o2, v152);
+  step.time(o1, v152);
+  position(o1, 49, 122);
+  position(o2, 49, 156);
+  ignore.objs(o1);
+  ignore.objs(o2);
+  set.priority(o1, 5);
+  set.priority(o2, 5);
+  reverse.cycle(o2);
+  draw(o1);
+  draw(o2);
+  show.pic();
+}
+if (isset(f112)) {
+  reset(f112);
+  v168++;
+}
+if (isset(f238)) {
+  get.posn(o3, v226, v227);
+}
+if ((isset(f238)) && 
+    (v226 < 2)) {
+  erase(o3);
+  v168 = 0;
+  reset(f238);
+}
+if ((isset(f238)) && 
+    (v227 < 5)) {
+  erase(o3);
+  v168 = 0;
+  reset(f238);
+}
+if ((v168 == 3) && 
+    (!isset(f238)) && 
+    !isset(f38)) {
+  position(o3, 4, 30);
+  draw(o3);
+  move.obj(o3, 35, 35, 0, f221);
+  set(f238);
+}
+if (isset(f221)) {
+  reset(f221);
+  wander(o3);
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room"))) {
+  print("A river, coming from the east, spills into the blue ocean before you.  "
+        "A lonely beach edges the ocean.  From atop the bluff, a lovely meadow "
+        "stretches eastward.");
+}
+if (said("examine", "brook")) {
+  print("The cold water of the river contrasts sharply with the warmer ocean "
+        "water as the two converge.");
+}
+if (said("examine", "grass")) {
+  print("Eastward, you see a pretty green meadow.");
+}
+if ((v33 > 77) && 
+    (v34 > 128) && 
+    (v34 < 163)) {
+  if ((said("drink", "lake") || 
+      said("drink", "ocean") || 
+      said("drink") || 
+      said("carry", "drink"))) {
+    if (v37 != 0) {
+      print("You take a drink of the cool river water.  Ahhhh!  It tastes good!");
+    }
+    else {
+      set(f113);
+    }
+  }
+}
+if (!isset(input_parsed)) {
+  call(200);
+}
+if (!isset(input_parsed)) {
+  call(213);
+}
+if (!isset(input_parsed)) {
+  call(206);
+}
+Label1:
+if (!isset(new_room)) {
+  call(150);
+}
+if (posn(Ego,129,153,159,161)) {
+  v37 = 10;
+  set.view(Ego, 3);
+}
+if (ego_edge_code == bottom_edge) {
+  if (v33 > 124) {
+    v91 = 1;
+  }
+  if ((v33 < 125) && 
+      (v33 > 73)) {
+    v91 = 2;
+  }
+  new.room(1); //##LE001##
+}
+if (ego_edge_code == right_edge) {
+  if (v37 != 0) {
+    position(Ego, 159, 154);
+  }
+  new.room(26); //##LE002##
+}
+if (ego_edge_code == horizon_edge) {
+  if (v33 > 105) {
+    v37 = 0;
+    v91 = 1;
+  }
+  if ((v33 < 106) && 
+      (v33 > 89)) {
+    v37 = 0;
+    v91 = 2;
+  }
+  new.room(19); //##LE003##
+}
+if (ego_edge_code == left_edge) {
+  v45 = 1;
+  v46 = 0;
+  new.room(31); //##LE004##
+}
+return();
+
+//Messages
+#message 1 "A river, coming from the east, spills into the blue ocean before you.  A lonely beach edges the ocean.  From atop the bluff, a lovely meadow stretches eastward."
+#message 2 "The cold water of the river contrasts sharply with the warmer ocean water as the two converge."
+#message 3 "Eastward, you see a pretty green meadow."
+#message 4 "You take a drink of the cool river water.  Ahhhh!  It tastes good!"

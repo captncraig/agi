@@ -1,0 +1,350 @@
+if (isset(new_room)) {
+  set(f82);
+  reset(f57);
+  v152 = 70;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  animate.obj(o12);
+  animate.obj(o1);
+  load.sound(48);
+  load.view(3);
+  load.view(4);
+  load.view(25);
+  load.view(97);
+  load.view(192);
+  load.sound(59);
+  animate.obj(o4);
+  set.view(o4, 192);
+  set.loop(o4, 2);
+  set.priority(o4, 8);
+  ignore.objs(o4);
+  position(o4, 58, 95);
+  v152 = 2;
+  draw(o4);
+  animate.obj(o5);
+  set.view(o5, 192);
+  set.loop(o5, 0);
+  set.priority(o5, 8);
+  ignore.objs(o5);
+  position(o5, 61, 109);
+  v152 = 2;
+  draw(o5);
+  animate.obj(o6);
+  set.view(o6, 192);
+  set.loop(o6, 3);
+  set.priority(o6, 8);
+  ignore.objs(o6);
+  position(o6, 51, 107);
+  v152 = 2;
+  draw(o6);
+  animate.obj(o7);
+  set.view(o7, 192);
+  set.loop(o7, 1);
+  set.priority(o7, 8);
+  ignore.objs(o7);
+  position(o7, 62, 40);
+  v152 = 2;
+  draw(o7);
+  animate.obj(o8);
+  set.view(o8, 192);
+  set.loop(o8, 1);
+  set.cel(o8, 2);
+  set.priority(o8, 8);
+  ignore.objs(o8);
+  position(o8, 80, 61);
+  v152 = 2;
+  draw(o8);
+  animate.obj(o3);
+  set.view(o3, 97);
+  set.loop(o3, 0);
+  set.cel(o3, 6);
+  v152 = 2;
+  cycle.time(o3, v152);
+  position(o3, 93, 118);
+  if (!has("Small Board")) {
+    set.view(o1, 192);
+    set.loop(o1, 5);
+    set.cel(o1, 0);
+    stop.cycling(o1);
+    position(o1, 91, 95);
+    draw(o1);
+  }
+  v153 = 0;
+  if (prev_room_no == 24) {
+    set(f36);
+    set.view(Ego, 25);
+    set.loop(Ego, 0);
+    fix.loop(Ego);
+    position(Ego, 41, 118);
+    v37 = 5;
+    v152 = 3;
+    cycle.time(Ego, v152);
+    move.obj(Ego, 99, 118, 0, f238);
+  }
+  if (prev_room_no != 24) {
+    position(Ego, 107, 99);
+    set.view(Ego, 0);
+  }
+  get.posn(Ego, v33, v34);
+  draw(Ego);
+  show.pic();
+}
+if (v33 < 50) {
+  stop.cycling(Ego);
+  set(ego_on_water);
+}
+if ((isset(f238)) && 
+    (v37 == 5)) {
+  reset(f238);
+  set.loop(Ego, 5);
+  move.obj(Ego, 99, 118, 0, f239);
+}
+if ((isset(f239)) && 
+    (v37 == 5)) {
+  reset(f239);
+  draw(o3);
+  reverse.loop(o3, f237);
+  sound(59, f154);
+}
+current.cel(o3, v162);
+if (isset(f237)) {
+  print("It sure feels good to be yourself again!");
+  reset(f237);
+  erase(o3);
+}
+if (v162 == 3) {
+  v162++;
+  set.view(Ego, 0);
+  v134 = 2;
+  v135 = 0;
+  reposition(Ego, v134, v135);
+  release.loop(Ego);
+  set.loop(Ego, 0);
+  reset(f36);
+  v152 = 1;
+  cycle.time(Ego, v152);
+  v37 = 0;
+  accept.input();
+}
+get.posn(o12, v134, v135);
+if (v37 != 5) {
+  if (isset(ego_touching_signal_line)) {
+    set.view(Ego, 3);
+    v37 = 10;
+  }
+  if (isset(ego_on_water)) {
+    set.view(Ego, 4);
+    v37 = 11;
+  }
+  if ((!isset(ego_touching_signal_line)) && 
+      (!isset(ego_on_water))) {
+    set.view(Ego, 0);
+    v37 = 0;
+  }
+  if ((v33 < 62) && 
+      (v33 > 49) && 
+      (v34 > 123)) {
+    set.view(Ego, 3);
+    v37 = 10;
+    reset(ego_on_water);
+  }
+  if ((v37 == 11) && 
+      (v153 != 1)) {
+    set(f221);
+    v153 = 1;
+  }
+  if ((isset(f221)) && 
+      (isset(ego_on_water)) && 
+      (v153 == 1)) {
+    set(f36);
+    stop.cycling(Ego);
+    reset(f221);
+    set.view(o12, 192);
+    set.loop(o12, 4);
+    fix.loop(o12);
+    v152 = 2;
+    cycle.time(o12, v152);
+    set.cel(o12, 0);
+    position.v(o12, v33, v34);
+    erase(Ego);
+    draw(o12);
+    if (v33 > 72) {
+      move.obj(o12, 72, 103, 0, f222);
+    }
+    else {
+      ignore.blocks(Ego);
+      move.obj(o12, 31, 110, 0, f222);
+    }
+    print("You are swept out by the waterfall.");
+  }
+  if (isset(f222)) {
+    reset(f36);
+    new.room(24); //##LE001##
+  }
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room"))) {
+  print("What's this?!  Why, it's a cave behind the waterfall!");
+  if (!has("Small Board")) {
+    print("You see an old board lying by the cave entrance.");
+  }
+}
+if (said("carry", "board")) {
+  if (!has("Small Board")) {
+    if (v34 < 101) {
+      set(f116);
+      sound(48, f154);
+      get("Small Board");
+      erase(o1);
+      score  += 2;
+    }
+    else {
+      set(f113);
+    }
+  }
+  else {
+    set(f114);
+  }
+}
+if (said("examine", "falls")) {
+  print("Waterfalls sure look different when you're underneath them!");
+}
+if ((said("examine", "cliff") || 
+    said("examine", "up", "cliff"))) {
+  print("The mountain, above the waterfall, rises steeply to the east.");
+}
+if ((said("climb", "cliff") || 
+    said("climb", "up", "cliff"))) {
+  print("The mountain is too steep to climb.");
+}
+if ((said("examine", "cave") || 
+    said("look in", "cave"))) {
+  print("It sure is dark in there!");
+}
+if (said("examine", "rock")) {
+  print("There are small rocks by the cave.");
+}
+if (said("climb", "rock")) {
+  print("The rocks are too small to climb.");
+}
+if (said("examine", "dirt")) {
+  if (!has("Small Board")) {
+    print("You see a board lying on the ground.");
+  }
+  else {
+    print("You see nothing interesting on the ground.");
+  }
+}
+if ((said("examine", "black sky") || 
+    said("examine", "up", "black sky") || 
+    said("examine", "up"))) {
+  if (!isset(f38)) {
+    print("Through the waterfall, the sky is a brilliant blue.");
+  }
+  else {
+    print("You see a full moon through the waterfall.");
+  }
+}
+if ((said("look in", "falls") || 
+    said("examine", "through", "falls"))) {
+  print("It's difficult to see much of anything through a waterfall.");
+}
+if ((said("examine", "pool") || 
+    said("examine", "lake"))) {
+  print("You see a deep pool below the waterfall.");
+}
+if ((said("look in", "pool") || 
+    said("look in", "lake"))) {
+  print("You peer into the pool of water, but cannot see anything of "
+        "importance.");
+}
+if ((said("float") || 
+    said("enter", "swimming") || 
+    said("float", "abominable", "pool") || 
+    said("enter", "swimming", "abominable", "pool") || 
+    said("dive", "abominable", "pool") || 
+    said("dive", "abominable", "lake") || 
+    said("wade", "abominable", "pool") || 
+    said("dive", "abominable") || 
+    said("dive") || 
+    said("wade", "abominable") || 
+    said("wade"))) {
+  print("Just enter the water.");
+}
+if ((said("drink", "lake") || 
+    said("carry", "drink") || 
+    said("drink") || 
+    said("carry", "drink", "lake"))) {
+  if ((v33 < 105) && 
+      (v34 < 134)) {
+    if ((v33 < 77) && 
+        (v34 < 134)) {
+      print("You take a drink of the water.  Mmmmm.  Not too bad.");
+    }
+    if ((v33 > 76) && 
+        (v34 < 126) && 
+        (v33 < 105)) {
+      print("You take a drink of the water.  Mmmmm.  Not too bad.");
+    }
+    if ((v33 > 76) && 
+        (v34 > 133)) {
+      set(f113);
+    }
+  }
+  else {
+    set(f113);
+  }
+}
+if (said("carry", "lake")) {
+  print("You have no reason to carry water.");
+}
+if ((said("place", "abominable", "crown") || 
+    said("don", "crown"))) {
+  print("You don't need to.");
+}
+if (said("examine", "green plant")) {
+  print("You only see moss on the rocks.");
+}
+if ((said("examine", "forest") || 
+    said("examine", "blossom") || 
+    said("carry", "blossom") || 
+    said("carry", "blossom") || 
+    said("climb", "forest") || 
+    said("examine", "bush"))) {
+  print("You don't see any here.");
+}
+Label1:
+if (v33 > 120) {
+  new.room(71); //##LE002##
+}
+return();
+
+//Messages
+#message 1 "What's this?!  Why, it's a cave behind the waterfall!"
+#message 2 "You see an old board lying by the cave entrance."
+#message 3 "Waterfalls sure look different when you're underneath them!"
+#message 4 "The mountain, above the waterfall, rises steeply to the east."
+#message 5 "The mountain is too steep to climb."
+#message 6 "It sure is dark in there!"
+#message 7 "There are small rocks by the cave."
+#message 8 "The rocks are too small to climb."
+#message 9 "You see a board lying on the ground."
+#message 10 "You see nothing interesting on the ground."
+#message 11 "Through the waterfall, the sky is a brilliant blue."
+#message 12 "You see a full moon through the waterfall."
+#message 13 "It's difficult to see much of anything through a waterfall."
+#message 14 "You see a deep pool below the waterfall."
+#message 15 "You peer into the pool of water, but cannot see anything of importance."
+#message 16 "Just enter the water."
+#message 17 "You take a drink of the water.  Mmmmm.  Not too bad."
+#message 18 "You have no reason to carry water."
+#message 19 "You are swept out by the waterfall."
+#message 20 "You don't need to."
+#message 21 "You only see moss on the rocks."
+#message 22 "You don't see any here."
+#message 23 "It sure feels good to be yourself again!"

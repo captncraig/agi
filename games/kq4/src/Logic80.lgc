@@ -1,0 +1,213 @@
+if (isset(new_room)) {
+  discard.view(0);
+  load.sound(70);
+  load.sound(52);
+  load.view(0);
+  load.view(94);
+  set.view(Ego, 0);
+  set.horizon(101);
+  v152 = 80;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  animate.obj(o12);
+  load.view(11);
+  animate.obj(o1);
+  set.view(o1, 94);
+  set.loop(o1, 0);
+  set.cel(o1, 0);
+  position(o1, 125, 103);
+  draw(o1);
+  stop.update(o1);
+  if (prev_room_no == 92) {
+    position(Ego, 130, 107);
+  }
+  else {
+    if (prev_room_no == 94) {
+      set.loop(Ego, 0);
+      ego_dir = 3;
+      position(Ego, 83, 119);
+    }
+    else {
+      position(Ego, 129, 164);
+    }
+  }
+  draw(Ego);
+  show.pic();
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room"))) {
+  print("You are standing before Lolotte's dark castle on the edge of the rocky "
+        "mountain.  There is a small stable next to it.");
+}
+if ((said("examine", "castle") || 
+    said("examine", "dark", "castle") || 
+    said("examine", "abominable", "castle") || 
+    said("examine", "bad", "castle"))) {
+  print("Lolotte's sinister castle is situated on a rocky ledge of the steep "
+        "craggy mountain.  A small stable is located beside it.");
+}
+if (said("examine", "barn")) {
+  print("The crude thatch-roofed stable is located near the dark castle, on the "
+        "edge of a cliff.");
+}
+if (said("examine", "cliff")) {
+  print("The mountains are rocky and steep.  The castle perches precariously "
+        "upon a large ledge.");
+}
+if ((said("examine", "path") || 
+    said("examine", "cliff", "path"))) {
+  print("The narrow path leads down the mountain.");
+}
+if ((said("examine", "rock") || 
+    said("examine", "grey", "rock"))) {
+  print("The whole mountain is rocky.");
+}
+if ((said("climb", "rock") || 
+    said("climb", "grey", "rock"))) {
+  print("It's difficult to climb rocks while wearing that dress!");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down") || 
+    said("examine", "down", "dirt"))) {
+  print("The ground is hard and rocky.");
+}
+if ((said("examine", "black sky") || 
+    said("examine", "up") || 
+    said("examine", "up", "black sky") || 
+    said("examine", "abominable", "black sky") || 
+    said("examine", "dark", "black sky") || 
+    said("examine", "abominable", "black sky") || 
+    said("examine", "up", "abominable", "black sky") || 
+    said("examine", "up", "dark", "black sky") || 
+    said("examine", "up", "abominable", "black sky"))) {
+  if (isset(f38)) {
+    print("It's easy to see by the light of a full moon.");
+  }
+  else {
+    print("The sky is very blue.");
+  }
+}
+if (said("climb", "cliff")) {
+  print("The craggy mountains are much too steep to climb.");
+}
+if (said("examine", "down")) {
+  print("The bottom of the mountain is a long way down.");
+}
+if ((said("examine", "door") || 
+    said("examine", "castle", "door"))) {
+  print("The carved castle door is very heavy.");
+}
+if (said("examine", "hay")) {
+  print("It's just hay.");
+}
+if ((said("open", "door") || 
+    said("open", "castle", "door"))) {
+  if (posn(Ego,121,103,142,113)) {
+    if (isset(f221)) {
+      print("The door is already open.");
+    }
+    else {
+      set(f36);
+      start.update(o1);
+      end.of.loop(o1, f222);
+      sound(70, f154);
+    }
+  }
+  else {
+    set(f113);
+  }
+}
+if (isset(f38) && 
+    said("examine", "moon")) {
+  print("The night sky is lovely.");
+}
+if (!isset(f38) && 
+    said("examine", "cloud")) {
+  print("Billowy clouds float serenely in the blue sky.");
+}
+Label1:
+if (isset(f222)) {
+  reset(f222);
+  reset(f36);
+  set(f221);
+  erase(o1);
+}
+if (isset(ego_touching_signal_line)) {
+  sound(52, f154);
+  reset(ego_touching_signal_line);
+  get.posn(Ego, v134, v135);
+  v134 -= 10;
+  position.v(o12, v134, v135);
+  ignore.blocks(o12);
+  set(f36);
+  set.view(o12, 11);
+  if ((ego_dir == right || 
+      ego_dir == downright)) {
+    set.loop(o12, 2);
+  }
+  else {
+    set.loop(o12, 3);
+  }
+  fix.loop(o12);
+  v152 = 3;
+  step.size(o12, v152);
+  v152 = 3;
+  cycle.time(o12, v152);
+  start.cycling(o12);
+  erase(Ego);
+  draw(o12);
+  set(f238);
+  v159 = 166;
+  v158 = 0;
+  move.obj.v(o12, v134, v159, v158, f223);
+}
+if ((isset(f223)) && 
+    (isset(f238))) {
+  erase(o12);
+  v168 = 0;
+  reset(f238);
+}
+if (isset(f223)) {
+  if (isset(f112)) {
+    reset(f112);
+    v168++;
+  }
+}
+if (v168 == 2) {
+  set(f140);
+}
+if (ego_edge_code == bottom_edge) {
+  new.room(79); //##LE001##
+}
+if (posn(Ego,75,112,78,120)) {
+  new.room(94); //##LE002##
+}
+if (ego_edge_code == horizon_edge) {
+  new.room(92); //##LE003##
+}
+return();
+
+//Messages
+#message 1 "You are standing before Lolotte's dark castle on the edge of the rocky mountain.  There is a small stable next to it."
+#message 2 "Lolotte's sinister castle is situated on a rocky ledge of the steep craggy mountain.  A small stable is located beside it."
+#message 3 "The crude thatch-roofed stable is located near the dark castle, on the edge of a cliff."
+#message 4 "The mountains are rocky and steep.  The castle perches precariously upon a large ledge."
+#message 5 "The narrow path leads down the mountain."
+#message 6 "The whole mountain is rocky."
+#message 7 "It's difficult to climb rocks while wearing that dress!"
+#message 8 "The ground is hard and rocky."
+#message 9 "The sky is very blue."
+#message 10 "It's easy to see by the light of a full moon."
+#message 11 "The craggy mountains are much too steep to climb."
+#message 12 "The bottom of the mountain is a long way down."
+#message 13 "The carved castle door is very heavy."
+#message 14 "It's just hay."
+#message 15 "The door is already open."
+#message 16 "The night sky is lovely."
+#message 17 "Billowy clouds float serenely in the blue sky."

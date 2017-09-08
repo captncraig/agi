@@ -1,0 +1,278 @@
+if (isset(new_room)) {
+  v152 = 64;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.logics(151);
+  set(f82);
+  if (isset(f38)) {
+    load.view(188);
+    add.to.pic(188, 0, 3, 129, 91, 4, 4);
+    discard.view(188);
+  }
+  if (isset(f38)) {
+    load.logics(232);
+    load.view(111);
+    animate.obj(o2);
+    animate.obj(o3);
+    animate.obj(o4);
+    set.view(o2, 111);
+    set.view(o3, 111);
+    set.view(o4, 111);
+    set.loop(o2, 1);
+    set.loop(o3, 1);
+    set.loop(o4, 1);
+    ignore.horizon(o2);
+    ignore.horizon(o3);
+    ignore.horizon(o4);
+    position(o2, 77, 66);
+    position(o3, 83, 67);
+    position(o4, 89, 66);
+    set.priority(o2, 15);
+    v152 = 1;
+    cycle.time(o2, v152);
+    set.priority(o3, 15);
+    set.priority(o4, 15);
+    draw(o2);
+    draw(o3);
+    draw(o4);
+  }
+  if ((v144 == 2) && 
+      (v143 == 64)) {
+    load.logics(233);
+    animate.obj(o1);
+    load.view(105);
+    set.view(o1, 105);
+    position(o1, 145, 125);
+    set.loop(o1, 1);
+    ignore.objs(o1);
+    ignore.blocks(o1);
+    set(f237);
+    draw(o1);
+    v142 = 64;
+    load.sound(23);
+    sound(23, f154);
+  }
+  if ((v144 == 4) && 
+      (v143 == 64)) {
+    load.logics(234);
+    animate.obj(o1);
+    load.view(107);
+    set.view(o1, 107);
+    position(o1, 82, 148);
+    ignore.objs(o1);
+    draw(o1);
+    wander(o1);
+    set(f237);
+    load.sound(25);
+    sound(25, f154);
+  }
+  if ((v144 == 5) && 
+      (!isset(f143))) {
+    load.logics(235);
+    animate.obj(o1);
+    load.view(108);
+    set.view(o1, 108);
+    position(o1, 71, 115);
+    ignore.blocks(o1);
+    ignore.objs(o1);
+    draw(o1);
+    set(f237);
+    set(f225);
+    load.sound(26);
+    sound(26, f154);
+    v117 = 0;
+  }
+  if (prev_room_no == 68) {
+    position(Ego, 23, 114);
+  }
+  if (prev_room_no == 65) {
+    position(Ego, 100, 105);
+  }
+  draw(Ego);
+  show.pic();
+}
+get.posn(o1, v134, v135);
+distance(Ego, o1, v161);
+if (isset(f112)) {
+  reset(f112);
+  v168++;
+  v117++;
+}
+if ((v144 == 2) && 
+    (!isset(f238))) {
+  set(f238);
+  move.obj(o1, 0, 140, 0, f230);
+  v143 = 68;
+}
+if ((v144 == 4) && 
+    (v168 == 10)) {
+  ignore.blocks(o1);
+  set(f238);
+  if (v134 < 60) {
+    move.obj(o1, 0, 140, 0, f230);
+    v143 = 68;
+  }
+  else {
+    v135 = 100;
+    v134 = 100;
+    v152 = 0;
+    move.obj.v(o1, v134, v135, v152, f230);
+    v143 = 65;
+  }
+}
+if (isset(f230)) {
+  v168 = 0;
+  reset(f230);
+  erase(o1);
+  reset(f237);
+  set(f154);
+}
+if ((v144 == 5) && 
+    (isset(f225)) && 
+    (isset(f237))) {
+  v117 = 0;
+  reset(f225);
+  call(235);
+  v152 = 1;
+  cycle.time(o1, v152);
+  step.time(o1, v152);
+  start.cycling(o1);
+  move.obj(o1, 7, 115, 0, f235);
+  draw(o1);
+}
+if ((v144 == 5) && 
+    (isset(f235))) {
+  reset(f235);
+  reset(f237);
+  set(f154);
+  erase(o1);
+}
+if (isset(f233)) {
+  reset(f233);
+  reset(f230);
+  erase(o1);
+  set(f237);
+  reset(f148);
+  if (v144 == 5) {
+    reset(f148);
+    v117 = 16;
+    load.view(108);
+    load.sound(26);
+    sound(26, f154);
+    set.view(o1, 108);
+    set.loop(o1, 4);
+    position(o1, 71, 115);
+    ignore.blocks(o1);
+    ignore.objs(o1);
+    draw(o1);
+    v152 = 3;
+    cycle.time(o1, v152);
+    end.of.loop(o1, f225);
+    set(f237);
+  }
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "cottage") || 
+    said("examine", "around", "cottage"))) {
+  print("This old dining room has seen better days!  The table is littered with "
+        "crumbs and dust and, against the wall, the empty hutch is covered with "
+        " cobwebs.");
+}
+if (said("examine", "table")) {
+  print("The dusty old table is littered with crumbs.");
+}
+if (said("examine", "beneath", "table")) {
+  print("There is nothing of interest under the table.");
+}
+if (said("examine", "chair")) {
+  print("The chairs seem to be falling apart.");
+}
+if ((said("sit") || 
+    said("sit", "down") || 
+    said("sit", "down", "chair") || 
+    said("sit", "down", "table"))) {
+  print("You don't have time for that!");
+}
+if ((said("examine", "window") || 
+    said("look in", "window") || 
+    said("examine", "out", "window") || 
+    said("examine", "through", "window"))) {
+  if (posn(Ego,112,108,126,116)) {
+    print("You see the cemetery out the window.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("examine", "cabinet") || 
+    said("look in", "cabinet"))) {
+  print("There is nothing of interest in the hutch.");
+}
+if (!has("Lit Oil Lantern") && 
+    !has("Unlit Oil Lantern")) {
+  if ((said("examine", "lamp") || 
+      said("examine", "ignite"))) {
+    print("A tarnished chandelier hangs above the dining table.");
+  }
+}
+if (said("examine", "chandelier")) {
+  print("A tarnished chandelier hangs above the dining table.");
+}
+if (said("examine", "wall")) {
+  print("There is nothing of importance on the walls.");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down") || 
+    said("examine", "down", "dirt"))) {
+  print("There is nothing of interest on the floor.");
+}
+if ((said("examine", "crumb") || 
+    said("carry", "crumb"))) {
+  print("You're not interested in crumbs.");
+}
+if ((v144 == 2) && 
+    (isset(f237))) {
+  call(233);
+}
+if ((v144 == 4) && 
+    (isset(f237))) {
+  call(234);
+}
+if ((v144 == 5) && 
+    (isset(f237))) {
+  call(235);
+}
+Label1:
+if (isset(f38)) {
+  call(232);
+}
+if ((v33 < 50) && 
+    (isset(ego_touching_signal_line))) {
+  new.room(68); //##LE001##
+}
+if ((v33 > 50) && 
+    (isset(ego_touching_signal_line))) {
+  new.room(65); //##LE002##
+}
+return();
+
+//Messages
+#message 1 "This old dining room has seen better days!  The table is littered with crumbs and dust and, against the wall, the empty hutch is covered with  cobwebs."
+#message 2 "The dusty old table is littered with crumbs."
+#message 3 "There is nothing of interest under the table."
+#message 4 "The chairs seem to be falling apart."
+#message 5 "You don't have time for that!"
+#message 6 "You see the cemetery out the window."
+#message 7 "There is nothing of interest in the hutch."
+#message 8 "A tarnished chandelier hangs above the dining table."
+#message 9 "There is nothing of importance on the walls."
+#message 10 "There is nothing of interest on the floor."
+#message 11 "Jim Walls is busy writing Police Quest II and not here."
+#message 12 "You're not interested in crumbs."

@@ -1,0 +1,402 @@
+if (isset(new_room)) {
+  set(f82);
+  v152 = 58;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.view(1);
+  load.view(10);
+  load.view(42);
+  load.view(72);
+  load.sound(48);
+  load.sound(52);
+  animate.obj(o12);
+  animate.obj(o1);
+  animate.obj(o2);
+  animate.obj(o3);
+  animate.obj(o4);
+  animate.obj(o5);
+  set.view(o2, 72);
+  set.view(o3, 72);
+  set.view(o4, 42);
+  set.view(o5, 42);
+  set.loop(o2, 1);
+  set.loop(o3, 1);
+  set.loop(o4, 4);
+  set.loop(o5, 3);
+  position(o2, 57, 53);
+  position(o3, 103, 54);
+  position(o4, 76, 83);
+  position(o5, 70, 82);
+  stop.cycling(o5);
+  set.cel(o5, 0);
+  draw(o5);
+  v222 = 0;
+  draw(o2);
+  draw(o3);
+  set.view(Ego, 1);
+  position(Ego, 59, 141);
+  load.sound(56);
+  load.sound(57);
+  draw(Ego);
+  show.pic();
+}
+if (isset(f112)) {
+  reset(f112);
+  v168++;
+  if (isset(f240)) {
+    v222++;
+  }
+}
+if (posn(Ego,45,126,95,147)) {
+  set(f236);
+}
+else {
+  reset(f236);
+}
+if ((!isset(f236)) && 
+    (isset(ego_touching_signal_line)) && 
+    (!isset(f230))) {
+  sound(52, f154);
+  set(f36);
+  set(f230);
+  v37 = 6;
+  set.view(Ego, 10);
+  set.priority(Ego, 13);
+  if (ego_dir < down) {
+    set.loop(Ego, 0);
+  }
+  else {
+    set.loop(Ego, 1);
+  }
+  set.cel(Ego, 0);
+  fix.loop(Ego);
+  ignore.blocks(Ego);
+  window_close_time = 1;
+  print("Oops!!");
+  move.obj(Ego, 72, 167, 5, f225);
+}
+if (isset(f225)) {
+  set(f190);
+  erase(Ego);
+  new.room(61); //##LE001##
+}
+if ((said("play", "sheet", "music") || 
+    said("play", "sheet", "music", "organ") || 
+    said("play", "sheet", "music", "flute", "organ"))) {
+  if (isset(f238)) {
+    if (has("Sheet Music")) {
+      print("You find it difficult to read the old sheet music, but you attempt "
+            "it, anyway.");
+      set(f221);
+      set(f235);
+      v153 = 1;
+      if (isset(sound_on)) {
+        set(f239);
+      }
+      else {
+        set(f240);
+        v222 = 0;
+      }
+      sound(57, f154);
+      prevent.input();
+      draw(o4);
+    }
+    else {
+      set(f115);
+    }
+  }
+  else {
+    print("You're not sitting at the organ.");
+  }
+}
+if ((said("play", "music") || 
+    said("play") || 
+    said("play", "flute", "organ") || 
+    said("play", "music", "abominable", "organ") || 
+    said("play", "organ"))) {
+  if (isset(f238)) {
+    set(f221);
+    v153 = 1;
+    v168 = 0;
+    print("You can only remember one \"oldie but goodie.\"");
+    if (isset(sound_on)) {
+      set(f239);
+    }
+    else {
+      set(f240);
+      v222 = 0;
+    }
+    sound(56, f154);
+    prevent.input();
+    set(f234);
+  }
+  else {
+    print("You're not sitting at the organ.");
+  }
+}
+if ((isset(f221)) && 
+    (v153 == 1)) {
+  reset(f221);
+  position(o12, 71, 99);
+  set.loop(o12, 2);
+  if (isset(f234)) {
+    v152 = 2;
+  }
+  else {
+    v152 = 4;
+  }
+  reset(f234);
+  cycle.time(o12, v152);
+  start.cycling(o12);
+  v153++;
+}
+if (v222 == 15) {
+  v222 = 16;
+  set(f239);
+}
+if ((isset(f154)) && 
+    (isset(f239))) {
+  reset(f239);
+  erase(o12);
+  stop.cycling(o12);
+  set.loop(o12, 0);
+  set.cel(o12, 0);
+  position(o12, 73, 99);
+  draw(o12);
+  v153++;
+  erase(o4);
+  reset(f240);
+  if (has("Sheet Music") && 
+      (!has("Skeleton Key")) && 
+      (!isset(f237)) && 
+      (isset(f235))) {
+    print("What is this?  A small drawer has opened in the organ!");
+    score  += 4;
+    set(f237);
+    end.of.loop(o5, f223);
+  }
+  accept.input();
+}
+if ((isset(f222)) && 
+    (v154 == 1)) {
+  reset(f222);
+  set(f36);
+  prevent.input();
+  set.view(o12, 1);
+  position.v(o12, v33, v34);
+  draw(o12);
+  erase(Ego);
+  move.obj(o12, 74, 110, 0, f222);
+  v154++;
+}
+if ((isset(f222)) && 
+    (v154 == 2)) {
+  reset(f222);
+  set.view(o12, 42);
+  set.loop(o12, 0);
+  set.cel(o12, 2);
+  position(o12, 73, 99);
+  reverse.loop(o12, f222);
+  set.view(o1, 42);
+  set.loop(o1, 1);
+  set.cel(o1, 2);
+  position(o1, 73, 109);
+  reverse.loop(o1, f152);
+  draw(o1);
+  v154++;
+  set(f238);
+  accept.input();
+}
+if ((isset(f222)) && 
+    (v154 == 5)) {
+  reset(f222);
+  prevent.input();
+  start.cycling(o12);
+  start.cycling(o1);
+  end.of.loop(o12, f222);
+  end.of.loop(o1, f152);
+  v154++;
+}
+if ((isset(f222)) && 
+    (v154 == 6)) {
+  reset(f222);
+  position(Ego, 74, 110);
+  draw(Ego);
+  erase(o12);
+  erase(o1);
+  reset(f36);
+  v153++;
+  reset(f238);
+  accept.input();
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "tower") || 
+    said("examine", "around", "tower") || 
+    said("examine", "cottage") || 
+    said("examine", "around", "cottage"))) {
+  print("A dusty old pipe organ sits in the center of the tower room.");
+}
+if ((said("examine", "staircase") || 
+    said("examine", "down") || 
+    said("examine", "down", "staircase"))) {
+  print("The tower stairs spiral steeply downward.");
+}
+if ((said("examine", "organ") || 
+    said("examine", "flute", "organ"))) {
+  print("Dust and cobwebs cover the old organ.");
+}
+if (said("look in", "organ")) {
+  print("You see nothing in the organ.");
+}
+if ((said("sit") || 
+    said("sit", "down") || 
+    said("sit", "organ") || 
+    said("sit", "bench") || 
+    said("sit", "down", "organ") || 
+    said("sit", "down", "bench"))) {
+  if (!isset(f238)) {
+    if (center.posn(Ego,69,109,85,110)) {
+      set(f222);
+      v154 = 1;
+    }
+    else {
+      print("It would be better to move in front of the bench.");
+    }
+  }
+  else {
+    print("You are already sitting.");
+  }
+}
+if ((said("stand", "up") || 
+    said("stand") || 
+    said("carry", "up") || 
+    said("stand", "up", "from", "bench") || 
+    said("stand", "up", "from", "organ") || 
+    said("exit") || 
+    said("exit", "bench") || 
+    said("exit", "organ"))) {
+  if (isset(f238)) {
+    set(f222);
+    v154 = 5;
+  }
+  else {
+    print("You are already standing.");
+  }
+}
+if (said("examine", "bench")) {
+  print("There is a bench in front of the old organ.");
+}
+if (said("examine", "wall")) {
+  print("There is nothing of importance on the walls.");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down") || 
+    said("examine", "down", "dirt"))) {
+  print("There is nothing of interest on the floor.");
+}
+if (said("open", "bench")) {
+  print("The bench doesn't open.");
+}
+if ((said("carry", "key") || 
+    said("carry", "james", "key"))) {
+  if (isset(f237)) {
+    if (!has("Skeleton Key")) {
+      if (posn(Ego,62,105,78,112)) {
+        sound(48, f154);
+        get("Skeleton Key");
+        score  += 2;
+        set(f116);
+      }
+      else {
+        set(f113);
+      }
+    }
+    else {
+      set(f114);
+    }
+  }
+  else {
+    print("You don't see a key.");
+  }
+}
+if ((said("examine", "drawer") || 
+    said("look in", "drawer"))) {
+  if (isset(f237)) {
+    if (posn(Ego,62,105,78,112)) {
+      if (!has("Skeleton Key")) {
+        print("You see a skeleton key.");
+      }
+      else {
+        print("It's empty.");
+      }
+    }
+    else {
+      set(f113);
+    }
+  }
+  else {
+    print("Drawer? What drawer?");
+  }
+}
+if (said("open", "drawer")) {
+  if (isset(f237)) {
+    print("It's already open.");
+  }
+  else {
+    print("Drawer? What drawer?");
+  }
+}
+if (said("find", "drawer")) {
+  if (isset(f237)) {
+    print("You already found it.");
+  }
+  else {
+    print("Drawer? What drawer?");
+  }
+}
+Label1:
+if ((!isset(f36)) && 
+    (center.posn(Ego,66,140,70,146))) {
+  new.room(61); //##LE002##
+}
+return();
+
+//Messages
+#message 1 "A dusty old pipe organ sits in the center of the tower room."
+#message 2 "The tower stairs spiral steeply downward."
+#message 3 "Dust and cobwebs cover the old organ."
+#message 4 "You see nothing in the organ."
+#message 5 "You're not sitting at the organ."
+#message 6 "There is a bench in front of the old organ."
+#message 7 "There is nothing of importance on the walls."
+#message 8 "There is nothing of interest on the floor."
+#message 9 "You find it difficult to read the old sheet music, but you attempt it, anyway."
+#message 10 "What is this?  A small drawer has opened in the organ!"
+#message 11 "You see a skeleton key."
+#message 12 "It would be better to move in front of the bench."
+#message 13 "Oops!!"
+#message 14 "You can only remember one \"oldie but goodie.\""
+#message 15 "Drawer? What drawer?"
+#message 16 "It's already open."
+#message 17 "The bench doesn't open."
+#message 18 "It's empty."
+#message 19 "You don't see a key."
+#message 20 "You are already sitting."
+#message 21 "You are already standing."
+#message 22 "You already found it."
+#message 23 "Debug 4"
+#message 24 "Debug 5"
+#message 25 "Debug 6"
+#message 26 "Debug 7"
+#message 27 "Debug 8"
+#message 28 "Debug 9"
+#message 29 "Debug 10"
+#message 30 "Debug 11"
+#message 31 "Debug 12"

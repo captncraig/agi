@@ -1,0 +1,242 @@
+if (isset(new_room)) {
+  set.horizon(82);
+  load.logics(212);
+  load.logics(213);
+  load.logics(150);
+  call(150);
+  if (v37 == 12) {
+    set.view(Ego, 5);
+  }
+  load.logics(230);
+  call(230);
+  load.view(55);
+  v152 = 39;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  if (v54 <= 0) {
+    random(1, 2, v152);
+    if (v152 == 2) {
+      v54 = room_no;
+    }
+  }
+  set(f63);
+  call(212);
+  if (v54 == room_no) {
+    position(o2, 127, 97);
+    draw(o2);
+  }
+  if (isset(f221)) {
+    set.loop(o1, 0);
+    random(1, 3, v152);
+    if (v152 == 1) {
+      position(o1, 130, 124);
+      move.obj(o1, 145, 124, 0, f226);
+    }
+    else {
+      if (v152 == 2) {
+        position(o1, 127, 109);
+        move.obj(o1, 145, 109, 0, f226);
+      }
+      else {
+        position(o1, 102, 95);
+        move.obj(o1, 139, 106, 0, f225);
+      }
+    }
+    draw(o1);
+  }
+  if (prev_room_no == 36) {
+    position(Ego, 148, 85);
+  }
+  else {
+    if (prev_room_no == 33) {
+      if (v37 == 9) {
+        position(Ego, 91, 87);
+      }
+      else {
+        if (v37 == 10) {
+          position(Ego, 83, 87);
+        }
+        else {
+          if (v37 == 11) {
+            position(Ego, 70, 87);
+          }
+          else {
+            v37 = 12;
+            set.view(Ego, 5);
+            position(Ego, 51, 87);
+          }
+        }
+      }
+    }
+    else {
+      if (prev_room_no == 40) {
+        if (v37 == 9) {
+          position(Ego, 150, 136);
+        }
+        else {
+          if (v37 == 10) {
+            position(Ego, 150, 143);
+          }
+          else {
+            if (v37 == 11) {
+              position(Ego, 150, 157);
+            }
+            else {
+              if (v37 == 12) {
+                position(Ego, 156, 165);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  if (prev_room_no == 32) {
+    position(Ego, 74, 166);
+  }
+  animate.obj(o4);
+  set.view(o4, 55);
+  set.loop(o4, 2);
+  set.cel(o4, 2);
+  v152 = 4;
+  step.time(o4, v152);
+  cycle.time(o4, v152);
+  ignore.objs(o4);
+  set.priority(o4, 4);
+  position(o4, 98, 114);
+  draw(o4);
+  animate.obj(o5);
+  set.view(o5, 55);
+  set.loop(o5, 2);
+  set.cel(o5, 0);
+  v152 = 4;
+  step.time(o5, v152);
+  cycle.time(o5, v152);
+  ignore.objs(o5);
+  set.priority(o5, 4);
+  position(o5, 91, 140);
+  draw(o5);
+  if (isset(f231)) {
+    position(o8, 7, 22);
+    draw(o8);
+  }
+  if (isset(f230)) {
+    position(o9, 68, 21);
+    draw(o9);
+  }
+  draw(Ego);
+  show.pic();
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "island") || 
+    said("examine", "around", "island") || 
+    said("examine", "around", "room"))) {
+  print("You are walking on the sparkling sand beach of an exotic island.  "
+        "Before you, in the center of the island, a wonderful ivory palace "
+        "rises.  A lovely garden surrounds the palace.");
+  if (v54 == room_no) {
+    print("Something catches your eye!  Why, it's a beautiful peacock feather!");
+  }
+}
+if ((said("carry", "feather") || 
+    said("carry", "cute", "feather") || 
+    said("carry", "colorful", "feather"))) {
+  if (has("Peacock Feather")) {
+    print("You already have one!");
+  }
+  else {
+    if (v54 == room_no) {
+      if (posn(Ego,120,92,135,102)) {
+        set(f222);
+      }
+      else {
+        set(f113);
+      }
+    }
+    else {
+      if (isset(f221)) {
+        print("The peacock wouldn't like that!");
+      }
+      else {
+        print("You see nothing but sandy soil.");
+      }
+    }
+  }
+}
+if (!isset(input_parsed)) {
+  call(213);
+}
+if (!isset(input_parsed) && 
+    isset(f221)) {
+  call(231);
+}
+Label1:
+if (isset(f225)) {
+  reset(f225);
+  move.obj(o1, 145, 106, 0, f226);
+}
+if (isset(f226)) {
+  erase(o1);
+  reset(f221);
+  reset(f226);
+}
+call(212);
+if (!isset(new_room)) {
+  call(150);
+}
+call(230);
+if (v230 > 0 && 
+    isset(f112)) {
+  v230--;
+  if (v230 <= 0) {
+    position(o8, 4, 27);
+    v152 = 4;
+    set.dir(o8, v152);
+    draw(o8);
+    set(f231);
+  }
+}
+if (v231 > 0 && 
+    isset(f112)) {
+  v231--;
+  if (v231 <= 0) {
+    position(o9, 50, 3);
+    v152 = 6;
+    set.dir(o9, v152);
+    draw(o9);
+    set(f230);
+  }
+}
+if (ego_edge_code == bottom_edge) {
+  new.room(32); //##LE001##
+}
+if (ego_edge_code == horizon_edge) {
+  if (v33 < 117) {
+    new.room(33); //##LE002##
+  }
+  else {
+    new.room(36); //##LE003##
+  }
+}
+if (ego_edge_code == left_edge) {
+  v45 = 6;
+  v46 = 2;
+  new.room(31); //##LE004##
+}
+if (ego_edge_code == right_edge) {
+  new.room(40); //##LE005##
+}
+return();
+
+//Messages
+#message 1 "You are walking on the sparkling sand beach of an exotic island.  Before you, in the center of the island, a wonderful ivory palace rises.  A lovely garden surrounds the palace."
+#message 2 "You see nothing but sandy soil."
+#message 3 "Something catches your eye!  Why, it's a beautiful peacock feather!"
+#message 4 "The peacock wouldn't like that!"
+#message 5 "You already have one!"

@@ -1,0 +1,158 @@
+set(f36);
+cycle_delay = 2;
+if (isset(new_room)) {
+  prevent.input();
+  status.line.on();
+  reset(menu_enabled);
+  v152 = 154;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.view(197);
+  load.sound(207);
+  animate.obj(o1);
+  set.view(o1, 197);
+  set.priority(o1, 10);
+  position(o1, 46, 125);
+  set.loop(o1, 0);
+  fix.loop(o1);
+  set.cel(o1, 0);
+  draw(o1);
+  stop.cycling(o1);
+  add.to.pic(197, 2, 1, 48, 167, 9, 1);
+  animate.obj(o4);
+  set.view(o4, 197);
+  set.priority(o4, 10);
+  position(o4, 88, 36);
+  set.loop(o4, 3);
+  fix.loop(o4);
+  set.cel(o4, 0);
+  draw(o4);
+  stop.cycling(o4);
+  set(f220);
+  set(f223);
+  show.pic();
+  return();
+}
+if ((v221 > 0) && 
+    (isset(f112))) {
+  v221--;
+  if ((v221 == 6) && 
+      (isset(f222))) {
+    set.cel(o1, 2);
+    force.update(o1);
+  }
+  if ((v221 == 5) && 
+      (isset(f222))) {
+    reset(f222);
+    add.to.pic(197, 1, 0, 29, 142, 10, 1);
+    add.to.pic(197, 2, 0, 48, 167, 9, 1);
+    erase(o1);
+  }
+  if ((v221 == 1) && 
+      (isset(f221))) {
+    reset(f221);
+    stop.update(o1);
+    set.cel(o1, 4);
+    force.update(o1);
+  }
+  if (v221 <= 0) {
+    close.window();
+    set(f220);
+  }
+}
+random(0, 5, v222);
+if ((isset(f223)) && 
+    (isset(f112)) && 
+    (v222 <= 0)) {
+  end.of.loop(o4, f223);
+  set.cel(o4, 0);
+}
+if (isset(f220)) {
+  reset(f220);
+  v220++;
+  if (v220 == 1) {
+    sound(207, f154);
+    set(windows_remain);
+    v221 = 3;
+    print.at("This handsome hunk is Edgar?!!", 1, 5, 35);
+  }
+  if (v220 == 2) {
+    set(f221);
+    set(windows_remain);
+    v221 = 4;
+    print.at("\"Rosella,\" he says, \"I love you. Will you marry me?\"", 1, 4, 35);
+    v154 = 2;
+    cycle.time(o1, v154);
+    start.cycling(o1);
+  }
+  if (v220 == 3) {
+    v221 = 3;
+  }
+  if (v220 == 4) {
+    set(windows_remain);
+    v221 = 2;
+    print.at("You think about it.", 1, 10, 30);
+  }
+  if (v220 == 5) {
+    v221 = 4;
+  }
+  if (v220 == 6) {
+    set(windows_remain);
+    v221 = 2;
+    print.at("You think about it some more.", 1, 6, 30);
+  }
+  if (v220 == 7) {
+    v221 = 2;
+    set.cel(o1, 0);
+    force.update(o1);
+  }
+  if (v220 == 8) {
+    set(windows_remain);
+    v221 = 1;
+    print.at("Then...", 1, 6, 30);
+  }
+  if (v220 == 9) {
+    erase(o4);
+    set(f222);
+    set(windows_remain);
+    v221 = 7;
+    print.at("\"I'm sorry, Edgar,\" you tell him. \"You're very sweet...but I "
+             "must immediately return home.\"", 1, 3, 35);
+  }
+  if (v220 == 10) {
+    draw(o4);
+    set(windows_remain);
+    v221 = 4;
+    print.at("\"Perhaps we'll meet again,\" you say.", 1, 3, 35);
+  }
+  if (v220 == 11) {
+    set(f74);
+    new.room(135); //##LE001##
+  }
+}
+return();
+
+//Messages
+#message 1 "...you find yourself outside!"
+#message 2 "\"My hen!\" Genesta suddenly exclaims. \"Where ever did you find her?!\""
+#message 3 "You explain that the ogre had had possession of her. \"Poor thing,\" she says. \"Well, at least she's back home again.\""
+#message 4 "\"Now for you, Rosella,\" Genesta says. \"You have performed so heroically for all of us here in Tamir -- but -- you forgot one thing...you forgot the magic fruit for your father.\""
+#message 5 "Sadly, you realize this terrible error."
+#message 6 "The fairy continues, \"Well, it's too late now. I must immediately return you to Daventry so you may at least bid him good-bye.\""
+#message 7 "\"You look like yourself again,\" assesses the fairy. \"You best be off. We won't forget you here! Good luck!\""
+#message 8 "You made it just in time. Just in time, that is, to look your father in the eyes before he quietly dies. He must have been waiting for your return."
+#message 16 "\"Rosella,\" he says, \"I love you. Will you marry me?\""
+#message 17 "You think about it."
+#message 18 "You think about it some more."
+#message 19 "Then..."
+#message 20 "\"I'm sorry, Edgar,\" you tell him. \"You're very sweet...but I must immediately return home.\""
+#message 21 "\"Perhaps we'll meet again,\" you say."
+#message 22 "\"Well, Rosella,\" Genesta announces. \"It's time for you to go. Your father desperately needs you.\""
+#message 23 "\"Good-bye! We'll never forget you!\""
+#message 100 "\"Now for you, Rosella,\" Genesta says. \"It's my turn to help YOU out. I will return you to Daventry; and with the magic fruit you will be able to save your father's life. We'd better hurry, though, as he doesn't have much time left.\""
+#message 101 "Yes, you ARE anxious to get home again."
+#message 102 "\"But first,\" Genesta proclaims, \"let's replace these peasant clothes with your royal gown.\""
+#message 103 "With a twinkle in her eyes, Genesta announces, \"There is someone else deserving of a reward for his kindness and heroism.\""
+#message 104 "\"You have a beautiful soul, Edgar,\" the fairy says to the ugly, little man. \"You should look like what you are.\""
+#message 105 "This handsome hunk is Edgar?!!"

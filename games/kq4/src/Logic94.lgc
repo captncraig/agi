@@ -1,0 +1,283 @@
+if (isset(new_room)) {
+  discard.view(0);
+  v152 = 94;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.sound(70);
+  load.view(1);
+  set.view(Ego, 1);
+  load.view(191);
+  add.to.pic(191, 2, 0, 30, 135, 4, 4);
+  if (!isset(f70)) {
+    animate.obj(o2);
+    v152 = 3;
+    cycle.time(o2, v152);
+    set.view(o2, 191);
+    set.loop(o2, 5);
+    set.cel(o2, 0);
+    ignore.blocks(o2);
+    v152 = 3;
+    step.size(o2, v152);
+    position(o2, 88, 122);
+    set.priority(o2, 4);
+    draw(o2);
+    stop.cycling(o2);
+    v221 = 2;
+  }
+  else {
+    v222 = 0;
+    v221 = 0;
+  }
+  animate.obj(o1);
+  set.view(o1, 191);
+  set.loop(o1, 3);
+  if (isset(f70)) {
+    set.cel(o1, 6);
+    set(f221);
+  }
+  else {
+    set.cel(o1, 0);
+  }
+  set.priority(o1, 5);
+  ignore.objs(o1);
+  position(o1, 82, 135);
+  draw(o1);
+  stop.cycling(o1);
+  set.loop(Ego, 3);
+  ego_dir = 0;
+  position(Ego, 71, 154);
+  draw(Ego);
+  show.pic();
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "around", "barn") || 
+    said("examine", "barn"))) {
+  if (!isset(f70)) {
+    print("%m1  You see the poor unicorn imprisoned here.");
+  }
+  else {
+    print("You have entered the stable, and yes, it's a pretty ordinary stable.");
+  }
+}
+if ((said("examine", "gate") || 
+    said("examine", "barn", "gate"))) {
+  print("You see two stable gates.");
+}
+if ((said("open", "gate") || 
+    said("open", "barn", "gate"))) {
+  if (posn(Ego,68,129,72,133)) {
+    print("There is no need to open the left gate.");
+  }
+  else {
+    if (posn(Ego,73,129,78,133)) {
+      if (!isset(f221)) {
+        stop.cycling(o2);
+        v221 = 0;
+        v222 = 0;
+        set.cel(o2, 0);
+        set(f221);
+        set(f36);
+        prevent.input();
+        end.of.loop(o1, f225);
+        sound(70, f154);
+      }
+      else {
+        print("The right gate is already open.");
+      }
+    }
+    else {
+      set(f113);
+    }
+  }
+}
+if (said("examine", "wall")) {
+  print("%m4 importance on the walls.");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down") || 
+    said("examine", "down", "dirt"))) {
+  print("%m4 interest on the floor.");
+}
+if (!isset(input_parsed) && 
+    !isset(f70)) {
+  if ((said("examine", "horse") || 
+      said("examine", "unicorn"))) {
+    print("The poor beautiful unicorn has been beaten and locked away in this "
+          "horrible stable. It needs to be free, to roam and frolic in its "
+          "meadow.");
+  }
+  if ((said("speak", "unicorn") || 
+      said("speak", "horse") || 
+      said("speak") || 
+      said("speak", "with", "unicorn"))) {
+    print("You speak to the dapple-grey unicorn, who%m21 as if to say, \"How "
+          "could you have done this to me?!\"");
+  }
+  if ((said("carry", "horse") || 
+      said("carry", "unicorn") || 
+      said("lead", "horse") || 
+      said("lead", "unicorn") || 
+      said("capture", "horse") || 
+      said("capture", "unicorn"))) {
+    print("It would be good to%m19.");
+  }
+  if ((said("carry", "abominable", "unicorn") || 
+      said("mount", "unicorn") || 
+      said("mount", "abominable", "unicorn") || 
+      said("mount", "unicorn") || 
+      said("climb", "abominable", "unicorn") || 
+      said("carry", "abominable", "horse") || 
+      said("mount", "horse") || 
+      said("mount", "abominable", "horse") || 
+      said("mount", "horse") || 
+      said("climb", "abominable", "horse"))) {
+    print("Why don't you just%m19?");
+  }
+  if ((said("pat", "horse") || 
+      said("pat") || 
+      said("pat", "unicorn") || 
+      said("pat", "nose", "abominable", "unicorn") || 
+      said("pat", "nose"))) {
+    if (posn(Ego,89,129,111,133)) {
+      print("The unicorn%m20as you gently stroke its soft nose.  It seems not "
+            "to trust you anymore.");
+    }
+    else {
+      set(f113);
+    }
+  }
+  if ((said("feed", "horse") || 
+      said("feed", "unicorn") || 
+      said("feed", "food", "unicorn") || 
+      said("feed", "fruit", "unicorn") || 
+      said("deliver", "horse") || 
+      said("deliver", "anyword") || 
+      said("entice", "horse") || 
+      said("entice", "unicorn") || 
+      said("entice", "unicorn", "with", "anyword"))) {
+    print("The unicorn doesn't want anything from you.");
+  }
+  if ((said("embrace", "horse") || 
+      said("embrace") || 
+      said("embrace", "unicorn"))) {
+    if (posn(Ego,105,129,111,133)) {
+      print("The beautiful unicorn%m21when you kiss its nose.  It doesn't trust "
+            "you anymore.");
+    }
+    else {
+      set(f113);
+    }
+  }
+  if ((said("free", "unicorn") || 
+      said("save", "unicorn") || 
+      said("help", "unicorn") || 
+      said("free", "horse") || 
+      said("save", "horse") || 
+      said("help", "horse"))) {
+    print("Just open the stable gate.");
+  }
+}
+Label1:
+if (isset(f225)) {
+  reset(f225);
+  stop.cycling(o2);
+  v221 = 0;
+  v222 = 0;
+  set.cel(o2, 0);
+  set.priority(o1, 4);
+  if (!isset(f70)) {
+    print("As soon as you open the gate, the splendid wild unicorn impatiently "
+          "leaves its hated prison.  It quickly trots out the open stable door "
+          "to freedom.");
+    set(f222);
+  }
+  else {
+    accept.input();
+    reset(f36);
+  }
+}
+if (isset(f222)) {
+  reset(f222);
+  release.priority(o2);
+  set.loop(o2, 0);
+  set.cel(o2, 0);
+  end.of.loop(o2, f226);
+}
+if (isset(f226)) {
+  set.loop(o2, 1);
+  fix.loop(o2);
+  reset(f226);
+  v152 = 1;
+  cycle.time(o2, v152);
+  move.obj(o2, 90, 142, 0, f223);
+  start.cycling(o2);
+}
+if (isset(f223)) {
+  reset(f223);
+  move.obj(o2, 75, 163, 0, f224);
+}
+if (isset(f224)) {
+  set(f70);
+  reset(f224);
+  erase(o2);
+  score  += 4;
+  reset(f36);
+  accept.input();
+}
+if (v221 > 0 && 
+    isset(f112)) {
+  v221--;
+  if (v221 <= 0) {
+    start.cycling(o2);
+    v222 = 4;
+  }
+}
+if (v222 > 0 && 
+    isset(f112)) {
+  v222--;
+  if (v222 <= 0) {
+    set.cel(o2, 0);
+    stop.cycling(o2);
+    random(4, 8, v221);
+  }
+}
+if (isset(f221) && 
+    v34 < 133) {
+  ignore.blocks(Ego);
+}
+else {
+  observe.blocks(Ego);
+}
+if (ego_edge_code == bottom_edge) {
+  new.room(80); //##LE001##
+}
+return();
+
+//Messages
+#message 1 "You have entered the stable, and yes, it's a pretty ordinary stable."
+#message 2 "%m1  You see the poor unicorn imprisoned here."
+#message 3 "You see two stable gates."
+#message 4 "There is nothing of"
+#message 5 "%m4 importance on the walls."
+#message 6 "%m4 interest on the floor."
+#message 7 "There is no need to open the left gate."
+#message 8 "The right gate is already open."
+#message 9 "The poor beautiful unicorn has been beaten and locked away in this horrible stable. It needs to be free, to roam and frolic in its meadow."
+#message 10 "You speak to the dapple-grey unicorn, who%m21 as if to say, \"How could you have done this to me?!\""
+#message 11 "It would be good to%m19."
+#message 12 "Why don't you just%m19?"
+#message 13 "The unicorn%m20as you gently stroke its soft nose.  It seems not to trust you anymore."
+#message 14 "The unicorn doesn't want anything from you."
+#message 15 "The beautiful unicorn%m21when you kiss its nose.  It doesn't trust you anymore."
+#message 17 "Just open the stable gate."
+#message 18 "As soon as you open the gate, the splendid wild unicorn impatiently leaves its hated prison.  It quickly trots out the open stable door to freedom."
+#message 19 " free the unicorn"
+#message 20 " rolls back its eyes "
+#message 21 "%m20and whinnies "

@@ -1,0 +1,308 @@
+if (isset(new_room)) {
+  discard.view(0);
+  v152 = 89;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  if (isset(f38)) {
+    load.view(188);
+    add.to.pic(188, 3, 2, 127, 96, 4, 4);
+    discard.view(188);
+  }
+  load.sound(70);
+  load.view(143);
+  animate.obj(o4);
+  set.view(o4, 143);
+  set.priority(o4, 4);
+  ignore.horizon(o4);
+  ignore.objs(o4);
+  set.loop(o4, 1);
+  position(o4, 29, 65);
+  v152 = 1;
+  cycle.time(o4, v152);
+  draw(o4);
+  load.view(1);
+  load.view(63);
+  set.view(Ego, 1);
+  add.to.pic(63, 2, 1, 39, 95, 5, 1);
+  animate.obj(o1);
+  animate.obj(o2);
+  animate.obj(o3);
+  ignore.objs(o1);
+  ignore.blocks(o2);
+  set.view(o1, 63);
+  set.view(o2, 63);
+  set.view(o3, 63);
+  set.loop(o1, 0);
+  set.loop(o2, 1);
+  set.loop(o3, 2);
+  set.cel(o1, 0);
+  set.cel(o2, 0);
+  if (isset(f51)) {
+    set.cel(o3, 0);
+  }
+  else {
+    set.cel(o3, 1);
+  }
+  position(o1, 111, 94);
+  position(o2, 37, 94);
+  position(o3, 111, 94);
+  set.priority(o3, 5);
+  draw(o1);
+  draw(o2);
+  draw(o3);
+  stop.cycling(o3);
+  stop.cycling(o1);
+  stop.cycling(o2);
+  position(Ego, 6, 131);
+  draw(Ego);
+  show.pic();
+}
+if (!isset(input_received)) {
+  goto(Label2);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "around", "kitchen") || 
+    said("examine", "kitchen") || 
+    said("examine", "castle") || 
+    said("examine", "dark", "castle") || 
+    said("examine", "bad", "castle") || 
+    said("examine", "around", "castle") || 
+    said("examine", "around", "bad", "castle") || 
+    said("examine", "around", "dark", "castle"))) {
+  print("You have discovered the castle's kitchen.  Not a very pleasant "
+        "kitchen, but a kitchen, nonetheless.  Against the back wall, two "
+        "cabinets flank a cold stone fireplace.  You see a long table under the "
+        "one small window.");
+}
+if (said("examine", "cabinet")) {
+  print("You see two cabinets, one on each side of the stone fireplace.");
+}
+if ((said("open", "cabinet") || 
+    said("open", "closet") || 
+    said("open", "door"))) {
+  if (posn(Ego,33,108,53,115)) {
+    if (!isset(f222)) {
+      set(f222);
+      end.of.loop(o2, f226);
+      sound(70, f154);
+    }
+    else {
+      print("%m18 open.");
+    }
+  }
+  else {
+    if (posn(Ego,99,108,117,115)) {
+      if (!isset(f221)) {
+        set(f221);
+        end.of.loop(o1, f225);
+        sound(70, f154);
+      }
+      else {
+        print("%m18 open.");
+      }
+    }
+    else {
+      set(f113);
+    }
+  }
+}
+if (said("look in", "cabinet")) {
+  if (posn(Ego,33,108,53,115)) {
+    if (isset(f222)) {
+      print("The cabinet is empty.");
+    }
+    else {
+      print("The cabinet is closed.");
+    }
+  }
+  else {
+    if (posn(Ego,99,108,117,115)) {
+      if (isset(f221)) {
+        if (isset(f51)) {
+          print("All of your possessions are in the cabinet.");
+        }
+        else {
+          print("The cabinet is empty.");
+        }
+      }
+      else {
+        print("The cabinet is closed.");
+      }
+    }
+    else {
+      set(f113);
+    }
+  }
+}
+if ((said("close", "cabinet") || 
+    said("close", "door") || 
+    said("close", "closet"))) {
+  if (posn(Ego,33,108,53,115)) {
+    if (isset(f222)) {
+      reset(f222);
+      reverse.loop(o2, f223);
+      sound(70, f154);
+    }
+    else {
+      print("%m18 closed.");
+    }
+  }
+  else {
+    if (posn(Ego,99,108,117,115)) {
+      if (isset(f221)) {
+        reset(f221);
+        reverse.loop(o1, f223);
+        sound(70, f154);
+      }
+      else {
+        print("%m18 closed.");
+      }
+    }
+    else {
+      set(f113);
+    }
+  }
+}
+if ((said("carry", "all") || 
+    said("carry", "all") || 
+    said("carry", "all", "all"))) {
+  if (isset(f51)) {
+    if (posn(Ego,99,108,117,115)) {
+      if (isset(f221)) {
+        set(f224);
+      }
+      else {
+        print("The cabinet is closed.");
+      }
+    }
+    else {
+      set(f113);
+    }
+    if (isset(f224)) {
+      reset(f224);
+      score  += 4;
+      reset(f51);
+      set(f116);
+      v152 = 255;
+      v153 = 42;
+      v153++;
+      v153  += 2;
+      v222 = 1;
+Label1:
+      get.room.v(v222, v223);
+      if (v223 == 89) {
+        put.v(v222, v152);
+      }
+      v222++;
+      if (v222 < v153) {
+        goto(Label1);
+      }
+      get("Golden Bridle");
+      set.cel(o3, 1);
+    }
+  }
+  else {
+    print("Your possessions are not in the cabinet.");
+  }
+}
+if ((said("examine", "table") || 
+    said("examine", "wood", "table"))) {
+  print("Nothing on the table interests you.");
+}
+if ((said("examine", "beneath", "table") || 
+    said("examine", "beneath", "wood", "table"))) {
+  print("There's nothing under the table.");
+}
+if ((said("examine", "fireplace") || 
+    said("examine", "rock", "fireplace") || 
+    said("look in", "fireplace") || 
+    said("look in", "rock", "fireplace"))) {
+  print("The fireplace is unlit and cold.  An empty iron pot sits in it.");
+}
+if ((said("examine", "cauldron") || 
+    said("examine", "cooking", "cauldron") || 
+    said("look in", "cauldron") || 
+    said("look in", "cooking", "cauldron"))) {
+  print("The iron pot in the fireplace is empty.");
+}
+if ((said("carry", "cauldron") || 
+    said("carry", "cooking", "cauldron"))) {
+  print("You don't need it.");
+}
+if ((said("examine", "barrel") || 
+    said("examine", "wood", "barrel") || 
+    said("look in", "barrel") || 
+    said("look in", "wood", "barrel") || 
+    said("open", "barrel") || 
+    said("open", "wood", "barrel"))) {
+  if ((posn(Ego,108,110,125,124) || 
+      posn(Ego,8,137,27,145))) {
+    print("%m11 interest in the barrel.");
+  }
+  else {
+    set(f113);
+  }
+}
+if (said("examine", "wall")) {
+  print("%m11 importance on the walls.");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down") || 
+    said("examine", "down", "dirt"))) {
+  print("%m11 interest on the floor.");
+}
+if ((said("examine", "window") || 
+    said("examine", "out", "window") || 
+    said("look in", "window"))) {
+  if (v33 > 95) {
+    print("You can see the mountain out the window.");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("examine", "door") || 
+    said("look in", "door"))) {
+  print("You see an open doorway before you.");
+}
+Label2:
+if (isset(f226)) {
+  reset(f226);
+}
+if (isset(f225)) {
+  reset(f225);
+  if (isset(f51)) {
+    print("Here are all of your possessions!");
+  }
+}
+if (ego_edge_code == left_edge) {
+  new.room(91); //##LE001##
+}
+return();
+
+//Messages
+#message 1 "You have discovered the castle's kitchen.  Not a very pleasant kitchen, but a kitchen, nonetheless.  Against the back wall, two cabinets flank a cold stone fireplace.  You see a long table under the one small window."
+#message 2 "You see two cabinets, one on each side of the stone fireplace."
+#message 3 "Here are all of your possessions!"
+#message 4 "The cabinet is empty."
+#message 5 "All of your possessions are in the cabinet."
+#message 6 "Nothing on the table interests you."
+#message 7 "There's nothing under the table."
+#message 8 "The fireplace is unlit and cold.  An empty iron pot sits in it."
+#message 9 "The iron pot in the fireplace is empty."
+#message 10 "You don't need it."
+#message 11 "There is nothing of"
+#message 12 "%m11 interest in the barrel."
+#message 13 "%m11 importance on the walls."
+#message 14 "%m11 interest on the floor."
+#message 15 "You can see the mountain out the window."
+#message 16 "You see an open doorway before you."
+#message 17 "%m18 open."
+#message 18 "It's already"
+#message 19 "%m18 closed."
+#message 20 "The cabinet is closed."
+#message 21 "Your possessions are not in the cabinet."

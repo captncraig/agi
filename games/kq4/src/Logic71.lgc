@@ -1,0 +1,225 @@
+if (isset(new_room)) {
+  set(f82);
+  v152 = 71;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.sound(48);
+  load.logics(216);
+  load.view(1);
+  load.view(43);
+  call(216);
+  animate.obj(o1);
+  set.view(o1, 43);
+  set.loop(o1, 4);
+  v152 = 3;
+  cycle.time(o1, v152);
+  ignore.objs(o1);
+  ignore.blocks(o1);
+  if (prev_room_no == 74) {
+    position(Ego, 100, 161);
+    if (isset(f49) && 
+        v221 == 0) {
+      position(o2, 120, 97);
+    }
+  }
+  else {
+    if (prev_room_no == 72) {
+      position(Ego, 109, 99);
+    }
+    else {
+      position(Ego, 37, 98);
+    }
+    if (isset(f49) && 
+        v221 == 0) {
+      position(o2, 120, 161);
+    }
+  }
+  if (has("Lit Oil Lantern")) {
+    set.view(Ego, 43);
+    set(f48);
+  }
+  else {
+    set.view(Ego, 1);
+  }
+  set.priority(Ego, 7);
+  release.priority(Ego);
+  if (isset(f49) && 
+      v221 == 0) {
+    draw(o2);
+    follow.ego(o2, 10, f221);
+  }
+  animate.obj(o3);
+  set.view(o3, 43);
+  set.loop(o3, 6);
+  set.cel(o3, 0);
+  set.priority(o3, 15);
+  ignore.objs(o3);
+  ignore.blocks(o3);
+  position(o3, 35, 139);
+  stop.update(o3);
+  if (!has("Lit Oil Lantern")) {
+    draw(o3);
+    set(f229);
+  }
+  add.to.pic(43, 5, 0, 47, 95, 6, 1);
+  if (v37 != 20) {
+    draw(Ego);
+  }
+  show.pic();
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "cave") || 
+    said("look in", "cave") || 
+    said("examine", "around", "cave"))) {
+  if (has("Lit Oil Lantern")) {
+    if (!isset(f50)) {
+      print("%m4  %m5");
+    }
+    else {
+      print("%m3  Even the lantern does little good.");
+    }
+  }
+  else {
+    if (!isset(f50)) {
+      print("%m3  %m5");
+    }
+    else {
+      print("This is the darkest cave you've ever seen!");
+    }
+  }
+}
+if (!has("Bone")) {
+  if (said("examine", "bone")) {
+    print("By the light of the cave entrance, you can see a pile of bones.");
+  }
+}
+if ((said("examine", "out") || 
+    said("examine", "outside") || 
+    said("examine", "out", "cave") || 
+    said("examine", "falls") || 
+    said("examine", "lake") || 
+    said("examine", "pool") || 
+    said("examine", "outside", "cave"))) {
+  print("Outside the cave, you see the waterfall.");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down") || 
+    said("examine", "down", "dirt") || 
+    said("examine", "cave", "dirt") || 
+    said("examine", "down", "cave", "dirt"))) {
+  print("You see a pile of bones by the cave entrance.");
+}
+if ((said("examine", "black sky") || 
+    said("examine", "up", "black sky") || 
+    said("examine", "outside", "black sky"))) {
+  if (!isset(f38)) {
+    print("Outside, through the waterfall, you can see the sky is brilliant "
+          "blue.");
+  }
+  else {
+    print("Outside, you can see a full moon through the waterfall.");
+  }
+}
+if (isset(f38) && 
+    said("examine", "moon")) {
+  print("Outside, the night sky is lovely.");
+}
+if (!isset(f38) && 
+    said("examine", "cloud")) {
+  print("Outside, billowy clouds float serenely in the blue sky.");
+}
+if (said("carry", "bone")) {
+  if (posn(Ego,43,96,60,99)) {
+    if (isset(f50)) {
+      print("You don't need another bone.");
+    }
+    else {
+      set(f50);
+      sound(48, f154);
+      get("Bone");
+      score  += 2;
+      set(f116);
+    }
+  }
+  else {
+    set(f113);
+  }
+}
+Label1:
+if (!isset(new_room)) {
+  call(216);
+}
+if (v221 > 0) {
+  v221--;
+  if (v221 <= 0) {
+    if (prev_room_no == 74) {
+      position(o2, 120, 161);
+    }
+    else {
+      position(o2, 120, 97);
+    }
+    draw(o2);
+    follow.ego(o2, 10, f221);
+  }
+}
+if (!has("Lit Oil Lantern") && 
+    !isset(f229)) {
+  draw(o3);
+  set(f229);
+}
+if (has("Lit Oil Lantern") && 
+    isset(f229)) {
+  erase(o3);
+  reset(f229);
+}
+if (!has("Lit Oil Lantern")) {
+  if (!posn(Ego,24,91,61,137)) {
+    set(f221);
+  }
+}
+if (isset(f49) && 
+    !has("Lit Oil Lantern") && 
+    v221 <= 0) {
+  set.priority(o2, 1);
+}
+else {
+  release.priority(o2);
+}
+if ((isset(ego_touching_signal_line)) && 
+    v37 != 20) {
+  if (v33 < 50) {
+    new.room(70); //##LE001##
+  }
+  else {
+    new.room(72); //##LE002##
+  }
+}
+if ((ego_edge_code == bottom_edge) && 
+    (v37 != 20)) {
+  new.room(74); //##LE003##
+}
+return();
+
+//Messages
+#message 1 "Outside the cave, you see the waterfall."
+#message 2 "You see a pile of bones by the cave entrance."
+#message 3 "This is the darkest cave you've ever seen!"
+#message 4 "%m3  Even the lantern does little good."
+#message 5 "By the light of the cave entrance, you can see a pile of bones."
+#message 6 "%m4  %m5"
+#message 7 "%m3  %m5"
+#message 8 "Outside, through the waterfall, you can see the sky is brilliant blue."
+#message 9 "Outside, you can see a full moon through the waterfall."
+#message 10 "You don't need another bone."
+#message 11 "GRRRRR!"
+#message 12 "Watch Out!"
+#message 13 "Oh no!  Caught by the vicious troll!  Fate be what it may, you are dragged off to meet it."
+#message 14 "Outside, the night sky is lovely."
+#message 15 "Outside, billowy clouds float serenely in the blue sky."

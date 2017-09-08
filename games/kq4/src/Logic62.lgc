@@ -1,0 +1,199 @@
+if (isset(new_room)) {
+  v152 = 62;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  if (isset(f38)) {
+    set(f82);
+    load.logics(232);
+    load.view(111);
+    animate.obj(o2);
+    animate.obj(o3);
+    set.view(o2, 111);
+    set.view(o3, 111);
+    set.loop(o2, 1);
+    set.loop(o3, 1);
+    ignore.horizon(o2);
+    ignore.horizon(o2);
+    position(o2, 104, 72);
+    position(o3, 55, 72);
+    draw(o2);
+    draw(o3);
+  }
+  if ((v144 == 5) && 
+      (!isset(f143))) {
+    v117 = 0;
+    load.logics(235);
+    animate.obj(o1);
+    load.view(108);
+    set.view(o1, 108);
+    position(o1, 117, 130);
+    ignore.blocks(o1);
+    ignore.objs(o1);
+    draw(o1);
+    set(f236);
+    v117 = 0;
+    set(f225);
+    load.sound(26);
+    sound(26, f154);
+  }
+  else {
+    if (v144 == 5) {
+      set(f148);
+      v117 = 15;
+    }
+  }
+  if (prev_room_no == 68) {
+    position(Ego, 119, 166);
+  }
+  if (prev_room_no == 59) {
+    position(Ego, 19, 114);
+  }
+  draw(Ego);
+  show.pic();
+}
+if (isset(f112)) {
+  reset(f112);
+  v168++;
+  if (v144 < 5) {
+    v117++;
+  }
+}
+if ((v144 == 5) && 
+    (isset(f225)) && 
+    (isset(f236))) {
+  reset(f225);
+  v117 = 15;
+  call(235);
+  start.cycling(o1);
+  move.obj(o1, 117, 167, 0, f235);
+  draw(o1);
+}
+if ((v144 == 5) && 
+    (isset(f235))) {
+  reset(f235);
+  reset(f236);
+  v168 = 0;
+  erase(o1);
+  set(f154);
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "bedroom") || 
+    said("examine", "around", "bedroom") || 
+    said("examine", "cottage") || 
+    said("examine", "around", "cottage"))) {
+  print("It appears as if this was once the master bedroom.  However, cobwebs "
+        "hang everywhere, and dust covers the furniture.");
+}
+if (said("examine", "bed")) {
+  print("The old bed is massive and dominates the room.");
+}
+if (said("examine", "beneath", "bed")) {
+  print("There is nothing under the bed.");
+}
+if ((said("lay", "abominable", "bed") || 
+    said("lay", "abominable", "bed") || 
+    said("lay", "abominable", "bed") || 
+    said("lay", "bed") || 
+    said("lay") || 
+    said("lay", "down", "abominable", "bed") || 
+    said("lay", "abominable", "bed") || 
+    said("carry", "abominable", "bed"))) {
+  print("You don't have time for that!");
+}
+if ((said("examine", "window") || 
+    said("examine", "out", "window") || 
+    said("examine", "through", "window"))) {
+  print("You see the cemetery out the window.");
+}
+if ((said("examine", "chest") || 
+    said("examine", "chest", "drawer") || 
+    said("examine", "dresser") || 
+    said("examine", "chest", "abominable", "drawer"))) {
+  if (v33 > 85) {
+    print("A chest of drawers, sporting a broken mirror, sets against the wall.");
+  }
+  else {
+    print("You see a small dresser.");
+  }
+}
+if ((said("open", "chest") || 
+    said("open", "dresser") || 
+    said("open", "chest", "drawer") || 
+    said("open", "drawer") || 
+    said("look in", "chest") || 
+    said("look in", "dresser") || 
+    said("look in", "chest", "drawer") || 
+    said("look in", "drawer"))) {
+  if (posn(Ego,115,110,134,137)) {
+    print("The old chest of drawers is empty.");
+    set(f238);
+  }
+  if (v33 < 46) {
+    print("The small dresser is empty.");
+    set(f238);
+  }
+  if (!isset(f238)) {
+    set(f113);
+  }
+  else {
+    reset(f238);
+  }
+}
+if (said("examine", "wall")) {
+  print("There is nothing of importance on the walls.");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down") || 
+    said("examine", "down", "dirt"))) {
+  print("There is nothing of interest on the floor.");
+}
+if ((said("examine", "mirror") || 
+    said("look in", "mirror"))) {
+  if (posn(Ego,106,117,121,134)) {
+    print("You look in the mirror and see the reflection of a poor, but "
+          "beautiful, peasant girl.");
+  }
+  else {
+    set(f113);
+  }
+}
+if (said("examine", "carpet")) {
+  print("A tattered oriental rug covers the floor at the foot of the bed.");
+}
+if ((v144 == 5) && 
+    (isset(f236))) {
+  call(235);
+}
+Label1:
+if (isset(f38)) {
+  call(232);
+}
+if (isset(ego_touching_signal_line)) {
+  new.room(59); //##LE001##
+}
+if (ego_edge_code == bottom_edge) {
+  new.room(68); //##LE002##
+}
+return();
+
+//Messages
+#message 1 "It appears as if this was once the master bedroom.  However, cobwebs hang everywhere, and dust covers the furniture."
+#message 2 "The old bed is massive and dominates the room."
+#message 3 "There is nothing under the bed."
+#message 4 "You don't have time for that!"
+#message 5 "You see the cemetery out the window."
+#message 6 "A chest of drawers, sporting a broken mirror, sets against the wall."
+#message 7 "You see a small dresser."
+#message 8 "The old chest of drawers is empty."
+#message 9 "The small dresser is empty."
+#message 10 "There is nothing of importance on the walls."
+#message 11 "There is nothing of interest on the floor."
+#message 12 "You look in the mirror and see the reflection of a poor, but beautiful, peasant girl."
+#message 13 "A tattered oriental rug covers the floor at the foot of the bed."

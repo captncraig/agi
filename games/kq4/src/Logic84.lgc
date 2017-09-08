@@ -1,0 +1,276 @@
+if (isset(new_room)) {
+  discard.view(0);
+  v152 = 84;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  if (isset(f53)) {
+    load.sound(98);
+  }
+  load.view(143);
+  animate.obj(o3);
+  set.view(o3, 143);
+  set.priority(o3, 4);
+  ignore.horizon(o3);
+  ignore.objs(o3);
+  set.loop(o3, 0);
+  position(o3, 17, 48);
+  v152 = 1;
+  cycle.time(o3, v152);
+  draw(o3);
+  v221 = 0;
+  if ((isset(f52) || 
+      isset(f53))) {
+    load.sound(48);
+    load.view(190);
+    if (isset(f52)) {
+      animate.obj(o2);
+      set.view(o2, 190);
+      set.loop(o2, 4);
+      set.cel(o2, 0);
+      position(o2, 83, 100);
+      draw(o2);
+      stop.cycling(o2);
+    }
+    if (isset(f53)) {
+      animate.obj(o1);
+      set.view(o1, 190);
+      set.loop(o1, 2);
+      set.cel(o1, 0);
+      position(o1, 44, 121);
+      v152 = 2;
+      cycle.time(o1, v152);
+      step.time(o1, v152);
+      wander(o1);
+      draw(o1);
+      v221 = 2;
+    }
+  }
+  if (isset(f38)) {
+    load.view(188);
+    add.to.pic(188, 3, 0, 48, 59, 4, 4);
+    add.to.pic(188, 3, 0, 65, 59, 4, 4);
+    add.to.pic(188, 3, 0, 85, 59, 4, 4);
+    add.to.pic(188, 3, 0, 104, 59, 4, 4);
+    discard.view(188);
+  }
+  load.view(1);
+  set.view(Ego, 1);
+  position(Ego, 74, 148);
+  draw(Ego);
+  if (isset(f53)) {
+    sound(98, f154);
+  }
+  ignore.blocks(Ego);
+  show.pic();
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "storage", "room") || 
+    said("examine", "around", "storage", "room") || 
+    said("examine", "castle") || 
+    said("examine", "dark", "castle") || 
+    said("examine", "bad", "castle") || 
+    said("examine", "around", "castle") || 
+    said("examine", "around", "bad", "castle") || 
+    said("examine", "around", "dark", "castle"))) {
+  if (isset(f52) && 
+      isset(f53)) {
+    print("%m1%m2%m3 and %m4");
+  }
+  else {
+    if (isset(f52)) {
+      print("%m1%m2%m3!");
+    }
+    else {
+      if (isset(f53)) {
+        print("%m1%m2%m4");
+      }
+      else {
+        print("This seems to be some sort of storage room.");
+      }
+    }
+  }
+}
+if ((said("carry", "box") || 
+    said("carry", "pandora", "box"))) {
+  if (isset(f52)) {
+    if (posn(Ego,66,110,90,118)) {
+      set(f116);
+      reset(f52);
+      sound(48, f154);
+      get("Pandora's Box");
+      score  += 2;
+      erase(o2);
+    }
+    else {
+      set(f113);
+    }
+  }
+  else {
+    if (has("Pandora's Box")) {
+      set(f114);
+    }
+    else {
+      print("You don't see it here.");
+    }
+  }
+}
+if (said("examine", "box")) {
+  if (isset(f52)) {
+    print("Pandora's box is on the chest.");
+  }
+  else {
+    reset(input_parsed);
+  }
+}
+if ((said("look in", "box") || 
+    said("open", "box"))) {
+  if (has("Pandora's Box")) {
+    reset(input_parsed);
+  }
+  else {
+    print("You must get Pandora's box before you can do that.");
+  }
+}
+if ((said("examine", "barrel") || 
+    said("examine", "wood", "barrel") || 
+    said("look in", "barrel") || 
+    said("look in", "wood", "barrel") || 
+    said("open", "barrel") || 
+    said("open", "wood", "barrel") || 
+    said("carry", "barrel") || 
+    said("carry", "wood", "barrel"))) {
+  print("%m8barrels.");
+}
+if ((said("examine", "chest") || 
+    said("examine", "wood", "chest") || 
+    said("look in", "chest") || 
+    said("look in", "wood", "chest") || 
+    said("open", "chest") || 
+    said("open", "wood", "chest") || 
+    said("carry", "chest") || 
+    said("carry", "wood", "chest"))) {
+  print("%m8chest.");
+}
+if ((said("examine", "bookshelf") || 
+    said("look in", "bookshelf"))) {
+  print("You see nothing useful on the shelves.");
+}
+if ((said("examine", "bone") || 
+    said("carry", "bone"))) {
+  print("You don't need any bones now.");
+}
+if ((said("examine", "window") || 
+    said("examine", "out", "window") || 
+    said("look in", "window"))) {
+  print("The windows are too high.");
+}
+if (said("examine", "wall")) {
+  print("%m15importance on the walls.");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down") || 
+    said("examine", "down", "dirt"))) {
+  if (isset(f53)) {
+    print("You see the hen running around.  Maybe you should get it. (Hint. "
+          "Hint.)");
+  }
+  else {
+    print("%m15interest on the floor.");
+  }
+}
+if ((said("carry", "chicken") || 
+    said("carry", "magic", "chicken"))) {
+  if (isset(f53)) {
+    distance(o1, Ego, v152);
+    if (v152 < 10) {
+      stop.sound();
+      set(f116);
+      reset(f53);
+      sound(48, f154);
+      get("Magic Hen");
+      score  += 2;
+      erase(o1);
+      v221 = 0;
+    }
+    else {
+      set(f113);
+    }
+  }
+  else {
+    if (has("Magic Hen")) {
+      set(f114);
+    }
+    else {
+      print("You don't see it here.");
+    }
+  }
+}
+if ((said("examine", "chicken") || 
+    said("examine", "magic", "chicken"))) {
+  if (isset(f53)) {
+    print("The hen is wandering around the room.");
+  }
+  else {
+    reset(input_parsed);
+  }
+}
+if ((said("speak", "chicken") || 
+    said("speak") || 
+    said("speak", "magic", "chicken"))) {
+  if (isset(f53)) {
+    print("\"Cluck, cluck.\"");
+  }
+  else {
+    reset(input_parsed);
+  }
+}
+Label1:
+if (v221 > 0 && 
+    isset(f112)) {
+  v221--;
+  if (v221 <= 0) {
+    window_close_time = 3;
+    print("\"Cluck, cluck.\"");
+    random(8, 12, v221);
+  }
+}
+if (isset(f154) && 
+    isset(f53)) {
+  sound(98, f154);
+}
+if (ego_edge_code == bottom_edge) {
+  observe.blocks(Ego);
+  new.room(87); //##LE001##
+}
+return();
+
+//Messages
+#message 1 "This seems to be some sort of storage room."
+#message 2 "  And guess what's stored here...yes, "
+#message 3 "Pandora's Box"
+#message 4 "the magic hen!"
+#message 5 "%m1%m2%m3 and %m4"
+#message 6 "%m1%m2%m4"
+#message 7 "%m1%m2%m3!"
+#message 8 "%m15interest in the "
+#message 9 "You must get Pandora's box before you can do that."
+#message 10 "%m8barrels."
+#message 11 "%m8chest."
+#message 12 "You see nothing useful on the shelves."
+#message 13 "You don't need any bones now."
+#message 14 "The windows are too high."
+#message 15 "There is nothing of "
+#message 16 "%m15importance on the walls."
+#message 17 "%m15interest on the floor."
+#message 18 "You don't see it here."
+#message 19 "Pandora's box is on the chest."
+#message 20 "The hen is wandering around the room."
+#message 21 "\"Cluck, cluck.\""
+#message 22 "You see the hen running around.  Maybe you should get it. (Hint. Hint.)"

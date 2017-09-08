@@ -1,0 +1,275 @@
+if (isset(new_room)) {
+  set(f82);
+  discard.view(0);
+  load.sound(52);
+  load.logics(218);
+  v152 = 93;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  set.horizon(50);
+  load.view(143);
+  animate.obj(o8);
+  set.view(o8, 143);
+  set.priority(o8, 4);
+  ignore.horizon(o8);
+  ignore.objs(o8);
+  set.loop(o8, 0);
+  position(o8, 52, 62);
+  v152 = 1;
+  cycle.time(o8, v152);
+  draw(o8);
+  v229 = 0;
+  if (!isset(f86)) {
+    load.sound(42);
+    load.logics(240);
+    load.view(70);
+    animate.obj(o7);
+    set.view(o7, 70);
+    set.loop(o7, 0);
+    set.cel(o7, 0);
+    ignore.blocks(o7);
+    position(o7, 55, 109);
+    ignore.objs(o7);
+    set.priority(o7, 4);
+    draw(o7);
+    stop.cycling(o7);
+  }
+  load.view(1);
+  set.view(Ego, 1);
+  if (v37 != 23) {
+    load.view(20);
+    load.view(10);
+    load.view(40);
+  }
+  if (prev_room_no == 88) {
+    set(f221);
+    ignore.blocks(Ego);
+    set.priority(Ego, 13);
+    position(Ego, 118, 52);
+    if (v37 == 6) {
+      sound(52, f154);
+      set(f36);
+      reset(f221);
+      position(Ego, 78, 10);
+      set.view(Ego, 10);
+      if (v147 == 0) {
+        set.loop(Ego, 0);
+      }
+      else {
+        set.loop(Ego, 1);
+      }
+      fix.loop(Ego);
+      ignore.blocks(Ego);
+      move.obj(Ego, 78, 110, 4, f225);
+      release.priority(Ego);
+    }
+  }
+  else {
+    if (v37 == 23) {
+      sound(42, f154);
+      load.view(66);
+      animate.obj(o7);
+      set.view(o7, 66);
+      set.loop(o7, 0);
+      set.cel(o7, 0);
+      position(o7, 29, 113);
+      v152 = 1;
+      step.time(o7, v152);
+      cycle.time(o7, v152);
+      draw(o7);
+      stop.cycling(o7);
+      set(f226);
+      position(Ego, 41, 115);
+      ego_dir = 0;
+      set(f36);
+      prevent.input();
+    }
+    else {
+      observe.blocks(Ego);
+      position(Ego, 24, 115);
+    }
+  }
+  draw(Ego);
+  show.pic();
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "tower") || 
+    said("examine", "around", "tower") || 
+    said("examine", "castle") || 
+    said("examine", "dark", "castle") || 
+    said("examine", "bad", "castle") || 
+    said("examine", "around", "castle") || 
+    said("examine", "around", "bad", "castle") || 
+    said("examine", "around", "dark", "castle"))) {
+  print("You are at the bottom of the east tower.  A spiral of stone steps "
+        "winds upward to the top.");
+}
+if ((said("examine", "staircase") || 
+    said("examine", "rock", "staircase") || 
+    said("examine", "up", "staircase") || 
+    said("examine", "up", "rock", "staircase"))) {
+  print("The stone steps spiral dangerously upward.");
+}
+if ((said("examine", "door") || 
+    said("look in", "door"))) {
+  print("There is an open doorway before you.");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down") || 
+    said("examine", "down", "dirt"))) {
+  print("There is nothing of interest on the floor.");
+}
+if (!isset(input_parsed)) {
+  call(218);
+}
+if (!isset(f86) && 
+    !isset(input_parsed)) {
+  if ((said("speak", "goon") || 
+      said("speak", "dwarf") || 
+      said("speak") || 
+      said("awaken", "goon") || 
+      said("awaken", "dwarf") || 
+      said("hit", "goon") || 
+      said("hit", "dwarf") || 
+      said("speak", "with", "goon") || 
+      said("embrace", "goon") || 
+      said("embrace") || 
+      said("embrace", "dwarf"))) {
+    if (posn(Ego,54,100,67,117)) {
+      set(f36);
+      prevent.input();
+      ego_dir = 0;
+      end.of.loop(o7, f227);
+    }
+    else {
+      set(f113);
+    }
+  }
+  call(240);
+}
+Label1:
+if (isset(f227)) {
+  sound(42, f154);
+  reset(f227);
+  v37 = 2;
+  set(f41);
+  print("This isn't good, Rosella!  You've done it this time!");
+  new.room(81); //##LE001##
+}
+if (isset(f226)) {
+  sound(42, f154);
+  v37 = 2;
+  set(f41);
+  print("This isn't good, Rosella!  You've done it this time!");
+  new.room(81); //##LE002##
+}
+if (posn(Ego,56,131,57,157)) {
+  release.priority(Ego);
+  observe.blocks(Ego);
+  reset(f221);
+}
+if (posn(Ego,58,131,59,147)) {
+  ignore.blocks(Ego);
+  set.priority(Ego, 13);
+  set(f221);
+}
+if (isset(ego_touching_signal_line) && 
+    (v33 > 50) && 
+    isset(f221) && 
+    !isset(f222)) {
+  reset(f221);
+  sound(52, f154);
+  release.priority(Ego);
+  set(f36);
+  prevent.input();
+  ignore.blocks(Ego);
+  set(f222);
+  set.view(Ego, 10);
+  set.loop(Ego, 1);
+  fix.loop(Ego);
+  v152 = 4;
+  step.size(Ego, v152);
+  v152 = 3;
+  cycle.time(Ego, v152);
+  if (v33 > 87) {
+    move.obj(Ego, 84, 96, 0, f225);
+  }
+  else {
+    if (v33 > 68) {
+      set(f228);
+      move.obj(Ego, 60, 128, 0, f223);
+    }
+    else {
+      move.obj(Ego, 60, 128, 0, f223);
+    }
+  }
+}
+if (isset(f223)) {
+  stop.sound();
+  v152 = 1;
+  step.size(Ego, v152);
+  cycle.time(Ego, v152);
+  set.view(Ego, 40);
+  set.loop(Ego, 1);
+  set.cel(Ego, 3);
+  if (isset(f228)) {
+    reset(f228);
+    reposition.to(Ego, 68, 122);
+  }
+  else {
+    reposition.to(Ego, 63, 128);
+  }
+  reverse.loop(Ego, f224);
+  set(f157);
+  reset(f223);
+}
+if (isset(f224)) {
+  observe.blocks(Ego);
+  release.priority(Ego);
+  set.view(Ego, 1);
+  reset(f224);
+  reset(f157);
+  reset(f36);
+  accept.input();
+  release.loop(Ego);
+  reset(f222);
+}
+if (isset(f225)) {
+  reset(f225);
+  stop.sound();
+  set.view(Ego, 20);
+  set.loop(Ego, 2);
+  fix.loop(Ego);
+  reposition.to(Ego, 69, 123);
+  v229 = 2;
+}
+if (v229 > 0) {
+  v229--;
+  if (v229 <= 0) {
+    shake.screen(1);
+    v37 = 20;
+    set(f140);
+  }
+}
+if (isset(ego_touching_signal_line) && 
+    v33 < 50) {
+  new.room(92); //##LE003##
+}
+if (ego_edge_code == horizon_edge) {
+  new.room(88); //##LE004##
+}
+return();
+
+//Messages
+#message 1 "You are at the bottom of the east tower.  A spiral of stone steps winds upward to the top."
+#message 2 "The stone steps spiral dangerously upward."
+#message 3 "There is an open doorway before you."
+#message 4 "There is nothing of interest on the floor."
+#message 5 "This isn't good, Rosella!  You've done it this time!"

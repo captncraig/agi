@@ -1,0 +1,202 @@
+if (isset(new_room)) {
+  set(f82);
+  set(f149);
+  v152 = 52;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.view(127);
+  add.to.pic(127, 2, 0, 75, 127, 4, 4);
+  animate.obj(o5);
+  animate.obj(o4);
+  set.view(o4, 127);
+  set.loop(o4, 2);
+  set.cel(o4, 1);
+  position(o4, 69, 92);
+  stop.cycling(o4);
+  set.priority(o4, 5);
+  draw(o4);
+  animate.obj(o1);
+  set.view(o1, 127);
+  set.loop(o1, 3);
+  position(o1, 77, 64);
+  stop.cycling(o1);
+  set.priority(o1, 6);
+  animate.obj(o3);
+  set.view(o3, 127);
+  set.loop(o3, 0);
+  set.cel(o3, 0);
+  position(o3, 60, 77);
+  v152 = 3;
+  cycle.time(o3, v152);
+  stop.cycling(o3);
+  animate.obj(o2);
+  set.view(o2, 127);
+  set.loop(o2, 4);
+  set.cel(o2, 0);
+  stop.cycling(o2);
+  draw(o1);
+  show.pic();
+  v152 = 0;
+  v221 = 0;
+  window_close_time = 18;
+  print("The ogre roars, \"Fe, fi, fo, fum!  I smell the blood of a....\"");
+  prevent.input();
+  load.sound(61);
+  sound(61, f154);
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+Label1:
+if (isset(f112)) {
+  v152++;
+  v168++;
+  v169++;
+}
+if (v152 == 3) {
+  draw(o3);
+  window_close_time = 18;
+  print("\"Quiet, you old goat!\" interrupts the ogress.  \"That's just a deer "
+        "you smell! You know how you get when you're hungry.  Here!  Eat!\"");
+  v152 = 4;
+  end.of.loop(o3, f221);
+  v153 = 1;
+  v221 = 1;
+}
+if ((isset(f221)) && 
+    (v153 == 1)) {
+  reset(f221);
+  set.loop(o3, 1);
+  position(o3, 64, 82);
+  if (v221 > 1) {
+    set.cel(o3, 2);
+  }
+  end.of.loop(o3, f221);
+  v153++;
+}
+if ((isset(f221)) && 
+    (v153 == 2)) {
+  reset(f221);
+  v154 = 3;
+  cycle.time(o1, v154);
+  start.cycling(o1);
+  v168 = 0;
+  v153++;
+}
+if ((v153 == 3) && 
+    (v168 == 5)) {
+  stop.cycling(o1);
+  end.of.loop(o3, f221);
+  v221++;
+  v153 = 1;
+}
+if (v221 == 5) {
+  v221++;
+  reverse.loop(o3, f221);
+  v153 = 4;
+}
+if ((isset(f221)) && 
+    (v153 == 4)) {
+  reset(f221);
+  set.loop(o3, 0);
+  position(o3, 60, 77);
+  set.cel(o3, 6);
+  v154 = 3;
+  reverse.loop(o3, f221);
+  v153++;
+}
+if ((isset(f221)) && 
+    (v153 == 5)) {
+  reset(f221);
+  erase(o3);
+  v168 = 0;
+  v153++;
+}
+if ((v153 == 6) && 
+    (v168 == 5)) {
+  window_close_time = 15;
+  print("\"Wife!\" shouts the ogre. \"Bring me my hen!\"");
+  v153++;
+}
+if (v153 == 7) {
+  set.view(o3, 127);
+  set.loop(o3, 5);
+  position(o3, 60, 76);
+  set.cel(o3, 0);
+  draw(o3);
+  v154 = 3;
+  cycle.time(o3, v154);
+  end.of.loop(o3, f221);
+  v153++;
+}
+if ((isset(f221)) && 
+    (v153 == 8)) {
+  reset(f221);
+  erase(o3);
+  position(o2, 60, 76);
+  draw(o2);
+  window_close_time = 15;
+  print("\"Lay!\" orders the ogre.");
+  v153++;
+}
+if (v153 == 9) {
+  reset(f221);
+  v154 = 5;
+  cycle.time(o2, v154);
+  start.cycling(o2);
+  end.of.loop(o2, f221);
+  v153++;
+}
+if ((isset(f221)) && 
+    (v153 == 10)) {
+  reset(f221);
+  set.cel(o2, 0);
+  v153++;
+}
+if (v153 == 11) {
+  set.view(o5, 127);
+  set.loop(o5, 6);
+  set.cel(o5, 0);
+  position(o5, 60, 90);
+  draw(o5);
+  erase(o4);
+  erase(o2);
+  erase(o1);
+  erase(o3);
+  v154 = 2;
+  cycle.time(o5, v154);
+  end.of.loop(o5, f221);
+  v153++;
+}
+if ((isset(f221)) && 
+    (v153 == 12)) {
+  reset(f221);
+  window_close_time = 25;
+  print("With excitement, you watch the hen lay a golden egg, which the ogre "
+        "takes. He yawns, then falls asleep on the table.  Soon, his snoring "
+        "rattles the walls.");
+  set.loop(o5, 7);
+  position(o5, 64, 92);
+  set.cel(o5, 0);
+  v154 = 4;
+  cycle.time(o5, v154);
+  end.of.loop(o5, f221);
+  v153++;
+  v169 = 0;
+}
+if ((isset(f221)) && 
+    (v153 == 13) && 
+    (v169 == 5)) {
+  set(f181);
+  v127 = 49;
+  new.room(51); //##LE001##
+}
+return();
+
+//Messages
+#message 1 "The ogre roars, \"Fe, fi, fo, fum!  I smell the blood of a....\""
+#message 2 "\"Quiet, you old goat!\" interrupts the ogress.  \"That's just a deer you smell! You know how you get when you're hungry.  Here!  Eat!\""
+#message 3 "\"Wife!\" shouts the ogre. \"Bring me my hen!\""
+#message 4 "\"Lay!\" orders the ogre."
+#message 5 "With excitement, you watch the hen lay a golden egg, which the ogre takes. He yawns, then falls asleep on the table.  Soon, his snoring rattles the walls."

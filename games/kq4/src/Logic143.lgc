@@ -1,0 +1,347 @@
+if (isset(new_room)) {
+  cycle_delay = 0;
+  reset(menu_enabled);
+  prevent.input();
+  program.control();
+  status.line.off();
+  reset(f151);
+  v152 = 206;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.view(173);
+  load.sound(3);
+  v220 = 221;
+  key_pressed = 0;
+  v238 = 0;
+  v153 = 4;
+  v154 = 18;
+  v155 = 123;
+  show.pic();
+  return();
+}
+if (isset(f155)) {
+  reset(input_parsed);
+  set(f225);
+}
+else {
+  set(input_parsed);
+}
+if (isset(f90)) {
+  reset(f90);
+  set(f224);
+  set(windows_remain);
+  print.at.v(v115, 5, 5, 30);
+}
+if ((key_pressed != 0) && 
+    (!isset(f155)) && 
+    (isset(f224)) && 
+    (v220 < 236) && 
+    (!isset(f221))) {
+  if ((key_pressed == 8) && 
+      (v220 > 220)) {
+    key_pressed = 0;
+    v220--;
+    v153--;
+    display.v(v154, v153, v155);
+  }
+  else {
+    if (key_pressed == 13) {
+      v220--;
+      set(f221);
+      reset(f224);
+    }
+    else {
+      if ((key_pressed > 96) && 
+          (key_pressed < 123)) {
+        v237 = key_pressed;
+        key_pressed = 0;
+        display.v(v154, v153, v237);
+        v153++;
+        v237 -= 32;
+        *v220 = v237;
+        v220++;
+      }
+      else {
+        if ((key_pressed > 64) && 
+            (key_pressed < 91)) {
+          v237 = key_pressed;
+          v237  += 32;
+          display.v(v154, v153, v237);
+          v153++;
+          *v220 = key_pressed;
+          key_pressed = 0;
+          v220++;
+        }
+      }
+    }
+  }
+}
+else {
+  if ((v220 > 234) && 
+      (!isset(f155)) && 
+      (isset(f224)) && 
+      (!isset(f221))) {
+    set(f223);
+  }
+}
+if ((isset(f221)) && 
+    (v220 > 220)) {
+  v237 = *v220;
+  v238  += v237;
+  v220--;
+}
+else {
+  if ((isset(f221)) && 
+      (v220 < 221)) {
+    reset(f224);
+    reset(f221);
+    set(f222);
+  }
+}
+if (isset(f222)) {
+  reset(f222);
+  if ((v115 == 60) && 
+      (v238 == 179)) {
+    key_pressed = 0;
+    new.room(96); //##LE001##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 61) && 
+      (v238 == 53)) {
+    key_pressed = 0;
+    new.room(96); //##LE002##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 62) && 
+      (v238 == 7)) {
+    key_pressed = 0;
+    new.room(96); //##LE003##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 63) && 
+      (v238 == 124)) {
+    key_pressed = 0;
+    new.room(96); //##LE004##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 64) && 
+      (v238 == 190)) {
+    key_pressed = 0;
+    new.room(96); //##LE005##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 65) && 
+      (v238 == 46)) {
+    key_pressed = 0;
+    new.room(96); //##LE006##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 66) && 
+      (v238 == 87)) {
+    key_pressed = 0;
+    new.room(96); //##LE007##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 67) && 
+      (v238 == 101)) {
+    key_pressed = 0;
+    new.room(96); //##LE008##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 68) && 
+      (v238 == 143)) {
+    key_pressed = 0;
+    new.room(96); //##LE009##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 69) && 
+      (v238 == 125)) {
+    key_pressed = 0;
+    new.room(96); //##LE010##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 70) && 
+      (v238 == 3)) {
+    key_pressed = 0;
+    new.room(96); //##LE011##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 71) && 
+      (v238 == 122)) {
+    key_pressed = 0;
+    new.room(96); //##LE012##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 72) && 
+      (v238 == 122)) {
+    key_pressed = 0;
+    new.room(96); //##LE013##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 73) && 
+      (v238 == 178)) {
+    key_pressed = 0;
+    new.room(96); //##LE014##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 74) && 
+      (v238 == 102)) {
+    key_pressed = 0;
+    new.room(96); //##LE015##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 75) && 
+      (v238 == 139)) {
+    key_pressed = 0;
+    new.room(96); //##LE016##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 76) && 
+      (v238 == 125)) {
+    key_pressed = 0;
+    new.room(96); //##LE017##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 77) && 
+      (v238 == 200)) {
+    key_pressed = 0;
+    new.room(96); //##LE018##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 78) && 
+      (v238 == 128)) {
+    key_pressed = 0;
+    new.room(96); //##LE019##
+  }
+  else {
+    set(f223);
+  }
+  if ((v115 == 79) && 
+      (v238 == 174)) {
+    key_pressed = 0;
+    new.room(96); //##LE020##
+  }
+  else {
+    set(f223);
+  }
+}
+if (isset(f225)) {
+  if (said("marble")) {
+    key_pressed = 0;
+    new.room(96); //##LE021##
+  }
+  if (said("pirate")) {
+    sound(3, f226);
+    random(0, 1, v157);
+    if (v157 > 0) {
+      add.to.pic(173, 0, 0, 57, 156, 14, 1);
+    }
+    else {
+      add.to.pic(173, 1, 0, 57, 156, 14, 1);
+    }
+    set(windows_remain);
+    print.at("Your privileges to the game have been suspended because you are a "
+             "pirate!\n\n        \"Yo ho ho!\"", 4, 7, 30);
+  }
+}
+if (isset(f226)) {
+  quit(1);
+}
+if (isset(f223)) {
+  reset(f223);
+  print("Sorry, what you just typed does not match the King's Quest IV manual. "
+        "You must have the manual in order to play this game. If you have lost "
+        "your manual, contact Sierra's Customer Support Dept. The phone number "
+        "is printed on your original disk label. Thank you.");
+  quit(1);
+}
+return();
+
+//Messages
+#message 60 "%m160 In the section TIPS FOR NEW ADVENTURE PLAYERS, what is the fourth word in the second paragraph of tip #2 (STAY OUT OF DANGER)?"
+#message 61 "%m160 In the section TIPS FOR NEW ADVENTURE PLAYERS, what is the first word of tip #3 (BE OBSERVANT)?"
+#message 62 "%m160 In the section TIPS FOR NEW ADVENTURE PLAYERS, what is the fourth word of tip #3 (BE OBSERVANT)?"
+#message 63 "%m160 In the section TIPS FOR NEW ADVENTURE PLAYERS, what is the last word of tip #3 (BE OBSERVANT)?"
+#message 64 "%m160 In the section TIPS FOR NEW ADVENTURE PLAYERS, what is the last word of tip #1 (HOW TO MOVE AROUND)?"
+#message 65 "%m160 In the section TIPS FOR NEW ADVENTURE PLAYERS, what is the first word of tip #4 (MAP YOUR PROGRESS)?"
+#message 66 "%m160 In the section TIPS FOR NEW ADVENTURE PLAYERS, what is the fifth word of tip #4 (MAP YOUR PROGRESS)?"
+#message 67 "%m160 In the section TIPS FOR NEW ADVENTURE PLAYERS, what is the seventh word of tip #4 (MAP YOUR PROGRESS)?"
+#message 68 "%m160 In the section TIPS FOR NEW ADVENTURE PLAYERS, what is the ninth word of tip #4 (MAP YOUR PROGRESS)?"
+#message 69 "%m160 In the section TIPS FOR NEW ADVENTURE PLAYERS, what is the fourth word of tip #5 (BRING ALONG SOME HELP)?"
+#message 70 "%m160 In the section TIPS FOR NEW ADVENTURE PLAYERS, what is the seventh word of tip #5 (BRING ALONG SOME HELP)?"
+#message 71 "%m160 In the section TIPS FOR NEW ADVENTURE PLAYERS, what is the ninth word of tip #5 (BRING ALONG SOME HELP)?"
+#message 72 "%m160 In the section TIPS FOR NEW ADVENTURE PLAYERS, what is the last word of tip #5 (BRING ALONG SOME HELP)?"
+#message 73 "%m160 What is the last word starting with 'b' in the verb list?"
+#message 74 "%m160 In the section TIPS FOR NEW ADVENTURE PLAYERS, what is the last word of tip #7 (LEAVE NO STONE UNTURNED)?"
+#message 75 "%m160 In the section TIPS FOR NEW ADVENTURE PLAYERS, what is the fourth word in the first paragraph of tip #8 (AT THE END OF YOUR ROPE)?"
+#message 76 "%m160 In the section TIPS FOR NEW ADVENTURE PLAYERS, what is the sixth word in the first paragraph of tip #8 (AT THE END OF YOUR ROPE)?"
+#message 77 "%m160 In the section TIPS FOR NEW ADVENTURE PLAYERS, what is the third word in the second paragraph of tip #8 (AT THE END OF YOUR ROPE)?"
+#message 78 "%m160 In the section TIPS FOR NEW ADVENTURE PLAYERS, what is the last word in the first paragraph of tip #8 (AT THE END OF YOUR ROPE)?"
+#message 79 "%m160 In the section TIPS FOR NEW ADVENTURE PLAYERS, what is the eighth word in the first paragraph of tip #2 (STAY OUT OF DANGER)?"
+#message 97 "A"
+#message 98 "B"
+#message 99 "C"
+#message 100 "D"
+#message 101 "E"
+#message 102 "F"
+#message 103 "G"
+#message 104 "H"
+#message 105 "I"
+#message 106 "J"
+#message 107 "K"
+#message 108 "L"
+#message 109 "M"
+#message 110 "N"
+#message 111 "O"
+#message 112 "P"
+#message 113 "Q"
+#message 114 "R"
+#message 115 "S"
+#message 116 "T"
+#message 117 "U"
+#message 118 "V"
+#message 119 "W"
+#message 120 "X"
+#message 121 "Y"
+#message 122 "Z"
+#message 123 " "
+#message 160 "In order to verify your legal ownership, please use your King's Quest IV manual to answer the following question:\n\n"
+#message 171 "Your privileges to the game have been suspended because you are a pirate!\n\n        \"Yo ho ho!\""
+#message 172 "Sorry, what you just typed does not match the King's Quest IV manual. You must have the manual in order to play this game. If you have lost your manual, contact Sierra's Customer Support Dept. The phone number is printed on your original disk label. Thank you."

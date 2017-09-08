@@ -1,0 +1,432 @@
+if (isset(new_room)) {
+  set.horizon(1);
+  load.sound(34);
+  v152 = 45;
+  load.logics(227);
+  call(227);
+  load.view(50);
+  load.view(52);
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  animate.obj(o1);
+  animate.obj(o2);
+  set.view(o1, 50);
+  set.view(o2, 52);
+  set.priority(o1, 14);
+  set.priority(o2, 14);
+  v152 = 1;
+  cycle.time(o1, v152);
+  cycle.time(o2, v152);
+  step.time(o1, v152);
+  step.time(o2, v152);
+  set.loop(o1, 1);
+  fix.loop(o1);
+  set.loop(o2, 0);
+  fix.loop(o2);
+  position(o1, 102, 51);
+  position(o2, 53, 55);
+  wander(o1);
+  wander(o2);
+  draw(o1);
+  draw(o2);
+  animate.obj(o3);
+  set.view(o3, 50);
+  set.loop(o3, 6);
+  stop.update(o3);
+  set.priority(o3, 11);
+  position(o3, 69, 111);
+  draw(o3);
+  animate.obj(o4);
+  set.view(o4, 50);
+  set.loop(o4, 4);
+  ignore.blocks(o4);
+  position(o4, 30, 108);
+  v152 = 4;
+  cycle.time(o4, v152);
+  step.time(o4, v152);
+  draw(o4);
+  v221 = 6;
+  v223 = 0;
+  v222 = 2;
+  stop.cycling(o4);
+  animate.obj(o5);
+  set.view(o5, 52);
+  set.priority(o5, 4);
+  ignore.horizon(o5);
+  ignore.objs(o5);
+  set.loop(o5, 4);
+  position(o5, 57, 38);
+  v152 = 1;
+  cycle.time(o5, v152);
+  draw(o5);
+  animate.obj(o6);
+  set.view(o6, 52);
+  set.priority(o6, 4);
+  ignore.horizon(o6);
+  ignore.objs(o6);
+  set.loop(o6, 5);
+  position(o6, 99, 38);
+  v152 = 1;
+  cycle.time(o6, v152);
+  draw(o6);
+  position(Ego, 107, 156);
+  set.loop(Ego, 0);
+  stop.motion(Ego);
+  observe.blocks(Ego);
+  draw(Ego);
+  show.pic();
+  sound(34, f154);
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "bedroom") || 
+    said("examine", "around", "bedroom") || 
+    said("examine", "bed chamber") || 
+    said("examine", "around", "bed chamber") || 
+    said("examine", "castle") || 
+    said("examine", "ivory", "castle") || 
+    said("examine", "around", "ivory", "castle") || 
+    said("examine", "around", "castle"))) {
+  print("Genesta's bed chamber is very beautiful and serene.  Genesta, herself, "
+        "lies very still upon the seashell bed; her concerned fairy helpers "
+        "hovering near. Her pet snow leopard lies close by.");
+}
+if ((said("examine", "bed") || 
+    said("examine", "seashell", "bed") || 
+    said("look in", "bed") || 
+    said("look in", "seashell", "bed"))) {
+  print("Genesta is very ill.  She lies, unmoving, in her shell bed.");
+}
+if ((said("examine", "beneath", "bed") || 
+    said("examine", "beneath", "seashell", "bed"))) {
+  print("There is nothing under the bed.");
+}
+if ((said("lay", "bed") || 
+    said("lay", "seashell", "bed") || 
+    said("lay", "bed") || 
+    said("lay", "bed") || 
+    said("lay", "seashell", "bed") || 
+    said("lay") || 
+    said("lay", "down", "bed") || 
+    said("lay", "down", "seashell", "bed") || 
+    said("carry", "bed") || 
+    said("carry", "seashell", "bed"))) {
+  print("Not with Genesta in it!");
+}
+if ((said("examine", "window") || 
+    said("examine", "out", "window") || 
+    said("look in", "window"))) {
+  print("You see the ocean out the window.");
+}
+if (said("examine", "blossom")) {
+  print("Gorgeous flowers surround Genesta as she lies, ill, in her bed.");
+}
+if ((said("examine", "staircase") || 
+    said("examine", "tower", "staircase"))) {
+  print("Wide steps lead down from Genesta's bed chamber.");
+}
+if ((said("carry", "blossom") || 
+    said("carry", "green plant"))) {
+  print("No.  They belong to Genesta.");
+}
+if ((said("examine", "chest") || 
+    said("examine", "chest", "abominable", "drawer") || 
+    said("examine", "dresser"))) {
+  print("It must hold Genesta's clothes.");
+}
+if ((said("open", "chest") || 
+    said("open", "dresser") || 
+    said("open", "chest", "abominable", "drawer") || 
+    said("open", "drawer") || 
+    said("look in", "chest") || 
+    said("look in", "dresser") || 
+    said("look in", "chest", "abominable", "drawer") || 
+    said("look in", "drawer"))) {
+  print("No.  It's private.");
+}
+if (said("examine", "wall")) {
+  print("There is nothing of importance on the walls.");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down") || 
+    said("examine", "down", "dirt"))) {
+  print("There is nothing interesting on the floor.");
+}
+if ((said("examine", "crone") || 
+    said("examine", "cute", "crone") || 
+    said("examine", "dying", "crone") || 
+    said("examine", "abominable", "crone"))) {
+  if (isset(f86)) {
+    print("The lovely fairy is visibly fading...fast.  Within hours, if she "
+          "doesn't get her magic talisman back, she'll be dead.");
+  }
+  else {
+    print("%m13  This will be a tragic loss for Tamir, as the evil Lolotte will "
+          "come to power!");
+  }
+}
+if ((said("speak", "crone") || 
+    said("speak") || 
+    said("speak", "cute", "crone") || 
+    said("speak", "dying", "crone") || 
+    said("speak", "abominable", "crone") || 
+    said("speak", "with", "crone") || 
+    said("speak", "with", "cute", "crone") || 
+    said("speak", "with", "dying", "crone") || 
+    said("speak", "with", "abominable", "crone"))) {
+  print("As you attempt to speak to the gravely ill Genesta, her small fairy "
+        "helpers flutter madly about, trying to prevent you from disturbing "
+        "her.");
+}
+if ((said("kill", "crone") || 
+    said("kill", "cute", "crone") || 
+    said("kill", "dying", "crone") || 
+    said("kill", "abominable", "crone"))) {
+  print("THAT is DEFINITELY NOT the thing to do!");
+}
+if ((said("carry", "crone") || 
+    said("carry", "cute", "crone") || 
+    said("carry", "dying", "crone") || 
+    said("carry", "abominable", "crone"))) {
+  print("You cannot get Genesta.");
+}
+if ((said("embrace", "crone") || 
+    said("embrace", "cute", "crone") || 
+    said("embrace", "dying", "crone") || 
+    said("embrace", "abominable", "crone"))) {
+  print("She needs her talisman, not a kiss!");
+}
+if ((said("help", "crone") || 
+    said("help", "cute", "crone") || 
+    said("help", "dying", "crone") || 
+    said("help", "abominable", "crone") || 
+    said("save", "crone") || 
+    said("save", "cute", "crone") || 
+    said("save", "dying", "crone") || 
+    said("save", "abominable", "crone"))) {
+  print("You can start by helping to get her talisman back from Lolotte.");
+}
+if ((said("deliver", "amulet") || 
+    said("deliver", "amulet", "crone") || 
+    said("deliver", "amulet", "cute", "crone") || 
+    said("deliver", "amulet", "rol"))) {
+  if (has("Magic Talisman")) {
+    if (posn(Ego,46,102,108,117)) {
+      drop("Magic Talisman");
+      score  += 10;
+      new.room(134); //##LE001##
+    }
+    else {
+      set(f113);
+    }
+  }
+  else {
+    set(f115);
+  }
+}
+if ((said("examine", "cat") || 
+    said("examine", "snow", "cat") || 
+    said("examine", "ivory", "cat"))) {
+  print("A white spotted snow leopard lies on the floor of Genesta's bed "
+        "chamber.  It lies quite still, but for an occasional twitch of its "
+        "long tail.");
+}
+if ((said("speak", "cat") || 
+    said("speak", "snow", "cat") || 
+    said("speak", "ivory", "cat") || 
+    said("speak", "with", "cat") || 
+    said("speak", "with", "ivory", "cat") || 
+    said("speak", "with", "snow", "cat"))) {
+  print("Snow leopards do not talk!");
+}
+if ((said("kill", "cat") || 
+    said("kill", "ivory", "cat") || 
+    said("kill", "snow", "cat"))) {
+  print("Oh, yeah.  You're going to kill a big snow leopard with your bare "
+        "hands!");
+}
+if ((said("carry", "cat") || 
+    said("carry", "snow", "cat") || 
+    said("carry", "ivory", "cat") || 
+    said("capture", "cat") || 
+    said("capture", "snow", "cat") || 
+    said("capture", "ivory", "cat"))) {
+  print("Not this cat!");
+}
+if ((said("embrace", "cat") || 
+    said("kill", "ivory", "cat") || 
+    said("kill", "snow", "cat") || 
+    said("pat", "cat") || 
+    said("pat", "ivory", "cat") || 
+    said("pat", "snow", "cat"))) {
+  print("That's probably not a good idea.");
+}
+if (said("examine", "green plant")) {
+  print("Genesta must love beautiful plants and flowers.");
+}
+if ((said("carry", "wand") || 
+    said("carry", "magic", "wand") || 
+    said("carry", "crone", "wand") || 
+    said("carry", "crone", "magic", "wand"))) {
+  print("That belongs to Genesta.");
+}
+if (!isset(input_parsed)) {
+  call(227);
+}
+if (isset(f106)) {
+  reset(f106);
+  reset(input_parsed);
+  if ((said("deliver", "anyword", "cat") || 
+      said("deliver", "anyword", "anyword", "cat") || 
+      said("deliver", "anyword", "anyword", "anyword", "cat") || 
+      said("deliver", "anyword", "anyword", "anyword", "anyword", "cat"))) {
+    if (posn(Ego,20,99,47,117)) {
+      print("The snow leopard doesn't want it.");
+    }
+    else {
+      set(f113);
+    }
+  }
+  else {
+    if ((said("deliver", "anyword", "crone") || 
+        said("deliver", "anyword", "anyword", "crone") || 
+        said("deliver", "anyword", "anyword", "anyword", "crone") || 
+        said("deliver", "anyword", "anyword", "anyword", "anyword", "crone"))) {
+      print("Genesta only needs her talisman.");
+    }
+  }
+}
+Label1:
+if (posn(Ego,55,136,96,140)) {
+  set.priority(Ego, 12);
+}
+else {
+  release.priority(Ego);
+}
+if (posn(Ego,46,102,108,117) && 
+    !isset(f221)) {
+  set(f221);
+  window_close_time = 16;
+  print("Genesta's tiny fairy helpers flit furiously about, trying to keep you "
+        "from bothering the dying fairy.");
+  normal.motion(o1);
+  normal.motion(o2);
+  ignore.blocks(o1);
+  ignore.blocks(o2);
+  move.obj(o1, 95, 77, 0, f222);
+  move.obj(o2, 51, 77, 0, f222);
+}
+if (isset(f221) && 
+    !posn(Ego,46,102,108,117)) {
+  normal.motion(o1);
+  normal.motion(o2);
+  move.obj(o1, 102, 51, 0, f225);
+  move.obj(o2, 53, 55, 0, f226);
+  reset(f221);
+}
+if (isset(f225)) {
+  reset(f225);
+  observe.blocks(o1);
+  wander(o1);
+}
+if (isset(f226)) {
+  reset(f226);
+  observe.blocks(o2);
+  wander(o2);
+}
+if (v221 > 0 && 
+    isset(f112)) {
+  v221--;
+  if (v221 <= 0) {
+    v222++;
+    if (v222 == 1) {
+      set.loop(o4, 5);
+      set.cel(o4, 0);
+      end.of.loop(o4, f223);
+    }
+    if (v222 == 2) {
+      random(6, 10, v221);
+      stop.cycling(o4);
+      set.cel(o4, 0);
+    }
+    if (v222 == 3) {
+      random(4, 8, v221);
+      start.cycling(o4);
+    }
+    if (v222 == 4) {
+      v222 = 0;
+      random(5, 10, v221);
+      stop.cycling(o4);
+      set.cel(o4, 0);
+    }
+  }
+}
+if (isset(f223)) {
+  reset(f223);
+  set.cel(o4, 2);
+  if (isset(f112)) {
+    v223 = 2;
+  }
+  else {
+    v223 = 1;
+  }
+}
+if (v223 > 0 && 
+    isset(f112)) {
+  v223--;
+  if (v223 <= 0) {
+    set(f227);
+  }
+}
+if (isset(f227)) {
+  reset(f227);
+  set.cel(o4, 2);
+  reverse.loop(o4, f224);
+}
+if (isset(f224)) {
+  random(8, 14, v221);
+  reset(f224);
+  set.loop(o4, 4);
+}
+if (isset(ego_touching_signal_line)) {
+  new.room(46); //##LE002##
+}
+return();
+
+//Messages
+#message 1 "Genesta's bed chamber is very beautiful and serene.  Genesta, herself, lies very still upon the seashell bed; her concerned fairy helpers hovering near. Her pet snow leopard lies close by."
+#message 2 "Genesta is very ill.  She lies, unmoving, in her shell bed."
+#message 3 "There is nothing under the bed."
+#message 4 "Not with Genesta in it!"
+#message 5 "You see the ocean out the window."
+#message 6 "Gorgeous flowers surround Genesta as she lies, ill, in her bed."
+#message 7 "Wide steps lead down from Genesta's bed chamber."
+#message 8 "No.  They belong to Genesta."
+#message 9 "It must hold Genesta's clothes."
+#message 10 "No.  It's private."
+#message 11 "There is nothing of importance on the walls."
+#message 12 "There is nothing interesting on the floor."
+#message 13 "The lovely fairy is visibly fading...fast.  Within hours, if she doesn't get her magic talisman back, she'll be dead."
+#message 14 "As you attempt to speak to the gravely ill Genesta, her small fairy helpers flutter madly about, trying to prevent you from disturbing her."
+#message 15 "Genesta's tiny fairy helpers flit furiously about, trying to keep you from bothering the dying fairy."
+#message 16 "THAT is DEFINITELY NOT the thing to do!"
+#message 17 "You cannot get Genesta."
+#message 18 "She needs her talisman, not a kiss!"
+#message 19 "You can start by helping to get her talisman back from Lolotte."
+#message 20 "Genesta only needs her talisman."
+#message 21 "You give the magic talisman to the dying fairy.  Almost instantly, the color returns to her cheeks and her blue eyes begin to sparkle.  She sits up in bed, stretches, and smiles at you.  \"You saved my life, Rosella,\" Genesta says, gratefully \"And, you saved Tamir from the forces of evil.  I'm forever indebted to you.\"  She rises from the bed to stand tall and proud before you.  \"I want to see the sunshine!\" she suddenly exclaims, and waves her wand.  Before you know it... you find yourself...outside!"
+#message 22 "A white spotted snow leopard lies on the floor of Genesta's bed chamber.  It lies quite still, but for an occasional twitch of its long tail."
+#message 23 "Snow leopards do not talk!"
+#message 24 "Oh, yeah.  You're going to kill a big snow leopard with your bare hands!"
+#message 25 "Not this cat!"
+#message 26 "That's probably not a good idea."
+#message 27 "The snow leopard doesn't want it."
+#message 28 "Genesta must love beautiful plants and flowers."
+#message 29 "That belongs to Genesta."
+#message 30 "%m13  This will be a tragic loss for Tamir, as the evil Lolotte will come to power!"

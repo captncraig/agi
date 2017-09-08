@@ -1,0 +1,330 @@
+if (isset(new_room)) {
+  set(f82);
+  if (!isset(f38)) {
+    v152 = 30;
+  }
+  else {
+    v152 = 130;
+  }
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  if (v37 == 2) {
+    discard.view(0);
+    load.view(0);
+    set.view(Ego, 0);
+    reset(ego_touching_signal_line);
+  }
+  set.horizon(71);
+  load.logics(204);
+  load.logics(203);
+  random(1, 3, v152);
+  if ((isset(f176) || 
+      v37 == 2)) {
+    v152 = 1;
+  }
+  if (v152 == 3) {
+    load.logics(244);
+    load.view(112);
+    animate.obj(o4);
+    set.view(o4, 112);
+    ignore.horizon(o4);
+    v152 = 3;
+    step.size(o4, v152);
+    set.priority(o4, 14);
+    random(1, 2, v152);
+    if (v152 == 1) {
+      set.loop(o4, 1);
+      position(o4, 146, 29);
+      draw(o4);
+      move.obj(o4, 0, 29, 0, f234);
+    }
+    else {
+      set.loop(o4, 0);
+      position(o4, 0, 29);
+      draw(o4);
+      move.obj(o4, 146, 29, 0, f234);
+    }
+    set(f235);
+  }
+  load.view(11);
+  load.view(40);
+  load.view(20);
+  load.sound(52);
+  animate.obj(o12);
+  if (isset(f176)) {
+    prevent.input();
+    position(Ego, 0, 108);
+    set(f36);
+    set(f221);
+    v222 = 1;
+    load.view(211);
+    set.view(Ego, 211);
+  }
+  if (prev_room_no == 24) {
+    position(Ego, 47, 88);
+  }
+  if (prev_room_no == 79 && 
+      isset(f86)) {
+    position(Ego, 151, 84);
+    ego_dir = 0;
+  }
+  if (v37 == 2) {
+    load.view(67);
+    load.view(68);
+    load.view(35);
+    set(f36);
+    prevent.input();
+    animate.obj(o1);
+    animate.obj(o2);
+    animate.obj(o3);
+    set.view(o1, 35);
+    set.view(o2, 68);
+    set.view(o3, 68);
+    set.loop(o1, 2);
+    set.loop(o2, 2);
+    set.loop(o3, 2);
+    fix.loop(o1);
+    fix.loop(o2);
+    fix.loop(o3);
+    ignore.horizon(o1);
+    ignore.horizon(o2);
+    ignore.horizon(o3);
+    ignore.blocks(o1);
+    ignore.blocks(o2);
+    ignore.blocks(o3);
+    ignore.objs(o1);
+    ignore.objs(o2);
+    ignore.objs(o3);
+    set.priority(o1, 10);
+    set.priority(o2, 10);
+    set.priority(o3, 10);
+    position(o1, 63, 49);
+    position(o2, 62, 84);
+    position(o3, 80, 84);
+    v152 = 3;
+    cycle.time(o1, v152);
+    cycle.time(o2, v152);
+    cycle.time(o3, v152);
+    draw(o1);
+    move.obj(o1, 63, 104, 0, f222);
+    v221 = 0;
+    v37 = 0;
+  }
+  else {
+    draw(Ego);
+  }
+  show.pic();
+}
+if (!isset(f176)) {
+  if (isset(ego_touching_signal_line)) {
+    set(f36);
+    prevent.input();
+    sound(52, f154);
+    reset(ego_touching_signal_line);
+    get.posn(Ego, v134, v135);
+    position.v(o12, v134, v135);
+    ignore.blocks(o12);
+    set.view(o12, 11);
+    if ((ego_dir == right || 
+        ego_dir == downright)) {
+      set.loop(o12, 2);
+    }
+    else {
+      set.loop(o12, 3);
+    }
+    fix.loop(o12);
+    v152 = 3;
+    step.size(o12, v152);
+    v152 = 3;
+    cycle.time(o12, v152);
+    start.cycling(o12);
+    erase(Ego);
+    draw(o12);
+    if (v134 > 115) {
+      v159 = 154;
+      v158 = 0;
+      move.obj.v(o12, v134, v159, v158, f226);
+      set(f238);
+    }
+    if ((v134 < 116) && 
+        (v134 > 100)) {
+      v159 = 147;
+      v158 = 0;
+      move.obj.v(o12, v134, v159, v158, f226);
+    }
+    if (v134 < 101) {
+      v159 = 142;
+      v158 = 0;
+      move.obj.v(o12, v134, v159, v158, f226);
+    }
+  }
+  if ((isset(f226)) && 
+      (isset(f238))) {
+    reset(f226);
+    reset(f238);
+    stop.sound();
+    set.view(o12, 20);
+    v223 = 2;
+  }
+  if (v223 > 0) {
+    v223--;
+    if (v223 <= 0) {
+      shake.screen(1);
+      v37 = 20;
+      set(f140);
+    }
+  }
+  if ((isset(f226)) && 
+      (!isset(f238))) {
+    stop.sound();
+    release.loop(Ego);
+    v152 = 1;
+    step.size(o12, v152);
+    cycle.time(o12, v152);
+    set.view(o12, 40);
+    if ((ego_dir == right || 
+        ego_dir == downright)) {
+      set.loop(o12, 2);
+    }
+    else {
+      set.loop(o12, 3);
+    }
+    set.cel(o12, 2);
+    reverse.loop(o12, f228);
+    reset(f226);
+  }
+  if (isset(f228)) {
+    set(f154);
+    observe.blocks(Ego);
+    set.view(Ego, 0);
+    get.posn(o12, v134, v135);
+    position.v(Ego, v134, v135);
+    erase(o12);
+    draw(Ego);
+    ego_dir = 0;
+    reset(f228);
+    reset(f36);
+    accept.input();
+  }
+}
+if (isset(f221)) {
+  if (v222 == 1) {
+    move.obj(Ego, 104, 108, 0, f221);
+  }
+  if (v222 == 2) {
+    ignore.blocks(Ego);
+    move.obj(Ego, 120, 102, 0, f221);
+  }
+  if (v222 == 3) {
+    observe.blocks(Ego);
+    new.room(79); //##LE001##
+  }
+  v222++;
+}
+if (isset(f222)) {
+  v221++;
+  if (v221 == 1) {
+    draw(o2);
+    draw(o3);
+    set.view(o1, 40);
+    reposition.to(o1, 76, 101);
+    set.loop(o1, 5);
+    set.cel(o1, 2);
+    set.loop(o2, 3);
+    set.loop(o3, 3);
+    move.obj(o2, 62, 38, 0, f230);
+    move.obj(o3, 80, 38, 0, f231);
+    end.of.loop(o1, f222);
+    discard.view(35);
+  }
+  if (v221 == 2) {
+    reverse.loop(o1, f222);
+  }
+  if (v221 == 3) {
+    get.posn(o1, v152, v153);
+    position.v(Ego, v152, v153);
+    set.loop(Ego, 3);
+    set.cel(Ego, 0);
+    ignore.objs(o1);
+    ego_dir = 0;
+    draw(Ego);
+    erase(o1);
+    reset(f36);
+    accept.input();
+  }
+}
+if (isset(f230)) {
+  set.view(o2, 67);
+  set.loop(o2, 7);
+  reposition.to(o2, 66, 27);
+  move.obj(o2, 66, 7, 0, f232);
+  reset(f230);
+}
+if (isset(f231)) {
+  set.view(o3, 67);
+  set.loop(o3, 7);
+  reposition.to(o3, 84, 27);
+  move.obj(o3, 84, 7, 0, f233);
+  reset(f231);
+}
+if (isset(f232)) {
+  erase(o2);
+  reset(f232);
+}
+if (isset(f233)) {
+  erase(o3);
+  reset(f233);
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room"))) {
+  print("A mountain range rises to the east from the forest.  A narrow path "
+        "winds steeply up the side of the mountain.");
+}
+if (said("examine", "path")) {
+  print("The path is narrow, steep, and looks very dangerous.  It heads up into "
+        "the mountains.");
+}
+if (said("examine", "rock")) {
+  print("There are rocks here and there.");
+}
+if (said("climb", "rock")) {
+  print("It is too difficult to climb while wearing that dress.");
+}
+if (!isset(input_parsed)) {
+  call(204);
+}
+if (!isset(input_parsed)) {
+  call(203);
+}
+if (isset(f235) && 
+    !isset(input_parsed)) {
+  call(244);
+}
+Label1:
+if (isset(f234)) {
+  reset(f235);
+  reset(f234);
+  erase(o4);
+}
+if (ego_edge_code == right_edge) {
+  new.room(79); //##LE002##
+}
+if (ego_edge_code == horizon_edge) {
+  new.room(24); //##LE003##
+}
+if (ego_edge_code == left_edge) {
+  new.room(29); //##LE004##
+}
+return();
+
+//Messages
+#message 1 "A mountain range rises to the east from the forest.  A narrow path winds steeply up the side of the mountain."
+#message 2 "The path is narrow, steep, and looks very dangerous.  It heads up into the mountains."
+#message 3 "There are rocks here and there."
+#message 4 "It is too difficult to climb while wearing that dress."

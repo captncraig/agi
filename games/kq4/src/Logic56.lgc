@@ -1,0 +1,446 @@
+if (isset(new_room)) {
+  discard.view(0);
+  set(f82);
+  load.sound(48);
+  load.logics(151);
+  load.logics(215);
+  load.view(1);
+  set.view(Ego, 1);
+  set.horizon(1);
+  v152 = 56;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  v152 = 2;
+  load.view(140);
+  load.view(144);
+  animate.obj(o1);
+  animate.obj(o2);
+  set.view(o1, 140);
+  set.view(o2, 140);
+  set.cel(o1, 0);
+  set.cel(o2, 0);
+  stop.update(o2);
+  cycle.time(o1, v152);
+  stop.cycling(o1);
+  animate.obj(o3);
+  animate.obj(o4);
+  set.view(o3, 140);
+  set.view(o4, 140);
+  stop.update(o4);
+  cycle.time(o3, v152);
+  set.loop(o3, 3);
+  set.loop(o4, 4);
+  set.cel(o4, 0);
+  set.cel(o3, 0);
+  animate.obj(o5);
+  animate.obj(o6);
+  set.view(o5, 144);
+  set.view(o6, 144);
+  set.cel(o5, 0);
+  set.cel(o6, 0);
+  stop.update(o6);
+  cycle.time(o5, v152);
+  stop.cycling(o5);
+  animate.obj(o7);
+  animate.obj(o8);
+  set.view(o7, 144);
+  set.view(o8, 144);
+  set.loop(o7, 1);
+  set.loop(o8, 3);
+  set.cel(o8, 0);
+  set.cel(o7, 0);
+  stop.update(o8);
+  cycle.time(o7, v152);
+  stop.cycling(o7);
+  v222 = 1;
+  v223 = 3;
+  v224 = 1;
+  if (!isset(f40)) {
+    ignore.blocks(o2);
+    set.loop(o1, 1);
+    set.loop(o2, 2);
+    set.priority(o1, 8);
+    position(o1, 104, 94);
+    position(o2, 104, 111);
+    set.priority(o3, 6);
+    position(o3, 92, 80);
+    position(o4, 92, 90);
+    set.loop(o5, 4);
+    set.loop(o6, 6);
+    set.priority(o5, 8);
+    position(o5, 36, 47);
+    position(o6, 36, 62);
+    set.loop(o7, 1);
+    set.loop(o8, 3);
+    set.priority(o7, 4);
+    position(o7, 52, 48);
+    position(o8, 53, 62);
+    animate.obj(o10);
+    set.view(o10, 140);
+    set.loop(o10, 5);
+    position(o10, 96, 117);
+    draw(o10);
+    set(f221);
+  }
+  else {
+    set.loop(o1, 0);
+    set.loop(o2, 2);
+    position(o1, 93, 72);
+    position(o2, 96, 88);
+    position(o3, 45, 52);
+    position(o4, 45, 62);
+    set.priority(o5, 8);
+    set.loop(o5, 5);
+    set.loop(o6, 7);
+    position(o5, 55, 95);
+    position(o6, 55, 110);
+    set.loop(o7, 0);
+    set.loop(o8, 2);
+    set.priority(o7, 8);
+    set.loop(o7, 0);
+    position(o7, 34, 95);
+    position(o8, 37, 110);
+  }
+  animate.obj(o9);
+  ignore.objs(o9);
+  v152 = 4;
+  cycle.time(o9, v152);
+  set.view(o9, 144);
+  set.loop(o9, 8);
+  set.priority(o9, 4);
+  set.cel(o9, 0);
+  v221 = 1;
+  animate.obj(o11);
+  ignore.objs(o11);
+  v152 = 4;
+  cycle.time(o11, v152);
+  set.view(o11, 144);
+  set.loop(o11, 8);
+  set.priority(o11, 4);
+  set.cel(o11, 0);
+  v225 = 2;
+  draw(o1);
+  draw(o2);
+  draw(o3);
+  draw(o4);
+  draw(o5);
+  draw(o6);
+  draw(o7);
+  draw(o8);
+  position(Ego, 20, 120);
+  draw(Ego);
+  show.pic();
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "cave") || 
+    said("examine", "around", "cave"))) {
+  print("You see the busy little dwarfs hard at work within the diamond mine.  "
+        "The diamonds flash and sparkle from the earthen walls.");
+}
+if ((said("examine", "dwarf") || 
+    said("examine", "abominable", "dwarf") || 
+    said("examine", "seven", "dwarf"))) {
+  if (isset(f221)) {
+    print("One dwarf appears to be idling by the diamond bucket.");
+  }
+  else {
+    print("You see the Seven Dwarfs toiling away with their picks and shovels, "
+          "extracting the plentiful diamonds from their underground mine.");
+  }
+}
+if ((said("speak", "dwarf") || 
+    said("speak") || 
+    said("speak", "abominable", "dwarf") || 
+    said("speak", "seven", "dwarf") || 
+    said("speak", "with", "dwarf") || 
+    said("speak", "with", "abominable", "dwarf") || 
+    said("speak", "with", "seven", "dwarf"))) {
+  if (isset(f221)) {
+    if (posn(Ego,91,108,114,115)) {
+      if (!isset(f40)) {
+        if (v49 > 1) {
+          print("When you try speaking to the small man again, he only mutters "
+                "under his breath in perturbation.");
+        }
+        else {
+          if (v49 == 1) {
+            v49++;
+            print("Again, you speak to the dwarf by the diamond bucket.  He "
+                  "peers up at you with mild agitation.  \"This ain't no place "
+                  "for a lady, Rosella!\" he firmly states.  \"I don't wanna "
+                  "see you get hurt in here!\"");
+          }
+          else {
+            v49 = 1;
+            print("You say \"hello\" to the small man next to the diamond "
+                  "bucket.  He seems amazed to see you here.  \"Rosella!\" he "
+                  "exclaims.  \"What're you doing here?  Don't you know this "
+                  "ain't no place for a fine girl like yourself?\"  You don't "
+                  "agree with that, but you don't argue.");
+          }
+        }
+      }
+      else {
+        print("You attempt to talk with the dwarf by the bucket again, but he "
+              "only ignores you.  You get the message.");
+      }
+    }
+    else {
+      if ((posn(Ego,31,90,65,108) || 
+          posn(Ego,87,100,206,104))) {
+        print("You endeavor to engage in conversation with the little men, but "
+              "they are too busy to reply.");
+      }
+      else {
+        set(f113);
+      }
+    }
+  }
+  else {
+    if ((posn(Ego,32,80,68,116) || 
+        posn(Ego,90,90,109,109))) {
+      print("You endeavor to engage in conversation with the little men, but "
+            "they are too busy to reply.");
+    }
+    else {
+      set(f113);
+    }
+  }
+}
+if ((said("embrace", "dwarf") || 
+    said("embrace") || 
+    said("embrace", "abominable", "dwarf") || 
+    said("embrace", "seven", "dwarf"))) {
+  if (isset(f221)) {
+    if (posn(Ego,91,108,114,115)) {
+      print("You attempt to kiss the dwarf, but he seems embarrassed by it.");
+    }
+    else {
+      print("They are working awfully hard.  That might distract them.");
+    }
+  }
+  else {
+    print("They are working awfully hard.  That might distract them.");
+  }
+}
+if ((said("deliver", "pouch", "rol") || 
+    said("deliver", "anyword", "pouch", "rol") || 
+    said("deliver", "anyword", "anyword", "pouch", "rol") || 
+    said("deliver", "anyword", "anyword", "anyword", "pouch", "rol") || 
+    said("deliver", "anyword", "anyword", "anyword", "anyword", "pouch", "rol") || 
+    said("deliver", "diamond", "rol") || 
+    said("deliver", "anyword", "diamond") || 
+    said("deliver", "anyword", "anyword", "diamond") || 
+    said("deliver", "anyword", "anyword", "anyword", "diamond"))) {
+  if (isset(f221)) {
+    if (posn(Ego,91,108,114,115)) {
+      if (has("Pouch of Diamonds")) {
+        if (v49 != 5) {
+          sound(48, f154);
+          get("Unlit Oil Lantern");
+          v49 = 5;
+          set(f40);
+          score  += 3;
+          erase(o10);
+          print("Being an honest person, you offer the forgotten pouch of "
+                "diamonds to the dwarf.  His gruff exterior softens a bit. "
+                "\"Nah, you can keep it, Rosella,\" he says.  \"We got plenty "
+                "here.  We also got an extra lantern we ain't using. Here, go "
+                "ahead and take it.\"  The dwarf's gruffness returns as he "
+                "says, \"Now, skedaddle on out of here!\"");
+        }
+        else {
+          print("The dwarf is not interested.");
+        }
+      }
+      else {
+        set(f115);
+      }
+    }
+    else {
+      set(f113);
+    }
+  }
+  else {
+    if (posn(Ego,90,100,106,106)) {
+      if (has("Pouch of Diamonds")) {
+        print("The dwarf is not interested.");
+      }
+      else {
+        set(f115);
+      }
+    }
+    else {
+      set(f113);
+    }
+  }
+}
+if ((said("examine", "bucket") || 
+    said("examine", "diamond", "bucket"))) {
+  print("The bucket is brimming with sparkling diamonds.");
+}
+if ((said("carry", "bucket") || 
+    said("rob", "bucket") || 
+    said("rob", "diamond", "bucket") || 
+    said("carry", "diamond", "bucket"))) {
+  print("The diamond bucket does%m16");
+}
+if ((said("carry", "diamond", "from", "bucket") || 
+    said("rob", "diamond", "from", "bucket"))) {
+  print("These diamonds do%m16");
+}
+if (said("carry", "lamp")) {
+  if (isset(f40)) {
+    set(f114);
+  }
+  else {
+    print("It belongs to the dwarfs!");
+  }
+}
+if (!isset(input_parsed)) {
+  call(215);
+}
+if (!isset(input_parsed)) {
+  call(151);
+}
+if (isset(f106)) {
+  reset(f106);
+  print("The dwarf is not interested.");
+}
+Label1:
+if (v221 > 0 && 
+    isset(f112)) {
+  v221--;
+  if (v221 <= 0) {
+    random(1, 4, v152);
+    if (v152 == 1) {
+      position(o9, 28, 43);
+    }
+    else {
+      if (v152 == 2) {
+        position(o9, 41, 83);
+      }
+      else {
+        if (v152 == 3) {
+          position(o9, 120, 59);
+        }
+        else {
+          position(o9, 91, 67);
+        }
+      }
+    }
+    draw(o9);
+    end.of.loop(o9, f222);
+  }
+}
+if (isset(f222)) {
+  erase(o9);
+  reset(f222);
+  set.cel(o9, 0);
+  v221 = 1;
+}
+if (v225 > 0 && 
+    isset(f112)) {
+  v225--;
+  if (v225 <= 0) {
+    random(1, 4, v152);
+    if (v152 == 1) {
+      position(o11, 35, 93);
+    }
+    else {
+      if (v152 == 2) {
+        position(o11, 69, 49);
+      }
+      else {
+        if (v152 == 3) {
+          position(o11, 106, 98);
+        }
+        else {
+          position(o11, 120, 102);
+        }
+      }
+    }
+    draw(o11);
+    end.of.loop(o11, f226);
+  }
+}
+if (isset(f226)) {
+  erase(o11);
+  reset(f226);
+  set.cel(o11, 0);
+  v225 = 1;
+}
+if (v222 > 0 && 
+    isset(f112)) {
+  v222--;
+  if (v222 <= 0) {
+    random(4, 8, v222);
+    if (isset(f223)) {
+      reset(f223);
+      stop.cycling(o5);
+      set.cel(o5, 0);
+    }
+    else {
+      set(f223);
+      start.cycling(o5);
+    }
+  }
+}
+if (v223 > 0 && 
+    isset(f112)) {
+  v223--;
+  if (v223 <= 0) {
+    random(4, 8, v223);
+    if (isset(f224)) {
+      reset(f224);
+      stop.cycling(o7);
+      set.cel(o7, 0);
+    }
+    else {
+      set(f224);
+      start.cycling(o7);
+    }
+  }
+}
+if (v224 > 0 && 
+    isset(f112)) {
+  v224--;
+  if (v224 <= 0) {
+    end.of.loop(o1, f225);
+  }
+}
+if (isset(f225)) {
+  reset(f225);
+  set.cel(o1, 0);
+  random(3, 7, v224);
+}
+if (posn(Ego,0,0,15,167)) {
+  new.room(55); //##LE001##
+}
+return();
+
+//Messages
+#message 1 "You see the busy little dwarfs hard at work within the diamond mine.  The diamonds flash and sparkle from the earthen walls."
+#message 2 "One dwarf appears to be idling by the diamond bucket."
+#message 3 "When you try speaking to the small man again, he only mutters under his breath in perturbation."
+#message 4 "Again, you speak to the dwarf by the diamond bucket.  He peers up at you with mild agitation.  \"This ain't no place for a lady, Rosella!\" he firmly states.  \"I don't wanna see you get hurt in here!\""
+#message 5 "You say \"hello\" to the small man next to the diamond bucket.  He seems amazed to see you here.  \"Rosella!\" he exclaims.  \"What're you doing here?  Don't you know this ain't no place for a fine girl like yourself?\"  You don't agree with that, but you don't argue."
+#message 6 "You attempt to talk with the dwarf by the bucket again, but he only ignores you.  You get the message."
+#message 7 "You endeavor to engage in conversation with the little men, but they are too busy to reply."
+#message 8 "You attempt to kiss the dwarf, but he seems embarrassed by it."
+#message 9 "They are working awfully hard.  That might distract them."
+#message 10 "Being an honest person, you offer the forgotten pouch of diamonds to the dwarf.  His gruff exterior softens a bit. \"Nah, you can keep it, Rosella,\" he says.  \"We got plenty here.  We also got an extra lantern we ain't using. Here, go ahead and take it.\"  The dwarf's gruffness returns as he says, \"Now, skedaddle on out of here!\""
+#message 11 "The dwarf is not interested."
+#message 12 "You see the Seven Dwarfs toiling away with their picks and shovels, extracting the plentiful diamonds from their underground mine."
+#message 13 "The bucket is brimming with sparkling diamonds."
+#message 14 "The diamond bucket does%m16"
+#message 15 "These diamonds do%m16"
+#message 16 " not belong to you!"
+#message 17 "It belongs to the dwarfs!"

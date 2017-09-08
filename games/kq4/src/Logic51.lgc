@@ -1,0 +1,246 @@
+if (isset(new_room)) {
+  set(f82);
+  v152 = 51;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.sound(70);
+  load.view(128);
+  animate.obj(o1);
+  animate.obj(o12);
+  animate.obj(o2);
+  set.view(o12, 128);
+  set.loop(o12, 2);
+  position(o12, 70, 117);
+  set.view(o2, 128);
+  set.loop(o2, 3);
+  position(o2, 70, 112);
+  set.priority(o2, 4);
+  ignore.objs(o2);
+  set.view(o1, 128);
+  set.loop(o1, 1);
+  set.cel(o1, 0);
+  stop.cycling(o1);
+  position(o1, 70, 115);
+  draw(o1);
+  if ((v127 == 49) && 
+      (!isset(f181))) {
+    v168 = 85;
+    v221 = 5;
+  }
+  position(Ego, 70, 117);
+  if (prev_room_no == 49) {
+    set.loop(Ego, 2);
+    ego_dir = 5;
+  }
+  if (prev_room_no == 52) {
+    set.cel(o12, 3);
+    draw(o12);
+    reverse.loop(o12, f224);
+    v168 = 45;
+  }
+  else {
+    draw(Ego);
+  }
+  accept.input();
+  show.pic();
+}
+if (isset(f112)) {
+  reset(f112);
+  if (!isset(f221)) {
+    v168++;
+  }
+}
+if (!isset(f149)) {
+  if (v168 == 15) {
+    print("You hear the ogre coming home.");
+    v221 = 1;
+    v168 = 16;
+  }
+  if (v168 == 20) {
+    print("You hear the ogre in the house.");
+    v168 = 21;
+    v221 = 2;
+    v127 = 49;
+  }
+  if (v168 == 30) {
+    v168 = 31;
+    print("You hear noises on the other side of the door.");
+    v221 = 3;
+  }
+}
+if (v168 == 80) {
+  v168 = 81;
+  print("You hear the ogre leaving.");
+  v221 = 5;
+  reset(f181);
+  set(f178);
+  v127 = 0;
+}
+if ((isset(f149)) && 
+    (v221 != 4) && 
+    (v221 != 5)) {
+  v221 = 4;
+  v168 = 20;
+  set(f181);
+  v127 = 49;
+}
+if ((isset(f221)) && 
+    (isset(f236))) {
+  reset(f236);
+  ignore.objs(o1);
+}
+if (isset(f222)) {
+  reset(f222);
+  set.view(o12, 128);
+  set.cel(o12, 0);
+  draw(o12);
+  erase(Ego);
+  v152 = 3;
+  cycle.time(o12, v152);
+  start.cycling(o12);
+  end.of.loop(o12, f223);
+}
+if (isset(f223)) {
+  reset(f223);
+  if (v127 == 49) {
+    if (!isset(f149)) {
+      new.room(52); //##LE001##
+    }
+    else {
+      print("Yes, he's still there.");
+      set.cel(o12, 3);
+      v152 = 3;
+      cycle.time(o12, v152);
+      reverse.loop(o12, f224);
+    }
+  }
+  else {
+    print("You see nothing special through the keyhole.");
+    set.cel(o12, 3);
+    v152 = 3;
+    cycle.time(o12, v152);
+    reverse.loop(o12, f224);
+  }
+}
+if (isset(f224)) {
+  reset(f224);
+  draw(Ego);
+  erase(o12);
+  reset(f36);
+  accept.input();
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "closet") || 
+    said("examine", "around", "closet"))) {
+  print("You have found yourself inside the ogre's small closet.  For a closet, "
+        "it's surprisingly empty.  You notice a large keyhole under the "
+        "doorknob of the closet door.");
+}
+if (said("examine", "door")) {
+  print("There is a large keyhole under the doorknob of the closet door.");
+}
+if ((said("open", "door") || 
+    said("open", "closet", "door"))) {
+  if (!isset(f221)) {
+    if (posn(Ego,67,115,83,119)) {
+      if ((isset(f149) || 
+          v221 > 3 || 
+          v221 == 0)) {
+        v152 = 4;
+        cycle.time(o1, v152);
+        end.of.loop(o1, f221);
+        sound(70, f154);
+        set(f225);
+        reset(f237);
+        set(f236);
+        if (isset(f181)) {
+          if (!has("Magic Hen")) {
+            set.cel(o2, 0);
+          }
+          else {
+            set.cel(o2, 1);
+          }
+          stop.cycling(o2);
+          draw(o2);
+        }
+      }
+      else {
+        print("That would not be a good idea right now.");
+      }
+    }
+    else {
+      set(f113);
+    }
+  }
+  else {
+    print("The door is already open.");
+  }
+}
+if ((said("close", "door") || 
+    said("close", "closet", "door"))) {
+  if (posn(Ego,67,115,83,119)) {
+    if (isset(f221)) {
+      v152 = 4;
+      cycle.time(o1, v152);
+      reverse.loop(o1, f237);
+      reset(f221);
+      reset(f225);
+    }
+    else {
+      print("The door is already close.");
+    }
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("examine", "keyhole") || 
+    said("examine", "through", "keyhole") || 
+    said("examine", "key", "hole") || 
+    said("look in", "keyhole"))) {
+  if (!isset(f225)) {
+    set(f36);
+    prevent.input();
+    move.obj(Ego, 70, 117, 0, f222);
+  }
+  else {
+    print("That would be pretty tough with the door open.");
+  }
+}
+if (said("examine", "wall")) {
+  print("There is nothing of importance on the walls.");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down") || 
+    said("examine", "down", "dirt"))) {
+  print("There is nothing interesting on the floor.");
+}
+Label1:
+if (isset(ego_touching_signal_line)) {
+  new.room(49); //##LE002##
+}
+return();
+
+//Messages
+#message 1 "You have found yourself inside the ogre's small closet.  For a closet, it's surprisingly empty.  You notice a large keyhole under the doorknob of the closet door."
+#message 2 "There is a large keyhole under the doorknob of the closet door."
+#message 3 "There is nothing of importance on the walls."
+#message 4 "There is nothing interesting on the floor."
+#message 5 "Yes, he's still there."
+#message 6 "There is no answer."
+#message 7 "You hear the ogre coming home."
+#message 8 "You hear the ogre in the house."
+#message 9 "You hear noises on the other side of the door."
+#message 10 "You hear the ogre leaving."
+#message 11 "You see nothing special through the keyhole."
+#message 12 "That would not be a good idea right now."
+#message 13 "That would be pretty tough with the door open."
+#message 14 "The door is already close."
+#message 15 "The door is already open."

@@ -1,0 +1,42 @@
+set(input_parsed);
+if (isset(new_room)) {
+  cycle_delay = 0;
+  prevent.input();
+  program.control();
+  status.line.off();
+  reset(f151);
+  v152 = 206;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  set(f90);
+  show.pic();
+  return();
+}
+if ((isset(f90)) && 
+    (!isset(f56))) {
+  random(1, 79, v115);
+  if ((v115 > 0) && 
+      (v115 < 30)) {
+    new.room(141); //##LE001##
+  }
+  if ((v115 > 29) && 
+      (v115 < 60)) {
+    new.room(142); //##LE002##
+  }
+  if ((v115 > 59) && 
+      (v115 < 80)) {
+    new.room(143); //##LE003##
+  }
+}
+else {
+  if (isset(f56)) {
+    print("We are sorry, but this version of King's Quest IV does not support "
+          "Hercules graphics.");
+    quit(1);
+  }
+}
+return();
+
+//Messages
+#message 1 "We are sorry, but this version of King's Quest IV does not support Hercules graphics."

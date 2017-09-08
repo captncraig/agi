@@ -1,0 +1,163 @@
+if (isset(new_room)) {
+  set(f82);
+  v152 = 50;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  if (isset(f38)) {
+    load.view(188);
+    add.to.pic(188, 2, 2, 120, 81, 4, 4);
+    discard.view(188);
+  }
+  load.view(120);
+  load.view(34);
+  load.sound(10);
+  load.sound(11);
+  sound(10, f154);
+  animate.obj(o1);
+  set.view(o1, 120);
+  set.loop(o1, 6);
+  position(o1, 84, 105);
+  v152 = 2;
+  cycle.time(o1, v152);
+  draw(o1);
+  position(Ego, 41, 115);
+  draw(Ego);
+  show.pic();
+}
+if (isset(f154)) {
+  reset(f154);
+  sound(10, f154);
+}
+if (isset(f112)) {
+  reset(f112);
+  v168++;
+}
+if (v168 == 1) {
+  follow.ego(o1, 5, f238);
+  set(f237);
+  call(223);
+  reset(f237);
+}
+if (isset(f238)) {
+  sound(11, f154);
+  call(223);
+  reset(f238);
+  stop.motion(Ego);
+  set(f36);
+  prevent.input();
+  erase(o1);
+  set.cel(Ego, 0);
+  set.view(Ego, 34);
+  v154 = 3;
+  step.time(Ego, v154);
+  cycle.time(Ego, v154);
+  set(f157);
+  end.of.loop(Ego, f229);
+}
+if (isset(f229)) {
+  reset(f229);
+  set(f140);
+  accept.input();
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "cottage") || 
+    said("examine", "around", "cottage") || 
+    said("examine", "kitchen") || 
+    said("examine", "around", "kitchen"))) {
+  print("You smell something HORRIBLE cooking on the stove in the ogres' "
+        "kitchen! As a matter of fact, you get the feeling that this is NOT a "
+        "safe place to be!");
+}
+if (said("examine", "table")) {
+  print("That is the carving table.");
+}
+if (said("examine", "beneath", "table")) {
+  print("There is nothing of interest under the table.");
+}
+if (said("examine", "stove")) {
+  print("Something TERRIBLE is cooking on the stove!  You have NO desire to "
+        "know what it is.");
+}
+if ((said("examine", "window") || 
+    said("look in", "window") || 
+    said("examine", "out", "window") || 
+    said("examine", "through", "window"))) {
+  print("You see the forest out the window.");
+}
+if ((said("examine", "buck") || 
+    said("examine", "buck", "abominable", "table") || 
+    said("examine", "animal") || 
+    said("examine", "animal", "abominable", "table"))) {
+  print("Poor thing!");
+}
+if ((said("carry", "buck") || 
+    said("carry", "animal") || 
+    said("help", "buck") || 
+    said("help", "animal") || 
+    said("save", "buck") || 
+    said("save", "animal"))) {
+  print("It's too late.  You can't help the deer now.");
+}
+if ((said("examine", "cauldron") || 
+    said("look in", "cauldron"))) {
+  print("Whatever's in the pot smells AWFUL!");
+}
+if (said("examine", "wall")) {
+  print("There is nothing of importance on the walls.");
+}
+if ((said("examine", "dirt") || 
+    said("examine", "down") || 
+    said("examine", "down", "dirt"))) {
+  print("There is nothing interesting on the floor.");
+}
+if ((said("examine", "giantess") || 
+    said("examine", "crone") || 
+    said("examine", "crone") || 
+    said("examine", "people") || 
+    said("examine", "animal"))) {
+  print("The ogress is cooking an awful smelling brew.");
+}
+if ((said("speak", "giantess") || 
+    said("speak") || 
+    said("speak", "crone") || 
+    said("speak", "crone") || 
+    said("speak", "people") || 
+    said("speak", "animal"))) {
+  print("This is no time for conversation.");
+}
+if ((said("embrace", "giantess") || 
+    said("embrace") || 
+    said("embrace", "crone") || 
+    said("embrace", "crone") || 
+    said("embrace", "people") || 
+    said("embrace", "animal"))) {
+  print("You have got to be kidding!");
+}
+Label1:
+if (isset(ego_touching_signal_line)) {
+  new.room(49); //##LE001##
+}
+return();
+
+//Messages
+#message 1 "You smell something HORRIBLE cooking on the stove in the ogres' kitchen! As a matter of fact, you get the feeling that this is NOT a safe place to be!"
+#message 2 "That is the carving table."
+#message 3 "There is nothing of interest under the table."
+#message 4 "Something TERRIBLE is cooking on the stove!  You have NO desire to know what it is."
+#message 5 "You see the forest out the window."
+#message 6 "Poor thing!"
+#message 7 "It's too late.  You can't help the deer now."
+#message 8 "Whatever's in the pot smells AWFUL!"
+#message 9 "There is nothing of importance on the walls."
+#message 10 "There is nothing interesting on the floor."
+#message 11 "The ogress is cooking an awful smelling brew."
+#message 12 "This is no time for conversation."
+#message 13 "You have got to be kidding!"
+#message 14 "This is a mean-looking lady!"

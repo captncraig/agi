@@ -1,0 +1,253 @@
+if (isset(new_room)) {
+  set(f82);
+  v152 = 66;
+  load.pic(v152);
+  draw.pic(v152);
+  discard.pic(v152);
+  load.view(1);
+  load.view(10);
+  load.view(40);
+  load.view(20);
+  load.view(72);
+  load.sound(48);
+  load.sound(52);
+  animate.obj(o12);
+  animate.obj(o2);
+  set.view(o2, 72);
+  set.loop(o2, 1);
+  position(o2, 106, 69);
+  v152 = 1;
+  cycle.time(o2, v152);
+  draw(o2);
+  v221 = 0;
+  if (isset(f38)) {
+    load.logics(232);
+  }
+  if (prev_room_no == 67) {
+    position(Ego, 120, 109);
+  }
+  if ((prev_room_no == 61) && 
+      (v37 != 6)) {
+    set(f238);
+    position(Ego, 34, 50);
+  }
+  if (v37 == 6) {
+    sound(52, f154);
+    position(Ego, 82, 6);
+    current.loop(Ego, v147);
+    set.loop.v(Ego, v147);
+    fix.loop(Ego);
+    v152 = 3;
+    cycle.time(Ego, v152);
+    move.obj(Ego, 82, 124, 8, f237);
+    set(f236);
+    set(f36);
+    ignore.blocks(Ego);
+    ignore.objs(Ego);
+    set.priority(Ego, 9);
+  }
+  if (!isset(f72)) {
+    animate.obj(o1);
+    set.view(o1, 72);
+    set.loop(o1, 0);
+    set.cel(o1, 3);
+    stop.cycling(o1);
+    position(o1, 77, 103);
+    draw(o1);
+  }
+  draw(Ego);
+  show.pic();
+}
+if ((v33 < 101) && 
+    (v34 > 134) && 
+    (v37 != 6)) {
+  set(f238);
+}
+if (v33 > 100) {
+  reset(f238);
+}
+if (v33 > 98 && 
+    v34 < 135) {
+  reset(f238);
+}
+if ((isset(f236)) && 
+    (isset(f237))) {
+  reset(f237);
+  set.view(Ego, 20);
+  stop.sound();
+  v221 = 2;
+}
+if (v221 > 0) {
+  v221--;
+  if (v221 <= 0) {
+    shake.screen(1);
+    v37 = 20;
+    set(f140);
+  }
+}
+if ((!isset(f238)) && 
+    (v37 == 0)) {
+  observe.blocks(Ego);
+  release.priority(Ego);
+}
+if (isset(f238)) {
+  ignore.blocks(Ego);
+  set.priority(Ego, 12);
+}
+if ((isset(f238)) && 
+    (isset(ego_touching_signal_line)) && 
+    (!isset(f230))) {
+  sound(52, f154);
+  reset(f238);
+  set(f36);
+  set(f230);
+  release.priority(Ego);
+  v37 = 6;
+  set.view(Ego, 10);
+  if (ego_dir < downleft) {
+    set.loop(Ego, 0);
+  }
+  else {
+    set.loop(Ego, 1);
+  }
+  fix.loop(Ego);
+  ignore.blocks(Ego);
+  ignore.objs(Ego);
+  if (v33 < 50) {
+    v152 = 8;
+    v134 = 60;
+    v135 = 122;
+  }
+  else {
+    v152 = 4;
+    v134 = v33;
+    if (v33 > 86) {
+      v135 = 127;
+    }
+    else {
+      v135 = 122;
+    }
+  }
+  if (v34 > 73) {
+    move.obj.v(Ego, v134, v135, v152, f225);
+  }
+  else {
+    set(f236);
+    move.obj.v(Ego, v134, v135, v152, f237);
+  }
+}
+if (isset(f225)) {
+  stop.sound();
+  v152 = 1;
+  step.size(Ego, v152);
+  cycle.time(Ego, v152);
+  set.view(Ego, 40);
+  set.loop(Ego, 0);
+  set.cel(Ego, 3);
+  reverse.loop(Ego, f226);
+  set(f157);
+  reset(f225);
+}
+if (isset(f226)) {
+  stop.sound();
+  observe.blocks(Ego);
+  set.view(Ego, 1);
+  release.priority(Ego);
+  stop.motion(Ego);
+  stop.cycling(Ego);
+  v37 = 0;
+  reset(f226);
+  reset(f157);
+  reset(f36);
+  reset(f230);
+  reset(f226);
+  release.loop(Ego);
+}
+if (!isset(input_received)) {
+  goto(Label1);
+}
+if ((said("examine") || 
+    said("examine", "around") || 
+    said("examine", "room") || 
+    said("examine", "around", "room") || 
+    said("examine", "cottage") || 
+    said("examine", "around", "cottage") || 
+    said("examine", "tower") || 
+    said("examine", "around", "tower"))) {
+  print("You have found a secret tower!  Narrow steps spiral dizzingly upward.");
+  if (!isset(f72)) {
+    print("You notice a shovel leaning against the wall.");
+  }
+}
+if ((!isset(f72)) && 
+    (said("carry", "broken shovel"))) {
+  if (posn(Ego,73,95,92,110)) {
+    set(f116);
+    score  += 2;
+    erase(o1);
+    set(f72);
+    sound(48, f154);
+    get("Shovel");
+  }
+  else {
+    set(f113);
+  }
+}
+if ((said("examine", "staircase") || 
+    said("examine", "up", "staircase"))) {
+  print("The steps are narrow, steep, and spiral upwards.");
+}
+if ((said("examine", "door") || 
+    said("examine", "through", "door") || 
+    said("look in", "door"))) {
+  print("The secret door opens into the parlor.");
+}
+if (said("close", "door")) {
+  print("You don't know how.");
+}
+if (said("open", "door")) {
+  print("The secret door is already open.");
+}
+if (said("examine", "dirt")) {
+  print("You see nothing interesting.");
+}
+if ((said("examine", "torch") || 
+    said("examine", "ignite"))) {
+  print("The torch burns on the wall.");
+}
+if ((said("carry", "torch") || 
+    said("carry", "ignite"))) {
+  print("The torch is firmly attached to the wall.");
+}
+if (said("examine", "wall")) {
+  print("You see nothing interesting.");
+}
+if (!has("Shovel")) {
+  if (said("examine", "broken shovel")) {
+    print("You notice a shovel leaning against the wall.");
+  }
+}
+Label1:
+if (isset(f38)) {
+  call(232);
+}
+if ((isset(ego_touching_signal_line)) && 
+    (v33 > 120) && 
+    (v37 != 6)) {
+  new.room(67); //##LE001##
+}
+if (ego_edge_code == horizon_edge) {
+  new.room(61); //##LE002##
+}
+return();
+
+//Messages
+#message 1 "You have found a secret tower!  Narrow steps spiral dizzingly upward."
+#message 2 "You notice a shovel leaning against the wall."
+#message 3 "The steps are narrow, steep, and spiral upwards."
+#message 4 "The secret door opens into the parlor."
+#message 5 "You don't know how."
+#message 6 "The secret door is already open."
+#message 7 "You see nothing interesting."
+#message 8 "The torch burns on the wall."
+#message 9 "The torch is firmly attached to the wall."
